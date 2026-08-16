@@ -1,0 +1,43 @@
+name: audit
+
+# Runs tools/audit.py on every push and pull request touching the documents.
+# Standard library only — no install step, no dependencies, a couple of seconds.
+# If you would rather not have CI, delete this file; the script still works locally.
+
+on:
+  push:
+    paths:
+      - "*.html"
+      - "gabarits/**"
+      - "tools/**"
+      - ".github/workflows/audit.yml"
+  pull_request:
+    paths:
+      - "*.html"
+      - "gabarits/**"
+      - "tools/**"
+  workflow_dispatch:
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Consistency audit
+        run: python tools/audit.py
+
+      - name: Template archive is up to date
+        run: |
+          python gabarits/build-zip.py
+          if ! git diff --quiet -- gabarits/dossier-de-projet.zip; then
+            echo "::error::gabarits/dossier-de-projet.zip is stale."
+            echo "A template file changed without the archive being rebuilt."
+            echo "Run: python gabarits/build-zip.py  — then commit the zip."
+            exit 1
+          fi
+          echo "archive matches the template tree"

@@ -29,11 +29,23 @@ for base, subdirs, names in os.walk(SRC):
     if not real:
         dirs.append(prefix + "/")
 
+# Deterministic: identical inputs must give a byte-identical archive, so CI can tell
+# "a template changed and the zip was not rebuilt" from "the zip was rebuilt on another
+# day". That means a fixed timestamp on every entry rather than the file's mtime, which
+# a fresh git checkout rewrites anyway.
+STAMP = (2026, 1, 1, 0, 0, 0)
+
 with zipfile.ZipFile(OUT, "w", zipfile.ZIP_DEFLATED) as z:
     for d in sorted(dirs):
-        z.writestr(zipfile.ZipInfo(d), b"")
+        info = zipfile.ZipInfo(d, STAMP)
+        info.external_attr = (0o40755 << 16) | 0x10  # directory bit
+        z.writestr(info, b"")
     for abspath, arcname in sorted(files, key=lambda x: x[1]):
-        z.write(abspath, arcname)
+        info = zipfile.ZipInfo(arcname, STAMP)
+        info.compress_type = zipfile.ZIP_DEFLATED
+        info.external_attr = 0o644 << 16
+        with open(abspath, "rb") as fh:
+            z.writestr(info, fh.read())
 
 kb = os.path.getsize(OUT) // 1024
 print("wrote %s  (%d files, %d empty dirs, %d KB)" % (

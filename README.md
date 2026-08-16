@@ -141,6 +141,18 @@ Le pipeline décrit ici ne suppose pas que chaque étudiant installe et administ
 
 Ces deux outils expliquent plusieurs choix du manuel. La discipline de graine du chapitre 12 suit le comportement de ComfyQ (champ randomisé à l'ouverture, verrouillage par saisie manuelle) ; le budget de calcul du chapitre 14 se lit dans son estimation calibrée plutôt qu'au chronomètre ; et l'argument de confidentialité des chapitres 3 et 18 tient parce que LlmOnLan garde les données en local.
 
+## Vérifier la cohérence du manuel
+
+```bash
+python tools/audit.py
+```
+
+Sept passes, sans dépendances : validité HTML, résolution des liens internes, **parité des faits entre les deux éditions** (numéros de section, identifiants, renvois, étiquettes d'année, numéros d'étape et de figure), **parité structurelle** (une édition qui a cinq lignes de tableau là où l'autre en a quatre a perdu du contenu), absence de noms de fichiers ou de colonnes français, cohérence entre le manuel et le gabarit téléchargeable, et symétrie des bandes d'année.
+
+À lancer après chaque modification du manuel. Le code de sortie est le nombre de passes en échec, donc il s'utilise tel quel en CI — c'est ce que fait [`.github/workflows/audit.yml`](.github/workflows/audit.yml), qui vérifie aussi que `dossier-de-projet.zip` n'est pas périmé par rapport au gabarit.
+
+Ce script existe parce que ce document décrit **une seule réalité en deux langues**, et que la façon dont les deux éditions divergent n'est pas celle qu'on remarque en lisant. À sa première exécution il a trouvé un critère de validation disparu de l'édition anglaise du chapitre 6, l'absence totale d'exemple de CSV dans l'édition anglaise du chapitre 9, et quatre incohérences plus petites. Détails dans [tools/README.md](tools/README.md).
+
 ## Ce qui se périme, et ce qui ne se périme pas
 
 Ce champ change tous les deux mois. Tout ce qui est **nommé** — modèles, versions, chiffres de VRAM — est concentré dans le **chapitre 3** et dans **[prompts.html](prompts.html)**, pour que le reste du manuel reste juste. La *méthode* est faite pour survivre aux noms.
