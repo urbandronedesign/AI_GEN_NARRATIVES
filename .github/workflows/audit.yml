@@ -33,10 +33,27 @@ jobs:
 
       - name: Template archive is up to date
         run: |
-          python gabarits/build-zip.py
-          if ! git diff --quiet -- gabarits/dossier-de-projet.zip; then
+          before=$(sha256sum gabarits/dossier-de-projet.zip | cut -d' ' -f1)
+          python gabarits/build-zip.py > /dev/null
+          after=$(sha256sum gabarits/dossier-de-projet.zip | cut -d' ' -f1)
+          if [ "$before" != "$after" ]; then
+            echo "committed : $before"
+            echo "rebuilt   : $after"
+            echo "--- entries that differ ---"
+            git stash -q -- gabarits/dossier-de-projet.zip 2>/dev/null || true
+            python - <<'PY'
+          import subprocess, zipfile, io
+          new = zipfile.ZipFile("gabarits/dossier-de-projet.zip")
+          old = zipfile.ZipFile(io.BytesIO(subprocess.run(
+              ["git", "show", "HEAD:gabarits/dossier-de-projet.zip"],
+              capture_output=True).stdout))
+          on, nn = set(old.namelist()), set(new.namelist())
+          for n in sorted(on - nn): print("  only in committed:", n)
+          for n in sorted(nn - on): print("  only in rebuilt  :", n)
+          for n in sorted(on & nn):
+              if old.read(n) != new.read(n): print("  content differs  :", n)
+          PY
             echo "::error::gabarits/dossier-de-projet.zip is stale."
-            echo "A template file changed without the archive being rebuilt."
             echo "Run: python gabarits/build-zip.py  — then commit the zip."
             exit 1
           fi

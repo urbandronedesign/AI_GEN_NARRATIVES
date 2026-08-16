@@ -36,13 +36,26 @@ for base, subdirs, names in os.walk(SRC):
 STAMP = (2026, 1, 1, 0, 0, 0)
 TEXT = {".md", ".csv", ".txt", ".json"}
 
+def entry(name):
+    """A ZipInfo with every platform-dependent field pinned.
+
+    ZipInfo defaults create_system to 0 on Windows and 3 elsewhere, which alone is
+    enough to change the archive's bytes between a maintainer's laptop and CI.
+    """
+    info = zipfile.ZipInfo(name, STAMP)
+    info.create_system = 3      # Unix, on every host
+    info.create_version = 20
+    info.extract_version = 20
+    return info
+
+
 with zipfile.ZipFile(OUT, "w", zipfile.ZIP_DEFLATED) as z:
     for d in sorted(dirs):
-        info = zipfile.ZipInfo(d, STAMP)
+        info = entry(d)
         info.external_attr = (0o40755 << 16) | 0x10  # directory bit
         z.writestr(info, b"")
     for abspath, arcname in sorted(files, key=lambda x: x[1]):
-        info = zipfile.ZipInfo(arcname, STAMP)
+        info = entry(arcname)
         info.compress_type = zipfile.ZIP_DEFLATED
         info.external_attr = 0o644 << 16
         with open(abspath, "rb") as fh:
