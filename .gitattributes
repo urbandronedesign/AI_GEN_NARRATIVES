@@ -1,0 +1,14 @@
+# Normalise line endings so the manual does not churn between machines.
+* text=auto eol=lf
+
+# Binary — never diff or convert
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.pdf binary
+*.docx binary
+
+# The manual is one large file; keep diffs readable in review
+*.html diff=html

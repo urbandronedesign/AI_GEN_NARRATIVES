@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+<title>Prompts &amp; modèles — Récits génératifs</title>
+<meta name="description" content="Bibliothèque de prompts, lexique de prompt bilingue FR/EN et tableau des modèles pour la production de courts métrages par IA génératives.">
+<style>
+:root{
+  --paper:#ffffff; --ink:#1a1c1e; --ink-2:#52585f; --ink-3:#6d747b;
+  --rule:#e8eaec; --rule-2:#c8ccd1; --accent:#0f6d72; --wash:#f6f7f8;
+  --warn:#a4352c;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+  --mono:ui-monospace,"Cascadia Code",Consolas,"Courier New",monospace;
+  --topbar:rgba(255,255,255,.94);
+}
+@media(prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#14161a; --ink:#e4e7ea; --ink-2:#a6aeb6; --ink-3:#79828b;
+    --rule:#252a30; --rule-2:#39424b; --accent:#5fb8bd; --wash:#1a1d22;
+    --warn:#e59288; --topbar:rgba(20,22,26,.94);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#14161a; --ink:#e4e7ea; --ink-2:#a6aeb6; --ink-3:#79828b;
+  --rule:#252a30; --rule-2:#39424b; --accent:#5fb8bd; --wash:#1a1d22;
+  --warn:#e59288; --topbar:rgba(20,22,26,.94);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{font-size:100%;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--sans); background:var(--paper); color:var(--ink); line-height:1.65; font-size:1.02rem; -webkit-font-smoothing:antialiased}
+body.lang-fr .en-only, body.lang-en .fr-only{display:none !important}
+main{max-width:52rem; margin:0 auto; padding:0 2rem 8rem}
+code,pre{font-family:var(--mono)}
+
+#topbar{
+  position:sticky; top:0; z-index:900; background:var(--topbar); backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--rule); margin:0 -2rem 2.5rem; padding:.7rem 2rem;
+  display:flex; gap:.55rem; align-items:center; flex-wrap:wrap;
+}
+.search-wrap{position:relative; flex:1; min-width:170px}
+#filter{width:100%; background:transparent; border:none; border-bottom:1px solid var(--rule);
+  padding:.4rem .2rem .4rem 1.5rem; color:var(--ink); font-size:.86rem; font-family:inherit}
+#filter:focus{outline:none; border-bottom-color:var(--ink)}
+#filter::placeholder{color:var(--ink-3)}
+.search-wrap::before{content:"⌕"; position:absolute; left:.1rem; top:50%; transform:translateY(-50%); color:var(--ink-3); font-size:1.05rem}
+.seg{display:flex; border:1px solid var(--rule); border-radius:2px; overflow:hidden}
+.seg button{background:none; border:none; color:var(--ink-3); padding:.3rem .68rem; font-weight:500;
+  cursor:pointer; font-size:.73rem; font-family:inherit; letter-spacing:.06em; border-right:1px solid var(--rule)}
+.seg button:last-child{border-right:none}
+.seg button:hover{color:var(--ink)}
+.seg button.on{background:var(--ink); color:var(--paper)}
+.back{color:var(--accent); font-size:.78rem; text-decoration:none; white-space:nowrap}
+
+.cover{padding:3rem 0 2.5rem; border-bottom:1px solid var(--rule); margin-bottom:2.5rem}
+.cover h1{font-size:1.9rem; font-weight:600; letter-spacing:-.025em; line-height:1.15; margin-bottom:.8rem}
+.cover p{color:var(--ink-2); font-size:1rem; max-width:36rem}
+.cover .meta{color:var(--ink-3); font-size:.7rem; margin-top:1.4rem; letter-spacing:.11em; text-transform:uppercase}
+
+h2{font-size:1.4rem; font-weight:600; letter-spacing:-.018em; margin:4rem 0 .5rem; padding-top:1.5rem; border-top:2px solid var(--ink)}
+h2:first-of-type{margin-top:1rem}
+h3{font-size:1.05rem; font-weight:600; margin:2.4rem 0 .7rem}
+h4{font-size:.9rem; font-weight:600; margin:1.6rem 0 .5rem}
+p{margin-bottom:1rem}
+.lede{color:var(--ink-2); font-size:.95rem; margin-bottom:1.5rem}
+a{color:var(--accent); text-underline-offset:.15em}
+strong{font-weight:600}
+ul{margin:0 0 1.1rem; padding-left:0; list-style:none}
+ul li{position:relative; padding-left:1.4rem; margin-bottom:.45rem}
+ul li::before{content:""; position:absolute; left:.3rem; top:.72em; width:4px; height:1px; background:var(--rule-2)}
+
+.tbl-wrap{overflow-x:auto; margin:1.4rem 0}
+table{width:100%; border-collapse:collapse; font-size:.875rem; min-width:460px}
+th,td{padding:.55rem .9rem .55rem 0; text-align:left; vertical-align:top; border-bottom:1px solid var(--rule)}
+th{border-bottom:1px solid var(--ink); font-weight:600; font-size:.66rem; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--ink-3); padding-bottom:.45rem}
+td:last-child,th:last-child{padding-right:0}
+td code{font-size:.85em; background:var(--wash); padding:.06rem .3rem; border-radius:2px}
+tr.hidden{display:none}
+section.hidden{display:none}
+
+.callout{border-left:2px solid var(--rule-2); padding:.15rem 0 .15rem 1.2rem; margin:1.6rem 0; font-size:.93rem}
+.callout .lbl{display:block; font-size:.62rem; font-weight:700; letter-spacing:.14em;
+  text-transform:uppercase; margin-bottom:.4rem; color:var(--ink-3)}
+.callout p:last-child{margin-bottom:0}
+.c-warn{border-left-color:var(--warn)} .c-warn .lbl{color:var(--warn)}
+.c-doc{border-left-color:var(--ink)}   .c-doc .lbl{color:var(--ink)}
+
+.pr{margin:1.4rem 0; border:1px solid var(--rule); background:var(--wash)}
+.pr-hd{display:flex; align-items:center; gap:.6rem; padding:.5rem .9rem; border-bottom:1px solid var(--rule);
+  font-size:.62rem; font-weight:700; letter-spacing:.13em; text-transform:uppercase; color:var(--ink-3)}
+.pr-hd .who{border:1px solid var(--rule-2); border-radius:2px; padding:.04rem .3rem; color:var(--ink-2)}
+.pr-hd .sp{flex:1}
+.pr-copy{background:none; border:1px solid var(--rule-2); border-radius:2px; cursor:pointer; color:var(--ink-3);
+  font-size:.6rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase; padding:.12rem .42rem; font-family:inherit}
+.pr-copy:hover{color:var(--ink); border-color:var(--ink)}
+.pr-copy.done{color:var(--accent); border-color:var(--accent)}
+.pr pre{margin:0; padding:.9rem 1.1rem; font-size:.77rem; line-height:1.6; white-space:pre-wrap; color:var(--ink)}
+.pr .var{color:var(--accent); font-weight:600}
+pre.plain{background:var(--wash); border-left:2px solid var(--rule-2); padding:1rem 1.1rem;
+  font-size:.77rem; line-height:1.6; overflow-x:auto; margin:1.3rem 0; white-space:pre}
+pre .cm{color:var(--ink-3)}
+
+footer{border-top:1px solid var(--rule); margin-top:5rem; padding:2.2rem 0; color:var(--ink-3); font-size:.78rem}
+footer p{margin-bottom:.4rem}
+
+@media(max-width:700px){
+  main{padding:0 1.2rem 5rem}
+  #topbar{margin:0 -1.2rem 2rem; padding:.6rem 1.2rem}
+  .cover h1{font-size:1.5rem}
+}
+@media print{
+  #topbar{display:none} .pr-copy{display:none}
+  body{font-size:10.5pt; color:#000} main{max-width:none; padding:0}
+  h2{page-break-before:always} .pr,table{page-break-inside:avoid}
+}
+</style>
+</head>
+<body class="lang-fr">
+
+<main>
+<div id="topbar">
+  <a class="back" href="recits_generatifs_manuel-v1.html">&#8592; <span class="fr-only">Manuel</span><span class="en-only">Manual</span></a>
+  <div class="search-wrap">
+    <input id="filter" type="search" autocomplete="off"
+      placeholder="Filtrer : « lumière rasante », « travelling »…"
+      data-ph-fr="Filtrer : « lumière rasante », « travelling »…"
+      data-ph-en="Filter: “raking light”, “dolly”…">
+  </div>
+  <div class="seg">
+    <button data-lang="fr" class="on" onclick="setLang('fr')">FR</button>
+    <button data-lang="en" onclick="setLang('en')">EN</button>
+  </div>
+  <div class="seg">
+    <button data-theme-btn="light" onclick="setTheme('light')" title="Thème clair" aria-label="Thème clair">☀</button>
+    <button data-theme-btn="dark" onclick="setTheme('dark')" title="Thème sombre" aria-label="Thème sombre">☾</button>
+  </div>
+</div>
+
+<div class="cover">
+  <div class="fr-only">
+    <h1>Prompts &amp; modèles</h1>
+    <p>La page compagnon du manuel. Tous les prompts du pipeline, prêts à copier ; le lexique bilingue de ce qu’il faut écrire pour obtenir ce que vous voulez ; et l’état des modèles. Classée par tâche, pas par chapitre : cherchez « lumière rasante » plutôt que le chapitre 10.</p>
+  </div>
+  <div class="en-only">
+    <h1>Prompts &amp; models</h1>
+    <p>The manual's companion page. Every prompt in the pipeline, ready to copy; the bilingual lexicon of what to write to get what you want; and the state of the models. Arranged by task, not by chapter: look up "raking light" rather than chapter 10.</p>
+  </div>
+  <p class="meta">Récits génératifs · Édition 2026.1 · <span class="fr-only">état des modèles : août 2026</span><span class="en-only">models as of August 2026</span></p>
+</div>
+
+<div class="callout c-warn">
+  <span class="lbl fr-only">Cette page se périme, le manuel non</span>
+  <span class="lbl en-only">This page goes stale, the manual does not</span>
+  <p class="fr-only">Tout ce qui est <em>nommé</em> ici — modèles, versions, chiffres de VRAM — est daté d’août 2026 et changera. Toute la <em>méthode</em> est dans le manuel et ne changera pas. Cette séparation est volontaire : mettez cette page à jour, ne réécrivez pas le manuel.</p>
+  <p class="en-only">Everything <em>named</em> here — models, versions, VRAM figures — is dated August 2026 and will change. All the <em>method</em> is in the manual and will not. The separation is deliberate: update this page, do not rewrite the manual.</p>
+</div>
+
+<!-- ==================== 1. PROMPTS ==================== -->
+<h2><span class="fr-only">1 · Les prompts du pipeline</span><span class="en-only">1 · The pipeline prompts</span></h2>
+<p class="lede fr-only">Dans l’ordre où vous les utilisez. Ce qui est <span style="color:var(--accent);font-weight:600">en couleur</span> est à remplacer.</p>
+<p class="lede en-only">In the order you use them. Anything <span style="color:var(--accent);font-weight:600">in colour</span> is for you to replace.</p>
+
+<h3><span class="fr-only">Étape 3 · voie construite — Écrire les cinq règles du monde</span><span class="en-only">Stage 3 · constructed route — Write the five rules of the world</span></h3>
+<p class="lede fr-only">À faire <strong>avant</strong> toute image, si votre film se passe dans un monde inventé. Sans règles écrites, le modèle en invente de nouvelles à chaque plan.</p>
+<p class="lede en-only">To be done <strong>before</strong> any image, if your film is set in an invented world. With no written rules, the model invents new ones for every shot.</p>
+<div class="pr">
+  <div class="pr-hd"><span class="who">LLM</span><span class="fr-only">Interrogatoire, une question à la fois</span><span class="en-only">Interrogation, one question at a time</span><span class="sp"></span><button class="pr-copy" onclick="prCopy(this)">Copy</button></div>
+  <pre class="fr-only">Je construis un monde inventé pour un court métrage. Voici mon pitch :
+<span class="var">[VOTRE PITCH EN UNE PHRASE]</span>
+
+Pose-moi une question à la fois, dans cet ordre, et attends ma réponse
+avant la suivante :
+1. De quelle matière dominante ce monde est-il fait ?
+2. D'où vient la lumière, et de quelle couleur ?
+3. Quelle est l'échelle des choses par rapport à un corps humain ?
+4. Quel âge a ce monde, et dans quel état est-il ?
+5. Qu'est-ce qui n'existe PAS dans ce monde ?
+
+Ne réponds pas à ma place et ne propose pas d'options tant que je n'ai pas
+répondu. Si ma réponse est vague, dis-le et redemande.
+
+Quand les cinq réponses sont données, produis :
+- les cinq règles reformulées en une ligne chacune, en français
+- la liste des termes anglais correspondants pour un prompt d'image
+- une liste de prompts négatifs tirée de la règle 5</pre>
+  <pre class="en-only">I am building an invented world for a short film. Here is my pitch:
+<span class="var">[YOUR ONE-SENTENCE PITCH]</span>
+
+Ask me one question at a time, in this order, and wait for my answer
+before the next:
+1. What dominant material is this world made of?
+2. Where does the light come from, and what colour is it?
+3. What is the scale of things relative to a human body?
+4. How old is this world, and what condition is it in?
+5. What does NOT exist in this world?
+
+Do not answer for me and do not offer options until I have answered.
+If my answer is vague, say so and ask again.
+
+Once all five answers are given, produce:
+- the five rules restated in one line each
+- the matching English terms for an image prompt
+- a list of negative prompts derived from rule 5</pre>
+</div>
+<div class="callout c-doc">
+  <span class="lbl fr-only">La règle 5 fait plus de travail que les quatre autres</span>
+  <span class="lbl en-only">Rule 5 does more work than the other four</span>
+  <p class="fr-only">Un modèle ajoute par défaut ce qu’il a le plus vu : verdure, écrans, reflets, passants. Écrire ce qui <strong>n’existe pas</strong> dans votre monde vous donne à la fois vos prompts négatifs et un critère de tri sans appel — toute image de recherche contenant un élément interdit est éliminée, quelle que soit sa beauté.</p>
+  <p class="en-only">A model adds by default whatever it has seen most: greenery, screens, reflections, passers-by. Writing what <strong>does not exist</strong> in your world gives you both your negative prompts and a selection criterion with no appeal — any research image containing a forbidden element is out, however beautiful.</p>
+</div>
+
+<h3><span class="fr-only">Étape 3 — Indexer le référentiel</span><span class="en-only">Stage 3 — Index the reference set</span></h3>
+<div class="pr">
+  <div class="pr-hd"><span class="who">LLM</span><span class="fr-only">Décrire vos photos de site</span><span class="en-only">Describe your site photographs</span><span class="sp"></span><button class="pr-copy" onclick="prCopy(this)">Copy</button></div>
+  <pre class="fr-only">Voici 8 photographies prises sur un même site.
+
+Pour chacune, produis une fiche de 5 lignes :
+- MATIÈRES : les matériaux visibles, avec leur état (neuf, usé, repeint, corrodé…)
+- COULEURS : les 3 teintes dominantes, décrites précisément (pas « gris » mais « gris-vert délavé »)
+- LUMIÈRE : d'où elle vient, sa dureté, la couleur des ombres
+- ÉCHELLE : ce que l'image permet de déduire des dimensions
+- SINGULARITÉ : ce qui n'existerait pas sur un autre site du même type
+
+N'invente rien. Si une information n'est pas visible, écris « non visible ».
+Ne commente pas la qualité esthétique des photos.</pre>
+  <pre class="en-only">Here are 8 photographs taken on the same site.
+
+For each one, produce a 5-line record:
+- MATERIALS: the visible materials, with their condition (new, worn, repainted, corroded…)
+- COLOURS: the 3 dominant hues, described precisely (not "grey" but "washed-out grey-green")
+- LIGHT: where it comes from, how hard it is, the colour of the shadows
+- SCALE: what the image lets you deduce about dimensions
+- SINGULARITY: what would not exist on another site of the same type
+
+Invent nothing. If something is not visible, write "not visible".
+Do not comment on the aesthetic quality of the photographs.</pre>
+</div>
+
+<h3><span class="fr-only">Étape 5 · phase 1 — Structurer les 20 plans</span><span class="en-only">Stage 5 · phase 1 — Structure the 20 shots</span></h3>
+<div class="pr">
+  <div class="pr-hd"><span class="who">LLM</span><span class="fr-only">Scénariste</span><span class="en-only">Screenwriter</span><span class="sp"></span><button class="pr-copy" onclick="prCopy(this)">Copy</button></div>
+  <pre class="fr-only">Agis comme un scénariste professionnel spécialisé dans les formats très courts.
+
+CONTEXTE
+Pitch : <span class="var">[VOTRE PITCH EN UNE PHRASE]</span>
+Forme narrative retenue : <span class="var">[révélation | transformation | trajet | confrontation]</span>
+Lieu réel documenté : <span class="var">[3 LIGNES SUR LE SITE, TIRÉES DE VOTRE INDEX.MD]</span>
+Contradiction à tenir : <span class="var">[LA CONTRADICTION DE VOTRE FICHE DE PROBLÉMATIQUE]</span>
+
+STRUCTURE IMPOSÉE — ne la modifie pas
+P01–P03 ouverture (9 s) · P04–P08 installation (15 s)
+P09–P12 bascule (12 s) · P13–P17 conséquence (15 s) · P18–P20 sortie (9 s)
+
+DEMANDE
+Découpe le pitch en 20 plans de 3 secondes exactement.
+Pour chaque plan, une seule ligne : le numéro, puis l'action visible.
+Une action par plan. Pas de dialogue. Pas d'adjectif esthétique.
+Contrainte : chaque plan doit être filmable en un seul geste de 3 secondes,
+sans ellipse interne.
+
+Puis liste séparément les 3 plans qui portent le plus de sens, et dis pourquoi.
+
+Valide cette structure avec moi avant de passer à l'étape suivante.</pre>
+  <pre class="en-only">Act as a professional screenwriter specialising in very short formats.
+
+CONTEXT
+Pitch: <span class="var">[YOUR ONE-SENTENCE PITCH]</span>
+Chosen narrative form: <span class="var">[reveal | transformation | traverse | confrontation]</span>
+Real documented location: <span class="var">[3 LINES ON THE SITE, FROM YOUR INDEX.MD]</span>
+Contradiction to hold: <span class="var">[THE CONTRADICTION FROM YOUR QUESTION SHEET]</span>
+
+IMPOSED STRUCTURE — do not alter it
+P01–P03 opening (9 s) · P04–P08 establishing (15 s)
+P09–P12 turn (12 s) · P13–P17 consequence (15 s) · P18–P20 exit (9 s)
+
+TASK
+Break the pitch into exactly 20 shots of 3 seconds.
+For each shot, one line only: the number, then the visible action.
+One action per shot. No dialogue. No aesthetic adjectives.
+Constraint: each shot must be filmable in a single 3-second gesture,
+with no internal ellipsis.
+
+Then separately list the 3 shots that carry the most meaning, and say why.
+
+Check this structure with me before moving to the next step.</pre>
+</div>
+
+<div class="callout c-doc">
+  <span class="lbl fr-only">Le prompt de relance qui compte</span>
+  <span class="lbl en-only">The follow-up prompt that matters</span>
+  <p class="fr-only">Après la première réponse, envoyez : <em>« Propose-moi trois versions du bloc III construites sur des partis différents. Ne cherche pas à les rendre également bonnes. »</em> C’est ce geste qui vous rend auteur du film au lieu d’en être l’opérateur.</p>
+  <p class="en-only">After the first answer, send: <em>"Give me three versions of block III built on different premises. Do not try to make them equally good."</em> That gesture is what makes you the author of the film rather than its operator.</p>
+</div>
+
+<h3><span class="fr-only">Étape 5 · phase 2 — Enrichir chaque plan</span><span class="en-only">Stage 5 · phase 2 — Enrich each shot</span></h3>
+<div class="pr">
+  <div class="pr-hd"><span class="who">LLM</span><span class="fr-only">Directeur de la photographie</span><span class="en-only">Director of photography</span><span class="sp"></span><button class="pr-copy" onclick="prCopy(this)">Copy</button></div>
+  <pre class="fr-only">Change de rôle : tu es maintenant directeur de la photographie.
+
+Pour chacun des 20 plans validés, produis un bloc technique contenant
+obligatoirement ces six champs, dans cet ordre :
+
+SUJET        ce qui est dans le cadre, décrit matériellement
+ENVIRONNEMENT le décor, l'arrière-plan, l'heure, la météo
+CADRAGE      échelle de plan + angle (vocabulaire technique uniquement)
+LUMIÈRE      source, direction, dureté, couleur des ombres
+MOUVEMENT    ce qui bouge : la caméra, le sujet, ou rien
+INTENTION    en une phrase, ce que ce plan doit faire ressentir
+
+Règles :
+- Vocabulaire technique, pas littéraire. « contre-plongée » et non « vue héroïque ».
+- L'heure de la journée est la même pour tous les plans, sauf ellipse prévue.
+- La direction de la lumière est cohérente d'un plan à l'autre.
+- Si un plan exige une action impossible en 3 secondes, signale-le au lieu
+  de l'écrire.
+
+N'écris pas encore les prompts en anglais. On le fera après les chartes.</pre>
+  <pre class="en-only">Change role: you are now a director of photography.
+
+For each of the 20 approved shots, produce a technical block containing
+these six fields, in this order, without exception:
+
+SUBJECT      what is in frame, described materially
+ENVIRONMENT  the set, background, hour, weather
+FRAMING      shot size + angle (technical vocabulary only)
+LIGHT        source, direction, hardness, colour of the shadows
+MOVEMENT     what moves: the camera, the subject, or nothing
+INTENT       in one sentence, what this shot must make the viewer feel
+
+Rules:
+- Technical vocabulary, not literary. "low angle", not "heroic view".
+- The hour of day is the same for every shot, unless an ellipsis is planned.
+- Light direction is consistent from shot to shot.
+- If a shot requires an action impossible in 3 seconds, flag it instead
+  of writing it.
+
+Do not write the English prompts yet. We will do that after the bibles.</pre>
+</div>
+
+<h3><span class="fr-only">Étape 7 — Extraire les constantes</span><span class="en-only">Stage 7 — Extract the constants</span></h3>
+<div class="pr">
+  <div class="pr-hd"><span class="who">LLM</span><span class="fr-only">Vers les trois chartes</span><span class="en-only">Towards the three bibles</span><span class="sp"></span><button class="pr-copy" onclick="prCopy(this)">Copy</button></div>
+  <pre class="fr-only">À partir des 20 fiches techniques, extrais les éléments qui doivent rester
+IDENTIQUES d'un plan à l'autre. Produis trois listes séparées :
+
+1. PERSONNAGE — traits physiques immuables, vêtements, accessoires distinctifs
+   Uniquement du visuel et du factuel. Pas de psychologie, pas d'âge « environ ».
+
+2. LIEU — les éléments d'architecture, matériaux et couleurs qui reviennent
+   Ce qui doit être reconnaissable comme le même endroit.
+
+3. STYLE — médium, palette, optique, éclairage, texture
+   Ce qui doit donner l'impression d'un seul film.
+
+Pour chaque liste, signale ce que tu as dû INVENTER faute d'information
+dans mes fiches. Ne le déguise pas en certitude : je dois savoir ce qui
+vient de moi et ce qui vient de toi.</pre>
+  <pre class="en-only">From the 20 technical records, extract the elements that must stay
+IDENTICAL from shot to shot. Produce three separate lists:
+
+1. CHARACTER — immutable physical traits, clothing, distinctive accessories
+   Visual and factual only. No psychology, no "approximately" ages.
+
+2. PLACE — the architectural elements, materials and colours that recur
+   What must be recognisable as the same place.
+
+3. STYLE — medium, palette, optics, lighting, texture
+   What must give the impression of a single film.
+
+For each list, flag what you had to INVENT for lack of information in my
+records. Do not disguise it as certainty: I need to know what came from
+me and what came from you.</pre>
+</div>
+
+<h3><span class="fr-only">Étape 8 — Générer les 20 prompts d’image</span><span class="en-only">Stage 8 — Generate the 20 image prompts</span></h3>
+<div class="pr">
+  <div class="pr-hd"><span class="who">LLM</span><span class="fr-only">Assemblage des trois blocs</span><span class="en-only">Assembling the three blocks</span><span class="sp"></span><button class="pr-copy" onclick="prCopy(this)">Copy</button></div>
+  <pre class="fr-only">Tu vas produire les 20 prompts d'image de mon film. En anglais.
+
+BLOC DE COHÉRENCE PERSONNAGE — long (plans rapprochés)
+<span class="var">[COLLEZ ICI]</span>
+BLOC DE COHÉRENCE PERSONNAGE — court (plans larges)
+<span class="var">[COLLEZ ICI]</span>
+BLOC DE COHÉRENCE LIEU
+<span class="var">[COLLEZ ICI]</span>
+SUFFIXE DE STYLE — invariable
+<span class="var">[COLLEZ ICI]</span>
+
+FICHES TECHNIQUES DES 20 PLANS
+<span class="var">[COLLEZ LES 20 FICHES]</span>
+
+RÈGLES ABSOLUES
+1. Structure de chaque prompt, dans cet ordre :
+   [description du plan] + [bloc de cohérence] + [suffixe de style]
+2. Le suffixe de style est recopié CARACTÈRE POUR CARACTÈRE, 20 fois.
+   Tu n'as pas le droit de l'adapter, de le raccourcir ou de l'améliorer.
+3. Choisis le bloc personnage long ou court selon l'échelle du plan.
+4. Sur les plans sans personnage, n'inclus pas le bloc personnage.
+5. Une seule phrase fluide par prompt. Pas de listes à puces.
+6. Pas d'adjectif d'appréciation (beautiful, stunning, masterpiece).
+
+SORTIE
+Un tableau : numéro de plan | prompt complet.
+Puis vérifie ton propre travail : confirme que le suffixe est identique
+sur les 20 lignes, et signale toute ligne où tu as dû t'en écarter.</pre>
+  <pre class="en-only">You will produce the 20 image prompts for my film. In English.
+
+CHARACTER CONSISTENCY BLOCK — long (close shots)
+<span class="var">[PASTE HERE]</span>
+CHARACTER CONSISTENCY BLOCK — short (wide shots)
+<span class="var">[PASTE HERE]</span>
+PLACE CONSISTENCY BLOCK
+<span class="var">[PASTE HERE]</span>
+STYLE SUFFIX — invariable
+<span class="var">[PASTE HERE]</span>
+
+TECHNICAL RECORDS FOR THE 20 SHOTS
+<span class="var">[PASTE THE 20 RECORDS]</span>
+
+ABSOLUTE RULES
+1. Structure of every prompt, in this order:
+   [shot description] + [consistency block] + [style suffix]
+2. The style suffix is copied CHARACTER FOR CHARACTER, 20 times.
+   You may not adapt, shorten or improve it.
+3. Choose the long or short character block according to shot size.
+4. On shots with no character, do not include the character block.
+5. One flowing sentence per prompt. No bullet lists.
+6. No appreciation adjectives (beautiful, stunning, masterpiece).
+
+OUTPUT
+A table: shot number | complete prompt.
+Then check your own work: confirm the suffix is identical on all 20 rows,
+and flag any row where you had to depart from it.</pre>
+</div>
+
+<h3><span class="fr-only">Étape 11 — Le prompt de mouvement</span><span class="en-only">Stage 11 — The movement prompt</span></h3>
+<div class="pr">
+  <div class="pr-hd"><span class="who">VIDEO</span><span class="fr-only">Gabarit en quatre parties</span><span class="en-only">Four-part template</span><span class="sp"></span><button class="pr-copy" onclick="prCopy(this)">Copy</button></div>
+  <pre><span class="var">[MOVEMENT + SPEED]</span> on <span class="var">[SUBJECT, BRIEF]</span>,
+as <span class="var">[WHAT THE MOVEMENT REVEALS]</span>.
+<span class="var">[WHAT STAYS FIXED]</span>.
+<span class="var">[STYLE SUFFIX — THE SAME ONE AS FOR THE IMAGE]</span></pre>
+</div>
+<div class="pr">
+  <div class="pr-hd"><span class="who">VIDEO</span><span class="fr-only">Exemple rempli</span><span class="en-only">Filled example</span><span class="sp"></span><button class="pr-copy" onclick="prCopy(this)">Copy</button></div>
+  <pre>Slow dolly in on a figure standing at the far end of the empty hall,
+as the scale of the roof structure above becomes apparent.
+The camera height stays constant, the figure does not move.
+cinematic 35mm film still, moody urban aesthetic, high contrast, deep
+shadows, cool blue and warm amber colour grading, slight film grain,
+shallow depth of field, photorealistic</pre>
+</div>
+
+<h3><span class="fr-only">Prompt structuré (avancé)</span><span class="en-only">Structured prompt (advanced)</span></h3>
+<div class="pr">
+  <div class="pr-hd"><span class="who">JSON</span><span class="fr-only">Quand le cadrage doit être exact</span><span class="en-only">When framing must be exact</span><span class="sp"></span><button class="pr-copy" onclick="prCopy(this)">Copy</button></div>
+  <pre>{
+  "shot_type": "medium close-up",
+  "angle": "eye level",
+  "movement": "slow dolly in",
+  "subject": "Elias, 45-year-old man, weathered face, beige trench coat",
+  "environment": "empty market hall, riveted steel truss, concrete floor",
+  "light": "raking north-east daylight, hard shadows",
+  "style": "cinematic 35mm film still, cool blue and warm amber, film grain"
+}</pre>
+</div>
+
+<h3><span class="fr-only">Prompt négatif</span><span class="en-only">Negative prompt</span></h3>
+<div class="pr">
+  <div class="pr-hd"><span class="who">NEG</span><span class="fr-only">Point de départ — à n’étoffer qu’après avoir constaté un défaut</span><span class="en-only">Starting point — only extend after observing a fault</span><span class="sp"></span><button class="pr-copy" onclick="prCopy(this)">Copy</button></div>
+  <pre>blurry, low resolution, distorted hands, extra fingers, watermark,
+text overlay, oversaturated, fisheye distortion, duplicated subject</pre>
+</div>
+
+<!-- ==================== 2. LEXIQUE ==================== -->
+<h2><span class="fr-only">2 · Le lexique de prompt</span><span class="en-only">2 · The prompt lexicon</span></h2>
+<p class="lede fr-only">Classé par ce que vous cherchez à obtenir. La colonne du milieu est ce qu’il faut écrire — en anglais, toujours. Utilisez le filtre en haut de page.</p>
+<p class="lede en-only">Arranged by what you are trying to get. The middle column is what to write — in English, always. Use the filter at the top of the page.</p>
+
+<h3><span class="fr-only">Échelles de plan</span><span class="en-only">Shot sizes</span></h3>
+<div class="tbl-wrap"><table>
+<thead><tr><th><span class="fr-only">Français</span><span class="en-only">Size</span></th><th><span class="fr-only">Dans le prompt</span><span class="en-only">In the prompt</span></th><th><span class="fr-only">Ce que ça fait</span><span class="en-only">What it does</span></th></tr></thead>
+<tbody>
+<tr><td>Très large · plan d’ensemble</td><td><code>extreme wide shot</code></td><td><span class="fr-only">Situe. Le personnage est petit, le lieu agit.</span><span class="en-only">Locates. The figure is small, the place acts.</span></td></tr>
+<tr><td>Plan large</td><td><code>wide shot</code></td><td><span class="fr-only">Le lieu et la figure à égalité.</span><span class="en-only">Place and figure on equal terms.</span></td></tr>
+<tr><td>Plan moyen</td><td><code>full shot</code></td><td><span class="fr-only">Le corps entier dans le cadre.</span><span class="en-only">The whole body in frame.</span></td></tr>
+<tr><td>Plan américain</td><td><code>medium full shot</code></td><td><span class="fr-only">Coupé à mi-cuisse. L’attitude.</span><span class="en-only">Cut at mid-thigh. Attitude.</span></td></tr>
+<tr><td>Plan rapproché</td><td><code>medium close-up</code></td><td><span class="fr-only">Poitrine. La relation, l’échange.</span><span class="en-only">Chest. Relation, exchange.</span></td></tr>
+<tr><td>Gros plan</td><td><code>close-up</code></td><td><span class="fr-only">Le visage. L’émotion.</span><span class="en-only">The face. Emotion.</span></td></tr>
+<tr><td>Très gros plan · insert</td><td><code>extreme close-up</code>, <code>macro detail</code></td><td><span class="fr-only">Un détail isolé. Excellent en génération.</span><span class="en-only">One isolated detail. Excellent in generation.</span></td></tr>
+<tr><td>Plan de coupe</td><td><code>cutaway shot</code></td><td><span class="fr-only">Le plan qui sauve un raccord.</span><span class="en-only">The shot that saves a cut.</span></td></tr>
+</tbody></table></div>
+
+<h3><span class="fr-only">Angles et hauteurs</span><span class="en-only">Angles and heights</span></h3>
+<div class="tbl-wrap"><table>
+<thead><tr><th><span class="fr-only">Français</span><span class="en-only">Angle</span></th><th><span class="fr-only">Dans le prompt</span><span class="en-only">In the prompt</span></th><th><span class="fr-only">Effet</span><span class="en-only">Effect</span></th></tr></thead>
+<tbody>
+<tr><td>À hauteur d’œil</td><td><code>eye level</code></td><td><span class="fr-only">Neutre. Témoin à égalité.</span><span class="en-only">Neutral. Witness on equal terms.</span></td></tr>
+<tr><td>Plongée</td><td><code>high angle</code></td><td><span class="fr-only">Domine, cartographie, écrase.</span><span class="en-only">Dominates, maps, flattens.</span></td></tr>
+<tr><td>Contre-plongée</td><td><code>low angle</code></td><td><span class="fr-only">Grandit, monumentalise. Avec parcimonie.</span><span class="en-only">Enlarges, monumentalises. Sparingly.</span></td></tr>
+<tr><td>Vue zénithale</td><td><code>overhead shot</code>, <code>top-down view</code></td><td><span class="fr-only">Abstrait, décrit un plan au sens architectural.</span><span class="en-only">Abstract; describes a plan architecturally.</span></td></tr>
+<tr><td>Trois-quarts</td><td><code>three-quarter view</code></td><td><span class="fr-only">Le plus fiable pour un visage cohérent.</span><span class="en-only">Most reliable for a consistent face.</span></td></tr>
+<tr><td>De dos</td><td><code>seen from behind</code>, <code>over-the-shoulder</code></td><td><span class="fr-only">Résout tous les problèmes de visage et de bouche.</span><span class="en-only">Solves every face and mouth problem.</span></td></tr>
+<tr><td>Au ras du sol</td><td><code>ground level shot</code></td><td><span class="fr-only">Donne du poids au sol, à la matière.</span><span class="en-only">Gives weight to the ground, to material.</span></td></tr>
+</tbody></table></div>
+
+<h3><span class="fr-only">Mouvements de caméra</span><span class="en-only">Camera movement</span></h3>
+<div class="tbl-wrap"><table>
+<thead><tr><th><span class="fr-only">Français</span><span class="en-only">Movement</span></th><th><span class="fr-only">Dans le prompt</span><span class="en-only">In the prompt</span></th><th><span class="fr-only">Fiabilité en 3 s</span><span class="en-only">Reliability over 3 s</span></th></tr></thead>
+<tbody>
+<tr><td>Fixe</td><td><code>static shot, locked-off camera</code></td><td><span class="fr-only"><strong>Excellente</strong> — le choix par défaut</span><span class="en-only"><strong>Excellent</strong> — the default choice</span></td></tr>
+<tr><td>Avancée lente</td><td><code>slow dolly in</code>, <code>slow push in</code></td><td><span class="fr-only">Bonne</span><span class="en-only">Good</span></td></tr>
+<tr><td>Recul lent</td><td><code>slow dolly out</code>, <code>slow pull back</code></td><td><span class="fr-only">Bonne — idéale pour une révélation</span><span class="en-only">Good — ideal for a reveal</span></td></tr>
+<tr><td>Panoramique</td><td><code>pan left</code>, <code>pan right</code></td><td><span class="fr-only">Moyenne — le décor entrant est inventé</span><span class="en-only">Fair — the set entering is invented</span></td></tr>
+<tr><td>Travelling latéral</td><td><code>tracking shot</code>, <code>dolly left/right</code></td><td><span class="fr-only">Moyenne — demande un décor simple</span><span class="en-only">Fair — needs a simple set</span></td></tr>
+<tr><td>Panoramique vertical</td><td><code>tilt up</code>, <code>tilt down</code></td><td><span class="fr-only">Moyenne</span><span class="en-only">Fair</span></td></tr>
+<tr><td>Caméra portée</td><td><code>handheld</code>, <code>subtle handheld sway</code></td><td><span class="fr-only">Variable — masque les artefacts, gêne le raccord</span><span class="en-only">Variable — hides artefacts, hinders cutting</span></td></tr>
+<tr><td>Orbite</td><td><code>orbit around the subject</code></td><td><span class="fr-only">Faible — passez par le contrôle géométrique</span><span class="en-only">Weak — go through geometric control</span></td></tr>
+<tr><td>Grue, plan-séquence</td><td>—</td><td><span class="fr-only"><strong>À éviter</strong> — découpez en deux plans</span><span class="en-only"><strong>Avoid</strong> — split into two shots</span></td></tr>
+<tr><td>Mise au point glissée</td><td><code>rack focus from foreground to background</code></td><td><span class="fr-only">Variable — très efficace quand ça marche</span><span class="en-only">Variable — very effective when it works</span></td></tr>
+</tbody></table></div>
+
+<h3><span class="fr-only">Lumière</span><span class="en-only">Light</span></h3>
+<div class="tbl-wrap"><table>
+<thead><tr><th><span class="fr-only">Ce que vous voulez</span><span class="en-only">What you want</span></th><th><span class="fr-only">Dans le prompt</span><span class="en-only">In the prompt</span></th></tr></thead>
+<tbody>
+<tr><td><span class="fr-only">Lumière rasante, tôt le matin</span><span class="en-only">Raking early-morning light</span></td><td><code>low raking morning light, long shadows</code></td></tr>
+<tr><td><span class="fr-only">Lumière dorée de fin de journée</span><span class="en-only">Golden late-day light</span></td><td><code>golden hour backlight, warm rim light</code></td></tr>
+<tr><td><span class="fr-only">Ciel couvert, ombres douces</span><span class="en-only">Overcast, soft shadows</span></td><td><code>soft overcast daylight, diffuse shadows</code></td></tr>
+<tr><td><span class="fr-only">Lumière du nord, constante</span><span class="en-only">Constant north light</span></td><td><code>cool north-facing daylight, even illumination</code></td></tr>
+<tr><td><span class="fr-only">Contraste marqué, clair-obscur</span><span class="en-only">High contrast, chiaroscuro</span></td><td><code>chiaroscuro lighting, hard shadows, deep blacks</code></td></tr>
+<tr><td><span class="fr-only">Contre-jour, silhouette</span><span class="en-only">Backlit silhouette</span></td><td><code>strong backlight, subject in silhouette</code></td></tr>
+<tr><td><span class="fr-only">Lumière de contour</span><span class="en-only">Rim light</span></td><td><code>rim lighting separating subject from background</code></td></tr>
+<tr><td><span class="fr-only">Zénithale, verrière</span><span class="en-only">Overhead, from a glass roof</span></td><td><code>overhead light through a glazed roof, soft pools of light</code></td></tr>
+<tr><td><span class="fr-only">Néons, intérieur nocturne</span><span class="en-only">Neon, night interior</span></td><td><code>neon glow, cyan and magenta practical lights</code></td></tr>
+<tr><td><span class="fr-only">Éclairage de bureau, fluorescent</span><span class="en-only">Fluorescent office light</span></td><td><code>flat fluorescent office lighting, greenish cast</code></td></tr>
+<tr><td><span class="fr-only">Lampadaires, rue de nuit</span><span class="en-only">Streetlights at night</span></td><td><code>sodium streetlights at night, amber pools, wet reflections</code></td></tr>
+<tr><td><span class="fr-only">Une seule source, dure</span><span class="en-only">One hard source</span></td><td><code>single hard key light from the left, no fill</code></td></tr>
+<tr><td><span class="fr-only">Poussière dans un rai de lumière</span><span class="en-only">Dust in a light shaft</span></td><td><code>visible dust motes in a shaft of light, volumetric</code></td></tr>
+</tbody></table></div>
+
+<h3><span class="fr-only">Optique et texture</span><span class="en-only">Optics and texture</span></h3>
+<div class="tbl-wrap"><table>
+<thead><tr><th><span class="fr-only">Ce que vous voulez</span><span class="en-only">What you want</span></th><th><span class="fr-only">Dans le prompt</span><span class="en-only">In the prompt</span></th></tr></thead>
+<tbody>
+<tr><td><span class="fr-only">Rendu argentique</span><span class="en-only">Film look</span></td><td><code>shot on 35mm film, subtle film grain</code></td></tr>
+<tr><td><span class="fr-only">Argentique couleur doux</span><span class="en-only">Soft colour negative</span></td><td><code>Kodak Portra 400, muted colour, fine grain</code></td></tr>
+<tr><td><span class="fr-only">Numérique net, moderne</span><span class="en-only">Crisp modern digital</span></td><td><code>shot on Arri Alexa, crisp detail, clean highlights</code></td></tr>
+<tr><td><span class="fr-only">Noir et blanc contrasté</span><span class="en-only">Contrasty black and white</span></td><td><code>black and white, high contrast, deep blacks</code></td></tr>
+<tr><td><span class="fr-only">Esthétique vidéo ancienne</span><span class="en-only">Old video aesthetic</span></td><td><code>VHS look, chromatic aberration, scan lines</code></td></tr>
+<tr><td><span class="fr-only">Focale réaliste</span><span class="en-only">Realistic focal length</span></td><td><code>35mm lens</code></td></tr>
+<tr><td><span class="fr-only">Focale pour portrait</span><span class="en-only">Portrait focal length</span></td><td><code>85mm lens, compressed perspective</code></td></tr>
+<tr><td><span class="fr-only">Grand angle, espace exagéré</span><span class="en-only">Wide angle, exaggerated space</span></td><td><code>24mm lens, wide angle, deep space</code></td></tr>
+<tr><td><span class="fr-only">Arrière-plan flou</span><span class="en-only">Blurred background</span></td><td><code>shallow depth of field, creamy bokeh</code></td></tr>
+<tr><td><span class="fr-only">Tout net, du premier plan au fond</span><span class="en-only">Everything sharp</span></td><td><code>deep focus, sharp from foreground to background</code></td></tr>
+<tr><td><span class="fr-only">Halo d’objectif discret</span><span class="en-only">Discreet lens flare</span></td><td><code>soft anamorphic lens flare</code></td></tr>
+<tr><td><span class="fr-only">Cadrage symétrique</span><span class="en-only">Symmetrical framing</span></td><td><code>symmetrical composition, centred subject</code></td></tr>
+</tbody></table></div>
+
+<h3><span class="fr-only">Palette et étalonnage</span><span class="en-only">Palette and grade</span></h3>
+<div class="tbl-wrap"><table>
+<thead><tr><th><span class="fr-only">Ce que vous voulez</span><span class="en-only">What you want</span></th><th><span class="fr-only">Dans le prompt</span><span class="en-only">In the prompt</span></th></tr></thead>
+<tbody>
+<tr><td><span class="fr-only">Cinéma hollywoodien classique</span><span class="en-only">Classic Hollywood</span></td><td><code>teal and orange colour grading</code></td></tr>
+<tr><td><span class="fr-only">Froid, clinique</span><span class="en-only">Cold, clinical</span></td><td><code>cool blue and clinical white palette</code></td></tr>
+<tr><td><span class="fr-only">Mélancolique, délavé</span><span class="en-only">Melancholy, washed out</span></td><td><code>desaturated muted palette, low saturation</code></td></tr>
+<tr><td><span class="fr-only">Chaud, terreux</span><span class="en-only">Warm, earthy</span></td><td><code>warm earthy palette, ochre and rust</code></td></tr>
+<tr><td><span class="fr-only">Urbain nocturne</span><span class="en-only">Urban night</span></td><td><code>night blue, urban grey, amber accents</code></td></tr>
+<tr><td><span class="fr-only">Pop, saturé, rétro</span><span class="en-only">Pop, saturated, retro</span></td><td><code>oversaturated retro palette, high chroma</code></td></tr>
+<tr><td><span class="fr-only">Monochrome sépia</span><span class="en-only">Sepia monochrome</span></td><td><code>sepia monochrome, aged print</code></td></tr>
+</tbody></table></div>
+
+<h3><span class="fr-only">Matières, usure, atmosphère</span><span class="en-only">Materials, wear, atmosphere</span></h3>
+<div class="tbl-wrap"><table>
+<thead><tr><th><span class="fr-only">Ce que vous voulez</span><span class="en-only">What you want</span></th><th><span class="fr-only">Dans le prompt</span><span class="en-only">In the prompt</span></th></tr></thead>
+<tbody>
+<tr><td><span class="fr-only">Béton brut, taché</span><span class="en-only">Raw stained concrete</span></td><td><code>raw board-marked concrete, rust stains, water marks</code></td></tr>
+<tr><td><span class="fr-only">Charpente métallique rivetée</span><span class="en-only">Riveted steel truss</span></td><td><code>riveted steel truss, flaking paint</code></td></tr>
+<tr><td><span class="fr-only">Verrière sale</span><span class="en-only">Dirty glazed roof</span></td><td><code>grimy wired glass roof, uneven light transmission</code></td></tr>
+<tr><td><span class="fr-only">Brique ancienne</span><span class="en-only">Old brickwork</span></td><td><code>weathered brickwork, eroded mortar joints</code></td></tr>
+<tr><td><span class="fr-only">Métal corrodé</span><span class="en-only">Corroded metal</span></td><td><code>corroded galvanised metal, oxidised surface</code></td></tr>
+<tr><td><span class="fr-only">Peinture écaillée</span><span class="en-only">Peeling paint</span></td><td><code>peeling institutional paint, exposed layers</code></td></tr>
+<tr><td><span class="fr-only">Sol mouillé, reflets</span><span class="en-only">Wet ground, reflections</span></td><td><code>wet ground with specular reflections</code></td></tr>
+<tr><td><span class="fr-only">Brume, air épais</span><span class="en-only">Haze, thick air</span></td><td><code>light haze, atmospheric depth</code></td></tr>
+<tr><td><span class="fr-only">Vide, abandonné</span><span class="en-only">Empty, abandoned</span></td><td><code>empty, no people, traces of recent use</code></td></tr>
+<tr><td><span class="fr-only">Réparation de fortune</span><span class="en-only">Makeshift repair</span></td><td><code>improvised repair, mismatched materials</code></td></tr>
+</tbody></table></div>
+
+<div class="callout c-doc">
+  <span class="lbl fr-only">Ce que ce lexique ne remplace pas</span>
+  <span class="lbl en-only">What this lexicon does not replace</span>
+  <p class="fr-only">Ces formules décrivent des <em>catégories</em>. Elles produiront un béton plausible, pas <strong>votre</strong> béton. La matière particulière de votre site n’entre dans le modèle que par une image de référence — voir le chapitre 12 du manuel. Le lexique sert à cadrer et à éclairer ; vos photos servent à ancrer.</p>
+  <p class="en-only">These phrases describe <em>categories</em>. They will produce plausible concrete, not <strong>your</strong> concrete. The particular material of your site enters the model only through a reference image — see chapter 12 of the manual. The lexicon frames and lights; your photographs ground.</p>
+</div>
+
+<!-- ==================== 3. MODELES ==================== -->
+<h2><span class="fr-only">3 · Les modèles</span><span class="en-only">3 · The models</span></h2>
+<p class="lede fr-only">État constaté en août 2026. Les chiffres de VRAM sont des ordres de grandeur en quantisation courante, pas des minima garantis : mesurez sur votre machine.</p>
+<p class="lede en-only">State as observed in August 2026. VRAM figures are orders of magnitude at common quantisation, not guaranteed minima: measure on your own machine.</p>
+
+<div class="tbl-wrap"><table>
+<thead><tr><th><span class="fr-only">Rôle</span><span class="en-only">Role</span></th><th><span class="fr-only">Modèle</span><span class="en-only">Model</span></th><th>VRAM</th><th><span class="fr-only">Licence</span><span class="en-only">Licence</span></th><th><span class="fr-only">À retenir</span><span class="en-only">Key point</span></th></tr></thead>
+<tbody>
+<tr><td>LLM</td><td>Gemma 4 · E2B / E4B / 26B / 31B</td><td>4 – 24 Go</td><td>Apache 2.0</td><td><span class="fr-only">256 k de contexte, vision et audio natifs, 140+ langues. Les tailles E tournent sur un portable.</span><span class="en-only">256 k context, native vision and audio, 140+ languages. The E sizes run on a laptop.</span></td></tr>
+<tr><td><span class="fr-only">Image</span><span class="en-only">Image</span></td><td>FLUX.2 [dev]</td><td>≈19 Go Q4 · ≈32 Go FP8</td><td><span class="fr-only">à vérifier</span><span class="en-only">check</span></td><td><span class="fr-only">Jusqu’à 10 images de référence. Le meilleur pour la cohérence multi-référence.</span><span class="en-only">Up to 10 reference images. Best for multi-reference consistency.</span></td></tr>
+<tr><td><span class="fr-only">Image</span><span class="en-only">Image</span></td><td>FLUX.2 Klein 9B / 4B</td><td>12 – 16 Go</td><td><span class="fr-only">à vérifier</span><span class="en-only">check</span></td><td><span class="fr-only">Les variantes allégées, pour les petites cartes.</span><span class="en-only">The light variants, for small cards.</span></td></tr>
+<tr><td><span class="fr-only">Image</span><span class="en-only">Image</span></td><td>Qwen-Image 2.0</td><td>12 – 24 Go</td><td><span class="fr-only">à vérifier</span><span class="en-only">check</span></td><td><span class="fr-only">Le meilleur pour le texte <em>dans</em> l’image : signalétique, enseignes.</span><span class="en-only">Best for text <em>inside</em> the image: signage, shopfronts.</span></td></tr>
+<tr><td><span class="fr-only">Retouche</span><span class="en-only">Editing</span></td><td>FLUX.1 Kontext · Qwen-Image-Edit</td><td>12 – 24 Go</td><td><span class="fr-only">à vérifier</span><span class="en-only">check</span></td><td><span class="fr-only">Modifier une image existante par instruction. La bonne réponse à 80 % des dérives de détail.</span><span class="en-only">Modify an existing image by instruction. The right answer to 80 % of detail drift.</span></td></tr>
+<tr><td><span class="fr-only">Vidéo</span><span class="en-only">Video</span></td><td>Wan 2.2 TI2V 5B</td><td>≈24 Go</td><td>Apache 2.0</td><td><span class="fr-only">5 s en 720p sur une carte de 24 Go. Le point d’entrée raisonnable.</span><span class="en-only">5 s at 720p on a 24 GB card. The sensible entry point.</span></td></tr>
+<tr><td><span class="fr-only">Vidéo</span><span class="en-only">Video</span></td><td>Wan 2.2 A14B (MoE)</td><td>40 Go +</td><td>Apache 2.0</td><td><span class="fr-only">Meilleure qualité, hors d’atteinte d’un poste étudiant standard.</span><span class="en-only">Higher quality, out of reach of a standard student machine.</span></td></tr>
+<tr><td><span class="fr-only">Vidéo</span><span class="en-only">Video</span></td><td>Wan 2.2 VACE · FLF2V</td><td><span class="fr-only">selon le modèle de base</span><span class="en-only">as base model</span></td><td>Apache 2.0</td><td><span class="fr-only">Transfert de mouvement, et génération contrainte par première et dernière image.</span><span class="en-only">Motion transfer, and first/last-frame constrained generation.</span></td></tr>
+<tr><td><span class="fr-only">Vidéo</span><span class="en-only">Video</span></td><td>LTX-2.x</td><td>12 – 24 Go fp8 (720p)</td><td><span class="fr-only">à vérifier</span><span class="en-only">check</span></td><td><span class="fr-only">Image <em>et</em> son synchronisé en une passe. Nettement plus rapide à itérer.</span><span class="en-only">Picture <em>and</em> synchronised sound in one pass. Much faster to iterate.</span></td></tr>
+<tr><td><span class="fr-only">Vidéo</span><span class="en-only">Video</span></td><td>HunyuanVideo 1.5</td><td><span class="fr-only">14 Go avec déchargement</span><span class="en-only">14 GB with offload</span></td><td><span class="fr-only">à vérifier</span><span class="en-only">check</span></td><td><span class="fr-only">8,3 Md de paramètres. L’option des petites cartes.</span><span class="en-only">8.3 B parameters. The small-card option.</span></td></tr>
+</tbody></table></div>
+
+<div class="callout c-warn">
+  <span class="lbl fr-only">« à vérifier » veut dire à vérifier</span>
+  <span class="lbl en-only">"check" means check</span>
+  <p class="fr-only">Les licences changent entre versions d’un même modèle, et certaines interdisent l’usage commercial. Si votre film doit servir en projet de commande ou dans un portfolio commercial, lisez la licence de la version <em>installée</em> et archivez-la, comme l’exige le chapitre 18 du manuel.</p>
+  <p class="en-only">Licences change between versions of the same model, and some forbid commercial use. If your film is to be used on a commission or in a commercial portfolio, read the licence of the <em>installed</em> version and archive it, as chapter 18 of the manual requires.</p>
+</div>
+
+<h3><span class="fr-only">Le reste de la chaîne</span><span class="en-only">The rest of the chain</span></h3>
+<div class="tbl-wrap"><table>
+<thead><tr><th><span class="fr-only">Fonction</span><span class="en-only">Function</span></th><th><span class="fr-only">Outil</span><span class="en-only">Tool</span></th><th><span class="fr-only">Documentation</span><span class="en-only">Documentation</span></th></tr></thead>
+<tbody>
+<tr><td><span class="fr-only">Graphe génératif</span><span class="en-only">Generative graph</span></td><td>ComfyUI</td><td><a href="https://docs.comfy.org/">docs.comfy.org</a></td></tr>
+<tr><td>LLM</td><td>Gemma 4</td><td><a href="https://ai.google.dev/gemma">ai.google.dev/gemma</a></td></tr>
+<tr><td><span class="fr-only">Poids de modèles</span><span class="en-only">Model weights</span></td><td>Hugging Face</td><td><a href="https://huggingface.co/models">huggingface.co/models</a></td></tr>
+<tr><td><span class="fr-only">Montage, étalonnage, mixage</span><span class="en-only">Edit, grade, mix</span></td><td>DaVinci Resolve</td><td><a href="https://www.blackmagicdesign.com/products/davinciresolve">blackmagicdesign.com</a></td></tr>
+<tr><td><span class="fr-only">Prévisualisation 3D</span><span class="en-only">3D previz</span></td><td>Blender</td><td><a href="https://www.blender.org/">blender.org</a></td></tr>
+<tr><td><span class="fr-only">Reconstruction 3D</span><span class="en-only">3D reconstruction</span></td><td>LichtFeld Studio <span class="fr-only">· NVIDIA seulement, GPLv3</span><span class="en-only">· NVIDIA only, GPLv3</span></td><td><a href="https://lichtfeld.io/">lichtfeld.io</a></td></tr>
+<tr><td><span class="fr-only">Transparence, obligations</span><span class="en-only">Transparency obligations</span></td><td><span class="fr-only">Règlement européen sur l’IA, art. 50</span><span class="en-only">EU AI Act, art. 50</span></td><td><a href="https://artificialintelligenceact.eu/article/50/">artificialintelligenceact.eu</a></td></tr>
+<tr><td><span class="fr-only">Accès aux outils de l’atelier</span><span class="en-only">Studio tool access</span></td><td><em>Local AI as a Service</em></td><td><a href="https://ateliernum.notion.site/Local-AI-as-a-service-372c8d87b59180a6a4dad5436afd4b0d">page interne</a></td></tr>
+</tbody></table></div>
+
+<!-- ==================== 4. GABARITS ==================== -->
+<h2><span class="fr-only">4 · Gabarits</span><span class="en-only">4 · Templates</span></h2>
+
+<h3><span class="fr-only">En-tête de la feuille de plans</span><span class="en-only">Shot sheet header</span></h3>
+<div class="pr">
+  <div class="pr-hd"><span class="who">CSV</span><span class="fr-only">Collez dans un tableur, une ligne par plan</span><span class="en-only">Paste into a spreadsheet, one row per shot</span><span class="sp"></span><button class="pr-copy" onclick="prCopy(this)">Copy</button></div>
+  <pre>plan,bloc,duree,action,echelle,angle,mouvement,lieu,lumiere,intention,son,ref_images,seed,statut</pre>
+</div>
+<pre class="plain">P01,I,3,"Le rideau métallique fermé, de face",GP,niveau,fixe,"entrée est","rasante NE dure","entrer par une surface","ambiance lointaine",PHOTO_003;PHOTO_007,774213,valide
+P02,I,3,"Une main pose une caisse hors champ",TGP,plongée,fixe,"entrée est","rasante NE dure","une présence sans personne","événement : caisse",PHOTO_022,481990,image_ok
+P03,I,3,"Le volume vide de la halle",TL,niveau,"pano lent G→D","halle nord","zénithale diffuse","la contradiction est déjà là","ambiance + réverbération",PHOTO_014;PHOTO_015,,a_faire</pre>
+
+<h3><span class="fr-only">Les trois chartes</span><span class="en-only">The three bibles</span></h3>
+<pre class="plain"><span class="cm"># CHARTE PERSONNAGE — v1 — <span class="var">date</span></span>
+Traits immuables   <span class="cm">âge chiffré, visage, cheveux, pilosité, yeux, carnation</span>
+Vêtements          <span class="cm">pièces, couleur exacte, matière, état</span>
+Accessoires        <span class="cm">un ou deux, pas plus</span>
+
+BLOC LONG (plans rapprochés)
+<span class="cm">une phrase en anglais, commençant par le nom du personnage</span>
+
+BLOC COURT (plans larges)
+<span class="cm">deux lignes : silhouette et couleurs dominantes seulement</span>
+
+<span class="cm"># CHARTE LIEU — <span class="var">zone</span> — v1</span>
+Structure          <span class="cm">construction, matériaux porteurs, forme du volume, source de lumière</span>
+Matières couleurs  <span class="cm">3 surfaces dominantes, teinte précise, état</span>
+Singularités       <span class="cm">2 ou 3 éléments qui n'existent que là</span>
+Relevé sur         <span class="cm">PHOTO_014, PHOTO_015, PHOTO_022</span>   <span class="cm">← obligatoire</span>
+
+BLOC LIEU
+<span class="cm">une phrase en anglais</span>
+
+<span class="cm"># CHARTE STYLE — v1 — NE CHANGE PLUS</span>
+Palette            <span class="cm">2 ou 3 teintes dominantes</span>
+Optique            <span class="cm">médium + focale</span>
+Éclairage          <span class="cm">source principale, direction cardinale, dureté</span>
+Composition        <span class="cm">profondeur de champ, cadrage</span>
+
+SUFFIXE DE STYLE  <span class="cm">← recopié à l'identique dans les 20 prompts image ET vidéo</span>
+<span class="cm">une seule chaîne, jamais modifiée</span></pre>
+
+<h3><span class="fr-only">Déclaration des outils, pour le générique</span><span class="en-only">Declaration of tools, for the credits</span></h3>
+<div class="pr">
+  <div class="pr-hd"><span class="who"><span class="fr-only">GÉNÉRIQUE</span><span class="en-only">CREDITS</span></span><span class="fr-only">Exigé au chapitre 18</span><span class="en-only">Required by chapter 18</span><span class="sp"></span><button class="pr-copy" onclick="prCopy(this)">Copy</button></div>
+  <pre class="fr-only">Film réalisé avec des outils d'intelligence artificielle générative.
+
+Écriture et découpage        assistés par <span class="var">[modèle]</span>
+Images                       générées avec <span class="var">[modèle]</span>
+Animation                    générée avec <span class="var">[modèle]</span>
+Voix                         <span class="var">[voix réelle de X] / [synthèse : modèle]</span>
+Musique                      <span class="var">[compositeur] / [générée avec modèle] / [licence]</span>
+
+Ambiances sonores et photographies de référence captées sur site
+par <span class="var">[votre nom]</span>, à <span class="var">[lieu]</span>, <span class="var">[dates]</span>.</pre>
+  <pre class="en-only">Film made using generative artificial intelligence tools.
+
+Writing and breakdown        assisted by <span class="var">[model]</span>
+Images                       generated with <span class="var">[model]</span>
+Animation                    generated with <span class="var">[model]</span>
+Voice                        <span class="var">[real voice of X] / [synthetic: model]</span>
+Music                        <span class="var">[composer] / [generated with model] / [licence]</span>
+
+Ambient sound and reference photographs captured on site
+by <span class="var">[your name]</span>, at <span class="var">[place]</span>, <span class="var">[dates]</span>.</pre>
+</div>
+
+<h3><span class="fr-only">Le dossier de projet</span><span class="en-only">The project folder</span></h3>
+<pre class="plain">FILM_2026_<span class="cm">nom-du-projet</span>/
+├── 00_brief/            <span class="cm">brief, problématique · cinq règles du monde · LICENCES/</span>
+├── 01_references/
+│   ├── photo/           <span class="cm">PHOTO_001_zone_sujet.jpg</span>
+│   ├── video/
+│   ├── son/             <span class="cm">SON_001_zone_ambiance.wav</span>
+│   ├── docs/            <span class="cm">cartes, relevés · ou recherche de précédents</span>
+│   ├── style/           <span class="cm">+ SOURCES.md obligatoire</span>
+│   └── INDEX.md
+├── 02_ecriture/         <span class="cm">pitch.md · script.md</span>
+├── 03_decoupage/        <span class="cm">feuille_de_plans.csv</span>
+├── 04_chartes/          <span class="cm">personnage · lieu · style · prompts.md</span>
+├── 05_storyboard/       <span class="cm">P01_v01.png …   └── VALIDE/ P01.png … P20.png</span>
+├── 06_plans/            <span class="cm">P01_t01.mp4 …   └── VALIDE/ P01.mp4 … P20.mp4</span>
+├── 07_son/              <span class="cm">ambiances/ voix/ musique/ sfx/ + licences</span>
+├── 08_montage/
+├── 09_export/
+└── journal.md           <span class="cm">les décisions, et pourquoi</span></pre>
+
+<footer>
+  <div class="fr-only">
+    <p><strong>Prompts &amp; modèles</strong> — page compagnon de <a href="recits_generatifs_manuel-v1.html">Récits génératifs</a></p>
+    <p>Zaki Jawhari · L’École de Design Nantes Atlantique · Édition 2026.1</p>
+    <p>Les modèles nommés ici datent d’août 2026. Quand cette page et votre installation ne sont pas d’accord, croyez le logiciel.</p>
+  </div>
+  <div class="en-only">
+    <p><strong>Prompts &amp; models</strong> — companion page to <a href="recits_generatifs_manuel-v1.html">Generative Narratives</a></p>
+    <p>Zaki Jawhari · L'École de Design Nantes Atlantique · Edition 2026.1</p>
+    <p>The models named here date from August 2026. Where this page and your installation disagree, believe the software.</p>
+  </div>
+</footer>
+</main>
+
+<script>
+function setLang(l){
+  document.body.classList.remove('lang-fr','lang-en');
+  document.body.classList.add('lang-'+l);
+  document.querySelectorAll('[data-lang]').forEach(function(b){ b.classList.toggle('on', b.dataset.lang===l); });
+  var f=document.getElementById('filter');
+  f.placeholder = l==='fr' ? f.dataset.phFr : f.dataset.phEn;
+  document.documentElement.lang = l;
+  try{localStorage.setItem('gn-lang',l)}catch(e){}
+  applyFilter();
+}
+function setTheme(t){
+  document.documentElement.setAttribute('data-theme', t);
+  document.querySelectorAll('[data-theme-btn]').forEach(function(b){
+    b.classList.toggle('on', b.getAttribute('data-theme-btn') === t);
+  });
+  try{localStorage.setItem('gn-theme', t)}catch(e){}
+}
+function prCopy(btn){
+  var box = btn.closest('.pr');
+  var lang = document.body.classList.contains('lang-fr') ? 'fr' : 'en';
+  /* pick the pre for the active language, or the only one there is */
+  var pre = box.querySelector('pre.'+lang+'-only') || box.querySelector('pre:not(.fr-only):not(.en-only)') || box.querySelector('pre');
+  if(!pre) return;
+  var txt = pre.innerText;
+  var done = function(){
+    var old = btn.textContent;
+    btn.textContent = lang==='fr' ? 'Copié' : 'Copied';
+    btn.classList.add('done');
+    setTimeout(function(){ btn.textContent = old; btn.classList.remove('done'); }, 1600);
+  };
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(txt).then(done).catch(function(){ sel(pre); });
+  } else { sel(pre); }
+}
+function sel(pre){
+  var r=document.createRange(); r.selectNodeContents(pre);
+  var s=window.getSelection(); s.removeAllRanges(); s.addRange(r);
+}
+/* ---- live filter over every lexicon / model row ---- */
+function visText(el){
+  var c=el.cloneNode(true), lang=document.body.classList.contains('lang-fr')?'fr':'en';
+  c.querySelectorAll(lang==='fr'?'.en-only':'.fr-only').forEach(function(n){ n.remove(); });
+  return c.textContent.toLowerCase();
+}
+function applyFilter(){
+  var q=(document.getElementById('filter').value||'').trim().toLowerCase();
+  document.querySelectorAll('tbody tr').forEach(function(tr){
+    tr.classList.toggle('hidden', q.length>1 && visText(tr).indexOf(q)===-1);
+  });
+  /* hide a table + its heading when nothing in it matches */
+  document.querySelectorAll('.tbl-wrap').forEach(function(w){
+    var rows=w.querySelectorAll('tbody tr');
+    var any=Array.prototype.some.call(rows, function(r){ return !r.classList.contains('hidden'); });
+    w.style.display = any ? '' : 'none';
+    var h=w.previousElementSibling;
+    while(h && !/^H[34]$/.test(h.tagName)) h=h.previousElementSibling;
+    if(h && h.tagName==='H3') h.style.display = any ? '' : 'none';
+  });
+}
+document.getElementById('filter').addEventListener('input', applyFilter);
+document.addEventListener('keydown', function(e){
+  var f=document.getElementById('filter');
+  if(e.key==='/' && document.activeElement!==f){ e.preventDefault(); f.focus(); }
+  if(e.key==='Escape'){ f.value=''; applyFilter(); f.blur(); }
+});
+(function(){
+  var l='fr', th=null;
+  try{ l=localStorage.getItem('gn-lang')||'fr'; th=localStorage.getItem('gn-theme'); }catch(e){}
+  setLang(l);
+  if(th){ setTheme(th); }
+  else {
+    var dark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    document.querySelectorAll('[data-theme-btn]').forEach(function(b){
+      b.classList.toggle('on', b.getAttribute('data-theme-btn') === (dark ? 'dark' : 'light'));
+    });
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*~
+
+# Source and working documents stay local — the manual supersedes them.
+*.pdf
+*.docx
+*.doc
+*.pptx
+*.odt
+*.xlsx
+
+# Student project material must never be committed to this repo.
+# The manual is the deliverable; films, references and generations are not.
+*.mp4
+*.mov
+*.mkv
+*.wav
+*.aif
+*.aiff
+*.mp3
+*.psd
+*.ply
+*.safetensors
+*.ckpt
+
+# Generation leftovers
+ComfyUI_*.png
+output/
+
+# Figures are tracked — images/ is deliberately NOT ignored.
+# Add the eight captures listed in CAPTURE-GUIDE.md there.
