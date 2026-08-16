@@ -1798,12 +1798,30 @@ body.show-figures .shot-todo{display:block}
 
     <div class="callout c-doc">
       <span class="lbl">Rien à retenir, rien à configurer</span>
-      <p>Vous n’avez <strong>aucune adresse à mémoriser et aucune liste à consulter</strong> : les deux applications <strong>trouvent elles-mêmes les serveurs actifs</strong> sur le réseau de l’école. Le client de conversation se connecte seul ; la page de ComfyQ annonce en tête le flux de travail qu’elle sert, avec sa description.</p>
+      <p>Vous n’avez <strong>aucune adresse à mémoriser et aucune liste à consulter</strong> : les applications <strong>trouvent elles-mêmes les serveurs actifs</strong> sur le réseau de l’école. Le client de conversation se connecte seul ; Discovery liste les machines ComfyQ qui tournent et vous ouvre la bonne.</p>
       <p>C’est ce qui rend ce chapitre durable : les machines changent, s’ajoutent, tombent en panne et repartent sans que rien de ce manuel devienne faux. Les liens de téléchargement et les consignes d’accès sont sur la page interne <a href="https://ateliernum.notion.site/Local-AI-as-a-service-372c8d87b59180a6a4dad5436afd4b0d"><em>Local AI as a Service</em></a>.</p>
     </div>
 
     <h4>Ce que vous installez, vous</h4>
-    <p>Une seule application, sur votre machine : le <strong>client LlmOnLan</strong>. Les installeurs sont publiés dans les <em>Releases</em> du dépôt, et l’application se met à jour toute seule ensuite.</p>
+    <p>Deux applications de bureau, qui se mettent à jour toutes seules ensuite.</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Application</th><th>À quoi elle sert</th><th>Téléchargement</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Client LlmOnLan</strong><br><span class="dg-ts">indispensable</span></td>
+            <td>La conversation avec le modèle : toute la partie écriture, chapitres <a href="#ch7">7</a> à <a href="#ch9">9</a>.</td>
+            <td><a href="https://github.com/b2renger/LlmOnLan/releases/tag/v0.1.25">Releases · v0.1.25</a></td>
+          </tr>
+          <tr>
+            <td><strong>ComfyQ Discovery</strong><br><span class="dg-ts">vivement conseillée</span></td>
+            <td>Voir quelles machines de l’atelier tournent, ce qu’elles servent, et ouvrir la page de réservation de celle qui vous convient.</td>
+            <td><a href="https://github.com/b2renger/ComfyQ/releases">Releases</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Le client LlmOnLan existe pour les trois systèmes ; prenez le fichier qui correspond au vôtre.</p>
     <div class="tbl-wrap">
       <table>
         <thead><tr><th>Votre machine</th><th>Le fichier</th><th>Au premier lancement</th></tr></thead>
@@ -1830,11 +1848,19 @@ body.show-figures .shot-todo{display:block}
       <span class="lbl">Trois choses à savoir avant de cliquer</span>
       <ul style="margin-bottom:0">
         <li><strong>Prévoyez environ 1 Go et un peu de patience.</strong> L’installeur fait 100 Mo, mais au premier lancement l’application télécharge son moteur de conversation (Open WebUI, ≈ 700 Mo) une fois pour toutes. Faites-le <em>avant</em> la séance, pas pendant : vingt-cinq téléchargements simultanés sur le réseau de l’école, c’est une heure perdue pour tout le monde.</li>
-        <li><strong>L’avertissement de sécurité est normal.</strong> Les installeurs ne sont pas signés — c’est le prix d’un outil d’école, pas un signe de danger. Le contournement est décrit dans la colonne de droite ci-dessus, et il ne se fait qu’une fois.</li>
-        <li><strong>Mac Intel : pas de version.</strong> Le client n’existe qu’en <em>Apple Silicon</em> (M1 et suivants). Sur un Mac Intel, passez par un poste de l’atelier, ou demandez à votre encadrant.</li>
+        <li><strong>L’avertissement de sécurité est normal</strong>, pour les deux applications. Les installeurs ne sont pas signés — c’est le prix d’un outil d’école, pas un signe de danger. Le contournement est celui décrit ci-dessus, et il ne se fait qu’une fois par application.</li>
+        <li><strong>Mac Intel : pas de client LlmOnLan.</strong> Il n’existe qu’en <em>Apple Silicon</em> (M1 et suivants). Sur un Mac Intel, passez par un poste de l’atelier pour la partie écriture, ou demandez à votre encadrant. ComfyQ Discovery, lui, existe bien en version Intel — et ComfyQ s’ouvre de toute façon dans un navigateur.</li>
       </ul>
     </div>
     <p>Une fois lancée, l’application <strong>se connecte toute seule</strong> au réseau de l’école et vous dépose dans une conversation. Il n’y a ni compte, ni clé, ni adresse à saisir. Si elle ne trouve rien, c’est que le service n’est pas démarré : demandez à votre encadrant plutôt que de chercher un réglage.</p>
+
+    <h4>Trouver la machine libre · ComfyQ Discovery</h4>
+    <p>Les serveurs de l’atelier <strong>s’annoncent d’eux-mêmes sur le réseau</strong>. <a href="https://github.com/b2renger/ComfyQ/releases">ComfyQ Discovery</a> les écoute et les liste : nom de la machine, GPU et mémoire, état, flux de travail servi avec sa description, travaux en attente. Un bouton ouvre directement la page de réservation de la machine choisie.</p>
+    <p>C’est par là que vous entrez dans ComfyQ : plutôt que de demander une adresse ou d’ouvrir six onglets à l’aveugle, vous voyez d’un coup d’œil <em>quel GPU est libre et lequel sert le flux dont vous avez besoin</em>. L’application ne commande rien à distance — elle regarde.</p>
+    <div class="callout c-tip">
+      <span class="lbl">Le réflexe de début de séance</span>
+      <p>Ouvrez Discovery avant de commencer. Une machine grisée s’est tue depuis un moment ; une machine qui sert déjà un flux différent du vôtre ne vous servira à rien. Trente secondes ici évitent de réserver un créneau sur le mauvais GPU et de le découvrir vingt minutes plus tard.</p>
+    </div>
 
     <h4>Ce que LlmOnLan sait faire, et que vous allez utiliser</h4>
     <p>Ce n’est pas seulement une fenêtre de conversation. Quatre capacités servent directement des étapes de ce manuel.</p>
@@ -1971,12 +1997,30 @@ body.show-figures .shot-todo{display:block}
 
     <div class="callout c-doc">
       <span class="lbl">Nothing to remember, nothing to configure</span>
-      <p>There is <strong>no address to memorise and no list to consult</strong>: both applications <strong>find the running servers themselves</strong> on the school network. The chat client connects on its own; ComfyQ's page announces in its header which workflow it is serving, with its description.</p>
+      <p>There is <strong>no address to memorise and no list to consult</strong>: the applications <strong>find the running servers themselves</strong> on the school network. The chat client connects on its own; Discovery lists the ComfyQ machines that are running and opens the right one for you.</p>
       <p>That is what makes this chapter durable: machines change, get added, break and come back without anything in this manual becoming false. Download links and access instructions live on the internal <a href="https://ateliernum.notion.site/Local-AI-as-a-service-372c8d87b59180a6a4dad5436afd4b0d"><em>Local AI as a Service</em></a> page.</p>
     </div>
 
     <h4>What you install yourself</h4>
-    <p>One application, on your own machine: the <strong>LlmOnLan client</strong>. Installers are published in the repository's <em>Releases</em>, and the app updates itself from then on.</p>
+    <p>Two desktop applications, which update themselves from then on.</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Application</th><th>What it is for</th><th>Download</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>LlmOnLan client</strong><br><span class="dg-ts">essential</span></td>
+            <td>The conversation with the model: the whole writing side, chapters <a href="#ch7">7</a> to <a href="#ch9">9</a>.</td>
+            <td><a href="https://github.com/b2renger/LlmOnLan/releases/tag/v0.1.25">Releases · v0.1.25</a></td>
+          </tr>
+          <tr>
+            <td><strong>ComfyQ Discovery</strong><br><span class="dg-ts">strongly advised</span></td>
+            <td>See which studio machines are running, what they are serving, and open the booking page of the one you want.</td>
+            <td><a href="https://github.com/b2renger/ComfyQ/releases">Releases</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p>The LlmOnLan client exists for all three systems; take the file that matches yours.</p>
     <div class="tbl-wrap">
       <table>
         <thead><tr><th>Your machine</th><th>The file</th><th>On first launch</th></tr></thead>
@@ -2003,11 +2047,19 @@ body.show-figures .shot-todo{display:block}
       <span class="lbl">Three things to know before you click</span>
       <ul style="margin-bottom:0">
         <li><strong>Allow about 1 GB and a little patience.</strong> The installer is 100 MB, but on first launch the app downloads its chat engine (Open WebUI, ≈ 700 MB) once and for all. Do that <em>before</em> the session, not during: twenty-five simultaneous downloads on the school network is an hour lost for everyone.</li>
-        <li><strong>The security warning is normal.</strong> The installers are unsigned — that is the price of a school tool, not a sign of danger. The bypass is in the right-hand column above, and you only do it once.</li>
-        <li><strong>Intel Mac: no build.</strong> The client exists only for <em>Apple Silicon</em> (M1 and later). On an Intel Mac, use a studio workstation or ask your tutor.</li>
+        <li><strong>The security warning is normal</strong>, for both applications. The installers are unsigned — that is the price of a school tool, not a sign of danger. The bypass is the one described above, and you do it once per application.</li>
+        <li><strong>Intel Mac: no LlmOnLan client.</strong> It exists only for <em>Apple Silicon</em> (M1 and later). On an Intel Mac, use a studio workstation for the writing side, or ask your tutor. ComfyQ Discovery does ship an Intel build — and ComfyQ opens in a browser anyway.</li>
       </ul>
     </div>
     <p>Once running, the app <strong>connects by itself</strong> to the school network and drops you into a conversation. There is no account, no key, no address to type. If it finds nothing, the service is not running: ask your tutor rather than hunting for a setting.</p>
+
+    <h4>Finding the free machine · ComfyQ Discovery</h4>
+    <p>The studio servers <strong>announce themselves on the network</strong>. <a href="https://github.com/b2renger/ComfyQ/releases">ComfyQ Discovery</a> listens and lists them: machine name, GPU and memory, state, the workflow being served with its description, queued jobs. A button opens the booking page of the machine you pick.</p>
+    <p>This is how you get into ComfyQ: instead of asking for an address or opening six tabs blind, you see at a glance <em>which GPU is free and which one is serving the workflow you need</em>. The app commands nothing remotely — it watches.</p>
+    <div class="callout c-tip">
+      <span class="lbl">The start-of-session reflex</span>
+      <p>Open Discovery before you start. A dimmed machine has gone quiet for a while; a machine already serving a workflow other than yours is no use to you. Thirty seconds here saves you booking a slot on the wrong GPU and finding out twenty minutes later.</p>
+    </div>
 
     <h4>What LlmOnLan can do that you will actually use</h4>
     <p>It is not only a chat window. Four capabilities serve stages of this manual directly.</p>
@@ -6800,14 +6852,14 @@ by <span class="cm">[your name]</span>, at <span class="cm">[place]</span>, <spa
     </details>
 
     <details class="faq"><summary>Que faut-il installer sur ma machine, exactement ?</summary>
-      <div class="faq-body"><p>Une seule application : le <strong>client LlmOnLan</strong>, pour la partie texte. Installeur d’environ 100 Mo depuis les <em>Releases</em> du dépôt, plus environ 700 Mo téléchargés au premier lancement. Comptez 1 Go et faites-le <strong>avant</strong> la séance, à la maison — vingt-cinq téléchargements en même temps saturent le réseau de l’école.</p>
-      <p>Pour l’image, la vidéo et le son, <strong>rien du tout</strong> : ComfyQ s’ouvre dans un navigateur, y compris depuis un téléphone.</p>
+      <div class="faq-body"><p>Le <strong><a href="https://github.com/b2renger/LlmOnLan/releases/tag/v0.1.25">client LlmOnLan</a></strong>, pour la partie texte : installeur d’environ 100 Mo, plus environ 700 Mo téléchargés au premier lancement. Comptez 1 Go et faites-le <strong>avant</strong> la séance, à la maison — vingt-cinq téléchargements en même temps saturent le réseau de l’école.</p>
+      <p>Plus <a href="https://github.com/b2renger/ComfyQ/releases">ComfyQ Discovery</a>, vivement conseillée : c’est elle qui vous montre quelle machine de l’atelier est libre et vous ouvre sa page de réservation. ComfyQ lui-même s’ouvre dans un navigateur — y compris depuis un téléphone — donc pour l’image, la vidéo et le son il n’y a <strong>rien d’autre</strong> à installer.</p>
       <p>Un avertissement de sécurité au premier lancement est normal : les installeurs ne sont pas signés. Détails et contournements par système au chapitre <a href="#ch3">3</a>.</p></div>
     </details>
 
     <details class="faq"><summary>J’ai un Mac Intel. Est-ce que ça marche ?</summary>
       <div class="faq-body"><p>Pour le client LlmOnLan, non : il n’existe qu’en version Apple Silicon (M1 et suivants). Trois solutions — utilisez un poste de l’atelier pour la partie texte, passez par un autre modèle de conversation que votre encadrant vous indiquera, ou travaillez à deux.</p>
-      <p>Cela ne bloque <em>pas</em> le reste du cours : ComfyQ fonctionne dans n’importe quel navigateur, donc toute la partie image, vidéo et son — l’essentiel du module — reste accessible depuis un Mac Intel.</p></div>
+      <p>Cela ne bloque <em>pas</em> le reste du cours : ComfyQ fonctionne dans n’importe quel navigateur, donc toute la partie image, vidéo et son — l’essentiel du module — reste accessible depuis un Mac Intel. Et ComfyQ Discovery existe bien en version Intel.</p></div>
     </details>
 
     <details class="faq"><summary>Le modèle refuse un plan ou produit toujours la même erreur. Pourquoi ?</summary>
@@ -6947,14 +6999,14 @@ by <span class="cm">[your name]</span>, at <span class="cm">[place]</span>, <spa
     </details>
 
     <details class="faq"><summary>What exactly do I have to install on my machine?</summary>
-      <div class="faq-body"><p>One application: the <strong>LlmOnLan client</strong>, for the text side. Roughly a 100 MB installer from the repository's <em>Releases</em>, plus about 700 MB downloaded on first launch. Allow 1 GB and do it <strong>before</strong> the session, at home — twenty-five simultaneous downloads will saturate the school network.</p>
-      <p>For image, video and sound, <strong>nothing at all</strong>: ComfyQ opens in a browser, including on a phone.</p>
+      <div class="faq-body"><p>The <strong><a href="https://github.com/b2renger/LlmOnLan/releases/tag/v0.1.25">LlmOnLan client</a></strong>, for the text side: roughly a 100 MB installer, plus about 700 MB downloaded on first launch. Allow 1 GB and do it <strong>before</strong> the session, at home — twenty-five simultaneous downloads will saturate the school network.</p>
+      <p>Plus <a href="https://github.com/b2renger/ComfyQ/releases">ComfyQ Discovery</a>, strongly advised: it is what shows you which studio machine is free and opens its booking page. ComfyQ itself opens in a browser — including on a phone — so for image, video and sound there is <strong>nothing else</strong> to install.</p>
       <p>A security warning on first launch is normal: the installers are unsigned. Per-OS details and bypasses are in chapter <a href="#ch3">3</a>.</p></div>
     </details>
 
     <details class="faq"><summary>I have an Intel Mac. Does this work?</summary>
       <div class="faq-body"><p>For the LlmOnLan client, no: it exists only as an Apple Silicon build (M1 and later). Three options — use a studio workstation for the text side, use another chat model your tutor will point you to, or pair up with someone.</p>
-      <p>It does <em>not</em> block the rest of the course: ComfyQ works in any browser, so the whole image, video and sound side — the bulk of the module — stays available from an Intel Mac.</p></div>
+      <p>It does <em>not</em> block the rest of the course: ComfyQ works in any browser, so the whole image, video and sound side — the bulk of the module — stays available from an Intel Mac. And ComfyQ Discovery does ship an Intel build.</p></div>
     </details>
 
     <details class="faq"><summary>The model refuses a shot or keeps making the same error. Why?</summary>
