@@ -519,7 +519,7 @@ body.show-figures .shot-todo{display:block}
     <ul>
       <li><span class="path">Menu &gt; Sous-menu</span> — un chemin d’interface à cliquer.</li>
       <li><code>Réglage</code> — le nom exact d’un paramètre, ou quelque chose à taper.</li>
-      <li>Un bloc <strong>prompt</strong> avec bouton <em>Copier</em> se copie tel quel. Ce qui est <span class="pr" style="all:unset"><code class="var">EN COULEUR</code></span> est à remplacer par votre contenu.</li>
+      <li>Un bloc <strong>prompt</strong> avec bouton <em>Copier</em> se copie tel quel. Ce qui est <code class="var">EN COULEUR</code> est à remplacer par votre contenu.</li>
       <li>Toute affirmation vérifiée dans la documentation officielle d’un modèle ou d’un outil porte la mention <strong>Documenté</strong> et peut être tenue pour fiable. Ce qui est marqué <strong>Pratique d’atelier</strong> relève du métier et non de la spécification : discutez-en si vous avez mieux.</li>
     </ul>
 
@@ -2194,16 +2194,16 @@ body.show-figures .shot-todo{display:block}
         <thead><tr><th>Nom</th><th>Ce que c’est</th></tr></thead>
         <tbody>
           <tr><td><code>P07_v03.png</code></td><td>Troisième <strong>version</strong> de l’image clé du plan 7.</td></tr>
-          <tr><td><code>P07.png</code></td><td>L’image clé <strong>validée</strong> du plan 7, dans <code>VALIDE/</code>. Il n’en existe qu’une.</td></tr>
+          <tr><td><code>P07.png</code></td><td>L’image clé <strong>validée</strong> du plan 7, dans <code>APPROVED/</code>. Il n’en existe qu’une.</td></tr>
           <tr><td><code>P07_t02.mp4</code></td><td>Deuxième <strong>prise</strong> vidéo du plan 7.</td></tr>
-          <tr><td><code>P07.mp4</code></td><td>La prise <strong>retenue</strong> du plan 7, dans <code>VALIDE/</code>. C’est elle qui va au montage.</td></tr>
+          <tr><td><code>P07.mp4</code></td><td>La prise <strong>retenue</strong> du plan 7, dans <code>APPROVED/</code>. C’est elle qui va au montage.</td></tr>
         </tbody>
       </table>
     </div>
 
     <div class="callout c-doc">
-      <span class="lbl">La règle du dossier VALIDE</span>
-      <p>Un plan validé est <strong>copié</strong> — pas déplacé — dans un sous-dossier <code>VALIDE/</code>, sous son nom court. Le montage ne pointe que vers <code>VALIDE/</code>. Ainsi votre timeline ne casse jamais quand vous continuez à itérer à côté, et vous répondez en une seconde à la seule question qui compte à trois jours du rendu : <em>combien de plans sont finis ?</em> Comptez les fichiers dans <code>VALIDE/</code>.</p>
+      <span class="lbl">La règle du dossier APPROVED</span>
+      <p>Un plan validé est <strong>copié</strong> — pas déplacé — dans un sous-dossier <code>APPROVED/</code>, sous son nom court. Le montage ne pointe que vers <code>APPROVED/</code>. Ainsi votre timeline ne casse jamais quand vous continuez à itérer à côté, et vous répondez en une seconde à la seule question qui compte à trois jours du rendu : <em>combien de plans sont finis ?</em> Comptez les fichiers dans <code>APPROVED/</code>.</p>
     </div>
 
     <h3>4.2 L’arborescence</h3>
@@ -2213,27 +2213,32 @@ body.show-figures .shot-todo{display:block}
       <p><a href="gabarits/dossier-de-projet.zip"><strong>⬇ dossier-de-projet.zip</strong></a> — l’arborescence complète, plus <strong>onze documents de travail déjà amorcés</strong> : la fiche de problématique, les cinq règles du monde, l’index du référentiel, les trois chartes, le pitch, le script, le journal, et la feuille de plans <em>déjà remplie</em> avec les vingt identifiants de plan et leurs blocs.</p>
       <p>Dézippez, renommez le dossier avec le nom de votre projet, et commencez. Les dossiers vides le sont volontairement.</p>
     </div>
-<pre>FILM_2026_<span class="cm">nom-du-projet</span>/
+<pre>FILM_2026_<span class="cm">project-name</span>/
 │
 ├── 00_brief/            <span class="cm">brief, problématique, données · cinq règles du monde</span>
 ├── 01_references/
-│   ├── photo/           <span class="cm">PHOTO_001_halle-nord.jpg — jamais IMG_4471.jpg</span>
+│   ├── photo/           <span class="cm">PHOTO_001_north-hall.jpg — jamais IMG_4471.jpg</span>
 │   ├── video/
-│   ├── son/             <span class="cm">SON_001_halle-nord_ambiance.wav</span>
+│   ├── sound/           <span class="cm">SOUND_001_north-hall_ambience.wav</span>
 │   ├── docs/            <span class="cm">cartes, relevés, études · ou recherche du monde</span>
 │   └── style/           <span class="cm">références externes + SOURCES.md obligatoire</span>
-├── 02_ecriture/         <span class="cm">pitch.md · script.md</span>
-├── 03_decoupage/        <span class="cm">feuille_de_plans.csv  ← le document pivot</span>
-├── 04_chartes/          <span class="cm">charte_personnage.md · charte_lieu.md · charte_style.md</span>
+├── 02_writing/         <span class="cm">pitch.md · script.md</span>
+├── 03_breakdown/        <span class="cm">shot_sheet.csv  ← le document pivot</span>
+├── 04_bibles/          <span class="cm">character_bible.md · place_bible.md · style_bible.md</span>
 ├── 05_storyboard/       <span class="cm">P01_v01.png … P20_v04.png</span>
-│   └── VALIDE/          <span class="cm">P01.png … P20.png</span>
-├── 06_plans/            <span class="cm">P01_t01.mp4 … P20_t05.mp4</span>
-│   └── VALIDE/          <span class="cm">P01.mp4 … P20.mp4</span>
-├── 07_son/              <span class="cm">ambiances/ · voix/ · musique/ · sfx/</span>
-├── 08_montage/          <span class="cm">le projet Resolve ou Premiere</span>
+│   └── APPROVED/          <span class="cm">P01.png … P20.png</span>
+├── 06_shots/            <span class="cm">P01_t01.mp4 … P20_t05.mp4</span>
+│   └── APPROVED/          <span class="cm">P01.mp4 … P20.mp4</span>
+├── 07_sound/              <span class="cm">ambience/ · voice/ · music/ · sfx/</span>
+├── 08_edit/          <span class="cm">le projet Resolve ou Premiere</span>
 ├── 09_export/           <span class="cm">film_60s_v01.mp4 …</span>
 │
 └── journal.md           <span class="cm">les décisions, et pourquoi</span></pre>
+
+    <div class="callout c-doc">
+      <span class="lbl">Les noms sont en anglais · et ils ne se traduisent pas</span>
+      <p>Il n’y a <strong>qu’un seul système de fichiers</strong>, donc les deux éditions de ce manuel nomment les mêmes fichiers réels — en anglais, y compris dans l’édition française. Ne les traduisez pas : la feuille de plans, les captures d’écran et tous les renvois de ce manuel pointent vers ces noms exacts.</p>
+    </div>
 
     <div class="callout c-warn">
       <span class="lbl">Renommez à la décharge, pas plus tard</span>
@@ -2257,7 +2262,7 @@ un gros plan sur la main. Le découpage est mis à jour, pas contourné.</pre>
       <p>Créez l’arborescence complète, vide, avec le nom définitif du projet. Créez <code>journal.md</code> et écrivez-y la première ligne : la date, et la phrase que vous croyez être votre sujet.</p>
       <h4>Vous pouvez passer à la suite quand</h4>
       <ul>
-        <li>Les dossiers existent tous, y compris les deux <code>VALIDE/</code>.</li>
+        <li>Les dossiers existent tous, y compris les deux <code>APPROVED/</code>.</li>
         <li>Le dossier est sur un support que vous emportez, et sauvegardé ailleurs.</li>
       </ul>
     </div>
@@ -2292,16 +2297,16 @@ un gros plan sur la main. Le découpage est mis à jour, pas contourné.</pre>
         <thead><tr><th>Name</th><th>What it is</th></tr></thead>
         <tbody>
           <tr><td><code>P07_v03.png</code></td><td>Third <strong>version</strong> of the key frame for shot 7.</td></tr>
-          <tr><td><code>P07.png</code></td><td>The <strong>approved</strong> key frame for shot 7, in <code>VALIDE/</code>. Only one exists.</td></tr>
+          <tr><td><code>P07.png</code></td><td>The <strong>approved</strong> key frame for shot 7, in <code>APPROVED/</code>. Only one exists.</td></tr>
           <tr><td><code>P07_t02.mp4</code></td><td>Second video <strong>take</strong> of shot 7.</td></tr>
-          <tr><td><code>P07.mp4</code></td><td>The <strong>selected</strong> take of shot 7, in <code>VALIDE/</code>. This is what goes to the edit.</td></tr>
+          <tr><td><code>P07.mp4</code></td><td>The <strong>selected</strong> take of shot 7, in <code>APPROVED/</code>. This is what goes to the edit.</td></tr>
         </tbody>
       </table>
     </div>
 
     <div class="callout c-doc">
-      <span class="lbl">The VALIDE folder rule</span>
-      <p>An approved shot is <strong>copied</strong> — not moved — into a <code>VALIDE/</code> subfolder under its short name. The edit points only at <code>VALIDE/</code>. That way your timeline never breaks while you keep iterating alongside, and you can answer the only question that matters three days out in one second: <em>how many shots are finished?</em> Count the files in <code>VALIDE/</code>.</p>
+      <span class="lbl">The APPROVED folder rule</span>
+      <p>An approved shot is <strong>copied</strong> — not moved — into a <code>APPROVED/</code> subfolder under its short name. The edit points only at <code>APPROVED/</code>. That way your timeline never breaks while you keep iterating alongside, and you can answer the only question that matters three days out in one second: <em>how many shots are finished?</em> Count the files in <code>APPROVED/</code>.</p>
     </div>
 
     <h3>4.2 The tree</h3>
@@ -2317,25 +2322,25 @@ un gros plan sur la main. Le découpage est mis à jour, pas contourné.</pre>
 ├── 01_references/
 │   ├── photo/           <span class="cm">PHOTO_001_north-hall.jpg — never IMG_4471.jpg</span>
 │   ├── video/
-│   ├── son/             <span class="cm">SON_001_north-hall_ambience.wav</span>
+│   ├── sound/           <span class="cm">SOUND_001_north-hall_ambience.wav</span>
 │   ├── docs/            <span class="cm">maps, surveys, studies · or world research</span>
 │   └── style/           <span class="cm">external references + mandatory SOURCES.md</span>
-├── 02_ecriture/         <span class="cm">pitch.md · script.md</span>
-├── 03_decoupage/        <span class="cm">feuille_de_plans.csv  ← the pivot document</span>
-├── 04_chartes/          <span class="cm">charte_personnage.md · charte_lieu.md · charte_style.md</span>
+├── 02_writing/         <span class="cm">pitch.md · script.md</span>
+├── 03_breakdown/        <span class="cm">shot_sheet.csv  ← the pivot document</span>
+├── 04_bibles/          <span class="cm">character_bible.md · place_bible.md · style_bible.md</span>
 ├── 05_storyboard/       <span class="cm">P01_v01.png … P20_v04.png</span>
-│   └── VALIDE/          <span class="cm">P01.png … P20.png</span>
-├── 06_plans/            <span class="cm">P01_t01.mp4 … P20_t05.mp4</span>
-│   └── VALIDE/          <span class="cm">P01.mp4 … P20.mp4</span>
-├── 07_son/              <span class="cm">ambiances/ · voix/ · musique/ · sfx/</span>
-├── 08_montage/          <span class="cm">the Resolve or Premiere project</span>
+│   └── APPROVED/          <span class="cm">P01.png … P20.png</span>
+├── 06_shots/            <span class="cm">P01_t01.mp4 … P20_t05.mp4</span>
+│   └── APPROVED/          <span class="cm">P01.mp4 … P20.mp4</span>
+├── 07_sound/              <span class="cm">ambience/ · voice/ · music/ · sfx/</span>
+├── 08_edit/          <span class="cm">the Resolve or Premiere project</span>
 ├── 09_export/           <span class="cm">film_60s_v01.mp4 …</span>
 │
 └── journal.md           <span class="cm">the decisions, and why</span></pre>
 
     <div class="callout c-doc">
-      <span class="lbl">Why the folder and file names are French</span>
-      <p>There is only <strong>one filesystem</strong>, so both editions of this manual name the same real files. The names follow the folders, which are French. Do not translate them: the shot sheet, the screenshots and every cross-reference in this manual point at these exact names.</p>
+      <span class="lbl">The names are in English · and they do not get translated</span>
+      <p>There is <strong>one filesystem only</strong>, so both editions of this manual name the same real files — in English, the French edition included. Do not translate them: the shot sheet, the screenshots and every cross-reference in this manual point at these exact names.</p>
     </div>
 
     <div class="callout c-warn">
@@ -2360,7 +2365,7 @@ close-up on the hand. The breakdown is updated, not bypassed.</pre>
       <p>Create the complete tree, empty, under the project's final name. Create <code>journal.md</code> and write the first line in it: the date, and the sentence you believe is your subject.</p>
       <h4>Ready to move on when</h4>
       <ul>
-        <li>Every folder exists, including both <code>VALIDE/</code> folders.</li>
+        <li>Every folder exists, including both <code>APPROVED/</code> folders.</li>
         <li>The folder lives on something you carry with you, and is backed up elsewhere.</li>
       </ul>
     </div>
@@ -2879,7 +2884,7 @@ Quand les cinq réponses sont données, produis :
     <p>À ce stade vous avez trois cents fichiers — sortis de l’appareil, ou du dossier de génération. Un référentiel n’est pas un tas de fichiers : c’est un ensemble <em>trié, nommé et décrit</em>. Trois opérations, le jour même.</p>
     <ol>
       <li><strong>Trier sans pitié.</strong> Gardez 60 à 80 images au total, pas 300. Une par intention. Les doublons ne servent à rien et rendent le référentiel inutilisable.</li>
-      <li><strong>Nommer.</strong> <code>PHOTO_014_halle-nord_sol-beton.jpg</code>. Le numéro pour l’ordre, la zone, le sujet. Jamais <code>IMG_4471</code>.</li>
+      <li><strong>Nommer.</strong> <code>PHOTO_014_north-hall_concrete-floor.jpg</code>. Le numéro pour l’ordre, la zone, le sujet, <strong>en anglais</strong>. Jamais <code>IMG_4471</code>.</li>
       <li><strong>Décrire.</strong> Un fichier <code>01_references/INDEX.md</code> qui liste chaque référence et ce qu’elle documente. C’est ce fichier que vous relirez au chapitre 10.</li>
     </ol>
     <div class="callout c-tip">
@@ -3287,6 +3292,7 @@ Do not comment on the aesthetic quality of the photographs.</pre>
         <li><em>Constructed route</em>: the five rules are written, rule 5 included, and every kept image carries its prompt and seed.</li>
         <li>Two ambiences of 3 minutes minimum, listened to in full on headphones.</li>
         <li>At least one piece of non-generative material exists and is filed.</li>
+        <li><code>INDEX.md</code> exists and someone else could use it.</li>
         <li>You can name the <strong>three things</strong> your world has that no other would.</li>
       </ul>
       <p style="margin-top:1rem"><em>If you cannot name those three things, your film will have nothing specific to show and the model will fill the gap with its average. Go back to the site — or go back to your five rules.</em></p>
@@ -3396,7 +3402,7 @@ Do not comment on the aesthetic quality of the photographs.</pre>
     <div class="exercise">
       <div class="hd">Étape 4 · Pitch et structure</div>
       <h4>Ce que vous faites</h4>
-      <p>Dans <code>02_ecriture/pitch.md</code> : la forme retenue parmi les quatre, le pitch en une phrase, et les cinq blocs avec une ligne d’intention par bloc. Pas encore les plans.</p>
+      <p>Dans <code>02_writing/pitch.md</code> : la forme retenue parmi les quatre, le pitch en une phrase, et les cinq blocs avec une ligne d’intention par bloc. Pas encore les plans.</p>
       <h4>Vous pouvez passer à la suite quand</h4>
       <ul>
         <li>Le pitch tient en une phrase sans « puis ».</li>
@@ -3490,7 +3496,7 @@ Do not comment on the aesthetic quality of the photographs.</pre>
     <div class="exercise">
       <div class="hd">Stage 4 · Pitch and structure</div>
       <h4>What you do</h4>
-      <p>In <code>02_ecriture/pitch.md</code>: the chosen form out of the four, the one-sentence pitch, and the five blocks with one line of intention each. Not the shots yet.</p>
+      <p>In <code>02_writing/pitch.md</code>: the chosen form out of the four, the one-sentence pitch, and the five blocks with one line of intention each. Not the shots yet.</p>
       <h4>Ready to move on when</h4>
       <ul>
         <li>The pitch fits in one sentence with no "then".</li>
@@ -3639,7 +3645,7 @@ vient de moi et ce qui vient de toi.</pre>
     <div class="exercise">
       <div class="hd">Étape 5 · Le script du film</div>
       <h4>Ce que vous faites</h4>
-      <p>Les trois phases, dans l’ordre, avec validation à chaque palier. Résultat dans <code>02_ecriture/script.md</code> : les 20 plans en une ligne chacun, puis les 20 fiches techniques à six champs.</p>
+      <p>Les trois phases, dans l’ordre, avec validation à chaque palier. Résultat dans <code>02_writing/script.md</code> : les 20 plans en une ligne chacun, puis les 20 fiches techniques à six champs.</p>
       <h4>Ce que cela produit</h4>
       <p>La matière de la feuille de plans du chapitre suivant, et le brouillon des trois chartes du chapitre 10.</p>
       <h4>Vous pouvez passer à la suite quand</h4>
@@ -3783,7 +3789,7 @@ me and what came from you.</pre>
     <div class="exercise">
       <div class="hd">Stage 5 · The film's script</div>
       <h4>What you do</h4>
-      <p>The three phases, in order, with sign-off at each step. Result in <code>02_ecriture/script.md</code>: the 20 shots at one line each, then the 20 six-field technical records.</p>
+      <p>The three phases, in order, with sign-off at each step. Result in <code>02_writing/script.md</code>: the 20 shots at one line each, then the 20 six-field technical records.</p>
       <h4>What it produces</h4>
       <p>The material for the next chapter's shot sheet, and the draft of the three bibles in chapter 10.</p>
       <h4>Ready to move on when</h4>
@@ -3814,30 +3820,30 @@ me and what came from you.</pre>
       <table>
         <thead><tr><th>Colonne</th><th>Contenu</th><th>Sert au chapitre</th></tr></thead>
         <tbody>
-          <tr><td><code>plan</code></td><td><code>P01</code> à <code>P20</code>. Ne change jamais.</td><td>partout</td></tr>
-          <tr><td><code>bloc</code></td><td>I à V, la structure du chapitre 7.</td><td>17</td></tr>
-          <tr><td><code>duree</code></td><td>En secondes. 3 par défaut ; 2 ou 4 si le rythme l’exige.</td><td>17</td></tr>
+          <tr><td><code>shot</code></td><td><code>P01</code> à <code>P20</code>. Ne change jamais.</td><td>partout</td></tr>
+          <tr><td><code>block</code></td><td>I à V, la structure du chapitre 7.</td><td>17</td></tr>
+          <tr><td><code>duration</code></td><td>En secondes. 3 par défaut ; 2 ou 4 si le rythme l’exige.</td><td>17</td></tr>
           <tr><td><code>action</code></td><td>L’action visible, une phrase. Ce que fait le plan.</td><td>12, 14</td></tr>
-          <tr><td><code>echelle</code></td><td>L’échelle de plan, code de la table 9.2.</td><td>12</td></tr>
+          <tr><td><code>size</code></td><td>L’échelle de plan, code de la table 9.2.</td><td>12</td></tr>
           <tr><td><code>angle</code></td><td>La hauteur et l’axe de caméra.</td><td>12</td></tr>
-          <tr><td><code>mouvement</code></td><td>Ce qui bouge, et comment. <code>fixe</code> est une réponse valide et souvent la bonne.</td><td>14, 15</td></tr>
-          <tr><td><code>lieu</code></td><td>La zone du site. Doit correspondre à une zone de votre <code>INDEX.md</code>.</td><td>10</td></tr>
-          <tr><td><code>lumiere</code></td><td>Direction et qualité. Constante sur tout le film sauf ellipse.</td><td>10, 12</td></tr>
-          <tr><td><code>intention</code></td><td>Ce que le plan doit faire ressentir. La colonne qu’on saute et qu’il faut garder.</td><td>13, 17</td></tr>
-          <tr><td><code>son</code></td><td>Ce qu’on entend : ambiance, événement, voix, silence.</td><td>16</td></tr>
+          <tr><td><code>movement</code></td><td>Ce qui bouge, et comment. <code>static</code> est une réponse valide et souvent la bonne.</td><td>14, 15</td></tr>
+          <tr><td><code>place</code></td><td>La zone du site. Doit correspondre à une zone de votre <code>INDEX.md</code>.</td><td>10</td></tr>
+          <tr><td><code>light</code></td><td>Direction et qualité. Constante sur tout le film sauf ellipse.</td><td>10, 12</td></tr>
+          <tr><td><code>intent</code></td><td>Ce que le plan doit faire ressentir. La colonne qu’on saute et qu’il faut garder.</td><td>13, 17</td></tr>
+          <tr><td><code>sound</code></td><td>Ce qu’on entend : ambiance, événement, voix, silence.</td><td>16</td></tr>
           <tr><td><code>ref_images</code></td><td>Les références de votre référentiel à injecter, séparées par <code>;</code>.</td><td>12</td></tr>
           <tr><td><code>seed</code></td><td>La graine de l’image validée. Sans elle, le livrable B n’est pas reproductible et ne prouve rien.</td><td>12</td></tr>
-          <tr><td><code>statut</code></td><td><code>a_faire</code> · <code>image_ok</code> · <code>video_ok</code> · <code>valide</code></td><td>13, 15</td></tr>
+          <tr><td><code>status</code></td><td><code>todo</code> · <code>image_ok</code> · <code>video_ok</code> · <code>approved</code></td><td>13, 15</td></tr>
         </tbody>
       </table>
     </div>
-<pre>plan,bloc,duree,action,echelle,angle,mouvement,lieu,lumiere,intention,son,ref_images,seed,statut
-P01,I,3,"Le rideau métallique fermé, de face",GP,niveau,fixe,"entrée est","rasante NE dure","entrer par une surface, pas par un espace","ambiance lointaine seule",PHOTO_003;PHOTO_007,774213,valide
-P02,I,3,"Une main pose une caisse hors champ",TGP,plongée,fixe,"entrée est","rasante NE dure","une présence sans personne","événement : caisse",PHOTO_022,481990,image_ok
-P03,I,3,"Le volume vide de la halle",TL,niveau,"panoramique lent G→D","halle nord","zénithale diffuse","la contradiction est déjà là","ambiance + réverbération",PHOTO_014;PHOTO_015,,a_faire</pre>
+<pre>shot,block,duration,action,size,angle,movement,place,light,intent,sound,ref_images,seed,status
+P01,I,3,"Le rideau métallique fermé, de face",GP,niveau,static,"entrée est","rasante NE dure","entrer par une surface, pas par un espace","ambiance lointaine seule",PHOTO_003;PHOTO_007,774213,approved
+P02,I,3,"Une main pose une caisse hors champ",TGP,plongée,static,"entrée est","rasante NE dure","une présence sans personne","événement : caisse",PHOTO_022,481990,image_ok
+P03,I,3,"Le volume vide de la halle",TL,niveau,"panoramique lent G→D","halle nord","zénithale diffuse","la contradiction est déjà là","ambiance + réverbération",PHOTO_014;PHOTO_015,,todo</pre>
     <div class="callout c-doc">
       <span class="lbl">Pourquoi un CSV et pas un joli document</span>
-      <p>Parce qu’il est <strong>triable et filtrable</strong>. À trois jours du rendu, la question n’est pas « à quoi ressemble mon film » mais « quels plans ne sont pas finis » : vous filtrez la colonne <code>statut</code> et vous avez la réponse en deux secondes. Un storyboard mis en page, aussi beau qu’il soit, ne répond pas à cette question. Faites les deux si vous voulez, mais c’est le tableur qui pilote la production.</p>
+      <p>Parce qu’il est <strong>triable et filtrable</strong>. À trois jours du rendu, la question n’est pas « à quoi ressemble mon film » mais « quels plans ne sont pas finis » : vous filtrez la colonne <code>status</code> et vous avez la réponse en deux secondes. Un storyboard mis en page, aussi beau qu’il soit, ne répond pas à cette question. Faites les deux si vous voulez, mais c’est le tableur qui pilote la production.</p>
     </div>
 
     <figure class="shot" id="fig-09-01">
@@ -3853,7 +3859,7 @@ P03,I,3,"Le volume vide de la halle",TL,niveau,"panoramique lent G→D","halle n
     </figure>
 
     <h3>9.2 Les échelles de plan</h3>
-    <p>L’échelle est la première décision de chaque plan, et le mot que vous écrivez dans la colonne <code>echelle</code> devient un mot du prompt. Les modèles d’image comprennent le vocabulaire technique anglais du cinéma : utilisez-le tel quel.</p>
+    <p>L’échelle est la première décision de chaque plan, et le mot que vous écrivez dans la colonne <code>size</code> devient un mot du prompt. Les modèles d’image comprennent le vocabulaire technique anglais du cinéma : utilisez-le tel quel.</p>
   </div>
 
   <div class="en-only">
@@ -3865,26 +3871,30 @@ P03,I,3,"Le volume vide de la halle",TL,niveau,"panoramique lent G→D","halle n
       <table>
         <thead><tr><th>Column</th><th>Content</th><th>Used in chapter</th></tr></thead>
         <tbody>
-          <tr><td><code>plan</code></td><td><code>P01</code> to <code>P20</code>. Never changes.</td><td>throughout</td></tr>
-          <tr><td><code>bloc</code></td><td>I to V, the chapter 7 structure.</td><td>17</td></tr>
-          <tr><td><code>duree</code></td><td>In seconds. 3 by default; 2 or 4 if rhythm demands it.</td><td>17</td></tr>
+          <tr><td><code>shot</code></td><td><code>P01</code> to <code>P20</code>. Never changes.</td><td>throughout</td></tr>
+          <tr><td><code>block</code></td><td>I to V, the chapter 7 structure.</td><td>17</td></tr>
+          <tr><td><code>duration</code></td><td>In seconds. 3 by default; 2 or 4 if rhythm demands it.</td><td>17</td></tr>
           <tr><td><code>action</code></td><td>The visible action, one sentence. What the shot does.</td><td>12, 14</td></tr>
-          <tr><td><code>echelle</code></td><td>Shot size, code from table 9.2.</td><td>12</td></tr>
+          <tr><td><code>size</code></td><td>Shot size, code from table 9.2.</td><td>12</td></tr>
           <tr><td><code>angle</code></td><td>Camera height and axis.</td><td>12</td></tr>
-          <tr><td><code>mouvement</code></td><td>What moves, and how. <code>locked off</code> is a valid answer and often the right one.</td><td>14, 15</td></tr>
-          <tr><td><code>lieu</code></td><td>The zone of the site. Must match a zone in your <code>INDEX.md</code>.</td><td>10</td></tr>
-          <tr><td><code>lumiere</code></td><td>Direction and quality. Constant across the film unless there is an ellipsis.</td><td>10, 12</td></tr>
-          <tr><td><code>intention</code></td><td>What the shot must make the viewer feel. The column everyone skips and must keep.</td><td>13, 17</td></tr>
-          <tr><td><code>son</code></td><td>What you hear: ambience, event, voice, silence.</td><td>16</td></tr>
+          <tr><td><code>movement</code></td><td>What moves, and how. <code>static</code> is a valid answer and often the right one.</td><td>14, 15</td></tr>
+          <tr><td><code>place</code></td><td>The zone of the site. Must match a zone in your <code>INDEX.md</code>.</td><td>10</td></tr>
+          <tr><td><code>light</code></td><td>Direction and quality. Constant across the film unless there is an ellipsis.</td><td>10, 12</td></tr>
+          <tr><td><code>intent</code></td><td>What the shot must make the viewer feel. The column everyone skips and must keep.</td><td>13, 17</td></tr>
+          <tr><td><code>sound</code></td><td>What you hear: ambience, event, voice, silence.</td><td>16</td></tr>
           <tr><td><code>ref_images</code></td><td>The references from your reference set to inject, separated by <code>;</code>.</td><td>12</td></tr>
           <tr><td><code>seed</code></td><td>The seed of the approved image. Without it, Deliverable B is not reproducible and proves nothing.</td><td>12</td></tr>
-          <tr><td><code>statut</code></td><td><code>a_faire</code> · <code>image_ok</code> · <code>video_ok</code> · <code>valide</code></td><td>13, 15</td></tr>
+          <tr><td><code>status</code></td><td><code>todo</code> · <code>image_ok</code> · <code>video_ok</code> · <code>approved</code></td><td>13, 15</td></tr>
         </tbody>
       </table>
     </div>
+<pre>shot,block,duration,action,size,angle,movement,place,light,intent,sound,ref_images,seed,status
+P01,I,3,"Closed roller shutter, front on",CU,eye,static,"east entrance","hard raking NE","enter through a surface, not a space","distant ambience only",PHOTO_003;PHOTO_007,774213,approved
+P02,I,3,"A hand sets down a crate off-screen",ECU,high,static,"east entrance","hard raking NE","a presence with nobody","event: crate",PHOTO_022,481990,image_ok
+P03,I,3,"The empty volume of the hall",EWS,eye,"slow pan L&#8594;R","north hall","diffuse overhead","the contradiction is already there","ambience + reverberation",PHOTO_014;PHOTO_015,,todo</pre>
     <div class="callout c-doc">
       <span class="lbl">Why a CSV and not a beautiful document</span>
-      <p>Because it is <strong>sortable and filterable</strong>. Three days out, the question is not "what does my film look like" but "which shots are not finished": you filter the <code>statut</code> column and have the answer in two seconds. A laid-out storyboard, however beautiful, does not answer that question. Do both if you like, but the spreadsheet drives production.</p>
+      <p>Because it is <strong>sortable and filterable</strong>. Three days out, the question is not "what does my film look like" but "which shots are not finished": you filter the <code>status</code> column and have the answer in two seconds. A laid-out storyboard, however beautiful, does not answer that question. Do both if you like, but the spreadsheet drives production.</p>
     </div>
 
     <figure class="shot" id="fig-09-01-en">
@@ -3900,7 +3910,7 @@ P03,I,3,"Le volume vide de la halle",TL,niveau,"panoramique lent G→D","halle n
     </figure>
 
     <h3>9.2 Shot sizes</h3>
-    <p>Size is the first decision in every shot, and the word you write in the <code>echelle</code> column becomes a word in the prompt. Image models understand the technical English vocabulary of cinema: use it as it stands.</p>
+    <p>Size is the first decision in every shot, and the word you write in the <code>size</code> column becomes a word in the prompt. Image models understand the technical English vocabulary of cinema: use it as it stands.</p>
   </div>
 
   <!-- ===================== SHOT SIZE DIAGRAM ===================== -->
@@ -3988,8 +3998,8 @@ P03,I,3,"Le volume vide de la halle",TL,niveau,"panoramique lent G→D","halle n
       <text class="dg-ts fr-only" x="9" y="205">En bleu : le terme à écrire dans le prompt. En anglais, toujours.</text>
       <text class="dg-ts en-only" x="9" y="205">In blue: the term to write in the prompt. In English, always.</text>
     </svg>
-    <figcaption class="fr-only">Fig 9.2 — Six échelles suffisent pour un film de 60 secondes. Le code de la première ligne va dans la colonne <code>echelle</code>.</figcaption>
-    <figcaption class="en-only">Fig 9.2 — Six sizes are enough for a 60-second film. The code on the top line goes in the <code>echelle</code> column.</figcaption>
+    <figcaption class="fr-only">Fig 9.2 — Six échelles suffisent pour un film de 60 secondes. Le code de la première ligne va dans la colonne <code>size</code>.</figcaption>
+    <figcaption class="en-only">Fig 9.2 — Six sizes are enough for a 60-second film. The code on the top line goes in the <code>size</code> column.</figcaption>
   </figure>
 
   <div class="fr-only">
@@ -4036,7 +4046,7 @@ P03,I,3,"Le volume vide de la halle",TL,niveau,"panoramique lent G→D","halle n
           <tr>
             <td><strong>Une seule heure</strong></td>
             <td>La lumière saute d’un plan à l’autre et le film se disloque, même si chaque image est belle.</td>
-            <td>Une valeur unique dans la colonne <code>lumiere</code>, recopiée sur les vingt lignes. Une exception seulement si une ellipse est écrite.</td>
+            <td>Une valeur unique dans la colonne <code>light</code>, recopiée sur les vingt lignes. Une exception seulement si une ellipse est écrite.</td>
           </tr>
           <tr>
             <td><strong>Une direction de lumière</strong></td>
@@ -4063,7 +4073,7 @@ P03,I,3,"Le volume vide de la halle",TL,niveau,"panoramique lent G→D","halle n
     </div>
     <div class="callout c-warn">
       <span class="lbl">Vérifiez la continuité sur le papier, pas à l’écran</span>
-      <p>Relire les vingt lignes de la colonne <code>lumiere</code> prend deux minutes et évite dix heures de regénération. Ce contrôle est gratuit avant l’étape 6 et coûteux après. C’est la meilleure affaire du manuel.</p>
+      <p>Relire les vingt lignes de la colonne <code>light</code> prend deux minutes et évite dix heures de regénération. Ce contrôle est gratuit avant l’étape 6 et coûteux après. C’est la meilleure affaire du manuel.</p>
     </div>
 
     <h3>9.5 Le rythme</h3>
@@ -4075,19 +4085,19 @@ P03,I,3,"Le volume vide de la halle",TL,niveau,"panoramique lent G→D","halle n
       <li><strong>Bloc IV</strong> — un plan nettement plus long que les autres (5 – 6 s) au point culminant, puis retour à 3 s.</li>
       <li><strong>Bloc V</strong> — le dernier plan est le plus long du film (6 – 8 s). C’est lui qui laisse le spectateur avec sa question.</li>
     </ul>
-    <p>Le total doit rester à 60 secondes : ce que vous ajoutez ici, vous le retirez là. Écrivez les durées dans la colonne <code>duree</code> maintenant, et vérifiez la somme.</p>
+    <p>Le total doit rester à 60 secondes : ce que vous ajoutez ici, vous le retirez là. Écrivez les durées dans la colonne <code>duration</code> maintenant, et vérifiez la somme.</p>
 
     <div class="exercise">
       <div class="hd">Étape 6 · La feuille de plans</div>
       <h4>Ce que vous faites</h4>
-      <p><code>03_decoupage/feuille_de_plans.csv</code>, vingt lignes, quatorze colonnes, toutes remplies sauf <code>statut</code> qui vaut <code>a_faire</code> partout. C’est le moment de la relecture croisée : échangez votre feuille avec un autre étudiant et corrigez-vous mutuellement.</p>
+      <p><code>03_breakdown/shot_sheet.csv</code>, vingt lignes, quatorze colonnes, toutes remplies sauf <code>status</code> qui vaut <code>todo</code> partout. C’est le moment de la relecture croisée : échangez votre feuille avec un autre étudiant et corrigez-vous mutuellement.</p>
       <h4>Ce que cela produit</h4>
       <p>Le troisième et dernier élément du livrable A. À partir de maintenant, ce fichier est votre film ; le reste n’est que de l’exécution.</p>
       <h4>Vous pouvez passer à la suite quand</h4>
       <ul>
         <li>Les vingt lignes existent, aucune cellule vide.</li>
-        <li>La somme de la colonne <code>duree</code> fait 60 (± 2).</li>
-        <li>La colonne <code>lumiere</code> est constante, ou ses exceptions sont justifiées par une ellipse écrite.</li>
+        <li>La somme de la colonne <code>duration</code> fait 60 (± 2).</li>
+        <li>La colonne <code>light</code> est constante, ou ses exceptions sont justifiées par une ellipse écrite.</li>
         <li>Trois échelles dominent, et vous pouvez dire lesquelles et pourquoi.</li>
         <li>Chaque ligne cite au moins une référence de votre référentiel dans <code>ref_images</code>.</li>
         <li>La colonne <code>seed</code> est vide pour l’instant : elle se remplit à l’étape 9, image par image.</li>
@@ -4141,7 +4151,7 @@ P03,I,3,"Le volume vide de la halle",TL,niveau,"panoramique lent G→D","halle n
           <tr>
             <td><strong>One hour only</strong></td>
             <td>Light jumps shot to shot and the film comes apart, even though each image is beautiful.</td>
-            <td>A single value in the <code>lumiere</code> column, copied down all twenty rows. One exception only if an ellipsis is written.</td>
+            <td>A single value in the <code>light</code> column, copied down all twenty rows. One exception only if an ellipsis is written.</td>
           </tr>
           <tr>
             <td><strong>One direction of light</strong></td>
@@ -4168,7 +4178,7 @@ P03,I,3,"Le volume vide de la halle",TL,niveau,"panoramique lent G→D","halle n
     </div>
     <div class="callout c-warn">
       <span class="lbl">Check continuity on paper, not on screen</span>
-      <p>Re-reading twenty rows of the <code>lumiere</code> column takes two minutes and saves ten hours of regeneration. That check is free before stage 6 and expensive after it. It is the best bargain in the manual.</p>
+      <p>Re-reading twenty rows of the <code>light</code> column takes two minutes and saves ten hours of regeneration. That check is free before stage 6 and expensive after it. It is the best bargain in the manual.</p>
     </div>
 
     <h3>9.5 Rhythm</h3>
@@ -4180,19 +4190,19 @@ P03,I,3,"Le volume vide de la halle",TL,niveau,"panoramique lent G→D","halle n
       <li><strong>Block IV</strong> — one markedly longer shot (5 – 6 s) at the climax, then back to 3 s.</li>
       <li><strong>Block V</strong> — the last shot is the longest in the film (6 – 8 s). It is what leaves the viewer with the question.</li>
     </ul>
-    <p>The total must stay at 60 seconds: what you add here you take off there. Write the durations into the <code>duree</code> column now, and check the sum.</p>
+    <p>The total must stay at 60 seconds: what you add here you take off there. Write the durations into the <code>duration</code> column now, and check the sum.</p>
 
     <div class="exercise">
       <div class="hd">Stage 6 · The shot sheet</div>
       <h4>What you do</h4>
-      <p><code>03_decoupage/feuille_de_plans.csv</code>, twenty rows, fourteen columns, all filled except <code>statut</code> which reads <code>a_faire</code> throughout. This is the moment for cross-review: swap sheets with another student and correct each other.</p>
+      <p><code>03_breakdown/shot_sheet.csv</code>, twenty rows, fourteen columns, all filled except <code>status</code> which reads <code>todo</code> throughout. This is the moment for cross-review: swap sheets with another student and correct each other.</p>
       <h4>What it produces</h4>
       <p>The third and last component of Deliverable A. From now on this file is your film; the rest is execution.</p>
       <h4>Ready to move on when</h4>
       <ul>
         <li>Twenty rows exist, no empty cells.</li>
-        <li>The <code>duree</code> column sums to 60 (± 2).</li>
-        <li>The <code>lumiere</code> column is constant, or its exceptions are justified by a written ellipsis.</li>
+        <li>The <code>duration</code> column sums to 60 (± 2).</li>
+        <li>The <code>light</code> column is constant, or its exceptions are justified by a written ellipsis.</li>
         <li>Three sizes dominate, and you can say which and why.</li>
         <li>Every row cites at least one reference from your reference set in <code>ref_images</code>.</li>
         <li>The <code>seed</code> column is empty for now: you fill it at stage 9, image by image.</li>
@@ -4281,7 +4291,7 @@ P03,I,3,"Le volume vide de la halle",TL,niveau,"panoramique lent G→D","halle n
     </ul>
     <div class="callout c-warn">
       <span class="lbl">Une charte de lieu par lieu</span>
-      <p>Si votre film se passe dans deux zones du site, il vous faut deux chartes de lieu, et la colonne <code>lieu</code> de la feuille de plans dit laquelle appliquer. Mélanger les deux dans un seul bloc produit un décor hybride qui n’est ni l’un ni l’autre — l’erreur est fréquente et le symptôme est un film qui « ne ressemble à rien de précis ».</p>
+      <p>Si votre film se passe dans deux zones du site, il vous faut deux chartes de lieu, et la colonne <code>place</code> de la feuille de plans dit laquelle appliquer. Mélanger les deux dans un seul bloc produit un décor hybride qui n’est ni l’un ni l’autre — l’erreur est fréquente et le symptôme est un film qui « ne ressemble à rien de précis ».</p>
     </div>
 
     <h3>10.3 La charte de style · les cinq piliers</h3>
@@ -4351,7 +4361,7 @@ P03,I,3,"Le volume vide de la halle",TL,niveau,"panoramique lent G→D","halle n
     <div class="exercise">
       <div class="hd">Étape 7 · Les trois chartes</div>
       <h4>Ce que vous faites</h4>
-      <p>Dans <code>04_chartes/</code>, trois fichiers. Chacun contient la version française (pour vous, pour le jury) <strong>et</strong> le bloc anglais exact à copier dans les prompts. Datez et versionnez.</p>
+      <p>Dans <code>04_bibles/</code>, trois fichiers. Chacun contient la version française (pour vous, pour le jury) <strong>et</strong> le bloc anglais exact à copier dans les prompts. Datez et versionnez.</p>
       <h4>Vous pouvez passer à la suite quand</h4>
       <ul>
         <li>La charte personnage a ses trois catégories, en deux versions (longue et courte).</li>
@@ -4423,7 +4433,7 @@ P03,I,3,"Le volume vide de la halle",TL,niveau,"panoramique lent G→D","halle n
     </ul>
     <div class="callout c-warn">
       <span class="lbl">One place bible per place</span>
-      <p>If your film happens in two zones of the site, you need two place bibles, and the shot sheet's <code>lieu</code> column says which to apply. Mixing both into one block produces a hybrid set that is neither — a common error whose symptom is a film that "doesn't look like anywhere in particular".</p>
+      <p>If your film happens in two zones of the site, you need two place bibles, and the shot sheet's <code>place</code> column says which to apply. Mixing both into one block produces a hybrid set that is neither — a common error whose symptom is a film that "doesn't look like anywhere in particular".</p>
     </div>
 
     <h3>10.3 The style bible · five pillars</h3>
@@ -4493,7 +4503,7 @@ P03,I,3,"Le volume vide de la halle",TL,niveau,"panoramique lent G→D","halle n
     <div class="exercise">
       <div class="hd">Stage 7 · The three bibles</div>
       <h4>What you do</h4>
-      <p>In <code>04_chartes/</code>, three files. Each contains the version in your language (for you, for the crit) <strong>and</strong> the exact English block to copy into prompts. Date and version them.</p>
+      <p>In <code>04_bibles/</code>, three files. Each contains the version in your language (for you, for the crit) <strong>and</strong> the exact English block to copy into prompts. Date and version them.</p>
       <h4>Ready to move on when</h4>
       <ul>
         <li>The character bible has its three categories, in two versions (long and short).</li>
@@ -4690,7 +4700,7 @@ text overlay, oversaturated, fisheye distortion, duplicated subject</pre>
     <div class="exercise">
       <div class="hd">Étape 8 · La bibliothèque de prompts</div>
       <h4>Ce que vous faites</h4>
-      <p>Les vingt prompts définitifs, dans une colonne supplémentaire de la feuille de plans ou dans <code>04_chartes/prompts.md</code>. Plus la planche de cohérence validée qui servira de référence image à tous les plans.</p>
+      <p>Les vingt prompts définitifs, dans une colonne supplémentaire de la feuille de plans ou dans <code>04_bibles/prompts.md</code>. Plus la planche de cohérence validée qui servira de référence image à tous les plans.</p>
       <h4>Vous pouvez passer à la suite quand</h4>
       <ul>
         <li>Les vingt prompts existent, en anglais, en une phrase chacun.</li>
@@ -4811,7 +4821,7 @@ text overlay, oversaturated, fisheye distortion, duplicated subject</pre>
     <div class="exercise">
       <div class="hd">Stage 8 · The prompt library</div>
       <h4>What you do</h4>
-      <p>The twenty final prompts, in an extra column of the shot sheet or in <code>04_chartes/prompts.md</code>. Plus the approved consistency sheet that will serve as image reference for every shot.</p>
+      <p>The twenty final prompts, in an extra column of the shot sheet or in <code>04_bibles/prompts.md</code>. Plus the approved consistency sheet that will serve as image reference for every shot.</p>
       <h4>Ready to move on when</h4>
       <ul>
         <li>Twenty prompts exist, in English, one sentence each.</li>
@@ -4922,7 +4932,7 @@ text overlay, oversaturated, fisheye distortion, duplicated subject</pre>
             <td><strong>1 · Exploration</strong></td>
             <td>La composition. Graine aléatoire, résolution basse, rapide. Vous ne regardez ni les visages ni les détails : uniquement le cadre et la lisibilité.</td>
             <td>6 – 10 par plan</td>
-            <td>Une composition dit ce que la colonne <code>intention</code> demande.</td>
+            <td>Une composition dit ce que la colonne <code>intent</code> demande.</td>
           </tr>
           <tr>
             <td><strong>2 · Verrouillage</strong></td>
@@ -4934,7 +4944,7 @@ text overlay, oversaturated, fisheye distortion, duplicated subject</pre>
             <td><strong>3 · Finition</strong></td>
             <td>Résolution finale, pas plus élevés. Retouche par instruction pour les défauts locaux plutôt que regénération.</td>
             <td>1 – 2 par plan</td>
-            <td>L’image est exportable telle quelle dans <code>VALIDE/</code>.</td>
+            <td>L’image est exportable telle quelle dans <code>APPROVED/</code>.</td>
           </tr>
         </tbody>
       </table>
@@ -4953,7 +4963,7 @@ text overlay, oversaturated, fisheye distortion, duplicated subject</pre>
     <ol>
       <li><strong>Par l’étalonnage, plus tard.</strong> La méthode la plus efficace : ne corrigez rien maintenant, et harmonisez tout au chapitre <a href="#ch17">17</a> dans l’outil de montage, où vous voyez les vingt plans côte à côte en mouvement. <strong>C’est la recommandation de ce manuel.</strong></li>
       <li><strong>Par transfert de style.</strong> Vous désignez une de vos images comme référence de style et vous demandez au modèle d’y aligner les autres. Efficace, mais chaque passage dégrade un peu le détail.</li>
-      <li><strong>Par reprise à faible débruitage.</strong> Vous repassez les images divergentes à <code>denoise 0,3</code> avec le même prompt. Conserve la composition, réharmonise la matière. Utile sur deux ou trois plans, pas sur vingt.</li>
+      <li><strong>Par reprise à faible débruitage.</strong> Vous repassez les images divergentes à <code>denoise 0.3</code> avec le même prompt. Conserve la composition, réharmonise la matière. Utile sur deux ou trois plans, pas sur vingt.</li>
     </ol>
     <div class="callout c-tip">
       <span class="lbl">N’uniformisez pas trop tôt</span>
@@ -4978,12 +4988,12 @@ text overlay, oversaturated, fisheye distortion, duplicated subject</pre>
     <div class="exercise">
       <div class="hd">Étape 9 · Les vingt images clés</div>
       <h4>Ce que vous faites</h4>
-      <p>Les trois passes sur les vingt plans. Les versions restent dans <code>05_storyboard/</code>, les images validées sont copiées dans <code>05_storyboard/VALIDE/</code> sous leur nom court. La colonne <code>seed</code> et la colonne <code>statut</code> sont tenues à jour au fur et à mesure.</p>
+      <p>Les trois passes sur les vingt plans. Les versions restent dans <code>05_storyboard/</code>, les images validées sont copiées dans <code>05_storyboard/APPROVED/</code> sous leur nom court. La colonne <code>seed</code> et la colonne <code>status</code> sont tenues à jour au fur et à mesure.</p>
       <h4>Ce que cela produit</h4>
       <p>Le livrable B. Et la matière de l’animatique du chapitre suivant.</p>
       <h4>Vous pouvez passer à la suite quand</h4>
       <ul>
-        <li>Vingt fichiers exactement dans <code>VALIDE/</code>, de <code>P01.png</code> à <code>P20.png</code>.</li>
+        <li>Vingt fichiers exactement dans <code>APPROVED/</code>, de <code>P01.png</code> à <code>P20.png</code>.</li>
         <li>Chaque ligne de la feuille de plans porte sa graine et son statut <code>image_ok</code>.</li>
         <li>Les cinq critères de la table 12.5 sont vérifiés sur chaque image.</li>
         <li>Vous avez ouvert les vingt images en planche contact et vous les reconnaissez comme un seul film.</li>
@@ -5072,7 +5082,7 @@ text overlay, oversaturated, fisheye distortion, duplicated subject</pre>
             <td><strong>1 · Exploration</strong></td>
             <td>Composition. Random seed, low resolution, fast. You look at neither faces nor details: only frame and legibility.</td>
             <td>6 – 10 per shot</td>
-            <td>One composition says what the <code>intention</code> column asks.</td>
+            <td>One composition says what the <code>intent</code> column asks.</td>
           </tr>
           <tr>
             <td><strong>2 · Locking</strong></td>
@@ -5084,7 +5094,7 @@ text overlay, oversaturated, fisheye distortion, duplicated subject</pre>
             <td><strong>3 · Finishing</strong></td>
             <td>Final resolution, no more steps. Instruction editing for local faults rather than regeneration.</td>
             <td>1 – 2 per shot</td>
-            <td>The image is exportable as it stands into <code>VALIDE/</code>.</td>
+            <td>The image is exportable as it stands into <code>APPROVED/</code>.</td>
           </tr>
         </tbody>
       </table>
@@ -5128,12 +5138,12 @@ text overlay, oversaturated, fisheye distortion, duplicated subject</pre>
     <div class="exercise">
       <div class="hd">Stage 9 · The twenty key frames</div>
       <h4>What you do</h4>
-      <p>The three passes across twenty shots. Versions stay in <code>05_storyboard/</code>; approved images are copied into <code>05_storyboard/VALIDE/</code> under their short name. The <code>seed</code> and <code>statut</code> columns are kept current as you go.</p>
+      <p>The three passes across twenty shots. Versions stay in <code>05_storyboard/</code>; approved images are copied into <code>05_storyboard/APPROVED/</code> under their short name. The <code>seed</code> and <code>status</code> columns are kept current as you go.</p>
       <h4>What it produces</h4>
       <p>Deliverable B. And the material for the next chapter's animatic.</p>
       <h4>Ready to move on when</h4>
       <ul>
-        <li>Exactly twenty files in <code>VALIDE/</code>, from <code>P01.png</code> to <code>P20.png</code>.</li>
+        <li>Exactly twenty files in <code>APPROVED/</code>, from <code>P01.png</code> to <code>P20.png</code>.</li>
         <li>Every shot-sheet row carries its seed and status <code>image_ok</code>.</li>
         <li>The five criteria in table 12.5 are checked on every image.</li>
         <li>You have opened all twenty as a contact sheet and recognise them as one film.</li>
@@ -5212,7 +5222,7 @@ text overlay, oversaturated, fisheye distortion, duplicated subject</pre>
     <h3>13.3 L’animatique · le contrôle qui sauve le film</h3>
     <div class="callout c-doc">
       <span class="lbl">À faire avant de générer une seule vidéo</span>
-      <p>Montez vos vingt images fixes dans votre outil de montage, chacune à sa durée exacte de la colonne <code>duree</code>, et posez dessus l’ambiance sonore captée sur site. Vous obtenez une <strong>animatique</strong> : votre film de 60 secondes, en images fixes, en une heure de travail et sans une seconde de calcul GPU.</p>
+      <p>Montez vos vingt images fixes dans votre outil de montage, chacune à sa durée exacte de la colonne <code>duration</code>, et posez dessus l’ambiance sonore captée sur site. Vous obtenez une <strong>animatique</strong> : votre film de 60 secondes, en images fixes, en une heure de travail et sans une seconde de calcul GPU.</p>
     </div>
     <p>C’est l’opération la plus rentable du manuel, pour une raison arithmétique. À ce stade, corriger le découpage coûte une heure. Après l’étape 10, le même défaut coûte vingt regénérations vidéo, soit trois à dix heures de calcul et deux jours de travail. Et l’animatique révèle exactement ce que ni la feuille de plans ni la planche contact ne montrent :</p>
     <div class="tbl-wrap">
@@ -5312,7 +5322,7 @@ text overlay, oversaturated, fisheye distortion, duplicated subject</pre>
     <h3>13.3 The animatic · the check that saves the film</h3>
     <div class="callout c-doc">
       <span class="lbl">Do this before generating a single video</span>
-      <p>Cut your twenty stills into your editing tool, each at its exact duration from the <code>duree</code> column, and lay the site ambience over them. You get an <strong>animatic</strong>: your 60-second film, in stills, in an hour's work and with not one second of GPU compute.</p>
+      <p>Cut your twenty stills into your editing tool, each at its exact duration from the <code>duration</code> column, and lay the site ambience over them. You get an <strong>animatic</strong>: your 60-second film, in stills, in an hour's work and with not one second of GPU compute.</p>
     </div>
     <p>It is the highest-return operation in the manual, for an arithmetic reason. At this stage, fixing the breakdown costs an hour. After stage 10, the same fault costs twenty video regenerations — three to ten hours of compute and two days of work. And the animatic reveals exactly what neither the shot sheet nor the contact sheet shows:</p>
     <div class="tbl-wrap">
@@ -5472,9 +5482,9 @@ as <span class="var">[CE QUE LE MOUVEMENT RÉVÈLE]</span>.
       <p>Trois prises de chacun des vingt plans, en lots. Nommage <code>P07_t01.mp4</code>. Aucune sélection pendant la génération : vous triez après.</p>
       <h4>Vous pouvez passer à la suite quand</h4>
       <ul>
-        <li>Soixante fichiers existent dans <code>06_plans/</code>.</li>
+        <li>Soixante fichiers existent dans <code>06_shots/</code>.</li>
         <li>Vous avez identifié les plans qui résistent — ils passent au chapitre 15.</li>
-        <li>La colonne <code>statut</code> distingue les plans faciles des plans à reprendre.</li>
+        <li>La colonne <code>status</code> distingue les plans faciles des plans à reprendre.</li>
       </ul>
     </div>
   </div>
@@ -5581,9 +5591,9 @@ as <span class="var">[WHAT THE MOVEMENT REVEALS]</span>.
       <p>Three takes of each of the twenty shots, in batches. Naming <code>P07_t01.mp4</code>. No selection during generation: you sort afterwards.</p>
       <h4>Ready to move on when</h4>
       <ul>
-        <li>Sixty files exist in <code>06_plans/</code>.</li>
+        <li>Sixty files exist in <code>06_shots/</code>.</li>
         <li>You have identified the shots that resist — they go to chapter 15.</li>
-        <li>The <code>statut</code> column distinguishes easy shots from shots to rework.</li>
+        <li>The <code>status</code> column distinguishes easy shots from shots to rework.</li>
       </ul>
     </div>
   </div>
@@ -5705,8 +5715,8 @@ as <span class="var">[WHAT THE MOVEMENT REVEALS]</span>.
         <tbody>
           <tr><td><strong>1</strong></td><td>Cohérence</td><td>Le personnage, le lieu et le style sont-ils conformes aux chartes ? Une prise incohérente est éliminée, même si c’est la plus belle.</td></tr>
           <tr><td><strong>2</strong></td><td>Absence d’aberration</td><td>Mains, visages, objets qui se déforment, géométrie qui glisse. Regardez <strong>image par image</strong> sur les passages douteux.</td></tr>
-          <tr><td><strong>3</strong></td><td>Justesse du mouvement</td><td>Le mouvement fait-il ce que dit la colonne <code>mouvement</code>, à la vitesse voulue ?</td></tr>
-          <tr><td><strong>4</strong></td><td>Intention</td><td>Et seulement maintenant : la prise produit-elle ce que dit la colonne <code>intention</code> ?</td></tr>
+          <tr><td><strong>3</strong></td><td>Justesse du mouvement</td><td>Le mouvement fait-il ce que dit la colonne <code>movement</code>, à la vitesse voulue ?</td></tr>
+          <tr><td><strong>4</strong></td><td>Intention</td><td>Et seulement maintenant : la prise produit-elle ce que dit la colonne <code>intent</code> ?</td></tr>
         </tbody>
       </table>
     </div>
@@ -5744,10 +5754,10 @@ as <span class="var">[WHAT THE MOVEMENT REVEALS]</span>.
     <div class="exercise">
       <div class="hd">Étape 12 · Les vingt plans validés</div>
       <h4>Ce que vous faites</h4>
-      <p>Reprise des plans qui résistent avec les outils de 15.1 et 15.2. Puis sélection : la prise retenue de chaque plan est copiée dans <code>06_plans/VALIDE/</code> sous son nom court. Statut <code>valide</code> dans la feuille de plans.</p>
+      <p>Reprise des plans qui résistent avec les outils de 15.1 et 15.2. Puis sélection : la prise retenue de chaque plan est copiée dans <code>06_shots/APPROVED/</code> sous son nom court. Statut <code>approved</code> dans la feuille de plans.</p>
       <h4>Vous pouvez passer à la suite quand</h4>
       <ul>
-        <li>Vingt fichiers exactement dans <code>06_plans/VALIDE/</code>, de <code>P01.mp4</code> à <code>P20.mp4</code>.</li>
+        <li>Vingt fichiers exactement dans <code>06_shots/APPROVED/</code>, de <code>P01.mp4</code> à <code>P20.mp4</code>.</li>
         <li>Chaque prise retenue a passé les quatre critères de 15.3, dans l’ordre.</li>
         <li>Aucune prise retenue ne contredit une charte.</li>
         <li>Vous savez, pour chaque plan abandonné en route, pourquoi — et c’est écrit dans le journal.</li>
@@ -5802,8 +5812,8 @@ as <span class="var">[WHAT THE MOVEMENT REVEALS]</span>.
         <tbody>
           <tr><td><strong>1</strong></td><td>Consistency</td><td>Do character, place and style conform to the bibles? An inconsistent take is eliminated, even if it is the most beautiful.</td></tr>
           <tr><td><strong>2</strong></td><td>No aberration</td><td>Hands, faces, objects deforming, geometry sliding. Look <strong>frame by frame</strong> at the doubtful passages.</td></tr>
-          <tr><td><strong>3</strong></td><td>Correctness of movement</td><td>Does the movement do what the <code>mouvement</code> column says, at the intended speed?</td></tr>
-          <tr><td><strong>4</strong></td><td>Intent</td><td>And only now: does the take produce what the <code>intention</code> column says?</td></tr>
+          <tr><td><strong>3</strong></td><td>Correctness of movement</td><td>Does the movement do what the <code>movement</code> column says, at the intended speed?</td></tr>
+          <tr><td><strong>4</strong></td><td>Intent</td><td>And only now: does the take produce what the <code>intent</code> column says?</td></tr>
         </tbody>
       </table>
     </div>
@@ -5841,10 +5851,10 @@ as <span class="var">[WHAT THE MOVEMENT REVEALS]</span>.
     <div class="exercise">
       <div class="hd">Stage 12 · The twenty approved shots</div>
       <h4>What you do</h4>
-      <p>Rework the resisting shots with the tools in 15.1 and 15.2. Then select: the chosen take of each shot is copied into <code>06_plans/VALIDE/</code> under its short name. Status <code>valide</code> in the shot sheet.</p>
+      <p>Rework the resisting shots with the tools in 15.1 and 15.2. Then select: the chosen take of each shot is copied into <code>06_shots/APPROVED/</code> under its short name. Status <code>approved</code> in the shot sheet.</p>
       <h4>Ready to move on when</h4>
       <ul>
-        <li>Exactly twenty files in <code>06_plans/VALIDE/</code>, from <code>P01.mp4</code> to <code>P20.mp4</code>.</li>
+        <li>Exactly twenty files in <code>06_shots/APPROVED/</code>, from <code>P01.mp4</code> to <code>P20.mp4</code>.</li>
         <li>Every chosen take has passed the four criteria in 15.3, in order.</li>
         <li>No chosen take contradicts a bible.</li>
         <li>For every shot abandoned along the way you know why — and it is written in the log.</li>
@@ -6015,7 +6025,7 @@ as <span class="var">[WHAT THE MOVEMENT REVEALS]</span>.
     <p>Si vous en mettez, suivez la Fig 16.1 : elle entre <strong>à la bascule</strong>, pas au premier plan, et elle sort <strong>avant le dernier plan</strong>. Une musique qui commence à zéro seconde annonce à l’oreille qu’il n’y aura pas de surprise.</p>
     <div class="callout c-doc">
       <span class="lbl">Documenté · les droits, avant l’esthétique</span>
-      <p>La musique est le point où les projets étudiants s’exposent le plus juridiquement. Vous avez trois voies licites : une musique <strong>générée</strong> par un service dont les conditions autorisent votre usage, une musique <strong>libre de droits</strong> avec sa licence archivée, ou une musique <strong>composée</strong> par vous ou un camarade crédité. Un morceau commercial, même court, même « juste pour le jury », rend votre film indiffusable. Archivez la preuve de licence dans <code>07_son/</code> dès le téléchargement.</p>
+      <p>La musique est le point où les projets étudiants s’exposent le plus juridiquement. Vous avez trois voies licites : une musique <strong>générée</strong> par un service dont les conditions autorisent votre usage, une musique <strong>libre de droits</strong> avec sa licence archivée, ou une musique <strong>composée</strong> par vous ou un camarade crédité. Un morceau commercial, même court, même « juste pour le jury », rend votre film indiffusable. Archivez la preuve de licence dans <code>07_sound/</code> dès le téléchargement.</p>
     </div>
 
     <h3>16.6 Le mixage</h3>
@@ -6037,7 +6047,7 @@ as <span class="var">[WHAT THE MOVEMENT REVEALS]</span>.
         <li>Au moins trois événements sonores sont hors champ.</li>
         <li>Au moins un raccord fragile est tenu par un son en avance.</li>
         <li>La voix n’explique pas le film.</li>
-        <li>Toute musique employée a sa licence archivée dans <code>07_son/</code>.</li>
+        <li>Toute musique employée a sa licence archivée dans <code>07_sound/</code>.</li>
         <li>Vous avez écouté le film entier les yeux fermés, et il raconte encore quelque chose.</li>
       </ul>
       <p style="margin-top:1rem"><em>Le test des yeux fermés est le plus sévère du manuel. Si la bande son seule ne tient pas soixante secondes, l’image porte tout le film, et c’est trop lui demander.</em></p>
@@ -6092,7 +6102,7 @@ as <span class="var">[WHAT THE MOVEMENT REVEALS]</span>.
     <p>If you use it, follow Fig 16.1: it enters <strong>at the turn</strong>, not on the first shot, and it exits <strong>before the last shot</strong>. Music starting at zero seconds tells the ear there will be no surprise.</p>
     <div class="callout c-doc">
       <span class="lbl">Documented · rights before aesthetics</span>
-      <p>Music is where student projects expose themselves legally most. You have three lawful routes: music <strong>generated</strong> by a service whose terms permit your use, music that is <strong>licensed for reuse</strong> with the licence archived, or music <strong>composed</strong> by you or a credited classmate. A commercial track, however short, however "just for the crit", makes your film undistributable. Archive proof of licence in <code>07_son/</code> at the moment you download it.</p>
+      <p>Music is where student projects expose themselves legally most. You have three lawful routes: music <strong>generated</strong> by a service whose terms permit your use, music that is <strong>licensed for reuse</strong> with the licence archived, or music <strong>composed</strong> by you or a credited classmate. A commercial track, however short, however "just for the crit", makes your film undistributable. Archive proof of licence in <code>07_sound/</code> at the moment you download it.</p>
     </div>
 
     <h3>16.6 The mix</h3>
@@ -6114,7 +6124,7 @@ as <span class="var">[WHAT THE MOVEMENT REVEALS]</span>.
         <li>At least three sound events are off-screen.</li>
         <li>At least one fragile cut is held by a pre-lapped sound.</li>
         <li>The voice does not explain the film.</li>
-        <li>Any music used has its licence archived in <code>07_son/</code>.</li>
+        <li>Any music used has its licence archived in <code>07_sound/</code>.</li>
         <li>You have listened to the whole film with your eyes closed, and it still tells you something.</li>
       </ul>
       <p style="margin-top:1rem"><em>The eyes-closed test is the harshest in the manual. If the soundtrack alone will not hold sixty seconds, the picture is carrying the entire film, and that is too much to ask of it.</em></p>
@@ -6155,7 +6165,7 @@ as <span class="var">[WHAT THE MOVEMENT REVEALS]</span>.
 
     <h3>17.2 Monter les vingt plans</h3>
     <ol>
-      <li><strong>Importez uniquement <code>VALIDE/</code>.</strong> Les soixante prises n’entrent pas dans le projet de montage : elles y créeraient une confusion permanente.</li>
+      <li><strong>Importez uniquement <code>APPROVED/</code>.</strong> Les soixante prises n’entrent pas dans le projet de montage : elles y créeraient une confusion permanente.</li>
       <li><strong>Posez les vingt plans dans l’ordre, aux durées de la feuille de plans.</strong> Vous retrouvez votre animatique, en mouvement.</li>
       <li><strong>Posez la bande son du chapitre 16.</strong> Elle est déjà construite : elle ne se remonte pas ici.</li>
       <li><strong>Puis, et seulement là, travaillez le rythme.</strong> Regardez le film en entier sans vous arrêter, notez ce qui traîne, corrigez, revoyez. Cinq ou six passages complets.</li>
@@ -6194,7 +6204,7 @@ as <span class="var">[WHAT THE MOVEMENT REVEALS]</span>.
           <tr><td>Résolution</td><td>1920 × 1080 minimum, à la cadence de votre timeline</td></tr>
           <tr><td>Débit</td><td>20 – 40 Mb/s. Un film de 60 s tient largement.</td></tr>
           <tr><td>Audio</td><td>AAC 48 kHz, stéréo, crêtes à −3 dB</td></tr>
-          <tr><td>Nom de fichier</td><td><code>NOM_Prenom_titre_v01.mp4</code> — pas <code>export final FINAL 2.mp4</code></td></tr>
+          <tr><td>Nom de fichier</td><td><code>SURNAME_Firstname_title_v01.mp4</code> — pas <code>final export FINAL 2.mp4</code></td></tr>
         </tbody>
       </table>
     </div>
@@ -6257,7 +6267,7 @@ as <span class="var">[WHAT THE MOVEMENT REVEALS]</span>.
 
     <h3>17.2 Cutting the twenty shots</h3>
     <ol>
-      <li><strong>Import only <code>VALIDE/</code>.</strong> The sixty takes do not enter the edit project: they would create permanent confusion.</li>
+      <li><strong>Import only <code>APPROVED/</code>.</strong> The sixty takes do not enter the edit project: they would create permanent confusion.</li>
       <li><strong>Lay the twenty shots in order, at the shot sheet's durations.</strong> You get your animatic back, in motion.</li>
       <li><strong>Lay the chapter 16 soundtrack.</strong> It is already built: it is not re-edited here.</li>
       <li><strong>Then, and only then, work the rhythm.</strong> Watch the film through without stopping, note what drags, fix, watch again. Five or six complete passes.</li>
@@ -6609,10 +6619,10 @@ by <span class="cm">[your name]</span>, at <span class="cm">[place]</span>, <spa
           <tr><td>Les vêtements changent de couleur ou de matière</td><td>La charte ne précise ni la couleur exacte ni la matière</td><td>Réécrivez la signature vestimentaire : pièce, couleur précise, matière, état. Puis retouche par instruction sur les plans fautifs plutôt que regénération</td><td><a href="#ch10">10</a></td></tr>
           <tr><td>Un accessoire distinctif disparaît sur certains plans</td><td>Plus de deux accessoires dans la charte : le modèle en abandonne</td><td>Réduisez à un ou deux accessoires, les plus visibles</td><td><a href="#ch10">10</a></td></tr>
           <tr><td>Le personnage paraît plus jeune ou plus vieux selon les plans</td><td>L’âge est écrit en approximation (« la quarantaine »)</td><td>Écrivez un nombre : <code>a 45-year-old man</code></td><td><a href="#ch10">10</a></td></tr>
-          <tr><td>On ne reconnaît pas le lieu d’un plan à l’autre</td><td>Pas de charte de lieu, ou deux zones du site mélangées dans un seul bloc</td><td>Une charte de lieu par zone, et la colonne <code>lieu</code> de la feuille de plans dit laquelle appliquer</td><td><a href="#ch10">10</a></td></tr>
+          <tr><td>On ne reconnaît pas le lieu d’un plan à l’autre</td><td>Pas de charte de lieu, ou deux zones du site mélangées dans un seul bloc</td><td>Une charte de lieu par zone, et la colonne <code>place</code> de la feuille de plans dit laquelle appliquer</td><td><a href="#ch10">10</a></td></tr>
           <tr><td>Un plan est nettement plus saturé ou plus contrasté que les autres</td><td>Le suffixe de style a été modifié en cours de route</td><td>Retrouvez la version du suffixe dans le journal, réappliquez-la partout. Si le suffixe doit changer, il change pour les vingt plans</td><td><a href="#ch10">10</a></td></tr>
           <tr><td>Le film est joli mais pourrait se passer n’importe où</td><td>Aucune référence injectée : le modèle a produit sa moyenne</td><td>Remplissez la colonne <code>ref_images</code> et branchez les références. Si votre référentiel est trop pauvre, retournez sur site — ou réécrivez les cinq règles du monde (§6.6)</td><td><a href="#ch2">2</a>, <a href="#ch6">6</a>, <a href="#ch12">12</a></td></tr>
-          <tr><td>La lumière vient de la gauche dans un plan, de la droite dans le suivant</td><td>La colonne <code>lumiere</code> n’est pas constante</td><td>Une seule valeur pour les vingt lignes, avec direction cardinale explicite. Contrôle sur papier avant regénération</td><td><a href="#ch9">9</a></td></tr>
+          <tr><td>La lumière vient de la gauche dans un plan, de la droite dans le suivant</td><td>La colonne <code>light</code> n’est pas constante</td><td>Une seule valeur pour les vingt lignes, avec direction cardinale explicite. Contrôle sur papier avant regénération</td><td><a href="#ch9">9</a></td></tr>
         </tbody>
       </table>
     </div>
@@ -6678,7 +6688,7 @@ by <span class="cm">[your name]</span>, at <span class="cm">[place]</span>, <spa
           <tr><td>Les couleurs divergent d’un plan à l’autre</td><td>Chaque image a été générée indépendamment — c’est normal</td><td>Étalonnage au montage, plan de référence puis correction d’ensemble. N’uniformisez pas avant</td><td><a href="#ch12">12</a>, <a href="#ch17">17</a></td></tr>
           <tr><td>Le film a l’air lisse, artificiel, « fabriqué »</td><td>Absence de grain, propreté anormale de la génération</td><td>Une couche de grain identique sur tout le film, en dernier</td><td><a href="#ch17">17</a></td></tr>
           <tr><td>Le film ne répond plus à sa problématique</td><td>Dérive de projet accumulée sur six semaines</td><td>Relisez la fiche de problématique de l’étape 2, puis revoyez le film immédiatement. Corrigez au montage ce qui peut l’être</td><td><a href="#ch5">5</a>, <a href="#ch17">17</a></td></tr>
-          <tr><td>Vous ne savez plus quel fichier est la bonne version</td><td>Pas de dossier <code>VALIDE/</code>, nommage improvisé</td><td>Créez <code>VALIDE/</code> maintenant et n’y mettez qu’un fichier par plan, sous son nom court</td><td><a href="#ch4">4</a></td></tr>
+          <tr><td>Vous ne savez plus quel fichier est la bonne version</td><td>Pas de dossier <code>APPROVED/</code>, nommage improvisé</td><td>Créez <code>APPROVED/</code> maintenant et n’y mettez qu’un fichier par plan, sous son nom court</td><td><a href="#ch4">4</a></td></tr>
           <tr><td>Il reste trois jours et le montage n’est pas commencé</td><td>Tout le temps est passé en génération</td><td>Arrêtez de générer. Montez avec ce que vous avez : un film monté avec dix-huit plans corrects vaut mieux que vingt plans jamais assemblés</td><td><a href="#ch17">17</a></td></tr>
           <tr><td>Trois spectateurs racontent trois histoires différentes</td><td>Le découpage n’est pas lisible</td><td>Problème de fond. Retour au chapitre 7 : la forme narrative n’est pas tenue, ou deux formes sont mélangées</td><td><a href="#ch7">7</a>, <a href="#ch13">13</a></td></tr>
         </tbody>
@@ -6702,10 +6712,10 @@ by <span class="cm">[your name]</span>, at <span class="cm">[place]</span>, <spa
           <tr><td>Clothing changes colour or material</td><td>The bible states neither exact colour nor material</td><td>Rewrite the clothing signature: garment, precise colour, material, condition. Then instruction-edit the offending shots rather than regenerating</td><td><a href="#ch10">10</a></td></tr>
           <tr><td>A distinctive accessory disappears in some shots</td><td>More than two accessories in the bible: the model drops some</td><td>Cut back to one or two accessories, the most visible</td><td><a href="#ch10">10</a></td></tr>
           <tr><td>The character looks younger or older depending on the shot</td><td>Age written as an approximation ("fortyish")</td><td>Write a number: <code>a 45-year-old man</code></td><td><a href="#ch10">10</a></td></tr>
-          <tr><td>The place is not recognisable shot to shot</td><td>No place bible, or two site zones mixed into one block</td><td>One place bible per zone, and the shot sheet's <code>lieu</code> column says which to apply</td><td><a href="#ch10">10</a></td></tr>
+          <tr><td>The place is not recognisable shot to shot</td><td>No place bible, or two site zones mixed into one block</td><td>One place bible per zone, and the shot sheet's <code>place</code> column says which to apply</td><td><a href="#ch10">10</a></td></tr>
           <tr><td>One shot is markedly more saturated or contrasted than the rest</td><td>The style suffix was modified along the way</td><td>Recover the suffix version from your log and reapply it everywhere. If the suffix must change, it changes for all twenty shots</td><td><a href="#ch10">10</a></td></tr>
           <tr><td>The film is pretty but could be set anywhere</td><td>No references injected: the model produced its average</td><td>Fill the <code>ref_images</code> column and wire the references in. If your reference set is too thin, go back to the site — or rewrite the five rules of the world (§6.6)</td><td><a href="#ch2">2</a>, <a href="#ch6">6</a>, <a href="#ch12">12</a></td></tr>
-          <tr><td>Light comes from the left in one shot and the right in the next</td><td>The <code>lumiere</code> column is not constant</td><td>One value across twenty rows, with an explicit cardinal direction. Check on paper before regenerating</td><td><a href="#ch9">9</a></td></tr>
+          <tr><td>Light comes from the left in one shot and the right in the next</td><td>The <code>light</code> column is not constant</td><td>One value across twenty rows, with an explicit cardinal direction. Check on paper before regenerating</td><td><a href="#ch9">9</a></td></tr>
         </tbody>
       </table>
     </div>
@@ -6771,7 +6781,7 @@ by <span class="cm">[your name]</span>, at <span class="cm">[place]</span>, <spa
           <tr><td>Colours diverge shot to shot</td><td>Every image was generated independently — that is normal</td><td>Grade in the edit: reference shot, then overall correction. Do not unify before</td><td><a href="#ch12">12</a>, <a href="#ch17">17</a></td></tr>
           <tr><td>The film looks smooth, artificial, "manufactured"</td><td>No grain; the abnormal cleanliness of generation</td><td>One identical grain layer across the whole film, last</td><td><a href="#ch17">17</a></td></tr>
           <tr><td>The film no longer answers its research question</td><td>Project drift accumulated over six weeks</td><td>Re-read the stage 2 question sheet, then watch the film immediately. Fix in the edit what can be fixed</td><td><a href="#ch5">5</a>, <a href="#ch17">17</a></td></tr>
-          <tr><td>You no longer know which file is the right version</td><td>No <code>VALIDE/</code> folder; improvised naming</td><td>Create <code>VALIDE/</code> now and put only one file per shot in it, under its short name</td><td><a href="#ch4">4</a></td></tr>
+          <tr><td>You no longer know which file is the right version</td><td>No <code>APPROVED/</code> folder; improvised naming</td><td>Create <code>APPROVED/</code> now and put only one file per shot in it, under its short name</td><td><a href="#ch4">4</a></td></tr>
           <tr><td>Three days left and the edit has not started</td><td>All the time went into generation</td><td>Stop generating. Cut with what you have: a finished film with eighteen decent shots beats twenty shots never assembled</td><td><a href="#ch17">17</a></td></tr>
           <tr><td>Three viewers tell three different stories</td><td>The breakdown is not legible</td><td>A substantive problem. Back to chapter 7: the narrative form is not held, or two forms are mixed</td><td><a href="#ch7">7</a>, <a href="#ch13">13</a></td></tr>
         </tbody>
@@ -6831,7 +6841,7 @@ by <span class="cm">[your name]</span>, at <span class="cm">[place]</span>, <spa
     </details>
 
     <details class="faq"><summary>Faut-il vraiment remplir les treize colonnes de la feuille de plans ?</summary>
-      <div class="faq-body"><p>Oui, et la colonne qu’on saute — <code>intention</code> — est celle qui vous servira le plus au chapitre 15, quand il faudra choisir entre trois prises. Sans elle, vous choisirez la plus jolie ; avec elle, vous choisirez la juste.</p></div>
+      <div class="faq-body"><p>Oui, et la colonne qu’on saute — <code>intent</code> — est celle qui vous servira le plus au chapitre 15, quand il faudra choisir entre trois prises. Sans elle, vous choisirez la plus jolie ; avec elle, vous choisirez la juste.</p></div>
     </details>
 
     <div class="faq-group">Cohérence</div>
@@ -6978,7 +6988,7 @@ by <span class="cm">[your name]</span>, at <span class="cm">[place]</span>, <spa
     </details>
 
     <details class="faq"><summary>Do I really have to fill all thirteen shot-sheet columns?</summary>
-      <div class="faq-body"><p>Yes, and the one everyone skips — <code>intention</code> — is the one that will serve you most in chapter 15, when you have to choose between three takes. Without it you will choose the prettiest; with it you will choose the right one.</p></div>
+      <div class="faq-body"><p>Yes, and the one everyone skips — <code>intent</code> — is the one that will serve you most in chapter 15, when you have to choose between three takes. Without it you will choose the prettiest; with it you will choose the right one.</p></div>
     </details>
 
     <div class="faq-group">Consistency</div>

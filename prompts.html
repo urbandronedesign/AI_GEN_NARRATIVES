@@ -645,11 +645,11 @@ text overlay, oversaturated, fisheye distortion, duplicated subject</pre>
 <h3><span class="fr-only">En-tête de la feuille de plans</span><span class="en-only">Shot sheet header</span></h3>
 <div class="pr">
   <div class="pr-hd"><span class="who">CSV</span><span class="fr-only">Collez dans un tableur, une ligne par plan</span><span class="en-only">Paste into a spreadsheet, one row per shot</span><span class="sp"></span><button class="pr-copy" onclick="prCopy(this)">Copy</button></div>
-  <pre>plan,bloc,duree,action,echelle,angle,mouvement,lieu,lumiere,intention,son,ref_images,seed,statut</pre>
+  <pre>shot,block,duration,action,size,angle,movement,place,light,intent,sound,ref_images,seed,status</pre>
 </div>
-<pre class="plain">P01,I,3,"Le rideau métallique fermé, de face",GP,niveau,fixe,"entrée est","rasante NE dure","entrer par une surface","ambiance lointaine",PHOTO_003;PHOTO_007,774213,valide
-P02,I,3,"Une main pose une caisse hors champ",TGP,plongée,fixe,"entrée est","rasante NE dure","une présence sans personne","événement : caisse",PHOTO_022,481990,image_ok
-P03,I,3,"Le volume vide de la halle",TL,niveau,"pano lent G→D","halle nord","zénithale diffuse","la contradiction est déjà là","ambiance + réverbération",PHOTO_014;PHOTO_015,,a_faire</pre>
+<pre class="plain">P01,I,3,"Le rideau métallique fermé, de face",GP,niveau,static,"entrée est","rasante NE dure","entrer par une surface","ambiance lointaine",PHOTO_003;PHOTO_007,774213,approved
+P02,I,3,"Une main pose une caisse hors champ",TGP,plongée,static,"entrée est","rasante NE dure","une présence sans personne","événement : caisse",PHOTO_022,481990,image_ok
+P03,I,3,"Le volume vide de la halle",TL,niveau,"pano lent G→D","halle nord","zénithale diffuse","la contradiction est déjà là","ambiance + réverbération",PHOTO_014;PHOTO_015,,todo</pre>
 
 <h3><span class="fr-only">Les trois chartes</span><span class="en-only">The three bibles</span></h3>
 <pre class="plain"><span class="cm"># CHARTE PERSONNAGE — v1 — <span class="var">date</span></span>
@@ -707,22 +707,22 @@ by <span class="var">[your name]</span>, at <span class="var">[place]</span>, <s
 </div>
 
 <h3><span class="fr-only">Le dossier de projet</span><span class="en-only">The project folder</span></h3>
-<pre class="plain">FILM_2026_<span class="cm">nom-du-projet</span>/
+<pre class="plain">FILM_2026_<span class="cm">project-name</span>/
 ├── 00_brief/            <span class="cm">brief, problématique · cinq règles du monde · LICENCES/</span>
 ├── 01_references/
 │   ├── photo/           <span class="cm">PHOTO_001_zone_sujet.jpg</span>
 │   ├── video/
-│   ├── son/             <span class="cm">SON_001_zone_ambiance.wav</span>
+│   ├── sound/           <span class="cm">SOUND_001_zone_ambience.wav</span>
 │   ├── docs/            <span class="cm">cartes, relevés · ou recherche de précédents</span>
 │   ├── style/           <span class="cm">+ SOURCES.md obligatoire</span>
 │   └── INDEX.md
-├── 02_ecriture/         <span class="cm">pitch.md · script.md</span>
-├── 03_decoupage/        <span class="cm">feuille_de_plans.csv</span>
-├── 04_chartes/          <span class="cm">personnage · lieu · style · prompts.md</span>
-├── 05_storyboard/       <span class="cm">P01_v01.png …   └── VALIDE/ P01.png … P20.png</span>
-├── 06_plans/            <span class="cm">P01_t01.mp4 …   └── VALIDE/ P01.mp4 … P20.mp4</span>
-├── 07_son/              <span class="cm">ambiances/ voix/ musique/ sfx/ + licences</span>
-├── 08_montage/
+├── 02_writing/         <span class="cm">pitch.md · script.md</span>
+├── 03_breakdown/        <span class="cm">shot_sheet.csv</span>
+├── 04_bibles/          <span class="cm">personnage · lieu · style · prompts.md</span>
+├── 05_storyboard/       <span class="cm">P01_v01.png …   └── APPROVED/ P01.png … P20.png</span>
+├── 06_shots/            <span class="cm">P01_t01.mp4 …   └── APPROVED/ P01.mp4 … P20.mp4</span>
+├── 07_sound/            <span class="cm">ambience/ voice/ music/ sfx/ + licences</span>
+├── 08_edit/
 ├── 09_export/
 └── journal.md           <span class="cm">les décisions, et pourquoi</span></pre>
 

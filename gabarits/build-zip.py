@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build gabarits/dossier-de-projet.zip from gabarits/FILM_2026_nom-du-projet/.
+"""Build gabarits/dossier-de-projet.zip from gabarits/FILM_2026_project-name/.
 
 The repo needs .gitkeep files to track empty directories; a student's archive
 should not contain them. So we zip the real files, then re-create every empty
@@ -11,9 +11,9 @@ import os
 import zipfile
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-SRC = os.path.join(HERE, "FILM_2026_nom-du-projet")
+SRC = os.path.join(HERE, "FILM_2026_project-name")
 OUT = os.path.join(HERE, "dossier-de-projet.zip")
-ROOT = "FILM_2026_nom-du-projet"
+ROOT = "FILM_2026_project-name"
 
 if not os.path.isdir(SRC):
     raise SystemExit("source tree not found: " + SRC)

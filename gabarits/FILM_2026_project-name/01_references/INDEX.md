@@ -62,8 +62,8 @@
 
 | Fichier | Type | Zone | Durée | Écouté au casque en entier ? |
 |---------|------|------|-------|------------------------------|
-| `SON_001_` | ambiance |  |  | ☐ |
-| `SON_002_` | événement |  |  | ☐ |
+| `SOUND_001_` | ambiance |  |  | ☐ |
+| `SOUND_002_` | événement |  |  | ☐ |
 
 ---
 

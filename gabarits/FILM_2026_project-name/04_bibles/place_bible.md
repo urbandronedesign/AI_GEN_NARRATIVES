@@ -4,7 +4,7 @@
 > Chapitre 10, §10.2.
 >
 > **Une charte par zone.** Si votre film se passe dans deux zones, dupliquez ce fichier
-> (`charte_lieu_halle.md`, `charte_lieu_quai.md`) et la colonne `lieu` de la feuille de plans
+> (`place_bible_hall.md`, `place_bible_quay.md`) et la colonne `place` de la feuille de plans
 > dit laquelle appliquer. Mélanger deux zones dans un seul bloc produit un décor hybride qui
 > n'est ni l'un ni l'autre — le symptôme est un film qui « ne ressemble à rien de précis ».
 

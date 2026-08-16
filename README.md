@@ -124,9 +124,9 @@ Deux conventions portent la différence entre le fait et l'opinion :
 
 **[⬇ `gabarits/dossier-de-projet.zip`](gabarits/dossier-de-projet.zip)** — l'arborescence du chapitre 4, complète, avec **onze documents de travail déjà amorcés** : fiche de problématique, cinq règles du monde, index du référentiel, les trois chartes, pitch, script, journal, et la feuille de plans déjà remplie avec les vingt identifiants de plan et leurs blocs (somme des durées : 60 s).
 
-Les étudiants dézippent, renomment le dossier, et commencent. Les dossiers vides le sont volontairement — voir [gabarits/README.md](gabarits/README.md). La source browsable est [`gabarits/FILM_2026_nom-du-projet/`](gabarits/FILM_2026_nom-du-projet/) ; `python gabarits/build-zip.py` regénère l'archive après modification d'un gabarit.
+Les étudiants dézippent, renomment le dossier, et commencent. Les dossiers vides le sont volontairement — voir [gabarits/README.md](gabarits/README.md). La source browsable est [`gabarits/FILM_2026_project-name/`](gabarits/FILM_2026_project-name/) ; `python gabarits/build-zip.py` regénère l'archive après modification d'un gabarit.
 
-**Les noms de dossiers et de fichiers sont en français dans les deux éditions**, parce qu'il n'y a qu'un seul système de fichiers. L'édition anglaise nomme les mêmes fichiers réels.
+**Les noms de dossiers, de fichiers et de colonnes sont en anglais** dans les deux éditions, parce qu'il n'y a qu'un seul système de fichiers et que les étudiants sont à l'aise en anglais. Le manuel français nomme donc les mêmes fichiers réels, sans les traduire.
 
 ## Les outils de l'atelier
 
