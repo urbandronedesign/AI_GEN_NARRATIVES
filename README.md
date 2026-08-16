@@ -12,7 +12,11 @@ C'est le lien à donner aux étudiants — aucun téléchargement, aucune instal
 
 Page compagnon : tous les prompts du pipeline prêts à copier, le lexique bilingue de ce qu'il faut écrire pour obtenir ce que l'on veut (« lumière rasante » → `low raking light, long shadows`), et l'état des modèles. Classée par tâche, avec un filtre en direct.
 
-Pour l'usage hors ligne, téléchargez **[`recits_generatifs_manuel-v1.html`](recits_generatifs_manuel-v1.html)** et ouvrez-le dans n'importe quel navigateur. Un seul fichier autonome, ~540 Ko, aucune dépendance, aucune étape de compilation. Fonctionne depuis une clé USB sans connexion.
+### 🔧 **[Sous le capot →](https://urbandronedesign.github.io/AI_GEN_NARRATIVES/outils.html)**
+
+Deuxième page compagnon : ce qu'il y a derrière le formulaire. **ComfyUI** et comment lire un graphe, les modèles et leurs projets d'origine, et le catalogue des flux de l'atelier — y compris les trois que le manuel ne couvre pas (**inpainting au masque**, **SAM3**, **LivePortrait**), avec la réserve qui va avec. Se termine par un protocole pour juger un modèle qu'on ne connaît pas — la seule partie de la page qui ne se périmera pas.
+
+Pour l'usage hors ligne, téléchargez **[`recits_generatifs_manuel-v1.html`](recits_generatifs_manuel-v1.html)** et ouvrez-le dans n'importe quel navigateur. Un seul fichier autonome, ~595 Ko, aucune dépendance, aucune étape de compilation. Fonctionne depuis une clé USB sans connexion — emportez aussi [`prompts.html`](prompts.html) et [`outils.html`](outils.html), qui sont autonomes de la même façon.
 
 > **Manuel compagnon** — [3DVIZ · SketchUp & Rhino vers Twinmotion 2026](https://github.com/urbandronedesign/3DVIZ), même format, même conventions. Les deux se lisent de la même façon : bascule FR/EN, recherche, filtre de niveau, index par symptôme.
 
@@ -155,7 +159,7 @@ Ce script existe parce que ce document décrit **une seule réalité en deux lan
 
 ## Ce qui se périme, et ce qui ne se périme pas
 
-Ce champ change tous les deux mois. Tout ce qui est **nommé** — modèles, versions, chiffres de VRAM — est concentré dans le **chapitre 3** et dans **[prompts.html](prompts.html)**, pour que le reste du manuel reste juste. La *méthode* est faite pour survivre aux noms.
+Ce champ change tous les deux mois. Tout ce qui est **nommé** — modèles, versions, chiffres de VRAM — est concentré dans le **chapitre 3**, dans **[prompts.html](prompts.html)** et dans **[outils.html](outils.html)**, pour que le reste du manuel reste juste. La *méthode* est faite pour survivre aux noms.
 
 État des modèles : **août 2026**. Quand le manuel et votre installation ne sont pas d'accord sur un nom de nœud ou un réglage, croyez le logiciel.
 

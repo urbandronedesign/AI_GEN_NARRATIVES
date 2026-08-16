@@ -37,3 +37,7 @@ output/
 
 # Figures are tracked — images/ is deliberately NOT ignored.
 # Add the eight captures listed in CAPTURE-GUIDE.md there.
+
+# Python bytecode from tools/
+__pycache__/
+*.pyc

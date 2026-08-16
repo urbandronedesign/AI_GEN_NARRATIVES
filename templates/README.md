@@ -25,6 +25,9 @@ travail déjà amorcés. Dézippez, renommez le dossier avec le nom de votre pro
 | `04_bibles/character_bible.md` | étape 7 | 10 |
 | `04_bibles/place_bible.md` | étape 7 | 10 |
 | `04_bibles/style_bible.md` | étape 7 | 10 |
+| `04_bibles/prompts.md` | étape 8 — les vingt prompts et leurs graines | 10 · 11 |
+| `00_brief/consent_form.md` | **avant** de filmer ou d'entraîner quoi que ce soit | 18 |
+| `00_brief/LICENCES/README.md` | dès le premier modèle installé | 18 |
 
 Les dossiers vides le sont volontairement. Comme le dit le chapitre 4 : *un dossier vide qui
 attend est une consigne ; un dossier créé au moment où on en a besoin devient un débarras.*

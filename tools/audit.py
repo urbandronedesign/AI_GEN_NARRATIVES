@@ -32,7 +32,7 @@ from html.parser import HTMLParser
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MANUAL = os.path.join(ROOT, "recits_generatifs_manuel-v1.html")
-PAGES = ["recits_generatifs_manuel-v1.html", "prompts.html", "index.html"]
+PAGES = ["recits_generatifs_manuel-v1.html", "prompts.html", "outils.html", "index.html"]
 TEMPLATE_CSV = os.path.join(ROOT, "templates", "FILM_2026_project-name",
                             "03_breakdown", "shot_sheet.csv")
 
@@ -174,8 +174,16 @@ def pass_anchors():
         bad = sorted(hrefs - ids)
         if bad:
             fail("anchors", "%s: dangling %s" % (rel, bad))
-        else:
-            ok("%-34s %d links resolve" % (rel, len(hrefs)))
+
+        # local page-to-page links: the file has to be there
+        local = {h.split("#")[0] for h in re.findall(r'href="([^"#][^"]*)"', t)
+                 if not re.match(r"https?:|mailto:|//", h)}
+        missing = sorted(f for f in local if f and not os.path.exists(os.path.join(ROOT, f)))
+        if missing:
+            fail("anchors", "%s: links to missing file(s) %s" % (rel, missing))
+
+        if not bad and not missing:
+            ok("%-34s %d anchors + %d page links resolve" % (rel, len(hrefs), len(local)))
 
 
 # ───────────────────────────── 3 · fact parity ─────────────────────────────
@@ -269,6 +277,11 @@ def literals(t):
             out.append(c)
     blocks = re.findall(r"<pre[^>]*>(.*?)</pre>", t, re.S) or [t]
     for blk in blocks:
+        # A tree line is "path  <span class=cm>comment</span>", and in the French
+        # edition that comment is deliberately French prose. Only the path counts as
+        # an identifier, so drop the comment before scanning. Nothing is lost: French
+        # file and folder names are caught by BANNED_ANYWHERE, which scans everything.
+        blk = re.sub(r'<span class="cm">.*?</span>', "", blk, flags=re.S)
         for line in re.sub(r"<[^>]+>", "", blk).splitlines():
             s = line.strip()
             if any(g in line for g in ("├──", "└──", "│")) \

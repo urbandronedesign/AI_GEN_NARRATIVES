@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+<title>Sous le capot — Récits génératifs</title>
+<meta name="description" content="Les outils et les modèles derrière le pipeline : ComfyUI, les flux de l'atelier, les modèles, et où aller lire la suite.">
+<style>
+:root{
+  --paper:#ffffff; --ink:#1a1c1e; --ink-2:#52585f; --ink-3:#6d747b;
+  --rule:#e8eaec; --rule-2:#c8ccd1; --accent:#0f6d72; --wash:#f6f7f8;
+  --warn:#a4352c;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+  --mono:ui-monospace,"Cascadia Code",Consolas,"Courier New",monospace;
+  --topbar:rgba(255,255,255,.94);
+}
+@media(prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#14161a; --ink:#e4e7ea; --ink-2:#a6aeb6; --ink-3:#79828b;
+    --rule:#252a30; --rule-2:#39424b; --accent:#5fb8bd; --wash:#1a1d22;
+    --warn:#e59288; --topbar:rgba(20,22,26,.94);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#14161a; --ink:#e4e7ea; --ink-2:#a6aeb6; --ink-3:#79828b;
+  --rule:#252a30; --rule-2:#39424b; --accent:#5fb8bd; --wash:#1a1d22;
+  --warn:#e59288; --topbar:rgba(20,22,26,.94);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{font-size:100%;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--sans); background:var(--paper); color:var(--ink); line-height:1.65; font-size:1.02rem; -webkit-font-smoothing:antialiased}
+body.lang-fr .en-only, body.lang-en .fr-only{display:none !important}
+main{max-width:54rem; margin:0 auto; padding:0 2rem 8rem}
+code,pre{font-family:var(--mono)}
+
+#topbar{position:sticky; top:0; z-index:900; background:var(--topbar); backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--rule); margin:0 -2rem 2.5rem; padding:.7rem 2rem;
+  display:flex; gap:.55rem; align-items:center; flex-wrap:wrap}
+.search-wrap{position:relative; flex:1; min-width:170px}
+#filter{width:100%; background:transparent; border:none; border-bottom:1px solid var(--rule);
+  padding:.4rem .2rem .4rem 1.5rem; color:var(--ink); font-size:.86rem; font-family:inherit}
+#filter:focus{outline:none; border-bottom-color:var(--ink)}
+#filter::placeholder{color:var(--ink-3)}
+.search-wrap::before{content:"⌕"; position:absolute; left:.1rem; top:50%; transform:translateY(-50%); color:var(--ink-3); font-size:1.05rem}
+.seg{display:flex; border:1px solid var(--rule); border-radius:2px; overflow:hidden}
+.seg button{background:none; border:none; color:var(--ink-3); padding:.3rem .68rem; font-weight:500;
+  cursor:pointer; font-size:.73rem; font-family:inherit; letter-spacing:.06em; border-right:1px solid var(--rule)}
+.seg button:last-child{border-right:none}
+.seg button:hover{color:var(--ink)}
+.seg button.on{background:var(--ink); color:var(--paper)}
+.back{color:var(--accent); font-size:.78rem; text-decoration:none; white-space:nowrap}
+
+.cover{padding:3rem 0 2.5rem; border-bottom:1px solid var(--rule); margin-bottom:2.5rem}
+.cover h1{font-size:1.9rem; font-weight:600; letter-spacing:-.025em; line-height:1.15; margin-bottom:.8rem}
+.cover p{color:var(--ink-2); font-size:1rem; max-width:38rem}
+.cover .meta{color:var(--ink-3); font-size:.7rem; margin-top:1.4rem; letter-spacing:.11em; text-transform:uppercase}
+
+h2{font-size:1.4rem; font-weight:600; letter-spacing:-.018em; margin:4rem 0 .5rem; padding-top:1.5rem; border-top:2px solid var(--ink)}
+h2:first-of-type{margin-top:1rem}
+h3{font-size:1.05rem; font-weight:600; margin:2.4rem 0 .7rem}
+h4{font-size:.9rem; font-weight:600; margin:1.6rem 0 .5rem}
+p{margin-bottom:1rem}
+.lede{color:var(--ink-2); font-size:.95rem; margin-bottom:1.5rem}
+a{color:var(--accent); text-underline-offset:.15em}
+strong{font-weight:600}
+ul,ol{margin:0 0 1.1rem; padding-left:0; list-style:none}
+ul li{position:relative; padding-left:1.4rem; margin-bottom:.45rem}
+ul li::before{content:""; position:absolute; left:.3rem; top:.72em; width:4px; height:1px; background:var(--rule-2)}
+ol{counter-reset:li}
+ol li{counter-increment:li; position:relative; padding-left:1.5rem; margin-bottom:.5rem}
+ol li::before{content:counter(li) "."; position:absolute; left:0; color:var(--ink-3); font-size:.9em}
+
+.tbl-wrap{overflow-x:auto; margin:1.4rem 0}
+table{width:100%; border-collapse:collapse; font-size:.875rem; min-width:520px}
+th,td{padding:.6rem .9rem .6rem 0; text-align:left; vertical-align:top; border-bottom:1px solid var(--rule)}
+th{border-bottom:1px solid var(--ink); font-weight:600; font-size:.66rem; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--ink-3); padding-bottom:.45rem}
+td:last-child,th:last-child{padding-right:0}
+td code{font-size:.85em; background:var(--wash); padding:.06rem .3rem; border-radius:2px}
+tr.hidden{display:none}
+section.hidden{display:none}
+
+.callout{border-left:2px solid var(--rule-2); padding:.15rem 0 .15rem 1.2rem; margin:1.6rem 0; font-size:.93rem}
+.callout .lbl{display:block; font-size:.62rem; font-weight:700; letter-spacing:.14em;
+  text-transform:uppercase; margin-bottom:.4rem; color:var(--ink-3)}
+.callout p:last-child,.callout ul:last-child{margin-bottom:0}
+.c-warn{border-left-color:var(--warn)} .c-warn .lbl{color:var(--warn)}
+.c-doc{border-left-color:var(--ink)}   .c-doc .lbl{color:var(--ink)}
+.c-teach{border-left-color:var(--accent)} .c-teach .lbl{color:var(--accent)}
+
+pre.plain{background:var(--wash); border-left:2px solid var(--rule-2); padding:1rem 1.1rem;
+  font-size:.77rem; line-height:1.6; overflow-x:auto; margin:1.3rem 0; white-space:pre}
+pre .cm{color:var(--ink-3)}
+.ch{display:inline-block; font-size:.6rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase;
+  border:1px solid var(--rule-2); color:var(--ink-3); border-radius:2px; padding:.06rem .34rem; white-space:nowrap}
+.diagram{margin:2rem 0}
+.diagram svg{width:100%; height:auto; display:block; overflow:visible}
+.diagram figcaption{color:var(--ink-3); font-size:.79rem; margin-top:.7rem}
+.dg-band{fill:var(--paper); stroke:var(--rule-2); stroke-width:1}
+.dg-fill{fill:var(--wash); stroke:none}
+.dg-grid{stroke:var(--rule-2); stroke-width:.8}
+.dg-arrow{stroke:var(--ink); fill:none; stroke-width:1.3; marker-end:url(#ah)}
+.dg-tb{font:600 12px var(--sans); fill:var(--ink)}
+.dg-ts{font:400 10.5px var(--sans); fill:var(--ink-3)}
+.dg-tm{font:500 10.5px var(--mono); fill:var(--accent)}
+.sub{font-size:.72rem; color:var(--ink-3); font-weight:400; letter-spacing:.01em}
+
+footer{border-top:1px solid var(--rule); margin-top:5rem; padding:2.2rem 0; color:var(--ink-3); font-size:.78rem}
+footer p{margin-bottom:.4rem}
+
+@media(max-width:700px){
+  main{padding:0 1.2rem 5rem}
+  #topbar{margin:0 -1.2rem 2rem; padding:.6rem 1.2rem}
+  .cover h1{font-size:1.5rem}
+}
+@media print{
+  #topbar{display:none}
+  body{font-size:10.5pt; color:#000} main{max-width:none; padding:0}
+  h2{page-break-before:always} table,.callout{page-break-inside:avoid}
+}
+</style>
+</head>
+<body class="lang-fr">
+
+<main>
+<div id="topbar">
+  <a class="back" href="recits_generatifs_manuel-v1.html">&#8592; <span class="fr-only">Manuel</span><span class="en-only">Manual</span></a>
+  <a class="back" href="prompts.html">Prompts</a>
+  <div class="search-wrap">
+    <input id="filter" type="search" autocomplete="off"
+      placeholder="Filtrer : « masque », « upscale », « lip sync »…"
+      data-ph-fr="Filtrer : « masque », « upscale », « lip sync »…"
+      data-ph-en="Filter: “mask”, “upscale”, “lip sync”…">
+  </div>
+  <div class="seg">
+    <button data-lang="fr" class="on" onclick="setLang('fr')">FR</button>
+    <button data-lang="en" onclick="setLang('en')">EN</button>
+  </div>
+  <div class="seg">
+    <button data-theme-btn="light" onclick="setTheme('light')" title="Thème clair" aria-label="Thème clair">☀</button>
+    <button data-theme-btn="dark" onclick="setTheme('dark')" title="Thème sombre" aria-label="Thème sombre">☾</button>
+  </div>
+</div>
+
+<div class="cover">
+  <div class="fr-only">
+    <h1>Sous le capot</h1>
+    <p>Ce qu’il y a derrière le formulaire que vous remplissez : le moteur, les modèles, et les flux de travail de l’atelier — y compris ceux dont le manuel ne parle pas. Une page pour comprendre ce que vous pilotez, et savoir où aller lire la suite.</p>
+  </div>
+  <div class="en-only">
+    <h1>Under the hood</h1>
+    <p>What sits behind the form you fill in: the engine, the models, and the studio's workflows — including the ones the manual does not cover. A page to understand what you are driving, and to know where to read further.</p>
+  </div>
+  <p class="meta">Récits génératifs · <span class="fr-only">état : août 2026</span><span class="en-only">as of August 2026</span></p>
+</div>
+
+<div class="callout c-doc">
+  <span class="lbl fr-only">À quoi sert cette page</span>
+  <span class="lbl en-only">What this page is for</span>
+  <p class="fr-only">Le manuel vous apprend une <em>méthode</em> et vous fait travailler dans <strong>ComfyQ</strong>, qui vous présente un formulaire et cache le reste. C’est le bon choix pédagogique : on n’apprend pas le cadrage en configurant un échantillonneur.</p>
+  <p class="fr-only">Mais un formulaire n’explique pas ce qu’il déclenche. Cette page nomme les outils, dit ce que chacun fait, et donne le lien pour aller voir. Elle sert trois publics : celui qui veut comprendre, celui qui doit livrer un <strong>actif réutilisable en fin de cycle</strong>, et celui qui découvrira dans deux ans que tous ces noms ont changé et devra en juger de nouveaux.</p>
+  <p class="en-only">The manual teaches a <em>method</em> and has you work inside <strong>ComfyQ</strong>, which shows you a form and hides the rest. That is the right teaching choice: nobody learns framing by configuring a sampler.</p>
+  <p class="en-only">But a form does not explain what it sets off. This page names the tools, says what each one does, and gives you the link to go and look. It serves three readers: the one who wants to understand, the one who has to deliver a <strong>reusable asset at the end of the cycle</strong>, and the one who will find in two years that every name here has changed and will have to judge new ones.</p>
+</div>
+
+<!-- ═══════════════════════ 1 · COMFYUI ═══════════════════════ -->
+<h2><span class="fr-only">1 · ComfyUI, le moteur</span><span class="en-only">1 · ComfyUI, the engine</span></h2>
+
+<p class="fr-only"><a href="https://github.com/comfyanonymous/ComfyUI">ComfyUI</a> est le programme qui exécute réellement la génération. Ce n’est pas une application avec des boutons « générer » : c’est un <strong>éditeur de graphe</strong>. Vous posez des boîtes — des <em>nœuds</em> — et vous les reliez. Chaque nœud fait une chose : charger un modèle, encoder du texte, débruiter, décoder, enregistrer.</p>
+<p class="en-only"><a href="https://github.com/comfyanonymous/ComfyUI">ComfyUI</a> is the program that actually runs the generation. It is not an app with a "generate" button: it is a <strong>graph editor</strong>. You place boxes — <em>nodes</em> — and wire them together. Each node does one thing: load a model, encode text, denoise, decode, save.</p>
+
+<figure class="diagram">
+  <svg viewBox="0 0 700 200" role="img" aria-labelledby="fig-graph-t">
+    <title id="fig-graph-t">Le graphe minimal d’une génération d’image</title>
+    <defs><marker id="ah" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="var(--ink)"/></marker></defs>
+
+    <rect class="dg-band" x="8" y="30" width="112" height="46"/>
+    <text class="dg-tb fr-only" x="18" y="50">Modèle</text><text class="dg-tb en-only" x="18" y="50">Model</text>
+    <text class="dg-ts" x="18" y="66">checkpoint / UNET</text>
+
+    <rect class="dg-band" x="8" y="96" width="112" height="46"/>
+    <text class="dg-tb fr-only" x="18" y="116">Texte</text><text class="dg-tb en-only" x="18" y="116">Text</text>
+    <text class="dg-ts fr-only" x="18" y="132">prompt + négatif</text><text class="dg-ts en-only" x="18" y="132">prompt + negative</text>
+
+    <rect class="dg-band" x="160" y="63" width="118" height="46"/>
+    <text class="dg-tb fr-only" x="170" y="83">Conditionnement</text><text class="dg-tb en-only" x="170" y="83">Conditioning</text>
+    <text class="dg-ts fr-only" x="170" y="99">CLIP / encodeur</text><text class="dg-ts en-only" x="170" y="99">CLIP / encoder</text>
+
+    <rect class="dg-fill" x="318" y="55" width="128" height="62"/>
+    <rect class="dg-band" x="318" y="55" width="128" height="62"/>
+    <text class="dg-tb fr-only" x="328" y="75">Échantillonneur</text><text class="dg-tb en-only" x="328" y="75">Sampler</text>
+    <text class="dg-tm" x="328" y="91">seed · steps · cfg</text>
+    <text class="dg-ts fr-only" x="328" y="107">c’est ici que ça calcule</text><text class="dg-ts en-only" x="328" y="107">this is where the compute happens</text>
+
+    <rect class="dg-band" x="486" y="63" width="94" height="46"/>
+    <text class="dg-tb fr-only" x="496" y="83">Décodeur</text><text class="dg-tb en-only" x="496" y="83">Decoder</text>
+    <text class="dg-ts" x="496" y="99">VAE</text>
+
+    <rect class="dg-band" x="618" y="63" width="74" height="46"/>
+    <text class="dg-tb fr-only" x="628" y="83">Sortie</text><text class="dg-tb en-only" x="628" y="83">Output</text>
+    <text class="dg-ts" x="628" y="99">.png</text>
+
+    <path class="dg-arrow" d="M120 53 L156 74"/>
+    <path class="dg-arrow" d="M120 119 L156 98"/>
+    <path class="dg-arrow" d="M278 86 L314 86"/>
+    <path class="dg-arrow" d="M446 86 L482 86"/>
+    <path class="dg-arrow" d="M580 86 L614 86"/>
+
+    <text class="dg-ts fr-only" x="8" y="176">Les six réglages du chapitre 12 vivent presque tous dans l’échantillonneur. Un flux i2v ajoute une entrée image ; un flux contrôlé ajoute une carte de profondeur ou de contours.</text>
+    <text class="dg-ts en-only" x="8" y="176">Almost all six settings from chapter 12 live in the sampler. An i2v workflow adds an image input; a controlled workflow adds a depth or edge map.</text>
+  </svg>
+  <figcaption class="fr-only">Le graphe minimal. Tout le reste — références, contrôle, LoRA, vidéo — s’ajoute autour de cette colonne vertébrale.</figcaption>
+  <figcaption class="en-only">The minimal graph. Everything else — references, control, LoRA, video — is added around this spine.</figcaption>
+</figure>
+
+<h3><span class="fr-only">Pourquoi c’est un graphe et pas un formulaire</span><span class="en-only">Why a graph and not a form</span></h3>
+<p class="fr-only">Parce que la génération n’est pas <em>une</em> opération. C’est une chaîne, et l’intérêt est de pouvoir en changer un maillon : brancher une image de référence là, insérer une LoRA ici, dériver la sortie vers un agrandisseur. Un formulaire fige la chaîne ; un graphe la rend modifiable. C’est aussi pour cela qu’un graphe est un objet qui se <strong>transmet</strong> — d’où le livrable D en fin de cycle.</p>
+<p class="en-only">Because generation is not <em>one</em> operation. It is a chain, and the point is being able to change a link: wire a reference image in there, insert a LoRA here, branch the output into an upscaler. A form freezes the chain; a graph keeps it editable. It is also why a graph is something you can <strong>hand on</strong> — hence Deliverable D at the end of the cycle.</p>
+
+<h3><span class="fr-only">Lire un graphe sans se noyer</span><span class="en-only">Reading a graph without drowning</span></h3>
+<p class="fr-only">Un graphe d’atelier peut compter quarante nœuds. On ne le lit pas de gauche à droite : on cherche <strong>quatre points d’ancrage</strong>, et le reste est de la plomberie.</p>
+<p class="en-only">A studio graph can run to forty nodes. You do not read it left to right: you look for <strong>four anchors</strong>, and the rest is plumbing.</p>
+<div class="tbl-wrap">
+  <table>
+    <thead><tr>
+      <th><span class="fr-only">Cherchez</span><span class="en-only">Look for</span></th>
+      <th><span class="fr-only">Nom de nœud typique</span><span class="en-only">Typical node name</span></th>
+      <th><span class="fr-only">Ce que ça vous dit</span><span class="en-only">What it tells you</span></th>
+    </tr></thead>
+    <tbody>
+      <tr><td><span class="fr-only">Le chargeur</span><span class="en-only">The loader</span></td><td><code>Load Checkpoint</code> · <code>UNETLoader</code></td><td><span class="fr-only">Quel modèle tourne réellement. Première chose à vérifier quand un résultat surprend.</span><span class="en-only">Which model is actually running. First thing to check when a result surprises you.</span></td></tr>
+      <tr><td><span class="fr-only">Le texte</span><span class="en-only">The text</span></td><td><code>CLIPTextEncode</code></td><td><span class="fr-only">Il y en a deux : positif et négatif. Si votre prompt négatif n’a aucun effet, c’est souvent qu’il n’est pas branché.</span><span class="en-only">There are two: positive and negative. If your negative prompt does nothing, it is often simply not wired.</span></td></tr>
+      <tr><td><span class="fr-only">L’échantillonneur</span><span class="en-only">The sampler</span></td><td><code>KSampler</code> · <code>SamplerCustom</code></td><td><span class="fr-only">Graine, pas, guidage, débruitage. Les quatre réglages du chapitre 12 sont là.</span><span class="en-only">Seed, steps, guidance, denoise. Four of chapter 12's settings live here.</span></td></tr>
+      <tr><td><span class="fr-only">La sortie</span><span class="en-only">The output</span></td><td><code>SaveImage</code> · <code>VHS_VideoCombine</code></td><td><span class="fr-only">Le format et l’endroit où le fichier atterrit. Utile quand « ça a tourné » mais que vous ne trouvez rien.</span><span class="en-only">The format and where the file lands. Useful when "it ran" but you cannot find anything.</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="callout c-teach">
+  <span class="lbl fr-only">Pratique d’atelier · la règle du seul fil</span>
+  <span class="lbl en-only">Studio practice · the one-wire rule</span>
+  <p class="fr-only">Si l’atelier vous ouvre un graphe, ne le refactorisez pas. <strong>Changez un fil, relancez, regardez.</strong> Un graphe génératif n’a pas de messages d’erreur utiles : quand il casse, il casse en produisant une image bizarre, pas en s’arrêtant. Modifier deux choses à la fois vous laisse sans moyen de savoir laquelle a fait quoi — c’est la même discipline que la passe 2 du chapitre 12, appliquée à la plomberie.</p>
+  <p class="en-only">If the studio opens a graph to you, do not refactor it. <strong>Change one wire, run it, look.</strong> A generative graph has no useful error messages: when it breaks, it breaks by producing a strange image, not by stopping. Changing two things at once leaves you unable to tell which did what — the same discipline as chapter 12's pass 2, applied to plumbing.</p>
+</div>
+
+<div class="callout c-doc">
+  <span class="lbl fr-only">Le format API · pourquoi on vous le demande</span>
+  <span class="lbl en-only">API format · why you are asked for it</span>
+  <p class="fr-only">ComfyQ ne prend pas les graphes enregistrés avec le bouton <em>Save</em> ordinaire : il veut le <strong>format API</strong>, un JSON qui décrit le graphe pour une machine et non pour l’éditeur. Dans ComfyUI : <span style="font-weight:600">Settings → Dev mode → Save (API Format)</span>. Si vous livrez un graphe en fin de cycle, livrez les <em>deux</em> — le format éditeur pour qu’un humain l’ouvre, le format API pour qu’une machine l’exécute.</p>
+  <p class="en-only">ComfyQ does not take graphs saved with the ordinary <em>Save</em> button: it wants the <strong>API format</strong>, a JSON describing the graph for a machine rather than for the editor. In ComfyUI: <span style="font-weight:600">Settings → Dev mode → Save (API Format)</span>. If you hand in a graph at the end of the cycle, hand in <em>both</em> — the editor format so a human can open it, the API format so a machine can run it.</p>
+</div>
+
+<h4><span class="fr-only">Pour aller lire</span><span class="en-only">Further reading</span></h4>
+<ul>
+  <li><a href="https://docs.comfy.org/">docs.comfy.org</a> — <span class="fr-only">la documentation officielle, avec des modèles de flux commentés</span><span class="en-only">the official documentation, with annotated workflow templates</span></li>
+  <li><a href="https://comfyui-wiki.com/">comfyui-wiki.com</a> — <span class="fr-only">dictionnaire de nœuds et tutoriels ; utile quand vous tombez sur un nœud inconnu</span><span class="en-only">node dictionary and tutorials; useful when you hit a node you do not recognise</span></li>
+  <li><a href="https://github.com/comfyanonymous/ComfyUI">github.com/comfyanonymous/ComfyUI</a> — <span class="fr-only">le dépôt</span><span class="en-only">the repository</span></li>
+</ul>
+
+<!-- ═══════════════════════ 2 · MODELES ═══════════════════════ -->
+<h2><span class="fr-only">2 · Les modèles</span><span class="en-only">2 · The models</span></h2>
+<p class="lede fr-only">Les chiffres et les versions sont dans <a href="prompts.html">Prompts &amp; modèles</a>, qui se met à jour plus souvent. Ici : à quoi sert chaque famille, et où est le projet d’origine.</p>
+<p class="lede en-only">Figures and versions live in <a href="prompts.html">Prompts &amp; models</a>, which is updated more often. Here: what each family is for, and where the upstream project is.</p>
+
+<div class="tbl-wrap">
+  <table>
+    <thead><tr>
+      <th><span class="fr-only">Famille</span><span class="en-only">Family</span></th>
+      <th><span class="fr-only">Ce qu’elle fait</span><span class="en-only">What it does</span></th>
+      <th><span class="fr-only">Chapitre</span><span class="en-only">Chapter</span></th>
+      <th><span class="fr-only">Projet</span><span class="en-only">Project</span></th>
+    </tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>FLUX.2</strong></td>
+        <td><span class="fr-only">Image. Le meilleur pour tenir un sujet sur plusieurs références simultanées, et pour l’édition par instruction.</span><span class="en-only">Image. Best at holding a subject across several simultaneous references, and at instruction editing.</span></td>
+        <td><span class="ch">12</span> <span class="ch">11</span></td>
+        <td><a href="https://github.com/black-forest-labs/flux">black-forest-labs/flux</a></td>
+      </tr>
+      <tr>
+        <td><strong>Qwen-Image</strong></td>
+        <td><span class="fr-only">Image. Le seul à écrire du texte lisible dans l’image : signalétique, enseignes, cartons dans le décor.</span><span class="en-only">Image. The only one that writes legible text inside the image: signage, shopfronts, cards within the set.</span></td>
+        <td><span class="ch">12</span></td>
+        <td><a href="https://github.com/QwenLM/Qwen-Image">QwenLM/Qwen-Image</a></td>
+      </tr>
+      <tr>
+        <td><strong>LTX-2</strong></td>
+        <td><span class="fr-only">Vidéo <em>et</em> son en une passe. Le plus rapide à itérer, donc celui sur lequel on cherche.</span><span class="en-only">Video <em>and</em> sound in one pass. Fastest to iterate, so the one you explore on.</span></td>
+        <td><span class="ch">14</span> <span class="ch">15</span></td>
+        <td><a href="https://github.com/Lightricks/LTX-Video">Lightricks/LTX-Video</a></td>
+      </tr>
+      <tr>
+        <td><strong>Wan 2.2</strong></td>
+        <td><span class="fr-only">Vidéo. Sert aussi de socle aux éditeurs vidéo par instruction et au transfert de mouvement.</span><span class="en-only">Video. Also the base for instruction-based video editors and motion transfer.</span></td>
+        <td><span class="ch">14</span> <span class="ch">15</span></td>
+        <td><a href="https://github.com/Wan-Video/Wan2.2">Wan-Video/Wan2.2</a></td>
+      </tr>
+      <tr>
+        <td><strong>VACE</strong></td>
+        <td><span class="fr-only">Contrôle vidéo : transfère pose, rythme et mouvement de caméra d’un clip source vers votre image.</span><span class="en-only">Video control: transfers pose, rhythm and camera movement from a source clip onto your image.</span></td>
+        <td><span class="ch">15.2</span></td>
+        <td><a href="https://github.com/ali-vilab/VACE">ali-vilab/VACE</a></td>
+      </tr>
+      <tr>
+        <td><strong>MiniMax H3</strong></td>
+        <td><span class="fr-only">Omni-modal : lit texte, image, vidéo, son ; rend la vidéo avec son son stéréo. Licence à territoire restreint — voir chapitre 18.</span><span class="en-only">Omni-modal: reads text, image, video, sound; returns video with its stereo sound. Territory-restricted licence — see chapter 18.</span></td>
+        <td><span class="ch">3</span> <span class="ch">14</span> <span class="ch">18</span></td>
+        <td><a href="https://huggingface.co/MiniMaxAI/MiniMax-H3">MiniMaxAI/MiniMax-H3</a></td>
+      </tr>
+      <tr>
+        <td><strong>Gemma 4</strong></td>
+        <td><span class="fr-only">Texte, avec vision et audio. Écrit, restructure, et <em>regarde</em> vos images pour les décrire. C’est ce que sert LlmOnLan.</span><span class="en-only">Text, with vision and audio. Writes, restructures, and <em>looks at</em> your images to describe them. This is what LlmOnLan serves.</span></td>
+        <td><span class="ch">8</span> <span class="ch">6.9</span></td>
+        <td><a href="https://ai.google.dev/gemma">ai.google.dev/gemma</a></td>
+      </tr>
+      <tr>
+        <td><strong>Stable Audio</strong></td>
+        <td><span class="fr-only">Son à partir de texte. Complète vos captations — ne les remplace pas (chapitre 16).</span><span class="en-only">Sound from text. Complements your recordings — does not replace them (chapter 16).</span></td>
+        <td><span class="ch">16</span></td>
+        <td><a href="https://github.com/Stability-AI/stable-audio-tools">Stability-AI/stable-audio-tools</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ═══════════════════════ 3 · LES FLUX ═══════════════════════ -->
+<h2><span class="fr-only">3 · Les flux de l’atelier</span><span class="en-only">3 · The studio's workflows</span></h2>
+<p class="lede fr-only">Ce que vous trouvez dans la bibliothèque de ComfyQ. Trois d’entre eux ne sont pas couverts par le manuel et méritent que vous sachiez qu’ils existent : ils ouvrent des possibilités que le manuel vous dit d’éviter.</p>
+<p class="lede en-only">What you find in ComfyQ's library. Three of them are not covered by the manual and deserve to be known: they open possibilities the manual tells you to avoid.</p>
+
+<h3><span class="fr-only">Générer</span><span class="en-only">Generate</span></h3>
+<div class="tbl-wrap">
+  <table>
+    <thead><tr><th><span class="fr-only">Flux</span><span class="en-only">Workflow</span></th><th><span class="fr-only">Entrée → sortie</span><span class="en-only">In → out</span></th><th><span class="fr-only">Quand</span><span class="en-only">When</span></th></tr></thead>
+    <tbody>
+      <tr><td><strong>t2i</strong></td><td><span class="fr-only">texte → image</span><span class="en-only">text → image</span></td><td><span class="fr-only">Passe d’exploration, recherche de monde <span class="ch">12</span> <span class="ch">6.7</span></span><span class="en-only">Exploration pass, world research <span class="ch">12</span> <span class="ch">6.7</span></span></td></tr>
+      <tr><td><strong>i2v</strong></td><td><span class="fr-only">image + prompt → vidéo</span><span class="en-only">image + prompt → video</span></td><td><span class="fr-only">Le mode normal du cours <span class="ch">14</span></span><span class="en-only">The course's normal mode <span class="ch">14</span></span></td></tr>
+      <tr><td><strong>FLF2V</strong></td><td><span class="fr-only">première + dernière image → vidéo (avec son)</span><span class="en-only">first + last frame → video (with sound)</span></td><td><span class="fr-only">Supprimer la dérive de fin, garantir un raccord <span class="ch">15.1</span></span><span class="en-only">Kill end drift, guarantee a cut <span class="ch">15.1</span></span></td></tr>
+      <tr><td><strong>vid2vid</strong> <span class="sub">IC-LoRA</span></td><td><span class="fr-only">vidéo + image de référence → restylage guidé par la profondeur</span><span class="en-only">video + reference image → depth-guided restyle</span></td><td><span class="fr-only">Restyler une prise réelle, ou unifier deux plans <span class="ch">2.4</span></span><span class="en-only">Restyle a real plate, or unify two shots <span class="ch">2.4</span></span></td></tr>
+      <tr><td><strong>t2a</strong></td><td><span class="fr-only">texte → audio</span><span class="en-only">text → audio</span></td><td><span class="fr-only">Nappes et textures, pas les événements <span class="ch">16</span></span><span class="en-only">Beds and textures, not events <span class="ch">16</span></span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3><span class="fr-only">Corriger et éditer</span><span class="en-only">Fix and edit</span></h3>
+<div class="tbl-wrap">
+  <table>
+    <thead><tr><th><span class="fr-only">Flux</span><span class="en-only">Workflow</span></th><th><span class="fr-only">Ce qu’il fait</span><span class="en-only">What it does</span></th><th><span class="fr-only">Pourquoi c’est utile</span><span class="en-only">Why it helps</span></th><th><span class="fr-only">Projet</span><span class="en-only">Project</span></th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong><span class="fr-only">Édition par instruction</span><span class="en-only">Instruction editing</span></strong><br><span class="sub">image · vidéo</span></td>
+        <td><span class="fr-only">Vous décrivez la modification en une phrase : « change la veste en beige, garde tout le reste ».</span><span class="en-only">You describe the change in a sentence: "make the coat beige, keep everything else".</span></td>
+        <td><span class="fr-only">La bonne réponse à 80 % des dérives de détail : la cohérence est préservée par construction, au lieu d’être retentée <span class="ch">11.3</span></span><span class="en-only">The right answer to 80 % of detail drift: consistency is preserved by construction instead of re-attempted <span class="ch">11.3</span></span></td>
+        <td><a href="https://github.com/black-forest-labs/flux">FLUX.2</a><br><a href="https://github.com/QwenLM/Qwen-Image">Qwen-Image-Edit</a></td>
+      </tr>
+      <tr>
+        <td><strong><span class="fr-only">Inpainting au masque</span><span class="en-only">Masked inpainting</span></strong><br><span class="sub fr-only">non couvert par le manuel</span><span class="sub en-only">not covered in the manual</span></td>
+        <td><span class="fr-only">Vous <em>peignez</em> la zone à remplacer en plein écran, puis vous décrivez ce qui doit y apparaître. Une variante accepte en plus une image de référence à insérer dans la zone peinte.</span><span class="en-only">You <em>paint</em> the area to replace, full screen, then describe what should appear there. A variant additionally takes a reference image to insert into the painted area.</span></td>
+        <td><span class="fr-only">Plus précis que l’instruction quand le défaut est <strong>local</strong> : une main ratée, un objet en trop, un panneau illisible. Vous ne remettez pas en jeu le reste de l’image.</span><span class="en-only">More precise than an instruction when the fault is <strong>local</strong>: a bad hand, an object too many, an illegible sign. You do not put the rest of the image back at risk.</span></td>
+        <td><a href="https://docs.comfy.org/">docs.comfy.org</a><br><span class="sub fr-only">chercher « inpaint »</span><span class="sub en-only">search "inpaint"</span></td>
+      </tr>
+      <tr>
+        <td><strong>SAM3</strong><br><span class="sub fr-only">non couvert par le manuel</span><span class="sub en-only">not covered in the manual</span></td>
+        <td><span class="fr-only">Segmentation vidéo : vous donnez une vidéo et une <em>description textuelle</em> de ce qu’il faut isoler, il rend un cache noir et blanc suivant l’objet plan par plan.</span><span class="en-only">Video segmentation: you give it a video and a <em>text description</em> of what to isolate, and it returns a black-and-white matte tracking that object frame by frame.</span></td>
+        <td><span class="fr-only">C’est la porte d’entrée du compositing : un cache permet d’étalonner un personnage séparément du décor, de remplacer un ciel, de masquer une aberration dans un coin, ou de composer deux plans générés.</span><span class="en-only">This is the door into compositing: a matte lets you grade a character separately from the set, replace a sky, hide an aberration in a corner, or composite two generated shots.</span></td>
+        <td><a href="https://ai.meta.com/sam3/">ai.meta.com/sam3</a><br><a href="https://github.com/facebookresearch/sam3">facebookresearch/sam3</a></td>
+      </tr>
+      <tr>
+        <td><strong>LivePortrait</strong><br><span class="sub fr-only">non couvert par le manuel</span><span class="sub en-only">not covered in the manual</span></td>
+        <td><span class="fr-only">Image de portrait + vidéo pilote → tête parlante animée. Vous jouez la performance devant votre webcam, votre personnage la reprend.</span><span class="en-only">Portrait image + driving video → animated talking head. You act the performance to your webcam; your character takes it on.</span></td>
+        <td><span class="fr-only">Le manuel vous dit d’éviter la parole à l’image parce que la génération vidéo tient mal la synchronisation. Cet outil est l’exception : la performance vient de vous, donc le rythme est juste. À lire avec la réserve ci-dessous.</span><span class="en-only">The manual tells you to avoid on-screen speech because video generation holds sync badly. This tool is the exception: the performance comes from you, so the timing is right. Read it with the caveat below.</span></td>
+        <td><a href="https://github.com/KwaiVGI/LivePortrait">KwaiVGI/LivePortrait</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="callout c-warn">
+  <span class="lbl fr-only">Ces trois-là ne dispensent pas du chapitre 14</span>
+  <span class="lbl en-only">These three do not excuse you from chapter 14</span>
+  <p class="fr-only">Un cache, un masque et une tête parlante sont des outils de <em>réparation et d’extension</em>, pas des substituts au découpage. Un plan mal découpé reste mal découpé après segmentation. Et une tête parlante mal cadrée reste une tête parlante mal cadrée : la question « faut-il montrer cette bouche ? » est une question de mise en scène, pas de technique.</p>
+  <p class="fr-only">Le conseil du manuel — <strong>ne montrez pas la bouche</strong> — reste le bon <em>par défaut</em>. Passez outre quand vous avez une raison, pas parce que l’outil existe.</p>
+  <p class="en-only">A matte, a mask and a talking head are tools of <em>repair and extension</em>, not substitutes for a breakdown. A badly broken-down shot is still badly broken down after segmentation. And a badly framed talking head is still a badly framed talking head: "should this mouth be on screen?" is a staging question, not a technical one.</p>
+  <p class="en-only">The manual's advice — <strong>do not show the mouth</strong> — remains right <em>by default</em>. Override it when you have a reason, not because the tool exists.</p>
+</div>
+
+<h3><span class="fr-only">Finir</span><span class="en-only">Finish</span></h3>
+<div class="tbl-wrap">
+  <table>
+    <thead><tr><th><span class="fr-only">Flux</span><span class="en-only">Workflow</span></th><th><span class="fr-only">Ce qu’il fait</span><span class="en-only">What it does</span></th><th><span class="fr-only">Projet</span><span class="en-only">Project</span></th></tr></thead>
+    <tbody>
+      <tr><td><strong>SeedVR2</strong></td><td><span class="fr-only">Agrandissement par diffusion : image vers 4K, vidéo vers HD en conservant la cadence <em>et</em> la piste son <span class="ch">15.4</span></span><span class="en-only">Diffusion upscaling: image to 4K, video to HD keeping the frame rate <em>and</em> the audio track <span class="ch">15.4</span></span></td><td><a href="https://github.com/ByteDance-Seed/SeedVR">ByteDance-Seed/SeedVR</a></td></tr>
+      <tr><td><strong>FILM</strong></td><td><span class="fr-only">Interpolation d’images : fluidifier, ou fabriquer un ralenti <span class="ch">15.4</span></span><span class="en-only">Frame interpolation: smooth motion, or build a slow motion <span class="ch">15.4</span></span></td><td><a href="https://github.com/google-research/frame-interpolation">google-research/frame-interpolation</a></td></tr>
+      <tr><td><strong>TripoSplat</strong></td><td><span class="fr-only">Une image → un objet 3D (<code>.ply</code>, <code>.glb</code>). Le raccourci du <span class="ch">6.5</span> quand vous voulez faire tourner un objet, pas relever un volume</span><span class="en-only">One image → a 3D object (<code>.ply</code>, <code>.glb</code>). The <span class="ch">6.5</span> shortcut when you want to rotate an object rather than survey a volume</span></td><td><a href="https://github.com/VAST-AI-Research/TripoSG">VAST-AI-Research/TripoSG</a></td></tr>
+      <tr><td><strong><span class="fr-only">Descripteurs</span><span class="en-only">Captioners</span></strong></td><td><span class="fr-only">Image ou vidéo → description écrite. Sert à indexer votre référentiel <span class="ch">6.9</span> et à retrouver <em>ce que</em> vous avez généré</span><span class="en-only">Image or video → written description. Used to index your reference set <span class="ch">6.9</span> and to recover <em>what</em> you generated</span></td><td><a href="https://ai.google.dev/gemma">Gemma 4</a></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ═══════════════════════ 4 · AUTOUR ═══════════════════════ -->
+<h2><span class="fr-only">4 · Autour de la chaîne</span><span class="en-only">4 · Around the chain</span></h2>
+<div class="tbl-wrap">
+  <table>
+    <thead><tr><th><span class="fr-only">Outil</span><span class="en-only">Tool</span></th><th><span class="fr-only">Rôle</span><span class="en-only">Role</span></th><th><span class="fr-only">Où</span><span class="en-only">Where</span></th></tr></thead>
+    <tbody>
+      <tr><td><strong>Blender</strong></td><td><span class="fr-only">Prévisualisation : bloquer un plan en 3D grossière pour imposer une caméra au modèle <span class="ch">13.2</span>. Pilotable depuis la conversation LlmOnLan.</span><span class="en-only">Previz: block a shot in rough 3D to impose a camera on the model <span class="ch">13.2</span>. Drivable from the LlmOnLan chat.</span></td><td><a href="https://www.blender.org/">blender.org</a> · <a href="https://github.com/ahujasid/blender-mcp">BlenderMCP</a></td></tr>
+      <tr><td><strong>LichtFeld Studio</strong></td><td><span class="fr-only">Reconstruction du lieu en splats gaussiens, en local. NVIDIA uniquement <span class="ch">6.5</span></span><span class="en-only">Reconstructing the place as Gaussian splats, locally. NVIDIA only <span class="ch">6.5</span></span></td><td><a href="https://lichtfeld.io/">lichtfeld.io</a> · <a href="https://github.com/MrNeRF/LichtFeld-Studio"><span class="fr-only">dépôt</span><span class="en-only">repo</span></a></td></tr>
+      <tr><td><strong>DaVinci Resolve</strong></td><td><span class="fr-only">Montage, étalonnage, mixage. L’axe 4 de l’hybridation, et là où vingt clips deviennent un film <span class="ch">17</span></span><span class="en-only">Edit, grade, mix. Axis 4 of hybridising, and where twenty clips become a film <span class="ch">17</span></span></td><td><a href="https://www.blackmagicdesign.com/products/davinciresolve">blackmagicdesign.com</a></td></tr>
+      <tr><td><strong>Open WebUI</strong></td><td><span class="fr-only">L’interface de conversation que LlmOnLan embarque, sans la modifier</span><span class="en-only">The chat interface LlmOnLan bundles, unmodified</span></td><td><a href="https://github.com/open-webui/open-webui">open-webui</a></td></tr>
+      <tr><td><strong>Ollama</strong></td><td><span class="fr-only">Ce qui fait tourner le modèle de texte sur les GPU de l’école</span><span class="en-only">What runs the text model on the school's GPUs</span></td><td><a href="https://ollama.com">ollama.com</a></td></tr>
+      <tr><td><strong>Kokoro</strong></td><td><span class="fr-only">Synthèse vocale, en option dans LlmOnLan. Pour une voix qui doit être artificielle par nature <span class="ch">16.4</span></span><span class="en-only">Speech synthesis, optional in LlmOnLan. For a voice that must be artificial by nature <span class="ch">16.4</span></span></td><td><a href="https://github.com/remsky/Kokoro-FastAPI">Kokoro-FastAPI</a></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ═══════════════════════ 5 · EVALUER ═══════════════════════ -->
+<h2><span class="fr-only">5 · Évaluer un modèle que vous ne connaissez pas</span><span class="en-only">5 · Judging a model you have never used</span></h2>
+<p class="fr-only">C’est la compétence qui survivra à cette page. Tous les noms qui y figurent seront remplacés ; le protocole, non. Il tient en quatre règles.</p>
+<p class="en-only">This is the skill that will outlive this page. Every name on it will be replaced; the protocol will not. It comes down to four rules.</p>
+<ol>
+  <li><span class="fr-only"><strong>Un seul prompt, gardé pour toujours.</strong> Écrivez un prompt de test qui contient ce que <em>vous</em> demandez habituellement : une matière précise, une direction de lumière, une échelle de plan. Ne le changez plus jamais. C’est votre mire.</span><span class="en-only"><strong>One prompt, kept forever.</strong> Write a test prompt containing what <em>you</em> usually ask for: a specific material, a light direction, a shot size. Never change it again. It is your test card.</span></li>
+  <li><span class="fr-only"><strong>Graine fixe, et la même.</strong> Comparer deux modèles sur deux graines aléatoires ne compare rien. Fixez la graine, changez le modèle, rien d’autre.</span><span class="en-only"><strong>Fixed seed, and the same one.</strong> Comparing two models on two random seeds compares nothing. Fix the seed, change the model, change nothing else.</span></li>
+  <li><span class="fr-only"><strong>Jugez sur ce qui vous coûte cher</strong>, pas sur la première impression. Les mains, le texte dans l’image, la tenue d’une matière sur quatre angles, la dérive en fin de plan. Un modèle qui fait de belles images et rate les mains vous coûtera plus qu’il ne vous donne.</span><span class="en-only"><strong>Judge on what costs you dearly</strong>, not on first impression. Hands, text in the image, holding a material across four angles, end-of-shot drift. A model that makes handsome images and fails hands will cost you more than it gives.</span></li>
+  <li><span class="fr-only"><strong>Chronométrez.</strong> Un modèle deux fois plus rapide vous laisse faire trente essais au lieu de huit, et c’est presque toujours ce qui améliore un film — pas la qualité brute d’une image isolée.</span><span class="en-only"><strong>Time it.</strong> A model twice as fast lets you make thirty attempts instead of eight, and that is almost always what improves a film — not the raw quality of one isolated image.</span></li>
+</ol>
+<div class="callout c-teach">
+  <span class="lbl fr-only">Ce que « meilleur » veut dire ici</span>
+  <span class="lbl en-only">What "better" means here</span>
+  <p class="fr-only">Les classements publics mesurent la qualité moyenne sur des prompts moyens. Votre film n’est pas moyen. Le seul classement qui vous concerne est celui que vous obtenez avec <em>votre</em> mire, sur <em>votre</em> matière, avec <em>votre</em> temps de calcul. Gardez les résultats dans votre journal de projet : c’est une trace qui vaut cher en jury.</p>
+  <p class="en-only">Public leaderboards measure average quality on average prompts. Your film is not average. The only ranking that concerns you is the one you get from <em>your</em> test card, on <em>your</em> material, within <em>your</em> compute budget. Keep the results in your project log: it is a trace that carries weight at a crit.</p>
+</div>
+
+<footer>
+  <div class="fr-only">
+    <p><strong>Sous le capot</strong> — page compagnon de <a href="recits_generatifs_manuel-v1.html">Récits génératifs</a> · voir aussi <a href="prompts.html">Prompts &amp; modèles</a></p>
+    <p>Zaki Jawhari · L’École de Design Nantes Atlantique · Édition 2026.1</p>
+    <p>Outils de l’atelier : <a href="https://github.com/b2renger/ComfyQ">ComfyQ</a> et <a href="https://github.com/b2renger/LlmOnLan">LlmOnLan</a>, par b2renger.</p>
+    <p>Les liens externes pointent vers les projets d’origine, pas vers des tutoriels : un dépôt survit mieux qu’une vidéo.</p>
+  </div>
+  <div class="en-only">
+    <p><strong>Under the hood</strong> — companion page to <a href="recits_generatifs_manuel-v1.html">Generative Narratives</a> · see also <a href="prompts.html">Prompts &amp; models</a></p>
+    <p>Zaki Jawhari · L'École de Design Nantes Atlantique · Edition 2026.1</p>
+    <p>Studio tools: <a href="https://github.com/b2renger/ComfyQ">ComfyQ</a> and <a href="https://github.com/b2renger/LlmOnLan">LlmOnLan</a>, by b2renger.</p>
+    <p>External links point at upstream projects rather than tutorials: a repository outlives a video.</p>
+  </div>
+</footer>
+</main>
+
+<script>
+function setLang(l){
+  document.body.classList.remove('lang-fr','lang-en');
+  document.body.classList.add('lang-'+l);
+  document.querySelectorAll('[data-lang]').forEach(function(b){ b.classList.toggle('on', b.dataset.lang===l); });
+  var f=document.getElementById('filter');
+  f.placeholder = l==='fr' ? f.dataset.phFr : f.dataset.phEn;
+  document.documentElement.lang = l;
+  try{localStorage.setItem('gn-lang',l)}catch(e){}
+  applyFilter();
+}
+function setTheme(t){
+  document.documentElement.setAttribute('data-theme', t);
+  document.querySelectorAll('[data-theme-btn]').forEach(function(b){
+    b.classList.toggle('on', b.getAttribute('data-theme-btn') === t);
+  });
+  try{localStorage.setItem('gn-theme', t)}catch(e){}
+}
+function visText(el){
+  var c=el.cloneNode(true), lang=document.body.classList.contains('lang-fr')?'fr':'en';
+  c.querySelectorAll(lang==='fr'?'.en-only':'.fr-only').forEach(function(n){ n.remove(); });
+  return c.textContent.toLowerCase();
+}
+function applyFilter(){
+  var q=(document.getElementById('filter').value||'').trim().toLowerCase();
+  document.querySelectorAll('tbody tr').forEach(function(tr){
+    tr.classList.toggle('hidden', q.length>1 && visText(tr).indexOf(q)===-1);
+  });
+  document.querySelectorAll('.tbl-wrap').forEach(function(w){
+    var rows=w.querySelectorAll('tbody tr');
+    var any=Array.prototype.some.call(rows, function(r){ return !r.classList.contains('hidden'); });
+    w.style.display = any ? '' : 'none';
+    var h=w.previousElementSibling;
+    while(h && !/^H[34]$/.test(h.tagName)) h=h.previousElementSibling;
+    if(h && h.tagName==='H3') h.style.display = any ? '' : 'none';
+  });
+}
+document.getElementById('filter').addEventListener('input', applyFilter);
+document.addEventListener('keydown', function(e){
+  var f=document.getElementById('filter');
+  if(e.key==='/' && document.activeElement!==f){ e.preventDefault(); f.focus(); }
+  if(e.key==='Escape'){ f.value=''; applyFilter(); f.blur(); }
+});
+(function(){
+  var l='fr', th=null;
+  try{ l=localStorage.getItem('gn-lang')||'fr'; th=localStorage.getItem('gn-theme'); }catch(e){}
+  setLang(l);
+  if(th){ setTheme(th); }
+  else {
+    var dark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    document.querySelectorAll('[data-theme-btn]').forEach(function(b){
+      b.classList.toggle('on', b.getAttribute('data-theme-btn') === (dark ? 'dark' : 'light'));
+    });
+  }
+})();
+</script>
+</body>
+</html>

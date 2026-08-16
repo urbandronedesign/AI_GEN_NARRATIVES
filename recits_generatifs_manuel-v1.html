@@ -445,6 +445,7 @@ body.show-figures .shot-todo{display:block}
   <a href="#derives"><span class="fr-only">Index Dérive → Correction</span><span class="en-only">Drift → Fix index</span></a>
   <a href="#faq"><span class="fr-only">FAQ Étudiants</span><span class="en-only">Student FAQ</span></a>
   <a href="prompts.html"><span class="fr-only">Prompts &amp; modèles &#8599;</span><span class="en-only">Prompts &amp; models &#8599;</span></a>
+  <a href="outils.html"><span class="fr-only">Sous le capot &#8599;</span><span class="en-only">Under the hood &#8599;</span></a>
   <a href="#glossaire"><span class="fr-only">Glossaire FR/EN</span><span class="en-only">Glossary FR/EN</span></a>
 </nav>
 
@@ -503,6 +504,7 @@ body.show-figures .shot-todo{display:block}
       <li><strong>Du début à la fin</strong>, comme un cours. Les parties I à VII suivent l’ordre réel de la production : comprendre, aller sur le terrain, écrire, verrouiller, générer l’image, animer, sonoriser, monter. Tout le manuel repose sur <a href="#projet">un seul film</a>, et chaque chapitre s’achève sur une de ses étapes.</li>
       <li><strong>Par dérive</strong>, quand votre personnage a changé de visage entre le plan 7 et le plan 8, à 23 h la veille du jury. Filez à l’<a href="#derives">Index Dérive → Correction</a> : il est classé selon ce que vous <em>voyez à l’écran</em>, et non par chapitre.</li>
       <li><strong>Par question</strong>, via la recherche en haut de page, la <a href="#faq">FAQ Étudiants</a>, ou la <a href="prompts.html">bibliothèque de prompts</a>.</li>
+      <li><strong>Par outil</strong>, si vous voulez savoir ce que vous pilotez : <a href="outils.html">Sous le capot</a> nomme les modèles et les flux de l’atelier, y compris ceux que ce manuel ne couvre pas, et donne les liens vers les projets d’origine.</li>
     </ul>
 
     <h4>Étiquettes d’année</h4>
@@ -540,6 +542,7 @@ body.show-figures .shot-todo{display:block}
       <li><strong>Front to back</strong>, as a course. Parts I to VII follow the real order of production: understand, go on site, write, lock, generate the image, animate, add sound, edit. The whole manual runs on <a href="#projet">one film</a>, and each chapter ends with a stage of it.</li>
       <li><strong>By drift</strong>, when your character's face has changed between shot 7 and shot 8 at 23:00 the night before a crit. Go straight to the <a href="#derives">Drift → Fix index</a>. It is organised by what you <em>see on screen</em>, not by chapter.</li>
       <li><strong>By question</strong>, using the search box at the top, the <a href="#faq">Student FAQ</a>, or the <a href="prompts.html">prompt library</a>.</li>
+      <li><strong>By tool</strong>, if you want to know what you are driving: <a href="outils.html">Under the hood</a> names the models and the studio's workflows, including the ones this manual does not cover, and links to the upstream projects.</li>
     </ul>
 
     <h4>Year tags</h4>
@@ -1752,7 +1755,7 @@ body.show-figures .shot-todo{display:block}
   <div class="fr-only">
     <div class="callout c-warn">
       <span class="lbl">Le chapitre périssable</span>
-      <p>Tout ce qui suit est daté d’<strong>août 2026</strong> et sera partiellement faux dans six mois. C’est volontaire : ce chapitre concentre l’information périssable pour que le reste du manuel reste juste. Les <em>rôles</em> décrits ici — un modèle de texte, un modèle d’image, un modèle vidéo, un modèle audio — sont stables. Les noms ne le sont pas. Voir aussi la page <a href="prompts.html">Prompts &amp; modèles</a>, tenue à jour séparément.</p>
+      <p>Tout ce qui suit est daté d’<strong>août 2026</strong> et sera partiellement faux dans six mois. C’est volontaire : ce chapitre concentre l’information périssable pour que le reste du manuel reste juste. Les <em>rôles</em> décrits ici — un modèle de texte, un modèle d’image, un modèle vidéo, un modèle audio — sont stables. Les noms ne le sont pas. Voir aussi la page <a href="prompts.html">Prompts &amp; modèles</a>, tenue à jour séparément, et <a href="outils.html">Sous le capot</a>, qui nomme les projets d’origine et donne un protocole pour juger un modèle que vous ne connaissez pas.</p>
     </div>
 
     <h3>3.1 Les quatre rôles</h3>
@@ -1951,7 +1954,7 @@ body.show-figures .shot-todo{display:block}
   <div class="en-only">
     <div class="callout c-warn">
       <span class="lbl">The perishable chapter</span>
-      <p>Everything below is dated <strong>August 2026</strong> and will be partly wrong in six months. That is deliberate: this chapter concentrates the perishable information so the rest of the manual stays true. The <em>roles</em> described here — a text model, an image model, a video model, an audio model — are stable. The names are not. See also the separately maintained <a href="prompts.html">Prompts &amp; models</a> page.</p>
+      <p>Everything below is dated <strong>August 2026</strong> and will be partly wrong in six months. That is deliberate: this chapter concentrates the perishable information so the rest of the manual stays true. The <em>roles</em> described here — a text model, an image model, a video model, an audio model — are stable. The names are not. See also the separately maintained <a href="prompts.html">Prompts &amp; models</a> page, and <a href="outils.html">Under the hood</a>, which names the upstream projects and gives a protocol for judging a model you have never used.</p>
     </div>
 
     <h3>3.1 The four roles</h3>
@@ -2216,6 +2219,8 @@ body.show-figures .shot-todo{display:block}
 <pre>FILM_2026_<span class="cm">project-name</span>/
 │
 ├── 00_brief/            <span class="cm">brief, problématique, données · cinq règles du monde</span>
+│   ├── consent_form.md    <span class="cm">un exemplaire signé par personne · chapitre 18</span>
+│   └── LICENCES/          <span class="cm">le texte de licence de chaque modèle, musique, police</span>
 ├── 01_references/
 │   ├── photo/           <span class="cm">PHOTO_001_north-hall.jpg — jamais IMG_4471.jpg</span>
 │   ├── video/
@@ -2224,7 +2229,7 @@ body.show-figures .shot-todo{display:block}
 │   └── style/           <span class="cm">références externes + SOURCES.md obligatoire</span>
 ├── 02_writing/         <span class="cm">pitch.md · script.md</span>
 ├── 03_breakdown/        <span class="cm">shot_sheet.csv  ← le document pivot</span>
-├── 04_bibles/          <span class="cm">character_bible.md · place_bible.md · style_bible.md</span>
+├── 04_bibles/          <span class="cm">character_bible.md · place_bible.md · style_bible.md · prompts.md</span>
 ├── 05_storyboard/       <span class="cm">P01_v01.png … P20_v04.png</span>
 │   └── APPROVED/          <span class="cm">P01.png … P20.png</span>
 ├── 06_shots/            <span class="cm">P01_t01.mp4 … P20_t05.mp4</span>
@@ -2319,6 +2324,8 @@ un gros plan sur la main. Le découpage est mis à jour, pas contourné.</pre>
 <pre>FILM_2026_<span class="cm">project-name</span>/
 │
 ├── 00_brief/            <span class="cm">brief, research question, data · five rules of the world</span>
+│   ├── consent_form.md    <span class="cm">one signed copy per person · chapter 18</span>
+│   └── LICENCES/          <span class="cm">the licence text of every model, track, font</span>
 ├── 01_references/
 │   ├── photo/           <span class="cm">PHOTO_001_north-hall.jpg — never IMG_4471.jpg</span>
 │   ├── video/
@@ -2327,7 +2334,7 @@ un gros plan sur la main. Le découpage est mis à jour, pas contourné.</pre>
 │   └── style/           <span class="cm">external references + mandatory SOURCES.md</span>
 ├── 02_writing/         <span class="cm">pitch.md · script.md</span>
 ├── 03_breakdown/        <span class="cm">shot_sheet.csv  ← the pivot document</span>
-├── 04_bibles/          <span class="cm">character_bible.md · place_bible.md · style_bible.md</span>
+├── 04_bibles/          <span class="cm">character_bible.md · place_bible.md · style_bible.md · prompts.md</span>
 ├── 05_storyboard/       <span class="cm">P01_v01.png … P20_v04.png</span>
 │   └── APPROVED/          <span class="cm">P01.png … P20.png</span>
 ├── 06_shots/            <span class="cm">P01_t01.mp4 … P20_t05.mp4</span>
@@ -4658,6 +4665,11 @@ sur les 20 lignes, et signale toute ligne où tu as dû t'en écarter.</pre>
             <td>Faible. La bonne réponse à 80 % des dérives de détail. <strong>Plusieurs flux d’édition par instruction sont fournis dans <a href="https://github.com/b2renger/ComfyQ">ComfyQ</a></strong>, pour l’image comme pour la vidéo, avec ou sans image de référence.</td>
           </tr>
           <tr>
+            <td><strong>Reprise au masque</strong></td>
+            <td>Vous <em>peignez</em> la zone fautive — une main, un objet en trop, un panneau illisible — et vous ne décrivez que ce qui doit la remplacer. Le reste de l’image n’est pas remis en jeu.</td>
+            <td>Faible. Plus précis que l’instruction quand le défaut est <strong>local</strong> et que vous savez le désigner. Voir <a href="outils.html">Sous le capot</a> §3.</td>
+          </tr>
+          <tr>
             <td><strong>LoRA de personnage</strong></td>
             <td>Vous entraînez un petit modèle additionnel sur 15 à 30 images de votre personnage. Il devient reproductible presque parfaitement, sous n’importe quel angle.</td>
             <td>Élevé — quelques heures. Justifié seulement si votre personnage apparaît en gros plan sur plus de dix plans.</td>
@@ -4777,6 +4789,11 @@ and flag any row where you had to depart from it.</pre>
             <td><strong>Instruction editing</strong></td>
             <td>Rather than regenerating a failed shot, you ask the model to <em>modify</em> the existing image: "change the coat to beige, keep everything else". Consistency is preserved by construction.</td>
             <td>Low. The right answer to 80 % of detail drift. <strong>Several instruction-editing workflows ship in <a href="https://github.com/b2renger/ComfyQ">ComfyQ</a></strong>, for image and for video, with or without a reference image.</td>
+          </tr>
+          <tr>
+            <td><strong>Masked repair</strong></td>
+            <td>You <em>paint</em> the offending area — a hand, an object too many, an illegible sign — and describe only what should replace it. The rest of the image is not put back at risk.</td>
+            <td>Low. More precise than an instruction when the fault is <strong>local</strong> and you can point at it. See <a href="outils.html">Under the hood</a> §3.</td>
           </tr>
           <tr>
             <td><strong>Character LoRA</strong></td>
@@ -5742,7 +5759,7 @@ as <span class="var">[WHAT THE MOVEMENT REVEALS]</span>.
     </div>
     <div class="callout c-doc">
       <span class="lbl">Les deux outils sont déjà dans ComfyQ</span>
-      <p>Vous n’avez pas de chaîne à construire : <a href="https://github.com/b2renger/ComfyQ">ComfyQ</a> embarque les deux comme flux de travail à part entière — un <strong>agrandissement par diffusion</strong> (image vers 4K, et vidéo vers HD en conservant la cadence <em>et</em> la piste son) et une <strong>interpolation d’images</strong> pour fluidifier ou ralentir. Vous déposez le plan retenu, vous réservez un créneau, vous récupérez le fichier.</p>
+      <p>Vous n’avez pas de chaîne à construire : <a href="https://github.com/b2renger/ComfyQ">ComfyQ</a> embarque les deux comme flux de travail à part entière — un <strong>agrandissement par diffusion</strong> (image vers 4K, et vidéo vers HD en conservant la cadence <em>et</em> la piste son) et une <strong>interpolation d’images</strong> pour fluidifier ou ralentir. Vous déposez le plan retenu, vous réservez un créneau, vous récupérez le fichier. Les projets derrière ces deux flux sont nommés dans <a href="outils.html">Sous le capot</a> §3.</p>
       <p>Ils sont classés comme <em>utilitaires</em> et non comme générateurs : c’est le bon réflexe. Un utilitaire ne crée rien, il transforme — et il ne répare pas un plan qui ne tient pas.</p>
     </div>
 
@@ -5839,7 +5856,7 @@ as <span class="var">[WHAT THE MOVEMENT REVEALS]</span>.
     </div>
     <div class="callout c-doc">
       <span class="lbl">Both tools are already in ComfyQ</span>
-      <p>You have no chain to build: <a href="https://github.com/b2renger/ComfyQ">ComfyQ</a> ships both as workflows in their own right — a <strong>diffusion upscaler</strong> (image to 4K, and video to HD keeping the frame rate <em>and</em> the audio track) and a <strong>frame interpolator</strong> for smoothing or slow motion. You drop in the selected shot, book a slot, collect the file.</p>
+      <p>You have no chain to build: <a href="https://github.com/b2renger/ComfyQ">ComfyQ</a> ships both as workflows in their own right — a <strong>diffusion upscaler</strong> (image to 4K, and video to HD keeping the frame rate <em>and</em> the audio track) and a <strong>frame interpolator</strong> for smoothing or slow motion. You drop in the selected shot, book a slot, collect the file. The projects behind these two workflows are named in <a href="outils.html">Under the hood</a> §3.</p>
       <p>They are filed as <em>utilities</em> rather than generators, which is the right instinct. A utility creates nothing, it transforms — and it will not repair a shot that does not hold.</p>
     </div>
 
@@ -6018,6 +6035,7 @@ as <span class="var">[WHAT THE MOVEMENT REVEALS]</span>.
     <div class="callout c-warn">
       <span class="lbl">Évitez la synchronisation labiale</span>
       <p>Un personnage dont on voit la bouche parler exige une synchronisation que la génération vidéo à 3 secondes tient mal. Si vous voulez de la parole, montrez autre chose pendant : le dos, les mains, le lieu, un plan de coupe. C’est aussi une contrainte de cinéma classique, et souvent plus fort.</p>
+      <p>Il existe une exception, et une seule : un outil de <em>portrait animé</em> qui reprend une performance que vous jouez vous-même devant une webcam. Le rythme est alors juste, puisqu’il est le vôtre. Voir <a href="outils.html">Sous le capot</a> §3 — en gardant à l’esprit que « faut-il montrer cette bouche ? » reste une question de mise en scène, pas de technique.</p>
     </div>
 
     <h3>16.5 La musique</h3>
