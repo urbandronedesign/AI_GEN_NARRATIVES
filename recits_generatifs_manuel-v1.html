@@ -1798,6 +1798,44 @@ body.show-figures .shot-todo{display:block}
 
     <p>L’état des machines, les adresses et les modèles servis changent d’une semaine à l’autre : ils sont sur la page interne <a href="https://ateliernum.notion.site/Local-AI-as-a-service-372c8d87b59180a6a4dad5436afd4b0d"><em>Local AI as a Service</em></a>, que ce manuel ne duplique pas.</p>
 
+    <h4>Ce que vous installez, vous</h4>
+    <p>Une seule application, sur votre machine : le <strong>client LlmOnLan</strong>. Les installeurs sont publiés dans les <em>Releases</em> du dépôt, et l’application se met à jour toute seule ensuite.</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Votre machine</th><th>Le fichier</th><th>Au premier lancement</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Windows</strong></td>
+            <td><code>LlmOnLan-Setup-<em>version</em>.exe</code> · ≈ 100 Mo</td>
+            <td>SmartScreen affiche un avertissement : <strong>Informations complémentaires → Exécuter quand même</strong>. Une seule fois.</td>
+          </tr>
+          <tr>
+            <td><strong>macOS</strong> <span class="dg-ts">Apple Silicon</span></td>
+            <td><code>LlmOnLan-<em>version</em>-arm64.dmg</code> · ≈ 110 Mo</td>
+            <td>Gatekeeper bloque : <strong>clic droit → Ouvrir → Ouvrir</strong>. Une seule fois.</td>
+          </tr>
+          <tr>
+            <td><strong>Linux</strong></td>
+            <td><code>LlmOnLan-<em>version</em>.AppImage</code> · ≈ 120 Mo</td>
+            <td><code>chmod +x</code> puis lancer. Sur Ubuntu / Mint, il faut parfois <code>sudo apt install libfuse2</code>.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout c-warn">
+      <span class="lbl">Trois choses à savoir avant de cliquer</span>
+      <ul style="margin-bottom:0">
+        <li><strong>Prévoyez environ 1 Go et un peu de patience.</strong> L’installeur fait 100 Mo, mais au premier lancement l’application télécharge son moteur de conversation (Open WebUI, ≈ 700 Mo) une fois pour toutes. Faites-le <em>avant</em> la séance, pas pendant : vingt-cinq téléchargements simultanés sur le réseau de l’école, c’est une heure perdue pour tout le monde.</li>
+        <li><strong>L’avertissement de sécurité est normal.</strong> Les installeurs ne sont pas signés — c’est le prix d’un outil d’école, pas un signe de danger. Le contournement est décrit dans la colonne de droite ci-dessus, et il ne se fait qu’une fois.</li>
+        <li><strong>Mac Intel : pas de version.</strong> Le client n’existe qu’en <em>Apple Silicon</em> (M1 et suivants). Sur un Mac Intel, passez par un poste de l’atelier, ou demandez à votre encadrant.</li>
+      </ul>
+    </div>
+    <p>Une fois lancée, l’application <strong>trouve la ferme toute seule</strong> sur le réseau et vous dépose dans une conversation. Il n’y a ni compte, ni clé, ni adresse à saisir.</p>
+
+    <h4>L’outil facultatif qui fait gagner du temps</h4>
+    <p><strong>ComfyQ Discovery</strong> est une petite application de bureau, elle aussi téléchargeable dans les <em>Releases</em> (Windows, macOS <em>Intel et Apple Silicon</em>, Linux). Elle liste <strong>toutes les machines ComfyQ du réseau</strong> — nom, GPU, mémoire, état, flux de travail servi, travaux en attente — avec un bouton qui ouvre la page de réservation de la machine choisie.</p>
+    <p>Elle ne commande rien à distance : elle regarde. Son intérêt est de répondre en trois secondes à la question qui vous fait perdre le plus de temps en salle — <em>quel GPU est libre, et lequel sert le flux dont j’ai besoin ?</em> — plutôt que d’ouvrir six onglets à l’aveugle.</p>
+
     <h4>Ce que LlmOnLan sait faire, et que vous allez utiliser</h4>
     <p>Ce n’est pas seulement une fenêtre de conversation. Quatre capacités servent directement des étapes de ce manuel.</p>
     <ul>
@@ -1875,6 +1913,8 @@ body.show-figures .shot-todo{display:block}
       <p>Deux nombres, écrits dans votre journal de projet. Ils gouvernent tout votre planning : si un clip prend 9 minutes, 20 plans en 3 prises font 9 heures de calcul. Cela ne se découvre pas la veille du rendu.</p>
       <h4>Vous êtes prêt quand</h4>
       <ul>
+        <li>Le client LlmOnLan est installé, il a fini de télécharger son moteur, et il a trouvé la ferme. <strong>À faire avant la première séance</strong>, chez vous.</li>
+        <li>Vous savez à quelle adresse ouvrir ComfyQ, et vous avez réservé un créneau au moins une fois.</li>
         <li>Une image sort en moins de 60 secondes.</li>
         <li>Un clip de 3 s sort en moins de 10 minutes.</li>
         <li>Vous savez relancer exactement la même image depuis sa graine.</li>
@@ -1930,6 +1970,44 @@ body.show-figures .shot-todo{display:block}
     </div>
 
     <p>Machine status, addresses and which models are being served change week to week: they live on the internal <a href="https://ateliernum.notion.site/Local-AI-as-a-service-372c8d87b59180a6a4dad5436afd4b0d"><em>Local AI as a Service</em></a> page, which this manual does not duplicate.</p>
+
+    <h4>What you install yourself</h4>
+    <p>One application, on your own machine: the <strong>LlmOnLan client</strong>. Installers are published in the repository's <em>Releases</em>, and the app updates itself from then on.</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Your machine</th><th>The file</th><th>On first launch</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Windows</strong></td>
+            <td><code>LlmOnLan-Setup-<em>version</em>.exe</code> · ≈ 100 MB</td>
+            <td>SmartScreen warns: <strong>More info → Run anyway</strong>. Once only.</td>
+          </tr>
+          <tr>
+            <td><strong>macOS</strong> <span class="dg-ts">Apple Silicon</span></td>
+            <td><code>LlmOnLan-<em>version</em>-arm64.dmg</code> · ≈ 110 MB</td>
+            <td>Gatekeeper blocks it: <strong>right-click → Open → Open</strong>. Once only.</td>
+          </tr>
+          <tr>
+            <td><strong>Linux</strong></td>
+            <td><code>LlmOnLan-<em>version</em>.AppImage</code> · ≈ 120 MB</td>
+            <td><code>chmod +x</code> then run. On Ubuntu / Mint you may need <code>sudo apt install libfuse2</code>.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout c-warn">
+      <span class="lbl">Three things to know before you click</span>
+      <ul style="margin-bottom:0">
+        <li><strong>Allow about 1 GB and a little patience.</strong> The installer is 100 MB, but on first launch the app downloads its chat engine (Open WebUI, ≈ 700 MB) once and for all. Do that <em>before</em> the session, not during: twenty-five simultaneous downloads on the school network is an hour lost for everyone.</li>
+        <li><strong>The security warning is normal.</strong> The installers are unsigned — that is the price of a school tool, not a sign of danger. The bypass is in the right-hand column above, and you only do it once.</li>
+        <li><strong>Intel Mac: no build.</strong> The client exists only for <em>Apple Silicon</em> (M1 and later). On an Intel Mac, use a studio workstation or ask your tutor.</li>
+      </ul>
+    </div>
+    <p>Once running, the app <strong>finds the farm by itself</strong> on the network and drops you into a conversation. There is no account, no key, no address to type.</p>
+
+    <h4>The optional tool that saves time</h4>
+    <p><strong>ComfyQ Discovery</strong> is a small desktop app, also downloadable from <em>Releases</em> (Windows, macOS <em>Intel and Apple Silicon</em>, Linux). It lists <strong>every ComfyQ machine on the network</strong> — name, GPU, memory, state, workflow being served, queued jobs — with a button that opens the chosen machine's booking page.</p>
+    <p>It commands nothing remotely: it watches. Its value is answering in three seconds the question that wastes most of your time in the room — <em>which GPU is free, and which one is serving the workflow I need?</em> — instead of opening six tabs blind.</p>
 
     <h4>What LlmOnLan can do that you will actually use</h4>
     <p>It is not only a chat window. Four capabilities serve stages of this manual directly.</p>
@@ -2008,6 +2086,8 @@ body.show-figures .shot-todo{display:block}
       <p>Two numbers, written in your project log. They govern your whole schedule: if a clip takes 9 minutes, 20 shots at 3 takes each is 9 hours of compute. That is not something to discover the night before.</p>
       <h4>You are ready when</h4>
       <ul>
+        <li>The LlmOnLan client is installed, has finished downloading its engine, and has found the farm. <strong>Do this before the first session</strong>, at home.</li>
+        <li>You know which address opens ComfyQ, and you have booked a slot at least once.</li>
         <li>An image comes out in under 60 seconds.</li>
         <li>A 3 s clip comes out in under 10 minutes.</li>
         <li>You know how to reproduce exactly the same image from its seed.</li>
@@ -6719,6 +6799,17 @@ by <span class="cm">[your name]</span>, at <span class="cm">[place]</span>, <spa
       <div class="faq-body"><p>Pour la partie texte, oui — les petites tailles de Gemma 4 tournent sur un portable. Pour l’image, à partir d’environ 12 Go de VRAM avec les modèles allégés. Pour la vidéo, c’est là que ça se joue : mesurez une prise au chronomètre comme le demande le chapitre 3, multipliez par 80, et vous saurez. Si le total dépasse votre temps disponible, utilisez les postes de l’atelier pour la vidéo.</p></div>
     </details>
 
+    <details class="faq"><summary>Que faut-il installer sur ma machine, exactement ?</summary>
+      <div class="faq-body"><p>Une seule application : le <strong>client LlmOnLan</strong>, pour la partie texte. Installeur d’environ 100 Mo depuis les <em>Releases</em> du dépôt, plus environ 700 Mo téléchargés au premier lancement. Comptez 1 Go et faites-le <strong>avant</strong> la séance, à la maison — vingt-cinq téléchargements en même temps saturent le réseau de l’école.</p>
+      <p>Pour l’image, la vidéo et le son, <strong>rien</strong> : ComfyQ s’ouvre dans un navigateur, y compris depuis un téléphone. Vous pouvez aussi installer <em>ComfyQ Discovery</em>, facultatif, qui montre quelle machine de l’atelier est libre.</p>
+      <p>Un avertissement de sécurité au premier lancement est normal : les installeurs ne sont pas signés. Détails et contournements par système au chapitre <a href="#ch3">3</a>.</p></div>
+    </details>
+
+    <details class="faq"><summary>J’ai un Mac Intel. Est-ce que ça marche ?</summary>
+      <div class="faq-body"><p>Pour le client LlmOnLan, non : il n’existe qu’en version Apple Silicon (M1 et suivants). Trois solutions — utilisez un poste de l’atelier pour la partie texte, passez par un autre modèle de conversation que votre encadrant vous indiquera, ou travaillez à deux.</p>
+      <p>Cela ne bloque <em>pas</em> le reste du cours : ComfyQ fonctionne dans n’importe quel navigateur, donc toute la partie image, vidéo et son reste accessible depuis un Mac Intel. Et <em>ComfyQ Discovery</em>, lui, existe bien en version Intel.</p></div>
+    </details>
+
     <details class="faq"><summary>Le modèle refuse un plan ou produit toujours la même erreur. Pourquoi ?</summary>
       <div class="faq-body"><p>Trois causes, par ordre de fréquence : le prompt est surchargé et le modèle arbitre à votre place ; la géométrie demandée est trop spécifique pour du texte, et il faut la fournir en carte de profondeur ou en contours (chapitre 13) ; ou le plan demande quelque chose que la table 14.2 signale comme hors de portée en trois secondes.</p></div>
     </details>
@@ -6853,6 +6944,17 @@ by <span class="cm">[your name]</span>, at <span class="cm">[place]</span>, <spa
 
     <details class="faq"><summary>Is my laptop enough?</summary>
       <div class="faq-body"><p>For the text part, yes — the small Gemma 4 sizes run on a laptop. For image, from about 12 GB of VRAM with the lighter models. For video, that is where it is decided: time one take with a stopwatch as chapter 3 asks, multiply by 80, and you will know. If the total exceeds the time you have, use the studio machines for video.</p></div>
+    </details>
+
+    <details class="faq"><summary>What exactly do I have to install on my machine?</summary>
+      <div class="faq-body"><p>One application: the <strong>LlmOnLan client</strong>, for the text side. Roughly a 100 MB installer from the repository's <em>Releases</em>, plus about 700 MB downloaded on first launch. Allow 1 GB and do it <strong>before</strong> the session, at home — twenty-five simultaneous downloads will saturate the school network.</p>
+      <p>For image, video and sound, <strong>nothing</strong>: ComfyQ opens in a browser, including on a phone. You can also install <em>ComfyQ Discovery</em>, optional, which shows which studio machine is free.</p>
+      <p>A security warning on first launch is normal: the installers are unsigned. Per-OS details and bypasses are in chapter <a href="#ch3">3</a>.</p></div>
+    </details>
+
+    <details class="faq"><summary>I have an Intel Mac. Does this work?</summary>
+      <div class="faq-body"><p>For the LlmOnLan client, no: it exists only as an Apple Silicon build (M1 and later). Three options — use a studio workstation for the text side, use another chat model your tutor will point you to, or pair up with someone.</p>
+      <p>It does <em>not</em> block the rest of the course: ComfyQ works in any browser, so the whole image, video and sound side stays available from an Intel Mac. And <em>ComfyQ Discovery</em> does ship an Intel build.</p></div>
     </details>
 
     <details class="faq"><summary>The model refuses a shot or keeps making the same error. Why?</summary>
