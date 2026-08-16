@@ -39,3 +39,36 @@ cinematic 35mm film still, moody urban aesthetic, high contrast, deep shadows,
 cool blue and warm amber colour grading, slight film grain, photorealistic
 À partir d'ici, ce suffixe ne change plus. S'il change, les 20 plans changent.
 -->
+
+---
+
+## Dépôts · appels à projets et concours
+
+> Chapitre 17, §17.7. Une ligne par dépôt. Dans six mois vous ne saurez plus quelle
+> version est partie où.
+
+| Appel | Échéance (et fuseau) | Version envoyée | Contraintes relevées | Droits cédés | Déposé le |
+|---|---|---|---|---|---|
+|  |  |  |  |  |  |
+
+<!-- Les sept contraintes à relever AVANT d'exporter : durée max · format et poids max ·
+     rapport de cadre imposé · langue et sous-titres · anonymat · droits demandés ·
+     date et fuseau horaire. -->
+
+---
+
+## Archive
+
+> Chapitre 17, §17.8. Dix lignes, écrites pour vous dans deux ans.
+
+**Le film, en une phrase** :
+
+**Outils et versions employés** :
+
+**Comment rouvrir le montage** : <!-- logiciel, version, où sont les médias -->
+
+**Où sont les deux copies** : <!-- une doit être hors de votre machine -->
+
+**Ce qui a été supprimé, et pourquoi** :
+<!-- ex. : modèle entraîné sur le visage de X, supprimé le JJ/MM comme prévu
+     par l'autorisation signée. Les 40 prises non retenues, jetées le JJ/MM. -->

@@ -84,3 +84,21 @@ text overlay, oversaturated, fisheye distortion, duplicated subject
 ```
 
 > Voie construite : ajoutez ici les interdictions de votre **règle 5**.
+
+---
+
+## Format technique · les quatre valeurs
+
+> Chapitre 10, §10.4. À remplir **avant la première image générée**. Trois de ces
+> quatre ne se réparent pas après coup : aucun outil de montage ne rend des pixels
+> qui n'ont jamais existé.
+
+| | Valeur | Défaut du cours |
+|---|---|---|
+| **Rapport de cadre** |  | 16:9 |
+| **Résolution de travail** |  | la plus haute que le modèle tient |
+| **Cadence** |  | 24 im/s |
+| **Espace colorimétrique** |  | sRGB / Rec.709 |
+
+> Une seule cadence, du début à la fin. Ne passez à 25 im/s que si un dépôt l'exige
+> par écrit, et alors une seule fois, à la fin, sur le film terminé.

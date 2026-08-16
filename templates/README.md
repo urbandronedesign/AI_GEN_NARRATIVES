@@ -14,7 +14,7 @@ travail déjà amorcés. Dézippez, renommez le dossier avec le nom de votre pro
 
 | Fichier amorcé | Pour quelle étape | Chapitre |
 |---|---|---|
-| `journal.md` | dès la mise en place | 4 |
+| `journal.md` | dès la mise en place, puis les dépôts et l'archive | 4 · 17 |
 | `00_brief/question_sheet.md` | étape 2 | 5 |
 | `00_brief/five_rules.md` | étape 3, **voie construite** | 6 |
 | `01_references/INDEX.md` | étape 3 | 6 |
@@ -24,7 +24,7 @@ travail déjà amorcés. Dézippez, renommez le dossier avec le nom de votre pro
 | `03_breakdown/shot_sheet.csv` | étape 6 — **le document pivot** | 9 |
 | `04_bibles/character_bible.md` | étape 7 | 10 |
 | `04_bibles/place_bible.md` | étape 7 | 10 |
-| `04_bibles/style_bible.md` | étape 7 | 10 |
+| `04_bibles/style_bible.md` | étape 7, plus le format technique | 10 |
 | `04_bibles/prompts.md` | étape 8 — les vingt prompts et leurs graines | 10 · 11 |
 | `00_brief/consent_form.md` | **avant** de filmer ou d'entraîner quoi que ce soit | 18 |
 | `00_brief/LICENCES/README.md` | dès le premier modèle installé | 18 |

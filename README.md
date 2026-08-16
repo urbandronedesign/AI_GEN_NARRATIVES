@@ -16,7 +16,7 @@ Page compagnon : tous les prompts du pipeline prêts à copier, le lexique bilin
 
 Deuxième page compagnon : ce qu'il y a derrière le formulaire. **ComfyUI** et comment lire un graphe, les modèles et leurs projets d'origine, et le catalogue des flux de l'atelier — y compris les trois que le manuel ne couvre pas (**inpainting au masque**, **SAM3**, **LivePortrait**), avec la réserve qui va avec. Se termine par un protocole pour juger un modèle qu'on ne connaît pas — la seule partie de la page qui ne se périmera pas.
 
-Pour l'usage hors ligne, téléchargez **[`recits_generatifs_manuel-v1.html`](recits_generatifs_manuel-v1.html)** et ouvrez-le dans n'importe quel navigateur. Un seul fichier autonome, ~595 Ko, aucune dépendance, aucune étape de compilation. Fonctionne depuis une clé USB sans connexion — emportez aussi [`prompts.html`](prompts.html) et [`outils.html`](outils.html), qui sont autonomes de la même façon.
+Pour l'usage hors ligne, téléchargez **[`recits_generatifs_manuel-v1.html`](recits_generatifs_manuel-v1.html)** et ouvrez-le dans n'importe quel navigateur. Un seul fichier autonome, ~650 Ko, aucune dépendance, aucune étape de compilation. Fonctionne depuis une clé USB sans connexion — emportez aussi [`prompts.html`](prompts.html) et [`outils.html`](outils.html), qui sont autonomes de la même façon.
 
 > **Manuel compagnon** — [3DVIZ · SketchUp & Rhino vers Twinmotion 2026](https://github.com/urbandronedesign/3DVIZ), même format, même conventions. Les deux se lisent de la même façon : bascule FR/EN, recherche, filtre de niveau, index par symptôme.
 
@@ -35,12 +35,12 @@ Pour l'usage hors ligne, téléchargez **[`recits_generatifs_manuel-v1.html`](re
 | **IV — La cohérence** | Les chartes de cohérence · Super-prompt & ancrage |
 | **V — L'image** | Générer le storyboard · Contrôle hybride & validation |
 | **VI — Le mouvement** | De l'image au plan animé · Contrôle avancé & finition |
-| **VII — Son & livraison** | Conception sonore · Montage, étalonnage, export · Droit, éthique & crédits |
-| **Référence** | Index Dérive → Correction (36 symptômes) · FAQ Étudiants (30 questions) · Glossaire bilingue (46 termes) |
+| **VII — Son & livraison** | Conception sonore · **Montage, étalonnage, livraison** (look IA, dépôts, archivage) · Droit, éthique & crédits |
+| **Référence** | Index Dérive → Correction (46 symptômes) · FAQ Étudiants (38 questions) · Glossaire bilingue (55 termes) |
 
-Soit **21 sections** au total, dont trois de préambule et trois de référence.
+Soit **24 sections** au total, dont trois de préambule et trois de référence.
 
-Environ **61 500 mots** sur les deux langues.
+Environ **71 800 mots** sur les deux langues.
 
 Le chapitre 1 s'ouvre sur un schéma pleine page de tout le pipeline — sept étapes, les décisions qui appartiennent à chacune, et le **chemin de retour** montrant qu'un défaut constaté en aval a été commis en amont. Le dossier de projet est dessiné comme le contenant de l'ensemble, parce qu'un projet qui n'est pas portable n'est pas vraiment un projet.
 
