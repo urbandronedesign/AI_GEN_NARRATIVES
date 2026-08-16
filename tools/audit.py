@@ -397,4 +397,7 @@ def main():
     sys.exit(len(distinct))
 
 
-main()
+# Guarded so the passes can be imported and reused by other scripts without the
+# whole audit running as a side effect of the import.
+if __name__ == "__main__":
+    main()
