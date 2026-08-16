@@ -1775,8 +1775,42 @@ body.show-figures .shot-todo{display:block}
       <p>Cela ne change pas la méthode : il vous faut toujours un texte, une image clé, un mouvement et un son. Cela change le nombre d’outils à installer — et cela vous oblige à décider ce que vous <em>gardez</em> du son que le modèle vous donne, ce qui est traité au chapitre <a href="#ch16">16</a>.</p>
     </div>
 
-    <h3>3.2 L’installation de l’atelier</h3>
-    <p>Le laboratoire fonctionne en local, sur GPU, autour de <strong>ComfyUI</strong>. Les modalités d’accès, les identifiants et l’état des machines sont donnés sur la page interne <a href="https://ateliernum.notion.site/Local-AI-as-a-service-372c8d87b59180a6a4dad5436afd4b0d"><em>Local AI as a Service</em></a> ; ce manuel ne les duplique pas, parce qu’ils changent.</p>
+    <h3>3.2 Comment vous accédez au laboratoire</h3>
+    <p>Le laboratoire fonctionne en local, sur les GPU de l’école. Vous n’installez rien : l’atelier a développé <strong>deux outils maison</strong> qui vous donnent accès aux modèles depuis n’importe quelle machine du réseau. Ils sont l’œuvre de <strong>b2renger</strong>, à l’École de Design Nantes Atlantique.</p>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Outil</th><th>Ce qu’il vous donne</th><th>Ce que vous faites</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong><a href="https://github.com/b2renger/LlmOnLan">LlmOnLan</a></strong><br><span class="dg-ts">« LOL » · le texte</span></td>
+            <td>Un assistant de conversation local, servi par une <em>ferme d’inférence</em> sur le réseau de l’école. Le modèle par défaut est <strong>Gemma 4</strong>.</td>
+            <td>Vous installez l’application, elle trouve la ferme toute seule, vous discutez. Aucune configuration, aucun compte, aucune clé d’API.</td>
+          </tr>
+          <tr>
+            <td><strong><a href="https://github.com/b2renger/ComfyQ">ComfyQ</a></strong><br><span class="dg-ts">l’image, la vidéo, le son</span></td>
+            <td>Un accès partagé à ComfyUI sur les GPU de l’atelier, avec réservation de créneaux et file d’attente.</td>
+            <td>Vous ouvrez une adresse dans un navigateur, vous réservez un créneau, vous remplissez les paramètres, vous regardez le calcul avancer. Rien à installer — cela marche depuis un téléphone.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>L’état des machines, les adresses et les modèles servis changent d’une semaine à l’autre : ils sont sur la page interne <a href="https://ateliernum.notion.site/Local-AI-as-a-service-372c8d87b59180a6a4dad5436afd4b0d"><em>Local AI as a Service</em></a>, que ce manuel ne duplique pas.</p>
+
+    <h4>Ce que LlmOnLan sait faire, et que vous allez utiliser</h4>
+    <p>Ce n’est pas seulement une fenêtre de conversation. Quatre capacités servent directement des étapes de ce manuel.</p>
+    <ul>
+      <li><strong>Il regarde vos images.</strong> Le modèle servi est multimodal : vous pouvez déposer vos photographies de référence dans la conversation et lui demander de les décrire. C’est exactement le prompt du §6.9.</li>
+      <li><strong>Il cherche sur le web.</strong> La recherche est active par défaut, via un moteur hébergé sur la ferme. Utile pour la documentation et la recherche de précédents du chapitre <a href="#ch5">5</a>.</li>
+      <li><strong>Il lit vos documents scannés.</strong> Une extraction de texte par modèle de vision tourne sur la ferme : une étude en PDF image, une archive photographiée deviennent interrogeables.</li>
+      <li><strong>Il peut piloter Blender.</strong> En option, la conversation commande un Blender ouvert sur <em>votre</em> machine — créer des objets, exécuter du Python, inspecter la scène. Voir le chapitre <a href="#ch13">13</a>.</li>
+    </ul>
+    <div class="callout c-doc">
+      <span class="lbl">Documenté · vos conversations ne quittent pas votre machine</span>
+      <p>C’est le point d’architecture qui compte pour vous. Dans LlmOnLan, la ferme est <strong>sans état</strong> : elle calcule et n’enregistre rien. Toutes vos conversations, vos documents et vos index de recherche restent en local, dans un dossier que vous choisissez. Rien ne part sur un serveur tiers, et rien n’est visible par les autres étudiants.</p>
+      <p>Cela vaut aussi pour le droit : sur un projet de commanditaire soumis à confidentialité, c’est la différence entre un outil utilisable et un outil interdit (chapitre <a href="#ch18">18</a>).</p>
+    </div>
     <p>Pourquoi le local plutôt qu’un service en ligne, dans un cadre pédagogique :</p>
     <ul>
       <li><strong>Le graphe est visible.</strong> Dans ComfyUI vous voyez le chemin complet — modèle, échantillonneur, graine, conditionnement. Une interface web vous cache exactement ce que ce cours cherche à vous apprendre.</li>
@@ -1820,7 +1854,9 @@ body.show-figures .shot-todo{display:block}
       <table>
         <thead><tr><th>Fonction</th><th>Outils</th><th>Statut</th></tr></thead>
         <tbody>
-          <tr><td>Graphe génératif</td><td>ComfyUI</td><td>Indispensable</td></tr>
+          <tr><td>Accès aux GPU de l’atelier</td><td><strong>ComfyQ</strong> <span class="dg-ts">· outil maison</span></td><td>Indispensable</td></tr>
+          <tr><td>Accès au LLM</td><td><strong>LlmOnLan</strong> <span class="dg-ts">· outil maison</span></td><td>Indispensable</td></tr>
+          <tr><td>Graphe génératif</td><td>ComfyUI <span class="dg-ts">· sous ComfyQ</span></td><td>Indispensable</td></tr>
           <tr><td>Montage, étalonnage, mixage</td><td>DaVinci Resolve (gratuit) · Premiere Pro</td><td>Indispensable</td></tr>
           <tr><td>Retouche et planches</td><td>Photoshop · Affinity Photo · GIMP · Krita</td><td>Indispensable</td></tr>
           <tr><td>Enregistrement terrain</td><td>Enregistreur dédié ou téléphone + micro-cravate</td><td>Indispensable</td></tr>
@@ -1872,8 +1908,42 @@ body.show-figures .shot-todo{display:block}
       <p>This does not change the method: you still need a text, a key frame, a movement and a sound. It changes how many tools you install — and it forces you to decide what you <em>keep</em> of the sound the model hands you, which chapter <a href="#ch16">16</a> deals with.</p>
     </div>
 
-    <h3>3.2 The studio installation</h3>
-    <p>The lab runs locally, on GPU, around <strong>ComfyUI</strong>. Access details, credentials and machine status are given on the internal <a href="https://ateliernum.notion.site/Local-AI-as-a-service-372c8d87b59180a6a4dad5436afd4b0d"><em>Local AI as a Service</em></a> page; this manual does not duplicate them, because they change.</p>
+    <h3>3.2 How you actually reach the lab</h3>
+    <p>The lab runs locally, on the school's GPUs. You install nothing: the studio has built <strong>two in-house tools</strong> that give you the models from any machine on the network. They are the work of <strong>b2renger</strong>, at L'École de Design Nantes Atlantique.</p>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Tool</th><th>What it gives you</th><th>What you do</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong><a href="https://github.com/b2renger/LlmOnLan">LlmOnLan</a></strong><br><span class="dg-ts">"LOL" · the text</span></td>
+            <td>A local chat assistant, served by an <em>inference farm</em> on the school network. The default model is <strong>Gemma 4</strong>.</td>
+            <td>You install the app, it finds the farm by itself, you chat. No configuration, no account, no API key.</td>
+          </tr>
+          <tr>
+            <td><strong><a href="https://github.com/b2renger/ComfyQ">ComfyQ</a></strong><br><span class="dg-ts">image, video, sound</span></td>
+            <td>Shared access to ComfyUI on the studio GPUs, with slot booking and a job queue.</td>
+            <td>You open a URL in a browser, book a slot, fill in the parameters, watch the compute progress. Nothing to install — it works from a phone.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Machine status, addresses and which models are being served change week to week: they live on the internal <a href="https://ateliernum.notion.site/Local-AI-as-a-service-372c8d87b59180a6a4dad5436afd4b0d"><em>Local AI as a Service</em></a> page, which this manual does not duplicate.</p>
+
+    <h4>What LlmOnLan can do that you will actually use</h4>
+    <p>It is not only a chat window. Four capabilities serve stages of this manual directly.</p>
+    <ul>
+      <li><strong>It looks at your images.</strong> The model served is multimodal: you can drop your reference photographs into the conversation and ask it to describe them. That is exactly the §6.9 prompt.</li>
+      <li><strong>It searches the web.</strong> Search is on by default, through an engine hosted on the farm. Useful for the documentation and precedent research of chapter <a href="#ch5">5</a>.</li>
+      <li><strong>It reads your scanned documents.</strong> Vision-model text extraction runs on the farm: a study that is an image-only PDF, a photographed archive, become searchable.</li>
+      <li><strong>It can drive Blender.</strong> Optionally, the chat commands a Blender open on <em>your</em> machine — create objects, run Python, inspect the scene. See chapter <a href="#ch13">13</a>.</li>
+    </ul>
+    <div class="callout c-doc">
+      <span class="lbl">Documented · your conversations do not leave your machine</span>
+      <p>This is the architectural point that matters to you. In LlmOnLan the farm is <strong>stateless</strong>: it computes and stores nothing. All your chats, documents and search indexes stay local, in a folder you choose. Nothing goes to a third-party server, and nothing is visible to other students.</p>
+      <p>It matters legally too: on a client project under confidentiality, that is the difference between a usable tool and a forbidden one (chapter <a href="#ch18">18</a>).</p>
+    </div>
     <p>Why local rather than an online service, in a teaching context:</p>
     <ul>
       <li><strong>The graph is visible.</strong> In ComfyUI you see the whole path — model, sampler, seed, conditioning. A web interface hides exactly what this course is trying to teach you.</li>
@@ -1917,7 +1987,9 @@ body.show-figures .shot-todo{display:block}
       <table>
         <thead><tr><th>Function</th><th>Tools</th><th>Status</th></tr></thead>
         <tbody>
-          <tr><td>Generative graph</td><td>ComfyUI</td><td>Essential</td></tr>
+          <tr><td>Access to the studio GPUs</td><td><strong>ComfyQ</strong> <span class="dg-ts">· in-house</span></td><td>Essential</td></tr>
+          <tr><td>Access to the LLM</td><td><strong>LlmOnLan</strong> <span class="dg-ts">· in-house</span></td><td>Essential</td></tr>
+          <tr><td>Generative graph</td><td>ComfyUI <span class="dg-ts">· under ComfyQ</span></td><td>Essential</td></tr>
           <tr><td>Edit, grade, mix</td><td>DaVinci Resolve (free) · Premiere Pro</td><td>Essential</td></tr>
           <tr><td>Retouching and contact sheets</td><td>Photoshop · Affinity Photo · GIMP · Krita</td><td>Essential</td></tr>
           <tr><td>Field recording</td><td>Dedicated recorder, or phone + lavalier</td><td>Essential</td></tr>
@@ -2538,6 +2610,12 @@ close-up on the hand. The breakdown is updated, not bypassed.</pre>
       </ul>
       <p>Si votre machine ne remplit pas la première condition, <strong>Polycam</strong> fait l’équivalent depuis un téléphone avec traitement distant : moins de contrôle, mais aucun prérequis matériel. Un intérieur se reconstruit typiquement en quelques heures, pas en semaines.</p>
     </div>
+    <div class="callout c-tip">
+      <span class="lbl">Le raccourci · un splat depuis une seule image</span>
+      <p>Avant de monter une captation par orbite, sachez que <a href="https://github.com/b2renger/ComfyQ">ComfyQ</a> embarque un flux <strong>image → splat</strong> qui produit un fichier 3D à partir d’<em>une</em> photographie, en un créneau réservé et sans rien installer. Ce n’est pas la même chose que la reconstruction de cette section : vous obtenez un objet plausible vu sous un angle, pas un relevé fidèle du volume. Mais pour un <em>objet</em> à faire tourner dans un plan, c’est dix minutes contre une demi-journée.</p>
+      <p>Réservez la couverture par orbite à ce qu’elle sait faire seule : un <strong>volume</strong> dans lequel placer des caméras.</p>
+    </div>
+
     <div class="callout c-teach">
       <span class="lbl">Pratique d’atelier · quand y aller</span>
       <p>La reconstruction 3D ne sert que si vous avez un <strong>plan précis en tête qui exige un mouvement de caméra impossible à main levée</strong> : traverser une paroi, monter le long d’une charpente, orbiter autour d’un objet au centre du volume. Si vos 20 plans sont tenables en caméra fixe et en petits mouvements, sautez cette section — vous gagnerez deux jours à investir dans le son.</p>
@@ -2883,6 +2961,12 @@ Ne commente pas la qualité esthétique des photos.</pre>
       </ul>
       <p>If your machine does not meet the first condition, <strong>Polycam</strong> does the equivalent from a phone with remote processing: less control, but no hardware prerequisite. An interior typically reconstructs in hours, not weeks.</p>
     </div>
+    <div class="callout c-tip">
+      <span class="lbl">The shortcut · a splat from a single image</span>
+      <p>Before setting up an orbit capture, know that <a href="https://github.com/b2renger/ComfyQ">ComfyQ</a> ships an <strong>image → splat</strong> workflow that produces a 3D file from <em>one</em> photograph, in a booked slot, with nothing to install. It is not the same thing as the reconstruction in this section: you get a plausible object seen from one angle, not a faithful survey of the volume. But for an <em>object</em> to rotate in a shot, it is ten minutes against half a day.</p>
+      <p>Keep orbit coverage for what only it can do: a <strong>volume</strong> to place cameras inside.</p>
+    </div>
+
     <div class="callout c-teach">
       <span class="lbl">Studio practice · when to bother</span>
       <p>3D reconstruction only earns its keep if you have a <strong>specific shot in mind that demands a camera move no hand could make</strong>: passing through a wall, rising along a truss, orbiting an object at the centre of the volume. If your 20 shots are achievable on a locked-off camera and small moves, skip this section — you will save two days to invest in sound.</p>
@@ -3291,6 +3375,15 @@ Do not comment on the aesthetic quality of the photographs.</pre>
       </ol>
     </div>
 
+    <div class="callout c-tip">
+      <span class="lbl">Où vous faites cela, concrètement</span>
+      <p>Dans l’atelier, ces trois phases se mènent dans <strong><a href="https://github.com/b2renger/LlmOnLan">LlmOnLan</a></strong>, qui sert Gemma 4 depuis la ferme de l’école. Deux conséquences pratiques :</p>
+      <ul style="margin-bottom:0">
+        <li>La conversation est <strong>persistante et locale</strong> : vous retrouvez le fil de vos trois phases d’une séance à l’autre, sur votre machine. Gardez un fil par film — c’est votre trace de travail, et elle alimente le journal de projet.</li>
+        <li>Le modèle est <strong>multimodal</strong> : vous pouvez déposer vos images de référence directement dans le fil, et lui demander d’écrire à partir de ce qu’il voit plutôt que de ce que vous décrivez. Sur la voie construite du chapitre <a href="#ch6">6</a>, c’est la façon la plus rapide de fixer les cinq règles du monde.</li>
+      </ul>
+    </div>
+
     <h3>8.1 Phase 1 — La structuration</h3>
     <p>On ne demande pas encore d’images. On demande une répartition de l’action sur vingt plans, à confronter à la structure en cinq blocs du chapitre précédent.</p>
     <div class="pr">
@@ -3424,6 +3517,15 @@ vient de moi et ce qui vient de toi.</pre>
         <li><strong>One step at a time.</strong> Structure first, technical enrichment second, consistency last. Asking for all three at once gives three mediocre results.</li>
         <li><strong>Sign off explicitly.</strong> End each prompt with "check this with me before moving on". Without that the model runs ahead, and you inherit twenty shots built on a structure you never approved.</li>
       </ol>
+    </div>
+
+    <div class="callout c-tip">
+      <span class="lbl">Where you actually do this</span>
+      <p>In the studio these three phases are run in <strong><a href="https://github.com/b2renger/LlmOnLan">LlmOnLan</a></strong>, which serves Gemma 4 from the school's farm. Two practical consequences:</p>
+      <ul style="margin-bottom:0">
+        <li>The conversation is <strong>persistent and local</strong>: you pick up the thread of your three phases from one session to the next, on your own machine. Keep one thread per film — it is your working trace, and it feeds the project log.</li>
+        <li>The model is <strong>multimodal</strong>: you can drop your reference images straight into the thread and ask it to write from what it sees rather than from what you describe. On chapter <a href="#ch6">6</a>'s constructed route, that is the fastest way to fix the five rules of the world.</li>
+      </ul>
     </div>
 
     <h3>8.1 Phase 1 — Structuring</h3>
@@ -4392,7 +4494,7 @@ sur les 20 lignes, et signale toute ligne où tu as dû t'en écarter.</pre>
           <tr>
             <td><strong>Retouche par instruction</strong></td>
             <td>Plutôt que de regénérer un plan raté, vous demandez au modèle de <em>modifier</em> l’image existante : « change la veste en beige, garde tout le reste ». La cohérence est préservée par construction.</td>
-            <td>Faible. La bonne réponse à 80 % des dérives de détail.</td>
+            <td>Faible. La bonne réponse à 80 % des dérives de détail. <strong>Plusieurs flux d’édition par instruction sont fournis dans <a href="https://github.com/b2renger/ComfyQ">ComfyQ</a></strong>, pour l’image comme pour la vidéo, avec ou sans image de référence.</td>
           </tr>
           <tr>
             <td><strong>LoRA de personnage</strong></td>
@@ -4513,7 +4615,7 @@ and flag any row where you had to depart from it.</pre>
           <tr>
             <td><strong>Instruction editing</strong></td>
             <td>Rather than regenerating a failed shot, you ask the model to <em>modify</em> the existing image: "change the coat to beige, keep everything else". Consistency is preserved by construction.</td>
-            <td>Low. The right answer to 80 % of detail drift.</td>
+            <td>Low. The right answer to 80 % of detail drift. <strong>Several instruction-editing workflows ship in <a href="https://github.com/b2renger/ComfyQ">ComfyQ</a></strong>, for image and for video, with or without a reference image.</td>
           </tr>
           <tr>
             <td><strong>Character LoRA</strong></td>
@@ -4608,9 +4710,16 @@ text overlay, oversaturated, fisheye distortion, duplicated subject</pre>
       </table>
     </div>
 
+    <div class="callout c-tip">
+      <span class="lbl">Ce que vous voyez de ces six paramètres dans ComfyQ</span>
+      <p><a href="https://github.com/b2renger/ComfyQ">ComfyQ</a> n’expose pas le graphe entier : l’atelier choisit, flux par flux, les paramètres que vous voyez, et masque l’infrastructure (chemins de modèles, précisions, périphériques) qui ne se règle pas. Vous aurez donc en général le prompt, la graine et les dimensions ; les autres peuvent être fixés d’avance.</p>
+      <p>Ce n’est pas une perte : c’est ce qui rend l’outil utilisable en première année. Mais les six paramètres restent à connaître, parce qu’ils expliquent <em>pourquoi</em> une image sort dure ou molle — et parce que le jour où l’on vous ouvre ComfyUI directement, vous saurez quoi regarder. Si vous voulez voir le graphe complet, demandez : l’atelier peut exposer ComfyUI sur le réseau.</p>
+    </div>
+
     <div class="callout c-doc">
       <span class="lbl">La graine est votre carnet de notes</span>
       <p>C’est le paramètre le plus sous-estimé par les débutants et le plus utilisé par les praticiens. Une graine notée est une image que vous pouvez reproduire dans six semaines, sur une autre machine, à l’identique. Notez-la <strong>dans la feuille de plans, pas dans votre tête</strong> : une colonne <code>seed</code> supplémentaire suffit. Sans elle, le livrable B n’est pas reproductible et ne prouve rien.</p>
+      <p>Dans <a href="https://github.com/b2renger/ComfyQ">ComfyQ</a> la graine est traitée exactement comme ce manuel le demande : le champ <strong>se randomise à chaque ouverture</strong> du formulaire de réservation — ce qui est le bon comportement en passe d’exploration — et un bouton dé permet de la relancer. Pour la <em>verrouiller</em>, tapez la valeur à la main : c’est le geste de la passe 2.</p>
     </div>
 
     <figure class="shot" id="fig-12-01">
@@ -4618,7 +4727,7 @@ text overlay, oversaturated, fisheye distortion, duplicated subject</pre>
         <img src="images/12-01-comfyui-graphe-image.png" alt="Le graphe d'image dans ComfyUI" onload="this.closest('.shot').classList.add('has-image')">
         <div class="shot-todo">
           <span class="id">Capture 12-01</span>
-          <div class="what">Le graphe ComfyUI de génération d'image utilisé dans l'atelier, avec les six nœuds de la table 12.1 lisibles et leurs valeurs visibles. Le nœud de références d'image doit être branché et visible. Capture la plus consultée du manuel.</div>
+          <div class="what">Le formulaire de réservation de ComfyQ pour un flux image, rempli : le prompt, le champ graine avec son bouton dé, les dimensions, et un média déposé en référence. C'est ce que l'étudiant voit réellement — capture la plus consultée du manuel.</div>
           <span class="file">images/12-01-comfyui-graphe-image.png</span>
         </div>
       </div>
@@ -4640,6 +4749,16 @@ text overlay, oversaturated, fisheye distortion, duplicated subject</pre>
     <div class="callout c-warn">
       <span class="lbl">Trop de références se contredisent</span>
       <p>Brancher huit images à la fois ne rend pas le plan plus fidèle : le modèle moyenne des sources qui ne s’accordent pas, et vous obtenez une image molle. Trois à cinq références par plan, choisies, valent mieux que dix. Si une référence n’a pas de raison précise d’être là, débranchez-la.</p>
+    </div>
+
+    <div class="callout c-tip">
+      <span class="lbl">ComfyQ tient l’historique à votre place — servez-vous en</span>
+      <p>Trois fonctions de <a href="https://github.com/b2renger/ComfyQ">ComfyQ</a> font une partie du travail de traçabilité que le chapitre <a href="#ch4">4</a> vous demande. Apprenez-les maintenant, elles vous économiseront des heures.</p>
+      <ul style="margin-bottom:0">
+        <li><strong>« Use these settings »</strong> — sur n’importe quelle génération passée, rouvre le formulaire pré-rempli avec le prompt, les paramètres <em>et les médias employés</em>. C’est la façon la plus fiable de relancer un plan en changeant une seule variable, et cela supprime la faute la plus fréquente de la passe 2 : retaper un prompt et en modifier trois choses sans le vouloir.</li>
+        <li><strong>Mes générations / Tous les travaux</strong> — l’historique est partagé et filtrable par utilisateur. Regarder ce que font vos camarades sur le même GPU est le raccourci d’apprentissage le plus rapide du module.</li>
+        <li><strong>L’export CSV</strong> de l’historique. Prompts, paramètres, dates : c’est une pièce à joindre au livrable A, et elle prouve la méthode mieux que n’importe quel commentaire.</li>
+      </ul>
     </div>
 
     <h3>12.3 La discipline d’itération · trois passes</h3>
@@ -4741,9 +4860,16 @@ text overlay, oversaturated, fisheye distortion, duplicated subject</pre>
       </table>
     </div>
 
+    <div class="callout c-tip">
+      <span class="lbl">How much of these six you actually see in ComfyQ</span>
+      <p><a href="https://github.com/b2renger/ComfyQ">ComfyQ</a> does not expose the whole graph: the studio chooses, workflow by workflow, which parameters you see, and hides the infrastructure (model paths, precisions, devices) that is not yours to set. So you will generally get the prompt, the seed and the dimensions; the others may be fixed in advance.</p>
+      <p>That is not a loss: it is what makes the tool usable in first year. But the six parameters are still worth knowing, because they explain <em>why</em> an image comes out hard or soft — and because the day someone opens ComfyUI to you directly, you will know what to look at. If you want to see the full graph, ask: the studio can expose ComfyUI on the network.</p>
+    </div>
+
     <div class="callout c-doc">
       <span class="lbl">The seed is your notebook</span>
       <p>It is the parameter beginners most underestimate and practitioners most use. A recorded seed is an image you can reproduce in six weeks, on another machine, identically. Record it <strong>in the shot sheet, not in your head</strong>: one extra <code>seed</code> column is enough. Without it, Deliverable B is not reproducible and proves nothing.</p>
+      <p>In <a href="https://github.com/b2renger/ComfyQ">ComfyQ</a> the seed behaves exactly as this manual asks: the field <strong>re-randomises every time</strong> the booking form opens — the right behaviour during exploration — and a dice button re-rolls it. To <em>lock</em> it, type the value in by hand: that is the pass-2 gesture.</p>
     </div>
 
     <figure class="shot" id="fig-12-01-en">
@@ -4751,7 +4877,7 @@ text overlay, oversaturated, fisheye distortion, duplicated subject</pre>
         <img src="images/12-01-comfyui-graphe-image.png" alt="The image graph in ComfyUI" onload="this.closest('.shot').classList.add('has-image')">
         <div class="shot-todo">
           <span class="id">Shot 12-01</span>
-          <div class="what">The studio's ComfyUI image-generation graph, with the six nodes of table 12.1 legible and their values visible. The image-reference node must be wired in and visible. The most consulted capture in the manual.</div>
+          <div class="what">ComfyQ's booking form for an image workflow, filled in: the prompt, the seed field with its dice button, the dimensions, and a media file dropped in as reference. This is what the student actually sees — the most consulted capture in the manual.</div>
           <span class="file">images/12-01-comfyui-graphe-image.png</span>
         </div>
       </div>
@@ -4773,6 +4899,16 @@ text overlay, oversaturated, fisheye distortion, duplicated subject</pre>
     <div class="callout c-warn">
       <span class="lbl">Too many references contradict each other</span>
       <p>Wiring in eight images at once does not make the shot more faithful: the model averages sources that do not agree, and you get a soft image. Three to five chosen references per shot beat ten. If a reference has no precise reason to be there, unplug it.</p>
+    </div>
+
+    <div class="callout c-tip">
+      <span class="lbl">ComfyQ keeps the history for you — use it</span>
+      <p>Three <a href="https://github.com/b2renger/ComfyQ">ComfyQ</a> features do part of the traceability work chapter <a href="#ch4">4</a> asks of you. Learn them now; they will save you hours.</p>
+      <ul style="margin-bottom:0">
+        <li><strong>"Use these settings"</strong> — on any past generation, reopens the form pre-filled with the prompt, the parameters <em>and the media it used</em>. It is the most reliable way to relaunch a shot changing one single variable, and it eliminates the commonest pass-2 error: retyping a prompt and altering three things without meaning to.</li>
+        <li><strong>My Generations / All Jobs</strong> — the history is shared and filterable by user. Watching what your classmates do on the same GPU is the fastest learning shortcut in the module.</li>
+        <li><strong>CSV export</strong> of the history. Prompts, parameters, dates: it is an exhibit to attach to Deliverable A, and it proves the method better than any commentary.</li>
+      </ul>
     </div>
 
     <h3>12.3 Iteration discipline · three passes</h3>
@@ -4900,6 +5036,12 @@ text overlay, oversaturated, fisheye distortion, duplicated subject</pre>
       <span class="lbl">Documenté</span>
       <p>C’est la technique de référence pour diriger un modèle vidéo : bloquer le plan en 3D, exporter le rendu comme référence de mouvement, et le fournir au modèle avec une image de départ. Le modèle suit exactement le mouvement de caméra et l’action, tout en générant le personnage et le décor définitifs. Elle s’est imposée comme standard de la prévisualisation dans les productions hybrides.</p>
     </div>
+    <div class="callout c-tip">
+      <span class="lbl">Vous pouvez faire bloquer le plan par la conversation</span>
+      <p><a href="https://github.com/b2renger/LlmOnLan">LlmOnLan</a> sait <strong>piloter un Blender ouvert sur votre machine</strong> : créer des objets, exécuter du Python dans la scène, l’inspecter. Vous activez l’option dans les réglages, vous démarrez le serveur dans Blender, et vous demandez en français « place un pantin de 1,70 m au fond de la halle, une caméra à 1,50 m à six mètres, et fais-la avancer de deux mètres en trois secondes ».</p>
+      <p><strong>Deux réserves honnêtes.</strong> Le modèle par défaut de la ferme est faible en appel d’outils : pour un usage réellement utile il faut servir un modèle entraîné pour cela — demandez à votre encadrant. Et cela reste du blocage grossier : c’est exactement ce qu’il faut ici, mais n’en attendez pas une mise en scène.</p>
+    </div>
+
     <p>Si vous avez reconstruit le site en 3D au chapitre 6, la boîte grise est remplacée par le site lui-même : vous y placez des caméras et vous obtenez un guide de mouvement géométriquement exact <em>de votre lieu réel</em>. C’est le point où les axes 1 et 2 se rejoignent, et le plus haut degré d’ancrage que ce cours vise.</p>
 
     <figure class="shot" id="fig-13-01">
@@ -4994,6 +5136,12 @@ text overlay, oversaturated, fisheye distortion, duplicated subject</pre>
       <span class="lbl">Documented</span>
       <p>This is the reference technique for directing a video model: block the shot in 3D, export the render as a motion reference, and supply it to the model with a start frame. The model follows the camera movement and action exactly while generating the final character and set. It has become the standard for previz in hybrid productions.</p>
     </div>
+    <div class="callout c-tip">
+      <span class="lbl">You can have the chat block the shot for you</span>
+      <p><a href="https://github.com/b2renger/LlmOnLan">LlmOnLan</a> can <strong>drive a Blender open on your own machine</strong>: create objects, run Python in the scene, inspect it. You turn the option on in settings, start the server inside Blender, and ask in plain language: "put a 1.70 m dummy at the far end of the hall, a camera at 1.50 m six metres away, and move it forward two metres over three seconds."</p>
+      <p><strong>Two honest caveats.</strong> The farm's default model is weak at tool calling: for genuinely useful results a model trained for it must be served — ask your tutor. And this stays rough blocking, which is exactly what is wanted here — but do not expect staging from it.</p>
+    </div>
+
     <p>If you reconstructed the site in 3D in chapter 6, the grey box is replaced by the site itself: you place cameras in it and get a geometrically exact motion guide <em>of your real place</em>. This is the point where axes 1 and 2 meet, and the highest degree of grounding this course aims at.</p>
 
     <figure class="shot" id="fig-13-01-en">
@@ -5145,12 +5293,22 @@ as <span class="var">[CE QUE LE MOUVEMENT RÉVÈLE]</span>.
       <li><strong>Trois prises d’abord, sur les vingt plans.</strong> Puis concentrez les prises supplémentaires sur les cinq plans qui résistent. Un plan facile n’a pas besoin de dix prises.</li>
     </ul>
 
+    <div class="callout c-doc">
+      <span class="lbl">Vous ne calculez pas seul · ce que change ComfyQ</span>
+      <p>Le GPU est partagé, et <a href="https://github.com/b2renger/ComfyQ">ComfyQ</a> rend ce partage explicite : une <strong>frise de réservation</strong> où vous prenez un créneau, une file d’attente, et une <strong>estimation de durée calibrée par flux de travail</strong> — l’atelier a mesuré une vraie passe, vous lisez le chiffre. Trois conséquences sur votre planning :</p>
+      <ul style="margin-bottom:0">
+        <li><strong>Le chiffre est donné, pas à chronométrer.</strong> Multipliez l’estimation par 80 et vous avez votre budget de calcul. Faites-le avant de commencer l’étape 11, pas pendant.</li>
+        <li><strong>Réservez tôt et large.</strong> À trois jours du rendu, vingt personnes veulent le même GPU. Les créneaux de nuit et de début de matinée sont vides et personne ne les prend.</li>
+        <li><strong>Ne restez pas devant.</strong> Les travaux survivent aux redémarrages du serveur et l’historique est conservé : réservez, partez, revenez trier. Regarder une barre de progression n’accélère rien et consomme votre temps de sélection.</li>
+      </ul>
+    </div>
+
     <figure class="shot" id="fig-14-01">
       <div class="shot-frame">
         <img src="images/14-01-comfyui-graphe-video.png" alt="Le graphe vidéo dans ComfyUI" onload="this.closest('.shot').classList.add('has-image')">
         <div class="shot-todo">
           <span class="id">Capture 14-01</span>
-          <div class="what">Le graphe ComfyUI image-vers-vidéo de l'atelier : l'entrée image clé, le prompt de mouvement, le nombre d'images et la cadence lisibles. Si le graphe gère la première et la dernière image, les deux entrées doivent être visibles.</div>
+          <div class="what">ComfyQ en cours de production : la frise de réservation avec plusieurs créneaux pris, un travail en cours avec sa barre de progression et son estimation de durée, et la grille des générations récentes. Doit montrer que le GPU est partagé.</div>
           <span class="file">images/14-01-comfyui-graphe-video.png</span>
         </div>
       </div>
@@ -5244,12 +5402,22 @@ as <span class="var">[WHAT THE MOVEMENT REVEALS]</span>.
       <li><strong>Three takes first, across all twenty shots.</strong> Then concentrate extra takes on the five that resist. An easy shot does not need ten takes.</li>
     </ul>
 
+    <div class="callout c-doc">
+      <span class="lbl">You are not computing alone · what ComfyQ changes</span>
+      <p>The GPU is shared, and <a href="https://github.com/b2renger/ComfyQ">ComfyQ</a> makes that sharing explicit: a <strong>booking timeline</strong> where you take a slot, a queue, and a <strong>per-workflow calibrated duration estimate</strong> — the studio measured a real run, you read the number. Three consequences for your schedule:</p>
+      <ul style="margin-bottom:0">
+        <li><strong>The number is given, not stopwatched.</strong> Multiply the estimate by 80 and you have your compute budget. Do it before starting stage 11, not during.</li>
+        <li><strong>Book early and wide.</strong> Three days from the deadline, twenty people want the same GPU. The night and early-morning slots are empty and nobody takes them.</li>
+        <li><strong>Do not sit and watch.</strong> Jobs survive server restarts and the history is kept: book, leave, come back to sort. Watching a progress bar speeds nothing up and eats the time you need for selecting.</li>
+      </ul>
+    </div>
+
     <figure class="shot" id="fig-14-01-en">
       <div class="shot-frame">
         <img src="images/14-01-comfyui-graphe-video.png" alt="The video graph in ComfyUI" onload="this.closest('.shot').classList.add('has-image')">
         <div class="shot-todo">
           <span class="id">Shot 14-01</span>
-          <div class="what">The studio's ComfyUI image-to-video graph: the key-frame input, the movement prompt, the frame count and frame rate all legible. If the graph handles first and last frame, both inputs must be visible.</div>
+          <div class="what">ComfyQ mid-production: the booking timeline with several slots taken, a running job with its progress bar and duration estimate, and the recent-generations grid. Must show that the GPU is shared.</div>
           <span class="file">images/14-01-comfyui-graphe-video.png</span>
         </div>
       </div>
@@ -5349,7 +5517,7 @@ as <span class="var">[WHAT THE MOVEMENT REVEALS]</span>.
     </ul>
     <div class="callout c-doc">
       <span class="lbl">Documenté</span>
-      <p>La génération contrainte par première et dernière image est une capacité native des modèles ouverts actuels — <strong>Wan 2.2 FLF2V</strong> la propose directement dans les modèles de flux de travail ComfyUI. <strong>MiniMax H3</strong> en fait un mode à part entière : son point de contrôle <code>FL2VA</code> prend la première et la dernière image et rend la vidéo <em>avec son son</em>. Vérifiez le nom du nœud dans la version installée : c’est une fonction qui change de nom d’une version à l’autre.</p>
+      <p>La génération contrainte par première et dernière image est une capacité native des modèles ouverts actuels — <strong>Wan 2.2 FLF2V</strong> la propose directement dans les modèles de flux de travail ComfyUI. <strong>MiniMax H3</strong> en fait un mode à part entière : son point de contrôle <code>FL2VA</code> prend la première et la dernière image et rend la vidéo <em>avec son son</em>. Dans l’atelier, <a href="https://github.com/b2renger/ComfyQ">ComfyQ</a> embarque un flux <strong>LTX 2.3 FLF2V</strong> (première + dernière image → vidéo avec son) : vous n’avez rien à monter vous-même, le formulaire vous demande les deux images. Vérifiez le nom du nœud dans la version installée : c’est une fonction qui change de nom d’une version à l’autre.</p>
     </div>
 
     <div data-level="r">
@@ -5411,6 +5579,12 @@ as <span class="var">[WHAT THE MOVEMENT REVEALS]</span>.
         </tbody>
       </table>
     </div>
+    <div class="callout c-doc">
+      <span class="lbl">Les deux outils sont déjà dans ComfyQ</span>
+      <p>Vous n’avez pas de chaîne à construire : <a href="https://github.com/b2renger/ComfyQ">ComfyQ</a> embarque les deux comme flux de travail à part entière — un <strong>agrandissement par diffusion</strong> (image vers 4K, et vidéo vers HD en conservant la cadence <em>et</em> la piste son) et une <strong>interpolation d’images</strong> pour fluidifier ou ralentir. Vous déposez le plan retenu, vous réservez un créneau, vous récupérez le fichier.</p>
+      <p>Ils sont classés comme <em>utilitaires</em> et non comme générateurs : c’est le bon réflexe. Un utilitaire ne crée rien, il transforme — et il ne répare pas un plan qui ne tient pas.</p>
+    </div>
+
     <div class="callout c-teach">
       <span class="lbl">Pratique d’atelier</span>
       <p>N’agrandissez rien avant le montage. Vous découvrirez au chapitre 17 que trois plans sont coupés et que deux sont recadrés : tout traitement fait avant est du temps de calcul jeté. La finition se fait sur la version montée.</p>
@@ -5440,7 +5614,7 @@ as <span class="var">[WHAT THE MOVEMENT REVEALS]</span>.
     </ul>
     <div class="callout c-doc">
       <span class="lbl">Documented</span>
-      <p>First/last-frame constrained generation is a native capability of current open models — <strong>Wan 2.2 FLF2V</strong> offers it directly in ComfyUI workflow templates. <strong>MiniMax H3</strong> makes it a mode in its own right: its <code>FL2VA</code> checkpoint takes the first and last frame and returns video <em>with its sound</em>. Check the node name in your installed version: this is a function whose name changes between releases.</p>
+      <p>First/last-frame constrained generation is a native capability of current open models — <strong>Wan 2.2 FLF2V</strong> offers it directly in ComfyUI workflow templates. <strong>MiniMax H3</strong> makes it a mode in its own right: its <code>FL2VA</code> checkpoint takes the first and last frame and returns video <em>with its sound</em>. In the studio, <a href="https://github.com/b2renger/ComfyQ">ComfyQ</a> ships an <strong>LTX 2.3 FLF2V</strong> workflow (first + last frame → video with sound): you build nothing yourself, the form asks you for the two images. Check the node name in your installed version: this is a function whose name changes between releases.</p>
     </div>
 
     <div data-level="r">
@@ -5502,6 +5676,12 @@ as <span class="var">[WHAT THE MOVEMENT REVEALS]</span>.
         </tbody>
       </table>
     </div>
+    <div class="callout c-doc">
+      <span class="lbl">Both tools are already in ComfyQ</span>
+      <p>You have no chain to build: <a href="https://github.com/b2renger/ComfyQ">ComfyQ</a> ships both as workflows in their own right — a <strong>diffusion upscaler</strong> (image to 4K, and video to HD keeping the frame rate <em>and</em> the audio track) and a <strong>frame interpolator</strong> for smoothing or slow motion. You drop in the selected shot, book a slot, collect the file.</p>
+      <p>They are filed as <em>utilities</em> rather than generators, which is the right instinct. A utility creates nothing, it transforms — and it will not repair a shot that does not hold.</p>
+    </div>
+
     <div class="callout c-teach">
       <span class="lbl">Studio practice</span>
       <p>Upscale nothing before the edit. You will discover in chapter 17 that three shots are cut and two are reframed: any processing done before is compute thrown away. Finishing is done on the cut version.</p>
@@ -6800,11 +6980,13 @@ by <span class="cm">[your name]</span>, at <span class="cm">[place]</span>, <spa
     <p><strong>Récits génératifs — Manuel de production</strong> · Édition 2026.1</p>
     <p>Zaki Jawhari · L’École de Design Nantes Atlantique</p>
     <p>Ce manuel est un document vivant. Les noms de modèles cités datent d’août 2026 ; la méthode est faite pour leur survivre. Signalez toute erreur ou tout modèle périmé à votre encadrant.</p>
+    <p style="margin-top:1.2rem"><strong>Outils de l’atelier</strong> — le pipeline décrit ici repose sur deux outils développés à l’École de Design Nantes Atlantique par <strong>b2renger</strong> : <a href="https://github.com/b2renger/ComfyQ">ComfyQ</a>, réservation et file d’attente devant ComfyUI, et <a href="https://github.com/b2renger/LlmOnLan">LlmOnLan</a> (MIT), client de conversation et ferme d’inférence sur le réseau local. Sans eux, ce cours demanderait à chaque étudiant d’installer et d’administrer sa propre chaîne.</p>
   </div>
   <div class="en-only">
     <p><strong>Generative Narratives — Production Manual</strong> · Edition 2026.1</p>
     <p>Zaki Jawhari · L'École de Design Nantes Atlantique</p>
     <p>This manual is a living document. The model names quoted date from August 2026; the method is built to outlive them. Report any error or stale model to your tutor.</p>
+    <p style="margin-top:1.2rem"><strong>Studio tools</strong> — the pipeline described here rests on two tools built at L'École de Design Nantes Atlantique by <strong>b2renger</strong>: <a href="https://github.com/b2renger/ComfyQ">ComfyQ</a>, booking and job queue in front of ComfyUI, and <a href="https://github.com/b2renger/LlmOnLan">LlmOnLan</a> (MIT), a chat client and inference farm on the local network. Without them this course would require every student to install and administer their own chain.</p>
   </div>
 </footer>
 

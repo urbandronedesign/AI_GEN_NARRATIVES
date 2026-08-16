@@ -36,8 +36,8 @@ Cinq captures. Elles se font toutes en une seule séance, avec n'importe quel pr
 
 | Nom de fichier | Où aller | Cadrer pour que |
 |---|---|---|
-| `12-01-comfyui-graphe-image.png`<br>**celle-ci en premier** | ComfyUI, le graphe de génération d'image de l'atelier, avec le nœud de références d'image branché. | Les six paramètres de la table 12.1 soient lisibles avec leurs valeurs : graine, pas, guidage, échantillonneur, résolution, débruitage. **Capture la plus consultée du manuel** — c'est elle qui évite la moitié des questions en atelier. |
-| `14-01-comfyui-graphe-video.png`<br>**celle-ci en deuxième** | ComfyUI, le graphe image-vers-vidéo. | L'entrée image clé, le prompt de mouvement, le nombre d'images et la cadence soient lisibles. Si le graphe gère première et dernière image, les deux entrées doivent être visibles — c'est la technique du chapitre 15.1. |
+| `12-01-comfyui-graphe-image.png`<br>**celle-ci en premier** | **ComfyQ**, le formulaire de réservation d'un flux image, rempli. | Le prompt, le champ graine **avec son bouton dé**, les dimensions, et un média déposé en référence soient tous lisibles. C'est ce que l'étudiant voit réellement — pas le graphe ComfyUI. **Capture la plus consultée du manuel** : elle évite la moitié des questions en atelier. |
+| `14-01-comfyui-graphe-video.png`<br>**celle-ci en deuxième** | **ComfyQ** en pleine production. | On voie la **frise de réservation** avec plusieurs créneaux pris par des utilisateurs différents, un travail en cours avec sa barre de progression et son **estimation de durée**, et la grille des générations récentes. Le point à démontrer : *le GPU est partagé*, ce qui est tout l'argument du §14.3. |
 | `09-01-feuille-de-plans.png` | Une feuille de plans réelle **en milieu de production**, pas vide. | La colonne `statut` contienne visiblement des valeurs différentes (`a_faire`, `image_ok`, `valide`). C'est l'image du tableau de bord. **Si l'atelier dispose d'un outil maison de suivi des plans, c'est ici qu'il se montre** plutôt qu'un tableur. |
 | `17-01-timeline-montage.png` | La timeline complète d'un film du cours, dans Resolve ou Premiere. | On voie les 20 plans vidéo, les quatre couches sonores de la Fig 16.1, et les nœuds d'étalonnage. **Le point à démontrer visuellement : la couche d'ambiance traverse toutes les coupes sans s'interrompre** — c'est la règle centrale du chapitre 16. |
 | `06-02-splat-reconstruction.png` | LichtFeld Studio, une reconstruction en cours. | L'aperçu d'entraînement d'un côté et les positions de caméra résolues de l'autre. **Sur un site réel de l'école, pas sur un jeu de démonstration** — sinon la figure contredit tout le chapitre 6. Cette figure ne concerne que la voie captée, en A4·5. Le nom de fichier est volontairement neutre : si l'atelier change d'outil, seule la légende bouge. |
@@ -95,6 +95,15 @@ L'attribut `onload` est ce qui fait tout le mécanisme : si le fichier existe, l
 ## Ce qui n'a pas besoin de capture
 
 Les huit figures suivantes sont des SVG dessinés, bilingues, et complets : le pipeline en sept étapes et son chemin de retour (Fig 1.1), les quatre points d'injection du matériau non génératif (Fig 2.1), l'anatomie d'un nom de fichier (Fig 4.1), la couverture de prise de vue pour reconstruction (Fig 6.1), les six échelles de plan (Fig 9.2), l'anatomie du super-prompt (Fig 11.1), première et dernière image (Fig 15.1), les quatre couches sonores (Fig 16.1). Elles n'ont besoin de rien de votre part et se redessinent automatiquement en thème sombre.
+
+## Note sur les outils de l'atelier
+
+Le manuel cite et crédite **[ComfyQ](https://github.com/b2renger/ComfyQ)** et **[LlmOnLan](https://github.com/b2renger/LlmOnLan)** (b2renger) au chapitre 3, dans plusieurs chapitres d'exécution, et au pied de page.
+
+Deux points à surveiller, côté maintenance :
+
+- **ComfyQ n'a pas de fichier `LICENSE`** au 16/08/2026 (LlmOnLan est en MIT). Le droit d'auteur s'applique donc par défaut. Ce n'est pas un problème pour un usage interne, mais le chapitre 18 apprend aux étudiants à vérifier la licence de *chaque* outil — si l'un d'eux pose la question, la réponse honnête est « c'est un outil interne de l'école ». Suggérer à l'auteur d'ajouter une licence réglerait l'incohérence.
+- Les fonctions citées dans le manuel (bouton dé sur la graine, « Use these settings », export CSV, frise de réservation, estimation calibrée, flux LTX FLF2V / interpolation / agrandissement, image → splat, édition par instruction) proviennent du README de ComfyQ à cette date. **Si l'outil évolue, ce sont ces passages à relire** : chapitre 3 §3.2, chapitre 12 §12.1 et §12.3, chapitre 14 §14.3, chapitre 15 §15.1 et §15.4, chapitre 6 §6.5, chapitre 11 §11.3.
 
 ## Entretien du manuel
 

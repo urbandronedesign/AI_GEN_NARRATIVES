@@ -120,6 +120,17 @@ Deux conventions portent la différence entre le fait et l'opinion :
 - **Documenté** — vérifié dans la documentation officielle d'un modèle, d'un outil ou d'un texte réglementaire
 - **Pratique d'atelier** — du métier et du jugement, avec quoi un étudiant est invité à discuter
 
+## Les outils de l'atelier
+
+Le pipeline décrit ici ne suppose pas que chaque étudiant installe et administre sa propre chaîne. Il repose sur **deux outils développés à l'École de Design Nantes Atlantique par [b2renger](https://github.com/b2renger)**, sans lesquels ce cours ne serait pas tenable à l'échelle d'une promotion :
+
+| Outil | Rôle dans le cours | Chapitres |
+|---|---|---|
+| **[ComfyQ](https://github.com/b2renger/ComfyQ)** | Réservation de créneaux et file d'attente devant ComfyUI sur les GPU de l'atelier. Les étudiants ouvrent une URL — rien à installer, même depuis un téléphone. Frise de réservation, estimation de durée calibrée par flux, historique partagé, export CSV, réutilisation d'un travail passé avec ses paramètres et ses médias. | 3 · 12 · 14 · 15 |
+| **[LlmOnLan](https://github.com/b2renger/LlmOnLan)** *(MIT)* | Client de conversation + ferme d'inférence sur le réseau local, servant Gemma 4. Découverte automatique, aucune configuration. Multimodal (images, voix), recherche web, OCR de documents, et pilotage de Blender via MCP. Les conversations restent sur la machine de l'étudiant ; la ferme est sans état. | 3 · 5 · 6 · 8 · 13 |
+
+Ces deux outils expliquent plusieurs choix du manuel. La discipline de graine du chapitre 12 suit le comportement de ComfyQ (champ randomisé à l'ouverture, verrouillage par saisie manuelle) ; le budget de calcul du chapitre 14 se lit dans son estimation calibrée plutôt qu'au chronomètre ; et l'argument de confidentialité des chapitres 3 et 18 tient parce que LlmOnLan garde les données en local.
+
 ## Ce qui se périme, et ce qui ne se périme pas
 
 Ce champ change tous les deux mois. Tout ce qui est **nommé** — modèles, versions, chiffres de VRAM — est concentré dans le **chapitre 3** et dans **[prompts.html](prompts.html)**, pour que le reste du manuel reste juste. La *méthode* est faite pour survivre aux noms.
