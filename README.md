@@ -1,3 +1,24 @@
+```
+████  █████  ████ █████ █████  ████
+█   █ █     █       █     █   █
+████  ████  █       █     █    ███
+█  █  █     █       █     █       █
+█   █ █████  ████ █████   █   ████
+
+ ████ █████ █   █ █████ ████   ███  █████ █████ █████  ████
+█     █     ██  █ █     █   █ █   █   █     █   █     █
+█  ██ ████  █ █ █ ████  ████  █████   █     █   ████   ███
+█   █ █     █  ██ █     █  █  █   █   █     █   █         █
+ ████ █████ █   █ █████ █   █ █   █   █   █████ █     ████
+
+le manuel de production du court métrage par IA génératives
+FR · EN   ·   L'École de Design Nantes Atlantique   ·   Édition 2026.1
+
+  référentiel → écriture → chartes → image → mouvement → son → livraison
+       ▲                                                           │
+       └────────  le défaut constaté ici a été commis là  ─────────┘
+```
+
 # Récits génératifs — le manuel de production du court métrage par IA
 
 Manuel de production bilingue (FR/EN) pour produire un **court métrage par IA génératives**, de l'écriture au mixage. Un cours de **compétences techniques**, écrit pour des étudiants en design **de la première à la cinquième année**.
@@ -164,6 +185,12 @@ Ce champ change tous les deux mois. Tout ce qui est **nommé** — modèles, ver
 État des modèles : **août 2026**. Quand le manuel et votre installation ne sont pas d'accord sur un nom de nœud ou un réglage, croyez le logiciel.
 
 ## Mise à jour du manuel
+
+> **Avant toute modification, lisez [`CLAUDE.md`](CLAUDE.md).** C'est le document de
+> maintenance : les décisions déjà tranchées et pourquoi, les faits qui doivent rester
+> cohérents d'un fichier à l'autre, la manière d'éditer un fichier de 650 Ko sans le
+> casser en silence, et ce qui reste ouvert. Il est aussi chargé automatiquement par
+> Claude Code au début de chaque session dans ce dépôt.
 
 C'est **un seul fichier HTML**, éditable directement — pas de compilation, pas de dépendances, pas de `npm install`. Ouvrez `recits_generatifs_manuel-v1.html` dans un éditeur de texte et modifiez-le.
 
