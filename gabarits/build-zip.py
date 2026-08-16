@@ -34,6 +34,7 @@ for base, subdirs, names in os.walk(SRC):
 # day". That means a fixed timestamp on every entry rather than the file's mtime, which
 # a fresh git checkout rewrites anyway.
 STAMP = (2026, 1, 1, 0, 0, 0)
+TEXT = {".md", ".csv", ".txt", ".json"}
 
 with zipfile.ZipFile(OUT, "w", zipfile.ZIP_DEFLATED) as z:
     for d in sorted(dirs):
@@ -45,7 +46,13 @@ with zipfile.ZipFile(OUT, "w", zipfile.ZIP_DEFLATED) as z:
         info.compress_type = zipfile.ZIP_DEFLATED
         info.external_attr = 0o644 << 16
         with open(abspath, "rb") as fh:
-            z.writestr(info, fh.read())
+            data = fh.read()
+        # Normalise line endings to LF. Otherwise the archive's bytes depend on whether
+        # the working tree happens to hold CRLF or LF, and the "is the zip stale?" check
+        # in CI would fire on a fresh checkout rather than on a real change.
+        if os.path.splitext(arcname)[1].lower() in TEXT:
+            data = data.replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+        z.writestr(info, data)
 
 kb = os.path.getsize(OUT) // 1024
 print("wrote %s  (%d files, %d empty dirs, %d KB)" % (
