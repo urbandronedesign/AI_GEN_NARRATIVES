@@ -1769,6 +1769,12 @@ body.show-figures .shot-todo{display:block}
       </table>
     </div>
 
+    <div class="callout c-doc">
+      <span class="lbl">Documenté · les rôles commencent à fusionner</span>
+      <p>Ce découpage en quatre rôles reste le bon cadre pour <em>penser</em> votre installation, mais un même modèle peut désormais en tenir plusieurs. <strong>MiniMax H3</strong>, publié le 3 août 2026, lit du texte, des images, de la vidéo et de l’audio dans un seul contexte et rend de la vidéo <em>avec son son</em> : il occupe à lui seul les rôles vidéo et audio. <strong>LTX-2</strong> produit également image et son en une passe.</p>
+      <p>Cela ne change pas la méthode : il vous faut toujours un texte, une image clé, un mouvement et un son. Cela change le nombre d’outils à installer — et cela vous oblige à décider ce que vous <em>gardez</em> du son que le modèle vous donne, ce qui est traité au chapitre <a href="#ch16">16</a>.</p>
+    </div>
+
     <h3>3.2 L’installation de l’atelier</h3>
     <p>Le laboratoire fonctionne en local, sur GPU, autour de <strong>ComfyUI</strong>. Les modalités d’accès, les identifiants et l’état des machines sont donnés sur la page interne <a href="https://ateliernum.notion.site/Local-AI-as-a-service-372c8d87b59180a6a4dad5436afd4b0d"><em>Local AI as a Service</em></a> ; ce manuel ne les duplique pas, parce qu’ils changent.</p>
     <p>Pourquoi le local plutôt qu’un service en ligne, dans un cadre pédagogique :</p>
@@ -1793,12 +1799,13 @@ body.show-figures .shot-todo{display:block}
           <tr><td><strong>Vidéo</strong> — Wan 2.2 A14B (MoE)</td><td>40 Go et plus</td><td>Meilleure qualité, hors d’atteinte d’un poste étudiant standard.</td></tr>
           <tr><td><strong>Vidéo</strong> — LTX-2.x</td><td>12 – 24 Go en fp8 (720p)</td><td>Génère l’image <em>et</em> le son synchronisé en une passe. Nettement plus rapide à itérer.</td></tr>
           <tr><td><strong>Vidéo</strong> — HunyuanVideo 1.5</td><td>14 Go avec déchargement</td><td>8,3 Md de paramètres. L’option des petites cartes.</td></tr>
+          <tr><td><strong>Vidéo + audio</strong> — MiniMax H3</td><td>16 – 24 Go en INT4 / INT8</td><td>33 Md de paramètres, dont ≈13 Md en branches AdaLN inutiles à l’inférence. 2K (petit côté 768 par défaut), <strong>4 à 15 s</strong> en durées entières, 24 im/s, son <strong>stéréo 32 kHz dans le même fichier</strong>. Natif dans ComfyUI 0.30.0 et au-delà. <strong>Licence à territoire restreint : lisez le §18.3 avant de l’employer.</strong></td></tr>
         </tbody>
       </table>
     </div>
     <div class="callout c-doc">
       <span class="lbl">Documenté</span>
-      <p>Wan 2.2 est publié par Alibaba sous licence Apache 2.0, poids téléchargeables et usage commercial autorisé. Gemma 4, publié le 2 avril 2026 par Google DeepMind, est également sous Apache 2.0, en tailles E2B, E4B, 26B et 31B. Ces deux licences permettent un usage en projet de commande ; ce n’est pas le cas de tous les modèles que vous croiserez, et cela fait partie de ce que vous devez vérifier (chapitre <a href="#ch18">18</a>).</p>
+      <p>Wan 2.2 est publié par Alibaba sous licence Apache 2.0, poids téléchargeables et usage commercial autorisé. Gemma 4, publié le 2 avril 2026 par Google DeepMind, est également sous Apache 2.0, en tailles E2B, E4B, 26B et 31B. Ces deux licences permettent un usage en projet de commande. <strong>Ce n’est pas le cas de tous les modèles ouverts.</strong> MiniMax H3 est publié sous une licence communautaire dont le territoire d’application <em>n’inclut pas l’Union européenne</em> : les poids se téléchargent librement, mais leur usage ici demande une autorisation distincte. Vérifier cela fait partie du travail — voir le §18.3.</p>
     </div>
 
     <div class="callout c-teach">
@@ -1859,6 +1866,12 @@ body.show-figures .shot-todo{display:block}
       </table>
     </div>
 
+    <div class="callout c-doc">
+      <span class="lbl">Documented · the roles are starting to merge</span>
+      <p>These four roles remain the right frame for <em>thinking about</em> your installation, but one model can now fill several of them. <strong>MiniMax H3</strong>, released 3 August 2026, reads text, images, video and audio in a single context and returns video <em>with its own sound</em>: it occupies the video and audio roles by itself. <strong>LTX-2</strong> likewise produces picture and sound in one pass.</p>
+      <p>This does not change the method: you still need a text, a key frame, a movement and a sound. It changes how many tools you install — and it forces you to decide what you <em>keep</em> of the sound the model hands you, which chapter <a href="#ch16">16</a> deals with.</p>
+    </div>
+
     <h3>3.2 The studio installation</h3>
     <p>The lab runs locally, on GPU, around <strong>ComfyUI</strong>. Access details, credentials and machine status are given on the internal <a href="https://ateliernum.notion.site/Local-AI-as-a-service-372c8d87b59180a6a4dad5436afd4b0d"><em>Local AI as a Service</em></a> page; this manual does not duplicate them, because they change.</p>
     <p>Why local rather than an online service, in a teaching context:</p>
@@ -1883,12 +1896,13 @@ body.show-figures .shot-todo{display:block}
           <tr><td><strong>Video</strong> — Wan 2.2 A14B (MoE)</td><td>40 GB and up</td><td>Higher quality, out of reach of a standard student workstation.</td></tr>
           <tr><td><strong>Video</strong> — LTX-2.x</td><td>12 – 24 GB at fp8 (720p)</td><td>Generates picture <em>and</em> synchronised sound in one pass. Markedly faster to iterate.</td></tr>
           <tr><td><strong>Video</strong> — HunyuanVideo 1.5</td><td>14 GB with offloading</td><td>8.3 B parameters. The small-card option.</td></tr>
+          <tr><td><strong>Video + audio</strong> — MiniMax H3</td><td>16 – 24 GB at INT4 / INT8</td><td>33 B parameters, of which ≈13 B sit in AdaLN branches not needed for inference. 2K (default short side 768), <strong>4 to 15 s</strong> in integer durations, 24 fps, <strong>32 kHz stereo sound in the same file</strong>. Native in ComfyUI 0.30.0 and later. <strong>Territory-restricted licence: read §18.3 before using it.</strong></td></tr>
         </tbody>
       </table>
     </div>
     <div class="callout c-doc">
       <span class="lbl">Documented</span>
-      <p>Wan 2.2 is released by Alibaba under Apache 2.0, with downloadable weights and commercial use permitted. Gemma 4, released 2 April 2026 by Google DeepMind, is likewise Apache 2.0, in E2B, E4B, 26B and 31B sizes. Both licences allow use on commissioned work; that is not true of every model you will meet, and checking it is part of your job (chapter <a href="#ch18">18</a>).</p>
+      <p>Wan 2.2 is released by Alibaba under Apache 2.0, with downloadable weights and commercial use permitted. Gemma 4, released 2 April 2026 by Google DeepMind, is likewise Apache 2.0, in E2B, E4B, 26B and 31B sizes. Both licences allow use on commissioned work. <strong>That is not true of every open model.</strong> MiniMax H3 is released under a community licence whose applicable territory <em>does not include the European Union</em>: the weights download freely, but using them here requires separate authorisation. Checking this is part of the work — see §18.3.</p>
     </div>
 
     <div class="callout c-teach">
@@ -5090,6 +5104,13 @@ as <span class="var">[CE QUE LE MOUVEMENT RÉVÈLE]</span>.
       <p>Le suffixe du chapitre 10 se recopie aussi dans les prompts vidéo. Le modèle vidéo réinterprète les couleurs et le grain : sans le suffixe, vos vingt plans dériveront du style de vos vingt images, et vous aurez fait le travail de cohérence pour rien.</p>
     </div>
 
+    <div class="callout c-warn">
+      <span class="lbl">Trois secondes est devenu un choix, pas une limite</span>
+      <p>Quand la première version de ce cours a été écrite, trois secondes correspondaient à ce qu’un modèle vidéo tenait sans dériver. Ce n’est plus tout à fait vrai. <strong>MiniMax H3</strong> génère de <strong>4 à 15 secondes</strong> en 2K — et il ne descend pas en dessous de 4, les durées étant entières. Si vous l’employez, vous générez donc 4 secondes et vous coupez à 3 au montage.</p>
+      <p>Le format en vingt plans de trois secondes reste celui du module, pour des raisons qui n’ont rien à voir avec la technique : c’est ce qui vous oblige à découper, à raccorder, et à tenir une cohérence sur vingt unités. Quatre plans de quinze secondes sont plus faciles à produire et n’enseignent presque rien. Mais la contrainte est désormais <em>pédagogique</em> — assumez-la comme telle si on vous interroge en jury, plutôt que de la présenter comme une limite de l’outil.</p>
+      <p>Le tableau ci-dessous, lui, reste vrai à toutes les durées : allonger un plan n’a jamais réparé une action trop complexe.</p>
+    </div>
+
     <h3>14.2 Ce qu’un modèle ne sait pas faire en trois secondes</h3>
     <p>Connaître les limites vous fait gagner plus de temps que connaître les astuces. Ce tableau est le résultat de ce qui rate le plus souvent, et la colonne de droite est ce qu’il faut écrire à la place.</p>
     <div class="tbl-wrap">
@@ -5180,6 +5201,13 @@ as <span class="var">[WHAT THE MOVEMENT REVEALS]</span>.
     <div class="callout c-tip">
       <span class="lbl">Keep the style suffix</span>
       <p>The chapter 10 suffix is copied into video prompts too. The video model reinterprets colour and grain: without the suffix, your twenty shots will drift away from the style of your twenty images, and the consistency work will have been for nothing.</p>
+    </div>
+
+    <div class="callout c-warn">
+      <span class="lbl">Three seconds is now a choice, not a limit</span>
+      <p>When the first version of this course was written, three seconds was what a video model could hold without drifting. That is no longer quite true. <strong>MiniMax H3</strong> generates <strong>4 to 15 seconds</strong> at 2K — and it will not go below 4, since durations are integers. If you use it you therefore generate 4 seconds and cut to 3 in the edit.</p>
+      <p>The twenty-shots-of-three-seconds format remains the module's, for reasons that have nothing to do with technique: it is what forces you to break a film down, to cut, and to hold consistency across twenty units. Four fifteen-second shots are easier to produce and teach almost nothing. But the constraint is now <em>pedagogical</em> — own it as such if you are asked at a crit, rather than presenting it as a limitation of the tool.</p>
+      <p>The table below, on the other hand, stays true at any duration: lengthening a shot has never repaired an action that was too complex.</p>
     </div>
 
     <h3>14.2 What a model cannot do in three seconds</h3>
@@ -5321,7 +5349,7 @@ as <span class="var">[WHAT THE MOVEMENT REVEALS]</span>.
     </ul>
     <div class="callout c-doc">
       <span class="lbl">Documenté</span>
-      <p>La génération contrainte par première et dernière image est une capacité native des modèles ouverts actuels — <strong>Wan 2.2 FLF2V</strong> la propose directement dans les modèles de flux de travail ComfyUI. Vérifiez le nom du nœud dans la version installée : c’est une fonction qui change de nom d’une version à l’autre.</p>
+      <p>La génération contrainte par première et dernière image est une capacité native des modèles ouverts actuels — <strong>Wan 2.2 FLF2V</strong> la propose directement dans les modèles de flux de travail ComfyUI. <strong>MiniMax H3</strong> en fait un mode à part entière : son point de contrôle <code>FL2VA</code> prend la première et la dernière image et rend la vidéo <em>avec son son</em>. Vérifiez le nom du nœud dans la version installée : c’est une fonction qui change de nom d’une version à l’autre.</p>
     </div>
 
     <div data-level="r">
@@ -5341,6 +5369,7 @@ as <span class="var">[WHAT THE MOVEMENT REVEALS]</span>.
     <div class="callout c-doc">
       <span class="lbl">Documenté</span>
       <p><strong>Wan 2.2 VACE</strong> transforme une image de référence en vidéo qui suit la pose, le rythme et le mouvement de caméra d’un clip source, en préservant l’identité du sujet. Des modèles de flux de travail ComfyUI existent pour le transfert de mouvement et l’animation depuis une image de référence.</p>
+      <p><strong>MiniMax H3</strong> aborde le problème autrement, et c’est ce qui en fait un outil intéressant ici : son point de contrôle <code>Ref2VA</code> accepte en référence des <em>images, des vidéos et de l’audio</em> dans un même contexte. Vous pouvez donc lui donner à la fois votre planche de cohérence, un clip de mouvement, et une ambiance — et lui demander un plan qui respecte les trois. C’est l’axe 1 et l’axe 2 du chapitre <a href="#ch2">2</a> fournis dans une seule entrée.</p>
     </div>
     <div class="callout c-teach">
       <span class="lbl">Pratique d’atelier · deux plans, pas vingt</span>
@@ -5411,7 +5440,7 @@ as <span class="var">[WHAT THE MOVEMENT REVEALS]</span>.
     </ul>
     <div class="callout c-doc">
       <span class="lbl">Documented</span>
-      <p>First/last-frame constrained generation is a native capability of current open models — <strong>Wan 2.2 FLF2V</strong> offers it directly in ComfyUI workflow templates. Check the node name in your installed version: this is a function whose name changes between releases.</p>
+      <p>First/last-frame constrained generation is a native capability of current open models — <strong>Wan 2.2 FLF2V</strong> offers it directly in ComfyUI workflow templates. <strong>MiniMax H3</strong> makes it a mode in its own right: its <code>FL2VA</code> checkpoint takes the first and last frame and returns video <em>with its sound</em>. Check the node name in your installed version: this is a function whose name changes between releases.</p>
     </div>
 
     <div data-level="r">
@@ -5431,6 +5460,7 @@ as <span class="var">[WHAT THE MOVEMENT REVEALS]</span>.
     <div class="callout c-doc">
       <span class="lbl">Documented</span>
       <p><strong>Wan 2.2 VACE</strong> turns a reference image into a video that follows the pose, rhythm and camera movement of a source clip while preserving the subject's identity. ComfyUI workflow templates exist for motion transfer and for animating from a reference image.</p>
+      <p><strong>MiniMax H3</strong> approaches the problem differently, and that is what makes it interesting here: its <code>Ref2VA</code> checkpoint accepts <em>images, video and audio</em> as reference in a single context. You can hand it your consistency sheet, a motion clip and an ambience at once — and ask for a shot that respects all three. That is axis 1 and axis 2 of chapter <a href="#ch2">2</a>, supplied through one input.</p>
     </div>
     <div class="callout c-teach">
       <span class="lbl">Studio practice · two shots, not twenty</span>
@@ -5612,6 +5642,14 @@ as <span class="var">[WHAT THE MOVEMENT REVEALS]</span>.
     <p class="callout c-doc" style="font-size:1rem"><strong>L’ambiance ne se coupe jamais au changement de plan.</strong></p>
     <p>C’est le mécanisme le plus puissant du montage sonore, et il est contre-intuitif. Vos vingt plans ont été générés séparément et n’ont aucun lien entre eux. Une nappe sonore ininterrompue par-dessus les vingt coupes affirme à l’oreille qu’il s’agit d’un seul espace continu — et l’oreille croit l’espace avant que l’œil ne le mette en doute. Une ambiance qui se coupe à chaque plan produit vingt saynètes ; une ambiance continue produit un lieu.</p>
 
+    <div class="callout c-warn">
+      <span class="lbl">Ce que devient le son que le modèle vous donne</span>
+      <p>Certains modèles rendent désormais l’image <em>et</em> le son en une seule passe : <strong>MiniMax H3</strong> livre un fichier contenant sa propre piste stéréo 32 kHz, <strong>LTX-2</strong> fait de même. C’est utile, et c’est un piège.</p>
+      <p><strong>Utile</strong> — le son synchrone de ce qui bouge dans le plan (un pas, un choc, un frottement) arrive déjà calé à l’image. Cela vous épargne du bruitage, et mieux calé que ce que vous auriez posé à la main.</p>
+      <p><strong>Piège</strong> — ces pistes sont générées <em>indépendamment pour chaque plan</em>. Vingt lits sonores autonomes mis bout à bout produisent exactement ce que la règle ci-dessus interdit : vingt espaces différents, et l’effet de saynètes revient par l’oreille après que vous l’avez chassé par l’image.</p>
+      <p>La conduite à tenir est donc systématique : <strong>importez le son du modèle sur une piste séparée, coupez-la par défaut, et ne remontez que les événements synchrones que vous voulez garder.</strong> Votre ambiance continue reste dessous, et c’est elle — pas le modèle — qui fabrique le lieu.</p>
+    </div>
+
     <h3>16.3 Les événements · le bruitage</h3>
     <p>Vos captations d’événements du chapitre 6 se placent maintenant. Trois usages, du plus au moins évident :</p>
     <ul>
@@ -5680,6 +5718,14 @@ as <span class="var">[WHAT THE MOVEMENT REVEALS]</span>.
     <p>Your three-minute ambience — captured on site, or built from object foley and generation — becomes the film's continuous bed. One rule, and it is absolute:</p>
     <p class="callout c-doc" style="font-size:1rem"><strong>Ambience is never cut at a shot change.</strong></p>
     <p>This is the most powerful mechanism in sound editing, and it is counter-intuitive. Your twenty shots were generated separately and have no link to each other. An unbroken bed of sound across twenty cuts asserts to the ear that this is one continuous space — and the ear believes the space before the eye questions it. Ambience that cuts at every shot produces twenty sketches; continuous ambience produces a place.</p>
+
+    <div class="callout c-warn">
+      <span class="lbl">What becomes of the sound the model hands you</span>
+      <p>Some models now return picture <em>and</em> sound in a single pass: <strong>MiniMax H3</strong> delivers a file containing its own 32 kHz stereo track, and <strong>LTX-2</strong> does the same. This is useful, and it is a trap.</p>
+      <p><strong>Useful</strong> — the sync sound of whatever moves in the shot (a footstep, an impact, a scrape) arrives already locked to picture, and better locked than anything you would have placed by hand.</p>
+      <p><strong>Trap</strong> — those tracks are generated <em>independently for every shot</em>. Twenty self-contained sound beds laid end to end produce exactly what the rule above forbids: twenty different spaces, and the sketch effect returns through the ear after you chased it out of the picture.</p>
+      <p>So the procedure is systematic: <strong>import the model's sound on a separate track, mute it by default, and bring back up only the sync events you want to keep.</strong> Your continuous ambience stays underneath, and it — not the model — is what builds the place.</p>
+    </div>
 
     <h3>16.3 Events · foley</h3>
     <p>Your chapter 6 event recordings are placed now. Three uses, most to least obvious:</p>
@@ -6017,6 +6063,13 @@ par <span class="cm">[votre nom]</span>, à <span class="cm">[lieu]</span>, <spa
         </tbody>
       </table>
     </div>
+    <div class="callout c-warn">
+      <span class="lbl">Un cas concret · MiniMax H3 et le territoire de la licence</span>
+      <p><strong>MiniMax H3</strong> illustre exactement pourquoi cette section existe. Ses poids sont ouverts, téléchargeables sur Hugging Face, et il tourne nativement dans ComfyUI : rien, à l’installation, ne vous avertit de quoi que ce soit.</p>
+      <p>Mais il est publié sous la <em>MiniMax H3 Community License Agreement</em>, dont le <strong>territoire d’application n’inclut pas l’Union européenne</strong> — pas davantage que les États-Unis, le Royaume-Uni ou la Corée du Sud. L’éditeur fournit un formulaire de demande distinct pour ces régions.</p>
+      <p>Autrement dit : « poids ouverts » et « téléchargeable » ne veulent pas dire « utilisable par vous, ici, sur un projet de commande ». Avant d’employer H3 sur autre chose qu’un essai personnel, demandez à votre encadrant où en est l’atelier de cette autorisation. C’est la vérification que ce chapitre vous demande de faire pour <em>chaque</em> modèle — et c’est la première fois qu’elle a une réponse qui vous concerne directement.</p>
+    </div>
+
     <div class="callout c-doc">
       <span class="lbl">Archivez la licence, pas le souvenir de la licence</span>
       <p>Au moment où vous installez un modèle ou téléchargez une musique, copiez le texte de licence dans votre dossier de projet. Six mois plus tard, la page aura changé et vous ne pourrez plus prouver ce que vous étiez autorisé à faire. Un dossier <code>00_brief/LICENCES/</code> règle la question définitivement.</p>
@@ -6132,6 +6185,13 @@ by <span class="cm">[your name]</span>, at <span class="cm">[place]</span>, <spa
         </tbody>
       </table>
     </div>
+    <div class="callout c-warn">
+      <span class="lbl">A concrete case · MiniMax H3 and the licence territory</span>
+      <p><strong>MiniMax H3</strong> illustrates exactly why this section exists. Its weights are open, downloadable from Hugging Face, and it runs natively in ComfyUI: nothing at install time warns you of anything.</p>
+      <p>But it is released under the <em>MiniMax H3 Community License Agreement</em>, whose <strong>applicable territory does not include the European Union</strong> — nor the United States, the United Kingdom or South Korea. The publisher provides a separate application form for those regions.</p>
+      <p>In other words: "open weights" and "downloadable" do not mean "usable by you, here, on commissioned work". Before using H3 for anything beyond a personal trial, ask your tutor where the studio stands on that authorisation. It is the check this chapter asks you to make for <em>every</em> model — and it is the first time the answer concerns you directly.</p>
+    </div>
+
     <div class="callout c-doc">
       <span class="lbl">Archive the licence, not the memory of the licence</span>
       <p>At the moment you install a model or download a piece of music, copy the licence text into your project folder. Six months later the page will have changed and you will not be able to prove what you were permitted to do. A <code>00_brief/LICENCES/</code> folder settles it permanently.</p>
@@ -6708,6 +6768,7 @@ by <span class="cm">[your name]</span>, at <span class="cm">[place]</span>, <spa
         <tr><td>LLM</td><td>LLM, large language model</td><td><span class="fr-only">Modèle de langage. Écrit, restructure, et — s’il est multimodal — décrit vos images.</span><span class="en-only">Language model. Writes, restructures, and — if multimodal — describes your images.</span></td></tr>
         <tr><td>LoRA</td><td>LoRA</td><td><span class="fr-only">Petit modèle additionnel entraîné sur un sujet ou un style précis, appliqué par-dessus un modèle principal.</span><span class="en-only">A small additional model trained on a specific subject or style, applied on top of a base model.</span></td></tr>
         <tr><td>Modèle de diffusion</td><td>Diffusion model</td><td><span class="fr-only">Modèle d’image qui part de bruit et le débruite jusqu’à l’image. Sans aucune mémoire entre deux générations.</span><span class="en-only">An image model that starts from noise and denoises to an image. With no memory between generations.</span></td></tr>
+        <tr><td>Modèle omni-modal</td><td>Omni-modal model</td><td><span class="fr-only">Modèle qui lit plusieurs modalités — texte, image, vidéo, son — dans un seul contexte et peut en produire plusieurs. Il occupe à lui seul des rôles jusque-là séparés.</span><span class="en-only">A model that reads several modalities — text, image, video, sound — in one context and can output several. It fills roles that used to be separate.</span></td></tr>
         <tr><td>Nommage</td><td>Naming convention</td><td><span class="fr-only">Le système de noms de fichiers. <code>P07_t02.mp4</code> : plan 07, prise 02.</span><span class="en-only">The filename system. <code>P07_t02.mp4</code>: shot 07, take 02.</span></td></tr>
         <tr><td>Panoramique</td><td>Pan</td><td><span class="fr-only">Rotation de la caméra sur son axe. Le décor qui entre dans le cadre est inventé au fur et à mesure.</span><span class="en-only">Rotating the camera on its axis. The set entering frame is invented as it goes.</span></td></tr>
         <tr><td>Photogrammétrie</td><td>Photogrammetry</td><td><span class="fr-only">Reconstruction d’un volume 3D à partir de photographies se recouvrant.</span><span class="en-only">Reconstructing a 3D volume from overlapping photographs.</span></td></tr>
