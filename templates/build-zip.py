@@ -1,18 +1,18 @@
 #!/usr/bin/env python3
-"""Build gabarits/dossier-de-projet.zip from gabarits/FILM_2026_project-name/.
+"""Build templates/project-folder.zip from templates/FILM_2026_project-name/.
 
 The repo needs .gitkeep files to track empty directories; a student's archive
 should not contain them. So we zip the real files, then re-create every empty
 directory as a proper zip directory entry.
 
-    python gabarits/build-zip.py
+    python templates/build-zip.py
 """
 import os
 import zipfile
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 SRC = os.path.join(HERE, "FILM_2026_project-name")
-OUT = os.path.join(HERE, "dossier-de-projet.zip")
+OUT = os.path.join(HERE, "project-folder.zip")
 ROOT = "FILM_2026_project-name"
 
 if not os.path.isdir(SRC):

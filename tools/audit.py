@@ -33,7 +33,7 @@ from html.parser import HTMLParser
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MANUAL = os.path.join(ROOT, "recits_generatifs_manuel-v1.html")
 PAGES = ["recits_generatifs_manuel-v1.html", "prompts.html", "index.html"]
-TEMPLATE_CSV = os.path.join(ROOT, "gabarits", "FILM_2026_project-name",
+TEMPLATE_CSV = os.path.join(ROOT, "templates", "FILM_2026_project-name",
                             "03_breakdown", "shot_sheet.csv")
 
 VOID = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta",
@@ -239,7 +239,10 @@ def pass_structural_parity(fr, en):
 BANNED_ANYWHERE = ["02_ecriture", "03_decoupage", "04_chartes", "06_plans", "07_son/",
                    "08_montage", "VALIDE", "feuille_de_plans", "charte_personnage",
                    "charte_lieu", "charte_style", "fiche_problematique",
-                   "cinq_regles_du_monde", "LISEZ-MOI", "nom-du-projet", "SON_00"]
+                   "cinq_regles_du_monde", "LISEZ-MOI", "nom-du-projet", "SON_00",
+                   # repo-level asset names — the word "gabarit" in prose is fine,
+                   # a path or a filename is not
+                   "gabarits/", "dossier-de-projet"]
 # French column names and values. Only checked inside <code> and <pre>, so that the
 # ordinary French words (plan, son, lieu, ambiances…) stay untouched in prose.
 BANNED_IN_CODE = ["statut", "a_faire", "valide", "duree", "echelle", "lumiere",
@@ -278,8 +281,8 @@ def literals(t):
 def pass_sweep():
     say("\n5 · French identifiers")
     scan = [os.path.join(ROOT, p) for p in PAGES + ["README.md", "CAPTURE-GUIDE.md"]]
-    scan += [os.path.join(ROOT, "gabarits", "README.md")]
-    for base, _, names in os.walk(os.path.join(ROOT, "gabarits", "FILM_2026_project-name")):
+    scan += [os.path.join(ROOT, "templates", "README.md")]
+    for base, _, names in os.walk(os.path.join(ROOT, "templates", "FILM_2026_project-name")):
         scan += [os.path.join(base, n) for n in names if n != ".gitkeep"]
     hits = 0
     for p in sorted(set(scan)):

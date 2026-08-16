@@ -122,9 +122,9 @@ Deux conventions portent la différence entre le fait et l'opinion :
 
 ## Le dossier de projet, prêt à l'emploi
 
-**[⬇ `gabarits/dossier-de-projet.zip`](gabarits/dossier-de-projet.zip)** — l'arborescence du chapitre 4, complète, avec **onze documents de travail déjà amorcés** : fiche de problématique, cinq règles du monde, index du référentiel, les trois chartes, pitch, script, journal, et la feuille de plans déjà remplie avec les vingt identifiants de plan et leurs blocs (somme des durées : 60 s).
+**[⬇ `templates/project-folder.zip`](templates/project-folder.zip)** — l'arborescence du chapitre 4, complète, avec **onze documents de travail déjà amorcés** : fiche de problématique, cinq règles du monde, index du référentiel, les trois chartes, pitch, script, journal, et la feuille de plans déjà remplie avec les vingt identifiants de plan et leurs blocs (somme des durées : 60 s).
 
-Les étudiants dézippent, renomment le dossier, et commencent. Les dossiers vides le sont volontairement — voir [gabarits/README.md](gabarits/README.md). La source browsable est [`gabarits/FILM_2026_project-name/`](gabarits/FILM_2026_project-name/) ; `python gabarits/build-zip.py` regénère l'archive après modification d'un gabarit.
+Les étudiants dézippent, renomment le dossier, et commencent. Les dossiers vides le sont volontairement — voir [templates/README.md](templates/README.md). La source browsable est [`templates/FILM_2026_project-name/`](templates/FILM_2026_project-name/) ; `python templates/build-zip.py` regénère l'archive après modification d'un gabarit.
 
 **Les noms de dossiers, de fichiers et de colonnes sont en anglais** dans les deux éditions, parce qu'il n'y a qu'un seul système de fichiers et que les étudiants sont à l'aise en anglais. Le manuel français nomme donc les mêmes fichiers réels, sans les traduire.
 
@@ -149,7 +149,7 @@ python tools/audit.py
 
 Sept passes, sans dépendances : validité HTML, résolution des liens internes, **parité des faits entre les deux éditions** (numéros de section, identifiants, renvois, étiquettes d'année, numéros d'étape et de figure), **parité structurelle** (une édition qui a cinq lignes de tableau là où l'autre en a quatre a perdu du contenu), absence de noms de fichiers ou de colonnes français, cohérence entre le manuel et le gabarit téléchargeable, et symétrie des bandes d'année.
 
-À lancer après chaque modification du manuel. Le code de sortie est le nombre de passes en échec, donc il s'utilise tel quel en CI — c'est ce que fait [`.github/workflows/audit.yml`](.github/workflows/audit.yml), qui vérifie aussi que `dossier-de-projet.zip` n'est pas périmé par rapport au gabarit.
+À lancer après chaque modification du manuel. Le code de sortie est le nombre de passes en échec, donc il s'utilise tel quel en CI — c'est ce que fait [`.github/workflows/audit.yml`](.github/workflows/audit.yml), qui vérifie aussi que `project-folder.zip` n'est pas périmé par rapport au gabarit.
 
 Ce script existe parce que ce document décrit **une seule réalité en deux langues**, et que la façon dont les deux éditions divergent n'est pas celle qu'on remarque en lisant. À sa première exécution il a trouvé un critère de validation disparu de l'édition anglaise du chapitre 6, l'absence totale d'exemple de CSV dans l'édition anglaise du chapitre 9, et quatre incohérences plus petites. Détails dans [tools/README.md](tools/README.md).
 

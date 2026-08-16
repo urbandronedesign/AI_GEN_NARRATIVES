@@ -2,7 +2,7 @@
 
 ## Le dossier de projet
 
-**[⬇ Télécharger `dossier-de-projet.zip`](dossier-de-projet.zip)**
+**[⬇ Télécharger `project-folder.zip`](project-folder.zip)**
 
 L'arborescence du chapitre 4 du manuel, complète et prête à l'emploi, avec les documents de
 travail déjà amorcés. Dézippez, renommez le dossier avec le nom de votre projet, et commencez.
@@ -53,11 +53,11 @@ Le tri et la recherche s'en portent mieux, et un jury international lit votre do
 
 ## Regénérer l'archive
 
-Le dossier `FILM_2026_project-name/` de ce dépôt est la source ; `dossier-de-projet.zip` en
+Le dossier `FILM_2026_project-name/` de ce dépôt est la source ; `project-folder.zip` en
 est l'export. Après modification d'un gabarit :
 
 ```bash
-python gabarits/build-zip.py
+python templates/build-zip.py
 ```
 
 Le script exclut les `.gitkeep` : les dossiers vides sont recréés dans l'archive sans eux.
