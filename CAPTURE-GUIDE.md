@@ -96,6 +96,32 @@ L'attribut `onload` est ce qui fait tout le mécanisme : si le fichier existe, l
 
 Les huit figures suivantes sont des SVG dessinés, bilingues, et complets : le pipeline en sept étapes et son chemin de retour (Fig 1.1), les quatre points d'injection du matériau non génératif (Fig 2.1), l'anatomie d'un nom de fichier (Fig 4.1), la couverture de prise de vue pour reconstruction (Fig 6.1), les six échelles de plan (Fig 9.2), l'anatomie du super-prompt (Fig 11.1), première et dernière image (Fig 15.1), les quatre couches sonores (Fig 16.1). Elles n'ont besoin de rien de votre part et se redessinent automatiquement en thème sombre.
 
+## Le partage front / back — à ne pas laisser glisser
+
+C'est une règle d'écriture du manuel, pas un détail. **Les étudiants n'ont accès qu'aux applications front ; nous utilisons tout le reste comme enseignants et mainteneurs.** Le manuel ne décrit donc que les deux surfaces étudiantes, et ne mentionne nulle part les composants d'administration.
+
+| | Étudiants — dans le manuel | Enseignants / mainteneurs — **hors manuel** |
+|---|---|---|
+| **ComfyQ** | L'interface web : ouvrir l'URL, réserver un créneau, remplir les paramètres, récupérer les sorties. Rien à installer. | Le **serveur** (`npm install` / `npm run dev` sur le rig), le mode admin, les chemins ComfyUI, l'import de flux, la calibration, le mot de passe admin, l'arrêt d'urgence, l'exposition de ComfyUI au réseau. |
+| **LlmOnLan** | Le **client** : un installeur par système, il se connecte seul. | La **ferme** — l'app Farm ou le CLI `lol` sur la machine GPU : choix des modèles, panneau d'admin, bascules recherche web / OCR / voix, répartition multi-machines, `lol bench`. |
+| **ComfyQ Discovery** | — *(retiré du manuel)* | La vue de parc : quelles machines, quel GPU, quel flux servi, quels travaux en attente. **Son bouton de copie distribue des liens `/admin`** — c'est pour cette raison qu'elle ne figure pas dans un document étudiant. |
+
+Si vous ajoutez un passage au manuel, la question à se poser est : *un étudiant peut-il faire cela depuis les seules applications front ?* Si la réponse est non, le passage va dans ce fichier.
+
+Deux conséquences déjà appliquées dans le texte :
+
+- Le manuel dit « les GPU de l'école » et non « la ferme ». Le fait qui compte pédagogiquement — le calcul est distant, **les données restent sur la machine de l'étudiant** — est conservé, parce que les chapitres 3 et 18 reposent dessus ; le composant, lui, n'est pas nommé.
+- Quand le client ne trouve rien, le manuel dit d'aller voir son encadrant au lieu de chercher un réglage. C'est volontaire : il n'y a rien à régler côté étudiant.
+
+## Notes de maintenance sur la chaîne (côté back)
+
+À votre usage, pas à celui des étudiants.
+
+- **La ferme LlmOnLan est encore en préversion** (`farm-v0.0.8` au 16/08/2026, marquée *prerelease* ; le client, lui, est en version stable `v0.1.25`). Avant une promotion, **figez une version de ferme testée** plutôt que de laisser l'auto-mise-à-jour décider en milieu de semestre.
+- **Le modèle par défaut est faible en appel d'outils.** Le manuel promet au chapitre 13 que la conversation peut piloter Blender ; cela ne devient utilisable qu'avec un modèle entraîné pour l'appel de fonctions. Si vous voulez tenir cette promesse, servez-en un et dites-le en cours — sinon prévenez que la fonction est indicative.
+- **Coût réseau du premier lancement.** Le client télécharge son moteur (~700 Mo) une fois. Le manuel demande aux étudiants de le faire chez eux ; prévoyez quand même une session de rattrapage pour ceux qui arriveront sans.
+- **La calibration ComfyQ nourrit le chapitre 14.** L'estimation de durée que les étudiants lisent vient de votre calibration par flux. Si elle n'est pas faite, ils planifient sur un chiffre faux — et §14.3 leur dit explicitement de multiplier ce chiffre par 80.
+
 ## Note sur les outils de l'atelier
 
 Le manuel cite et crédite **[ComfyQ](https://github.com/b2renger/ComfyQ)** et **[LlmOnLan](https://github.com/b2renger/LlmOnLan)** (b2renger) au chapitre 3, dans plusieurs chapitres d'exécution, et au pied de page.

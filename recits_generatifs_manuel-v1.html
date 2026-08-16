@@ -1784,8 +1784,8 @@ body.show-figures .shot-todo{display:block}
         <tbody>
           <tr>
             <td><strong><a href="https://github.com/b2renger/LlmOnLan">LlmOnLan</a></strong><br><span class="dg-ts">« LOL » · le texte</span></td>
-            <td>Un assistant de conversation local, servi par une <em>ferme d’inférence</em> sur le réseau de l’école. Le modèle par défaut est <strong>Gemma 4</strong>.</td>
-            <td>Vous installez l’application, elle trouve la ferme toute seule, vous discutez. Aucune configuration, aucun compte, aucune clé d’API.</td>
+            <td>Un assistant de conversation local, calculé sur les <strong>GPU de l’école</strong> et non dans le nuage. Le modèle servi par défaut est <strong>Gemma 4</strong>.</td>
+            <td>Vous installez l’application, elle se connecte toute seule, vous discutez. Aucune configuration, aucun compte, aucune clé d’API.</td>
           </tr>
           <tr>
             <td><strong><a href="https://github.com/b2renger/ComfyQ">ComfyQ</a></strong><br><span class="dg-ts">l’image, la vidéo, le son</span></td>
@@ -1830,23 +1830,19 @@ body.show-figures .shot-todo{display:block}
         <li><strong>Mac Intel : pas de version.</strong> Le client n’existe qu’en <em>Apple Silicon</em> (M1 et suivants). Sur un Mac Intel, passez par un poste de l’atelier, ou demandez à votre encadrant.</li>
       </ul>
     </div>
-    <p>Une fois lancée, l’application <strong>trouve la ferme toute seule</strong> sur le réseau et vous dépose dans une conversation. Il n’y a ni compte, ni clé, ni adresse à saisir.</p>
-
-    <h4>L’outil facultatif qui fait gagner du temps</h4>
-    <p><strong>ComfyQ Discovery</strong> est une petite application de bureau, elle aussi téléchargeable dans les <em>Releases</em> (Windows, macOS <em>Intel et Apple Silicon</em>, Linux). Elle liste <strong>toutes les machines ComfyQ du réseau</strong> — nom, GPU, mémoire, état, flux de travail servi, travaux en attente — avec un bouton qui ouvre la page de réservation de la machine choisie.</p>
-    <p>Elle ne commande rien à distance : elle regarde. Son intérêt est de répondre en trois secondes à la question qui vous fait perdre le plus de temps en salle — <em>quel GPU est libre, et lequel sert le flux dont j’ai besoin ?</em> — plutôt que d’ouvrir six onglets à l’aveugle.</p>
+    <p>Une fois lancée, l’application <strong>se connecte toute seule</strong> au réseau de l’école et vous dépose dans une conversation. Il n’y a ni compte, ni clé, ni adresse à saisir. Si elle ne trouve rien, c’est que le service n’est pas démarré : demandez à votre encadrant plutôt que de chercher un réglage.</p>
 
     <h4>Ce que LlmOnLan sait faire, et que vous allez utiliser</h4>
     <p>Ce n’est pas seulement une fenêtre de conversation. Quatre capacités servent directement des étapes de ce manuel.</p>
     <ul>
       <li><strong>Il regarde vos images.</strong> Le modèle servi est multimodal : vous pouvez déposer vos photographies de référence dans la conversation et lui demander de les décrire. C’est exactement le prompt du §6.9.</li>
-      <li><strong>Il cherche sur le web.</strong> La recherche est active par défaut, via un moteur hébergé sur la ferme. Utile pour la documentation et la recherche de précédents du chapitre <a href="#ch5">5</a>.</li>
-      <li><strong>Il lit vos documents scannés.</strong> Une extraction de texte par modèle de vision tourne sur la ferme : une étude en PDF image, une archive photographiée deviennent interrogeables.</li>
+      <li><strong>Il cherche sur le web.</strong> La recherche est active par défaut, sans rien à configurer. Utile pour la documentation et la recherche de précédents du chapitre <a href="#ch5">5</a>.</li>
+      <li><strong>Il lit vos documents scannés.</strong> Une extraction de texte par modèle de vision est disponible : une étude en PDF image, une archive photographiée deviennent interrogeables.</li>
       <li><strong>Il peut piloter Blender.</strong> En option, la conversation commande un Blender ouvert sur <em>votre</em> machine — créer des objets, exécuter du Python, inspecter la scène. Voir le chapitre <a href="#ch13">13</a>.</li>
     </ul>
     <div class="callout c-doc">
       <span class="lbl">Documenté · vos conversations ne quittent pas votre machine</span>
-      <p>C’est le point d’architecture qui compte pour vous. Dans LlmOnLan, la ferme est <strong>sans état</strong> : elle calcule et n’enregistre rien. Toutes vos conversations, vos documents et vos index de recherche restent en local, dans un dossier que vous choisissez. Rien ne part sur un serveur tiers, et rien n’est visible par les autres étudiants.</p>
+      <p>C’est le point d’architecture qui compte pour vous. Le côté école <strong>calcule et n’enregistre rien</strong> : toutes vos conversations, vos documents et vos index de recherche restent sur votre machine, dans un dossier que vous choisissez. Rien ne part sur un serveur tiers, et rien n’est visible par les autres étudiants ni par vos enseignants.</p>
       <p>Cela vaut aussi pour le droit : sur un projet de commanditaire soumis à confidentialité, c’est la différence entre un outil utilisable et un outil interdit (chapitre <a href="#ch18">18</a>).</p>
     </div>
     <p>Pourquoi le local plutôt qu’un service en ligne, dans un cadre pédagogique :</p>
@@ -1894,7 +1890,7 @@ body.show-figures .shot-todo{display:block}
         <tbody>
           <tr><td>Accès aux GPU de l’atelier</td><td><strong>ComfyQ</strong> <span class="dg-ts">· outil maison</span></td><td>Indispensable</td></tr>
           <tr><td>Accès au LLM</td><td><strong>LlmOnLan</strong> <span class="dg-ts">· outil maison</span></td><td>Indispensable</td></tr>
-          <tr><td>Graphe génératif</td><td>ComfyUI <span class="dg-ts">· sous ComfyQ</span></td><td>Indispensable</td></tr>
+          <tr><td>Graphe génératif</td><td>ComfyUI</td><td>Indispensable</td></tr>
           <tr><td>Montage, étalonnage, mixage</td><td>DaVinci Resolve (gratuit) · Premiere Pro</td><td>Indispensable</td></tr>
           <tr><td>Retouche et planches</td><td>Photoshop · Affinity Photo · GIMP · Krita</td><td>Indispensable</td></tr>
           <tr><td>Enregistrement terrain</td><td>Enregistreur dédié ou téléphone + micro-cravate</td><td>Indispensable</td></tr>
@@ -1913,7 +1909,7 @@ body.show-figures .shot-todo{display:block}
       <p>Deux nombres, écrits dans votre journal de projet. Ils gouvernent tout votre planning : si un clip prend 9 minutes, 20 plans en 3 prises font 9 heures de calcul. Cela ne se découvre pas la veille du rendu.</p>
       <h4>Vous êtes prêt quand</h4>
       <ul>
-        <li>Le client LlmOnLan est installé, il a fini de télécharger son moteur, et il a trouvé la ferme. <strong>À faire avant la première séance</strong>, chez vous.</li>
+        <li>Le client LlmOnLan est installé, il a fini de télécharger son moteur, et il s’est connecté. <strong>À faire avant la première séance</strong>, chez vous.</li>
         <li>Vous savez à quelle adresse ouvrir ComfyQ, et vous avez réservé un créneau au moins une fois.</li>
         <li>Une image sort en moins de 60 secondes.</li>
         <li>Un clip de 3 s sort en moins de 10 minutes.</li>
@@ -1957,8 +1953,8 @@ body.show-figures .shot-todo{display:block}
         <tbody>
           <tr>
             <td><strong><a href="https://github.com/b2renger/LlmOnLan">LlmOnLan</a></strong><br><span class="dg-ts">"LOL" · the text</span></td>
-            <td>A local chat assistant, served by an <em>inference farm</em> on the school network. The default model is <strong>Gemma 4</strong>.</td>
-            <td>You install the app, it finds the farm by itself, you chat. No configuration, no account, no API key.</td>
+            <td>A local chat assistant, computed on the <strong>school's GPUs</strong> rather than in the cloud. The model served by default is <strong>Gemma 4</strong>.</td>
+            <td>You install the app, it connects by itself, you chat. No configuration, no account, no API key.</td>
           </tr>
           <tr>
             <td><strong><a href="https://github.com/b2renger/ComfyQ">ComfyQ</a></strong><br><span class="dg-ts">image, video, sound</span></td>
@@ -2003,23 +1999,19 @@ body.show-figures .shot-todo{display:block}
         <li><strong>Intel Mac: no build.</strong> The client exists only for <em>Apple Silicon</em> (M1 and later). On an Intel Mac, use a studio workstation or ask your tutor.</li>
       </ul>
     </div>
-    <p>Once running, the app <strong>finds the farm by itself</strong> on the network and drops you into a conversation. There is no account, no key, no address to type.</p>
-
-    <h4>The optional tool that saves time</h4>
-    <p><strong>ComfyQ Discovery</strong> is a small desktop app, also downloadable from <em>Releases</em> (Windows, macOS <em>Intel and Apple Silicon</em>, Linux). It lists <strong>every ComfyQ machine on the network</strong> — name, GPU, memory, state, workflow being served, queued jobs — with a button that opens the chosen machine's booking page.</p>
-    <p>It commands nothing remotely: it watches. Its value is answering in three seconds the question that wastes most of your time in the room — <em>which GPU is free, and which one is serving the workflow I need?</em> — instead of opening six tabs blind.</p>
+    <p>Once running, the app <strong>connects by itself</strong> to the school network and drops you into a conversation. There is no account, no key, no address to type. If it finds nothing, the service is not running: ask your tutor rather than hunting for a setting.</p>
 
     <h4>What LlmOnLan can do that you will actually use</h4>
     <p>It is not only a chat window. Four capabilities serve stages of this manual directly.</p>
     <ul>
       <li><strong>It looks at your images.</strong> The model served is multimodal: you can drop your reference photographs into the conversation and ask it to describe them. That is exactly the §6.9 prompt.</li>
-      <li><strong>It searches the web.</strong> Search is on by default, through an engine hosted on the farm. Useful for the documentation and precedent research of chapter <a href="#ch5">5</a>.</li>
-      <li><strong>It reads your scanned documents.</strong> Vision-model text extraction runs on the farm: a study that is an image-only PDF, a photographed archive, become searchable.</li>
+      <li><strong>It searches the web.</strong> Search is on by default, with nothing to configure. Useful for the documentation and precedent research of chapter <a href="#ch5">5</a>.</li>
+      <li><strong>It reads your scanned documents.</strong> Vision-model text extraction is available: a study that is an image-only PDF, a photographed archive, become searchable.</li>
       <li><strong>It can drive Blender.</strong> Optionally, the chat commands a Blender open on <em>your</em> machine — create objects, run Python, inspect the scene. See chapter <a href="#ch13">13</a>.</li>
     </ul>
     <div class="callout c-doc">
       <span class="lbl">Documented · your conversations do not leave your machine</span>
-      <p>This is the architectural point that matters to you. In LlmOnLan the farm is <strong>stateless</strong>: it computes and stores nothing. All your chats, documents and search indexes stay local, in a folder you choose. Nothing goes to a third-party server, and nothing is visible to other students.</p>
+      <p>This is the architectural point that matters to you. The school side <strong>computes and stores nothing</strong>: all your chats, documents and search indexes stay on your machine, in a folder you choose. Nothing goes to a third-party server, and nothing is visible to other students or to your tutors.</p>
       <p>It matters legally too: on a client project under confidentiality, that is the difference between a usable tool and a forbidden one (chapter <a href="#ch18">18</a>).</p>
     </div>
     <p>Why local rather than an online service, in a teaching context:</p>
@@ -2067,7 +2059,7 @@ body.show-figures .shot-todo{display:block}
         <tbody>
           <tr><td>Access to the studio GPUs</td><td><strong>ComfyQ</strong> <span class="dg-ts">· in-house</span></td><td>Essential</td></tr>
           <tr><td>Access to the LLM</td><td><strong>LlmOnLan</strong> <span class="dg-ts">· in-house</span></td><td>Essential</td></tr>
-          <tr><td>Generative graph</td><td>ComfyUI <span class="dg-ts">· under ComfyQ</span></td><td>Essential</td></tr>
+          <tr><td>Generative graph</td><td>ComfyUI</td><td>Essential</td></tr>
           <tr><td>Edit, grade, mix</td><td>DaVinci Resolve (free) · Premiere Pro</td><td>Essential</td></tr>
           <tr><td>Retouching and contact sheets</td><td>Photoshop · Affinity Photo · GIMP · Krita</td><td>Essential</td></tr>
           <tr><td>Field recording</td><td>Dedicated recorder, or phone + lavalier</td><td>Essential</td></tr>
@@ -2086,7 +2078,7 @@ body.show-figures .shot-todo{display:block}
       <p>Two numbers, written in your project log. They govern your whole schedule: if a clip takes 9 minutes, 20 shots at 3 takes each is 9 hours of compute. That is not something to discover the night before.</p>
       <h4>You are ready when</h4>
       <ul>
-        <li>The LlmOnLan client is installed, has finished downloading its engine, and has found the farm. <strong>Do this before the first session</strong>, at home.</li>
+        <li>The LlmOnLan client is installed, has finished downloading its engine, and has connected. <strong>Do this before the first session</strong>, at home.</li>
         <li>You know which address opens ComfyQ, and you have booked a slot at least once.</li>
         <li>An image comes out in under 60 seconds.</li>
         <li>A 3 s clip comes out in under 10 minutes.</li>
@@ -3457,7 +3449,7 @@ Do not comment on the aesthetic quality of the photographs.</pre>
 
     <div class="callout c-tip">
       <span class="lbl">Où vous faites cela, concrètement</span>
-      <p>Dans l’atelier, ces trois phases se mènent dans <strong><a href="https://github.com/b2renger/LlmOnLan">LlmOnLan</a></strong>, qui sert Gemma 4 depuis la ferme de l’école. Deux conséquences pratiques :</p>
+      <p>Dans l’atelier, ces trois phases se mènent dans <strong><a href="https://github.com/b2renger/LlmOnLan">LlmOnLan</a></strong>, qui sert Gemma 4 depuis les GPU de l’école. Deux conséquences pratiques :</p>
       <ul style="margin-bottom:0">
         <li>La conversation est <strong>persistante et locale</strong> : vous retrouvez le fil de vos trois phases d’une séance à l’autre, sur votre machine. Gardez un fil par film — c’est votre trace de travail, et elle alimente le journal de projet.</li>
         <li>Le modèle est <strong>multimodal</strong> : vous pouvez déposer vos images de référence directement dans le fil, et lui demander d’écrire à partir de ce qu’il voit plutôt que de ce que vous décrivez. Sur la voie construite du chapitre <a href="#ch6">6</a>, c’est la façon la plus rapide de fixer les cinq règles du monde.</li>
@@ -3601,7 +3593,7 @@ vient de moi et ce qui vient de toi.</pre>
 
     <div class="callout c-tip">
       <span class="lbl">Where you actually do this</span>
-      <p>In the studio these three phases are run in <strong><a href="https://github.com/b2renger/LlmOnLan">LlmOnLan</a></strong>, which serves Gemma 4 from the school's farm. Two practical consequences:</p>
+      <p>In the studio these three phases are run in <strong><a href="https://github.com/b2renger/LlmOnLan">LlmOnLan</a></strong>, which serves Gemma 4 from the school's GPUs. Two practical consequences:</p>
       <ul style="margin-bottom:0">
         <li>The conversation is <strong>persistent and local</strong>: you pick up the thread of your three phases from one session to the next, on your own machine. Keep one thread per film — it is your working trace, and it feeds the project log.</li>
         <li>The model is <strong>multimodal</strong>: you can drop your reference images straight into the thread and ask it to write from what it sees rather than from what you describe. On chapter <a href="#ch6">6</a>'s constructed route, that is the fastest way to fix the five rules of the world.</li>
@@ -5119,7 +5111,7 @@ text overlay, oversaturated, fisheye distortion, duplicated subject</pre>
     <div class="callout c-tip">
       <span class="lbl">Vous pouvez faire bloquer le plan par la conversation</span>
       <p><a href="https://github.com/b2renger/LlmOnLan">LlmOnLan</a> sait <strong>piloter un Blender ouvert sur votre machine</strong> : créer des objets, exécuter du Python dans la scène, l’inspecter. Vous activez l’option dans les réglages, vous démarrez le serveur dans Blender, et vous demandez en français « place un pantin de 1,70 m au fond de la halle, une caméra à 1,50 m à six mètres, et fais-la avancer de deux mètres en trois secondes ».</p>
-      <p><strong>Deux réserves honnêtes.</strong> Le modèle par défaut de la ferme est faible en appel d’outils : pour un usage réellement utile il faut servir un modèle entraîné pour cela — demandez à votre encadrant. Et cela reste du blocage grossier : c’est exactement ce qu’il faut ici, mais n’en attendez pas une mise en scène.</p>
+      <p><strong>Deux réserves honnêtes.</strong> Le modèle servi par défaut est faible en appel d’outils : pour un usage réellement utile il faut servir un modèle entraîné pour cela — demandez à votre encadrant. Et cela reste du blocage grossier : c’est exactement ce qu’il faut ici, mais n’en attendez pas une mise en scène.</p>
     </div>
 
     <p>Si vous avez reconstruit le site en 3D au chapitre 6, la boîte grise est remplacée par le site lui-même : vous y placez des caméras et vous obtenez un guide de mouvement géométriquement exact <em>de votre lieu réel</em>. C’est le point où les axes 1 et 2 se rejoignent, et le plus haut degré d’ancrage que ce cours vise.</p>
@@ -5219,7 +5211,7 @@ text overlay, oversaturated, fisheye distortion, duplicated subject</pre>
     <div class="callout c-tip">
       <span class="lbl">You can have the chat block the shot for you</span>
       <p><a href="https://github.com/b2renger/LlmOnLan">LlmOnLan</a> can <strong>drive a Blender open on your own machine</strong>: create objects, run Python in the scene, inspect it. You turn the option on in settings, start the server inside Blender, and ask in plain language: "put a 1.70 m dummy at the far end of the hall, a camera at 1.50 m six metres away, and move it forward two metres over three seconds."</p>
-      <p><strong>Two honest caveats.</strong> The farm's default model is weak at tool calling: for genuinely useful results a model trained for it must be served — ask your tutor. And this stays rough blocking, which is exactly what is wanted here — but do not expect staging from it.</p>
+      <p><strong>Two honest caveats.</strong> The model served by default is weak at tool calling: for genuinely useful results a model trained for it must be served — ask your tutor. And this stays rough blocking, which is exactly what is wanted here — but do not expect staging from it.</p>
     </div>
 
     <p>If you reconstructed the site in 3D in chapter 6, the grey box is replaced by the site itself: you place cameras in it and get a geometrically exact motion guide <em>of your real place</em>. This is the point where axes 1 and 2 meet, and the highest degree of grounding this course aims at.</p>
@@ -6801,13 +6793,13 @@ by <span class="cm">[your name]</span>, at <span class="cm">[place]</span>, <spa
 
     <details class="faq"><summary>Que faut-il installer sur ma machine, exactement ?</summary>
       <div class="faq-body"><p>Une seule application : le <strong>client LlmOnLan</strong>, pour la partie texte. Installeur d’environ 100 Mo depuis les <em>Releases</em> du dépôt, plus environ 700 Mo téléchargés au premier lancement. Comptez 1 Go et faites-le <strong>avant</strong> la séance, à la maison — vingt-cinq téléchargements en même temps saturent le réseau de l’école.</p>
-      <p>Pour l’image, la vidéo et le son, <strong>rien</strong> : ComfyQ s’ouvre dans un navigateur, y compris depuis un téléphone. Vous pouvez aussi installer <em>ComfyQ Discovery</em>, facultatif, qui montre quelle machine de l’atelier est libre.</p>
+      <p>Pour l’image, la vidéo et le son, <strong>rien du tout</strong> : ComfyQ s’ouvre dans un navigateur, y compris depuis un téléphone.</p>
       <p>Un avertissement de sécurité au premier lancement est normal : les installeurs ne sont pas signés. Détails et contournements par système au chapitre <a href="#ch3">3</a>.</p></div>
     </details>
 
     <details class="faq"><summary>J’ai un Mac Intel. Est-ce que ça marche ?</summary>
       <div class="faq-body"><p>Pour le client LlmOnLan, non : il n’existe qu’en version Apple Silicon (M1 et suivants). Trois solutions — utilisez un poste de l’atelier pour la partie texte, passez par un autre modèle de conversation que votre encadrant vous indiquera, ou travaillez à deux.</p>
-      <p>Cela ne bloque <em>pas</em> le reste du cours : ComfyQ fonctionne dans n’importe quel navigateur, donc toute la partie image, vidéo et son reste accessible depuis un Mac Intel. Et <em>ComfyQ Discovery</em>, lui, existe bien en version Intel.</p></div>
+      <p>Cela ne bloque <em>pas</em> le reste du cours : ComfyQ fonctionne dans n’importe quel navigateur, donc toute la partie image, vidéo et son — l’essentiel du module — reste accessible depuis un Mac Intel.</p></div>
     </details>
 
     <details class="faq"><summary>Le modèle refuse un plan ou produit toujours la même erreur. Pourquoi ?</summary>
@@ -6948,13 +6940,13 @@ by <span class="cm">[your name]</span>, at <span class="cm">[place]</span>, <spa
 
     <details class="faq"><summary>What exactly do I have to install on my machine?</summary>
       <div class="faq-body"><p>One application: the <strong>LlmOnLan client</strong>, for the text side. Roughly a 100 MB installer from the repository's <em>Releases</em>, plus about 700 MB downloaded on first launch. Allow 1 GB and do it <strong>before</strong> the session, at home — twenty-five simultaneous downloads will saturate the school network.</p>
-      <p>For image, video and sound, <strong>nothing</strong>: ComfyQ opens in a browser, including on a phone. You can also install <em>ComfyQ Discovery</em>, optional, which shows which studio machine is free.</p>
+      <p>For image, video and sound, <strong>nothing at all</strong>: ComfyQ opens in a browser, including on a phone.</p>
       <p>A security warning on first launch is normal: the installers are unsigned. Per-OS details and bypasses are in chapter <a href="#ch3">3</a>.</p></div>
     </details>
 
     <details class="faq"><summary>I have an Intel Mac. Does this work?</summary>
       <div class="faq-body"><p>For the LlmOnLan client, no: it exists only as an Apple Silicon build (M1 and later). Three options — use a studio workstation for the text side, use another chat model your tutor will point you to, or pair up with someone.</p>
-      <p>It does <em>not</em> block the rest of the course: ComfyQ works in any browser, so the whole image, video and sound side stays available from an Intel Mac. And <em>ComfyQ Discovery</em> does ship an Intel build.</p></div>
+      <p>It does <em>not</em> block the rest of the course: ComfyQ works in any browser, so the whole image, video and sound side — the bulk of the module — stays available from an Intel Mac.</p></div>
     </details>
 
     <details class="faq"><summary>The model refuses a shot or keeps making the same error. Why?</summary>
@@ -7082,13 +7074,13 @@ by <span class="cm">[your name]</span>, at <span class="cm">[place]</span>, <spa
     <p><strong>Récits génératifs — Manuel de production</strong> · Édition 2026.1</p>
     <p>Zaki Jawhari · L’École de Design Nantes Atlantique</p>
     <p>Ce manuel est un document vivant. Les noms de modèles cités datent d’août 2026 ; la méthode est faite pour leur survivre. Signalez toute erreur ou tout modèle périmé à votre encadrant.</p>
-    <p style="margin-top:1.2rem"><strong>Outils de l’atelier</strong> — le pipeline décrit ici repose sur deux outils développés à l’École de Design Nantes Atlantique par <strong>b2renger</strong> : <a href="https://github.com/b2renger/ComfyQ">ComfyQ</a>, réservation et file d’attente devant ComfyUI, et <a href="https://github.com/b2renger/LlmOnLan">LlmOnLan</a> (MIT), client de conversation et ferme d’inférence sur le réseau local. Sans eux, ce cours demanderait à chaque étudiant d’installer et d’administrer sa propre chaîne.</p>
+    <p style="margin-top:1.2rem"><strong>Outils de l’atelier</strong> — le pipeline décrit ici repose sur deux outils développés à l’École de Design Nantes Atlantique par <strong>b2renger</strong> : <a href="https://github.com/b2renger/ComfyQ">ComfyQ</a>, réservation et file d’attente devant ComfyUI, et <a href="https://github.com/b2renger/LlmOnLan">LlmOnLan</a> (MIT), client de conversation adossé aux GPU de l’école. Sans eux, ce cours demanderait à chaque étudiant d’installer et d’administrer sa propre chaîne.</p>
   </div>
   <div class="en-only">
     <p><strong>Generative Narratives — Production Manual</strong> · Edition 2026.1</p>
     <p>Zaki Jawhari · L'École de Design Nantes Atlantique</p>
     <p>This manual is a living document. The model names quoted date from August 2026; the method is built to outlive them. Report any error or stale model to your tutor.</p>
-    <p style="margin-top:1.2rem"><strong>Studio tools</strong> — the pipeline described here rests on two tools built at L'École de Design Nantes Atlantique by <strong>b2renger</strong>: <a href="https://github.com/b2renger/ComfyQ">ComfyQ</a>, booking and job queue in front of ComfyUI, and <a href="https://github.com/b2renger/LlmOnLan">LlmOnLan</a> (MIT), a chat client and inference farm on the local network. Without them this course would require every student to install and administer their own chain.</p>
+    <p style="margin-top:1.2rem"><strong>Studio tools</strong> — the pipeline described here rests on two tools built at L'École de Design Nantes Atlantique by <strong>b2renger</strong>: <a href="https://github.com/b2renger/ComfyQ">ComfyQ</a>, booking and job queue in front of ComfyUI, and <a href="https://github.com/b2renger/LlmOnLan">LlmOnLan</a> (MIT), a chat client backed by the school's GPUs. Without them this course would require every student to install and administer their own chain.</p>
   </div>
 </footer>
 

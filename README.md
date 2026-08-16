@@ -126,8 +126,10 @@ Le pipeline décrit ici ne suppose pas que chaque étudiant installe et administ
 
 | Outil | Rôle dans le cours | Chapitres |
 |---|---|---|
-| **[ComfyQ](https://github.com/b2renger/ComfyQ)** | Réservation de créneaux et file d'attente devant ComfyUI sur les GPU de l'atelier. Les étudiants ouvrent une URL — rien à installer, même depuis un téléphone. Frise de réservation, estimation de durée calibrée par flux, historique partagé, export CSV, réutilisation d'un travail passé avec ses paramètres et ses médias. | 3 · 12 · 14 · 15 |
-| **[LlmOnLan](https://github.com/b2renger/LlmOnLan)** *(MIT)* | Client de conversation + ferme d'inférence sur le réseau local, servant Gemma 4. Découverte automatique, aucune configuration. Multimodal (images, voix), recherche web, OCR de documents, et pilotage de Blender via MCP. Les conversations restent sur la machine de l'étudiant ; la ferme est sans état. | 3 · 5 · 6 · 8 · 13 |
+| **[ComfyQ](https://github.com/b2renger/ComfyQ)** | Réservation de créneaux et file d'attente devant ComfyUI sur les GPU de l'atelier. Frise de réservation, estimation de durée calibrée par flux, historique partagé, export CSV, réutilisation d'un travail passé avec ses paramètres et ses médias. | 3 · 12 · 14 · 15 |
+| **[LlmOnLan](https://github.com/b2renger/LlmOnLan)** *(MIT)* | Client de conversation adossé aux GPU de l'école, servant Gemma 4. Connexion automatique, aucune configuration. Multimodal (images, voix), recherche web, OCR de documents, et pilotage de Blender via MCP. Les conversations et les documents restent sur la machine de l'étudiant. | 3 · 5 · 6 · 8 · 13 |
+
+**Le manuel ne décrit que les surfaces étudiantes** : l'interface web de ComfyQ (rien à installer, un navigateur suffit) et le client LlmOnLan (un installeur par système). Les composants d'administration — serveur ComfyQ, ferme LlmOnLan, ComfyQ Discovery — sont utilisés par les enseignants et les mainteneurs, et documentés dans [CAPTURE-GUIDE.md](CAPTURE-GUIDE.md), pas dans un document que les étudiants lisent.
 
 Ces deux outils expliquent plusieurs choix du manuel. La discipline de graine du chapitre 12 suit le comportement de ComfyQ (champ randomisé à l'ouverture, verrouillage par saisie manuelle) ; le budget de calcul du chapitre 14 se lit dans son estimation calibrée plutôt qu'au chronomètre ; et l'argument de confidentialité des chapitres 3 et 18 tient parce que LlmOnLan garde les données en local.
 
