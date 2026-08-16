@@ -120,6 +120,14 @@ Deux conventions portent la différence entre le fait et l'opinion :
 - **Documenté** — vérifié dans la documentation officielle d'un modèle, d'un outil ou d'un texte réglementaire
 - **Pratique d'atelier** — du métier et du jugement, avec quoi un étudiant est invité à discuter
 
+## Le dossier de projet, prêt à l'emploi
+
+**[⬇ `gabarits/dossier-de-projet.zip`](gabarits/dossier-de-projet.zip)** — l'arborescence du chapitre 4, complète, avec **onze documents de travail déjà amorcés** : fiche de problématique, cinq règles du monde, index du référentiel, les trois chartes, pitch, script, journal, et la feuille de plans déjà remplie avec les vingt identifiants de plan et leurs blocs (somme des durées : 60 s).
+
+Les étudiants dézippent, renomment le dossier, et commencent. Les dossiers vides le sont volontairement — voir [gabarits/README.md](gabarits/README.md). La source browsable est [`gabarits/FILM_2026_nom-du-projet/`](gabarits/FILM_2026_nom-du-projet/) ; `python gabarits/build-zip.py` regénère l'archive après modification d'un gabarit.
+
+**Les noms de dossiers et de fichiers sont en français dans les deux éditions**, parce qu'il n'y a qu'un seul système de fichiers. L'édition anglaise nomme les mêmes fichiers réels.
+
 ## Les outils de l'atelier
 
 Le pipeline décrit ici ne suppose pas que chaque étudiant installe et administre sa propre chaîne. Il repose sur **deux outils développés à l'École de Design Nantes Atlantique par [b2renger](https://github.com/b2renger)**, sans lesquels ce cours ne serait pas tenable à l'échelle d'une promotion :

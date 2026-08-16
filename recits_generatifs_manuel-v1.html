@@ -2208,6 +2208,11 @@ body.show-figures .shot-todo{display:block}
 
     <h3>4.2 L’arborescence</h3>
     <p>Créez-la <strong>en entier et vide</strong> avant l’étape 1. Un dossier vide qui attend est une consigne ; un dossier créé au moment où on en a besoin devient un débarras.</p>
+    <div class="callout c-doc">
+      <span class="lbl">Ne la recréez pas à la main · téléchargez-la</span>
+      <p><a href="gabarits/dossier-de-projet.zip"><strong>⬇ dossier-de-projet.zip</strong></a> — l’arborescence complète, plus <strong>onze documents de travail déjà amorcés</strong> : la fiche de problématique, les cinq règles du monde, l’index du référentiel, les trois chartes, le pitch, le script, le journal, et la feuille de plans <em>déjà remplie</em> avec les vingt identifiants de plan et leurs blocs.</p>
+      <p>Dézippez, renommez le dossier avec le nom de votre projet, et commencez. Les dossiers vides le sont volontairement.</p>
+    </div>
 <pre>FILM_2026_<span class="cm">nom-du-projet</span>/
 │
 ├── 00_brief/            <span class="cm">brief, problématique, données · cinq règles du monde</span>
@@ -2301,6 +2306,11 @@ un gros plan sur la main. Le découpage est mis à jour, pas contourné.</pre>
 
     <h3>4.2 The tree</h3>
     <p>Create it <strong>complete and empty</strong> before stage 1. An empty folder waiting for you is an instruction; a folder created at the moment you need it becomes a junk drawer.</p>
+    <div class="callout c-doc">
+      <span class="lbl">Do not rebuild it by hand · download it</span>
+      <p><a href="gabarits/dossier-de-projet.zip"><strong>⬇ dossier-de-projet.zip</strong></a> — the complete tree, plus <strong>eleven working documents already started</strong>: the question sheet, the five rules of the world, the reference-set index, the three bibles, the pitch, the script, the log, and the shot sheet <em>already filled in</em> with the twenty shot IDs and their blocks.</p>
+      <p>Unzip, rename the folder after your project, and begin. The empty folders are empty on purpose.</p>
+    </div>
 <pre>FILM_2026_<span class="cm">project-name</span>/
 │
 ├── 00_brief/            <span class="cm">brief, research question, data · five rules of the world</span>
@@ -2311,17 +2321,22 @@ un gros plan sur la main. Le découpage est mis à jour, pas contourné.</pre>
 │   ├── docs/            <span class="cm">maps, surveys, studies · or world research</span>
 │   └── style/           <span class="cm">external references + mandatory SOURCES.md</span>
 ├── 02_ecriture/         <span class="cm">pitch.md · script.md</span>
-├── 03_decoupage/        <span class="cm">shot_sheet.csv  ← the pivot document</span>
-├── 04_chartes/          <span class="cm">character.md · place.md · style.md</span>
+├── 03_decoupage/        <span class="cm">feuille_de_plans.csv  ← the pivot document</span>
+├── 04_chartes/          <span class="cm">charte_personnage.md · charte_lieu.md · charte_style.md</span>
 ├── 05_storyboard/       <span class="cm">P01_v01.png … P20_v04.png</span>
 │   └── VALIDE/          <span class="cm">P01.png … P20.png</span>
 ├── 06_plans/            <span class="cm">P01_t01.mp4 … P20_t05.mp4</span>
 │   └── VALIDE/          <span class="cm">P01.mp4 … P20.mp4</span>
-├── 07_son/              <span class="cm">ambience/ · voice/ · music/ · sfx/</span>
+├── 07_son/              <span class="cm">ambiances/ · voix/ · musique/ · sfx/</span>
 ├── 08_montage/          <span class="cm">the Resolve or Premiere project</span>
 ├── 09_export/           <span class="cm">film_60s_v01.mp4 …</span>
 │
 └── journal.md           <span class="cm">the decisions, and why</span></pre>
+
+    <div class="callout c-doc">
+      <span class="lbl">Why the folder and file names are French</span>
+      <p>There is only <strong>one filesystem</strong>, so both editions of this manual name the same real files. The names follow the folders, which are French. Do not translate them: the shot sheet, the screenshots and every cross-reference in this manual point at these exact names.</p>
+    </div>
 
     <div class="callout c-warn">
       <span class="lbl">Rename at the unloading, not later</span>
@@ -3810,15 +3825,16 @@ me and what came from you.</pre>
           <tr><td><code>lumiere</code></td><td>Direction et qualité. Constante sur tout le film sauf ellipse.</td><td>10, 12</td></tr>
           <tr><td><code>intention</code></td><td>Ce que le plan doit faire ressentir. La colonne qu’on saute et qu’il faut garder.</td><td>13, 17</td></tr>
           <tr><td><code>son</code></td><td>Ce qu’on entend : ambiance, événement, voix, silence.</td><td>16</td></tr>
-          <tr><td><code>ref_images</code></td><td>Les références de votre base à injecter, séparées par <code>;</code>.</td><td>12</td></tr>
+          <tr><td><code>ref_images</code></td><td>Les références de votre référentiel à injecter, séparées par <code>;</code>.</td><td>12</td></tr>
+          <tr><td><code>seed</code></td><td>La graine de l’image validée. Sans elle, le livrable B n’est pas reproductible et ne prouve rien.</td><td>12</td></tr>
           <tr><td><code>statut</code></td><td><code>a_faire</code> · <code>image_ok</code> · <code>video_ok</code> · <code>valide</code></td><td>13, 15</td></tr>
         </tbody>
       </table>
     </div>
-<pre>plan,bloc,duree,action,echelle,angle,mouvement,lieu,lumiere,intention,son,ref_images,statut
-P01,I,3,"Le rideau métallique fermé, de face",GP,niveau,fixe,"entrée est","rasante NE dure","entrer par une surface, pas par un espace","ambiance lointaine seule",PHOTO_003;PHOTO_007,valide
-P02,I,3,"Une main pose une caisse hors champ",TGP,plongée,fixe,"entrée est","rasante NE dure","une présence sans personne","événement : caisse",PHOTO_022,image_ok
-P03,I,3,"Le volume vide de la halle",TL,niveau,"panoramique lent G→D","halle nord","zénithale diffuse","la contradiction est déjà là","ambiance + réverbération",PHOTO_014;PHOTO_015,a_faire</pre>
+<pre>plan,bloc,duree,action,echelle,angle,mouvement,lieu,lumiere,intention,son,ref_images,seed,statut
+P01,I,3,"Le rideau métallique fermé, de face",GP,niveau,fixe,"entrée est","rasante NE dure","entrer par une surface, pas par un espace","ambiance lointaine seule",PHOTO_003;PHOTO_007,774213,valide
+P02,I,3,"Une main pose une caisse hors champ",TGP,plongée,fixe,"entrée est","rasante NE dure","une présence sans personne","événement : caisse",PHOTO_022,481990,image_ok
+P03,I,3,"Le volume vide de la halle",TL,niveau,"panoramique lent G→D","halle nord","zénithale diffuse","la contradiction est déjà là","ambiance + réverbération",PHOTO_014;PHOTO_015,,a_faire</pre>
     <div class="callout c-doc">
       <span class="lbl">Pourquoi un CSV et pas un joli document</span>
       <p>Parce qu’il est <strong>triable et filtrable</strong>. À trois jours du rendu, la question n’est pas « à quoi ressemble mon film » mais « quels plans ne sont pas finis » : vous filtrez la colonne <code>statut</code> et vous avez la réponse en deux secondes. Un storyboard mis en page, aussi beau qu’il soit, ne répond pas à cette question. Faites les deux si vous voulez, mais c’est le tableur qui pilote la production.</p>
@@ -3860,7 +3876,8 @@ P03,I,3,"Le volume vide de la halle",TL,niveau,"panoramique lent G→D","halle n
           <tr><td><code>lumiere</code></td><td>Direction and quality. Constant across the film unless there is an ellipsis.</td><td>10, 12</td></tr>
           <tr><td><code>intention</code></td><td>What the shot must make the viewer feel. The column everyone skips and must keep.</td><td>13, 17</td></tr>
           <tr><td><code>son</code></td><td>What you hear: ambience, event, voice, silence.</td><td>16</td></tr>
-          <tr><td><code>ref_images</code></td><td>The references from your library to inject, separated by <code>;</code>.</td><td>12</td></tr>
+          <tr><td><code>ref_images</code></td><td>The references from your reference set to inject, separated by <code>;</code>.</td><td>12</td></tr>
+          <tr><td><code>seed</code></td><td>The seed of the approved image. Without it, Deliverable B is not reproducible and proves nothing.</td><td>12</td></tr>
           <tr><td><code>statut</code></td><td><code>a_faire</code> · <code>image_ok</code> · <code>video_ok</code> · <code>valide</code></td><td>13, 15</td></tr>
         </tbody>
       </table>
@@ -4063,7 +4080,7 @@ P03,I,3,"Le volume vide de la halle",TL,niveau,"panoramique lent G→D","halle n
     <div class="exercise">
       <div class="hd">Étape 6 · La feuille de plans</div>
       <h4>Ce que vous faites</h4>
-      <p><code>03_decoupage/feuille_de_plans.csv</code>, vingt lignes, treize colonnes, toutes remplies sauf <code>statut</code> qui vaut <code>a_faire</code> partout. C’est le moment de la relecture croisée : échangez votre feuille avec un autre étudiant et corrigez-vous mutuellement.</p>
+      <p><code>03_decoupage/feuille_de_plans.csv</code>, vingt lignes, quatorze colonnes, toutes remplies sauf <code>statut</code> qui vaut <code>a_faire</code> partout. C’est le moment de la relecture croisée : échangez votre feuille avec un autre étudiant et corrigez-vous mutuellement.</p>
       <h4>Ce que cela produit</h4>
       <p>Le troisième et dernier élément du livrable A. À partir de maintenant, ce fichier est votre film ; le reste n’est que de l’exécution.</p>
       <h4>Vous pouvez passer à la suite quand</h4>
@@ -4072,7 +4089,8 @@ P03,I,3,"Le volume vide de la halle",TL,niveau,"panoramique lent G→D","halle n
         <li>La somme de la colonne <code>duree</code> fait 60 (± 2).</li>
         <li>La colonne <code>lumiere</code> est constante, ou ses exceptions sont justifiées par une ellipse écrite.</li>
         <li>Trois échelles dominent, et vous pouvez dire lesquelles et pourquoi.</li>
-        <li>Chaque ligne cite au moins une référence de votre base dans <code>ref_images</code>.</li>
+        <li>Chaque ligne cite au moins une référence de votre référentiel dans <code>ref_images</code>.</li>
+        <li>La colonne <code>seed</code> est vide pour l’instant : elle se remplit à l’étape 9, image par image.</li>
         <li>Un autre étudiant a relu et signalé au moins un problème que vous avez corrigé.</li>
       </ul>
       <p style="margin-top:1rem"><em>Une ligne <code>ref_images</code> vide signifie que ce plan sera inventé par le modèle. Vous avez le droit — mais sachez-le, et sachez pourquoi.</em></p>
@@ -4167,7 +4185,7 @@ P03,I,3,"Le volume vide de la halle",TL,niveau,"panoramique lent G→D","halle n
     <div class="exercise">
       <div class="hd">Stage 6 · The shot sheet</div>
       <h4>What you do</h4>
-      <p><code>03_decoupage/shot_sheet.csv</code>, twenty rows, thirteen columns, all filled except <code>statut</code> which reads <code>a_faire</code> throughout. This is the moment for cross-review: swap sheets with another student and correct each other.</p>
+      <p><code>03_decoupage/feuille_de_plans.csv</code>, twenty rows, fourteen columns, all filled except <code>statut</code> which reads <code>a_faire</code> throughout. This is the moment for cross-review: swap sheets with another student and correct each other.</p>
       <h4>What it produces</h4>
       <p>The third and last component of Deliverable A. From now on this file is your film; the rest is execution.</p>
       <h4>Ready to move on when</h4>
@@ -4176,7 +4194,8 @@ P03,I,3,"Le volume vide de la halle",TL,niveau,"panoramique lent G→D","halle n
         <li>The <code>duree</code> column sums to 60 (± 2).</li>
         <li>The <code>lumiere</code> column is constant, or its exceptions are justified by a written ellipsis.</li>
         <li>Three sizes dominate, and you can say which and why.</li>
-        <li>Every row cites at least one reference from your library in <code>ref_images</code>.</li>
+        <li>Every row cites at least one reference from your reference set in <code>ref_images</code>.</li>
+        <li>The <code>seed</code> column is empty for now: you fill it at stage 9, image by image.</li>
         <li>Another student has reviewed it and flagged at least one problem you fixed.</li>
       </ul>
       <p style="margin-top:1rem"><em>An empty <code>ref_images</code> cell means that shot will be invented by the model. You are allowed — but know it, and know why.</em></p>
@@ -4850,7 +4869,7 @@ text overlay, oversaturated, fisheye distortion, duplicated subject</pre>
 
     <div class="callout c-doc">
       <span class="lbl">La graine est votre carnet de notes</span>
-      <p>C’est le paramètre le plus sous-estimé par les débutants et le plus utilisé par les praticiens. Une graine notée est une image que vous pouvez reproduire dans six semaines, sur une autre machine, à l’identique. Notez-la <strong>dans la feuille de plans, pas dans votre tête</strong> : une colonne <code>seed</code> supplémentaire suffit. Sans elle, le livrable B n’est pas reproductible et ne prouve rien.</p>
+      <p>C’est le paramètre le plus sous-estimé par les débutants et le plus utilisé par les praticiens. Une graine notée est une image que vous pouvez reproduire dans six semaines, sur une autre machine, à l’identique. Notez-la <strong>dans la feuille de plans, pas dans votre tête</strong> : la colonne <code>seed</code> est là pour cela. Sans elle, le livrable B n’est pas reproductible et ne prouve rien.</p>
       <p>Dans <a href="https://github.com/b2renger/ComfyQ">ComfyQ</a> la graine est traitée exactement comme ce manuel le demande : le champ <strong>se randomise à chaque ouverture</strong> du formulaire de réservation — ce qui est le bon comportement en passe d’exploration — et un bouton dé permet de la relancer. Pour la <em>verrouiller</em>, tapez la valeur à la main : c’est le geste de la passe 2.</p>
     </div>
 
@@ -5000,7 +5019,7 @@ text overlay, oversaturated, fisheye distortion, duplicated subject</pre>
 
     <div class="callout c-doc">
       <span class="lbl">The seed is your notebook</span>
-      <p>It is the parameter beginners most underestimate and practitioners most use. A recorded seed is an image you can reproduce in six weeks, on another machine, identically. Record it <strong>in the shot sheet, not in your head</strong>: one extra <code>seed</code> column is enough. Without it, Deliverable B is not reproducible and proves nothing.</p>
+      <p>It is the parameter beginners most underestimate and practitioners most use. A recorded seed is an image you can reproduce in six weeks, on another machine, identically. Record it <strong>in the shot sheet, not in your head</strong>: the <code>seed</code> column is there for exactly this. Without it, Deliverable B is not reproducible and proves nothing.</p>
       <p>In <a href="https://github.com/b2renger/ComfyQ">ComfyQ</a> the seed behaves exactly as this manual asks: the field <strong>re-randomises every time</strong> the booking form opens — the right behaviour during exploration — and a dice button re-rolls it. To <em>lock</em> it, type the value in by hand: that is the pass-2 gesture.</p>
     </div>
 
