@@ -59,7 +59,7 @@ Each of these was decided deliberately and cost something to get right.
 Change one of these and you must change all of its homes. The audit checks the last two.
 
 - **20 shots × 3 s = 60 s**, in five blocks of **3 · 5 · 4 · 5 · 3** (9/15/12/15/9 s)
-- **17 stages**, numbered continuously across the manual, not per chapter
+- **14 stages**, numbered continuously across the manual, not per chapter
 - **Four deliverables** — A production folder · B storyboard · C film · D *(A4·A5)* a reusable asset
 - **Four assessment axes** — spécificité, cohérence, intention, méthode
 - **Shot-sheet header**, byte-identical in the manual and in the template:

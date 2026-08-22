@@ -293,8 +293,10 @@ def literals(t):
 
 def pass_sweep():
     say("\n5 · French identifiers")
-    scan = [os.path.join(ROOT, p) for p in PAGES + ["README.md", "CAPTURE-GUIDE.md", "CLAUDE.md"]]
-    scan += [os.path.join(ROOT, "templates", "README.md")]
+    scan = [os.path.join(ROOT, p) for p in PAGES
+        + ["README.md", "README.fr.md", "CAPTURE-GUIDE.md", "CLAUDE.md"]]
+    scan += [os.path.join(ROOT, "templates", n)
+         for n in ("README.md", "README.fr.md")]
     for base, _, names in os.walk(os.path.join(ROOT, "templates", "FILM_2026_project-name")):
         scan += [os.path.join(base, n) for n in names if n != ".gitkeep"]
     hits = 0

@@ -11,213 +11,215 @@
 █   █ █     █  ██ █     █  █  █   █   █     █   █         █
  ████ █████ █   █ █████ █   █ █   █   █   █████ █     ████
 
-le manuel de production du court métrage par IA génératives
-FR · EN   ·   L'École de Design Nantes Atlantique   ·   Édition 2026.1
+the production manual for the AI-generated short film
+FR · EN   ·   L'École de Design Nantes Atlantique   ·   Edition 2026.1
 
-  référentiel → écriture → chartes → image → mouvement → son → livraison
-       ▲                                                           │
-       └────────  le défaut constaté ici a été commis là  ─────────┘
+  référentiel → writing → bibles → image → movement → sound → delivery
+       ▲                                                          │
+       └──────  the defect noticed here was committed there  ─────┘
 ```
 
-# Récits génératifs — le manuel de production du court métrage par IA
+**English** · [Français](README.fr.md)
 
-Manuel de production bilingue (FR/EN) pour produire un **court métrage par IA génératives**, de l'écriture au mixage. Un cours de **compétences techniques**, écrit pour des étudiants en design **de la première à la cinquième année**.
+# Récits génératifs — the production manual for the AI-generated short film
 
-Le film peut se passer dans un **lieu réel que l'étudiant documente** ou dans un **monde entièrement inventé** — anticipation, fable, abstraction. Les deux voies sont traitées, et le pipeline technique est le même à partir du chapitre 7.
+A bilingual (FR/EN) production manual for making a **short film with generative AI**, from writing to the mix. A course in **technical skills**, written for design students **from first to fifth year**.
 
-### 📖 **[Lire en ligne → urbandronedesign.github.io/AI_GEN_NARRATIVES](https://urbandronedesign.github.io/AI_GEN_NARRATIVES/)**
+The film can take place in a **real location the student documents** or in a **wholly invented world** — speculative fiction, fable, abstraction. Both routes are covered, and from chapter 7 on the technical pipeline is the same.
 
-C'est le lien à donner aux étudiants — aucun téléchargement, aucune installation, fonctionne sur un téléphone.
+### 📖 **[Read online → urbandronedesign.github.io/AI_GEN_NARRATIVES](https://urbandronedesign.github.io/AI_GEN_NARRATIVES/)**
 
-### ⌨️ **[Prompts & modèles →](https://urbandronedesign.github.io/AI_GEN_NARRATIVES/prompts.html)**
+This is the link to give students — nothing to download, nothing to install, works on a phone.
 
-Page compagnon : tous les prompts du pipeline prêts à copier, le lexique bilingue de ce qu'il faut écrire pour obtenir ce que l'on veut (« lumière rasante » → `low raking light, long shadows`), et l'état des modèles. Classée par tâche, avec un filtre en direct.
+### ⌨️ **[Prompts & models →](https://urbandronedesign.github.io/AI_GEN_NARRATIVES/prompts.html)**
 
-### 🔧 **[Sous le capot →](https://urbandronedesign.github.io/AI_GEN_NARRATIVES/outils.html)**
+Companion page: every prompt in the pipeline ready to copy, the bilingual lexicon of what to write to get what you want (« lumière rasante » → `low raking light, long shadows`), and the state of the models. Sorted by task, with a live filter.
 
-Deuxième page compagnon : ce qu'il y a derrière le formulaire. **ComfyUI** et comment lire un graphe, les modèles et leurs projets d'origine, et le catalogue des flux de l'atelier — y compris les trois que le manuel ne couvre pas (**inpainting au masque**, **SAM3**, **LivePortrait**), avec la réserve qui va avec. Se termine par un protocole pour juger un modèle qu'on ne connaît pas — la seule partie de la page qui ne se périmera pas.
+### 🔧 **[Under the hood →](https://urbandronedesign.github.io/AI_GEN_NARRATIVES/outils.html)**
 
-Pour l'usage hors ligne, téléchargez **[`recits_generatifs_manuel-v1.html`](recits_generatifs_manuel-v1.html)** et ouvrez-le dans n'importe quel navigateur. Un seul fichier autonome, ~650 Ko, aucune dépendance, aucune étape de compilation. Fonctionne depuis une clé USB sans connexion — emportez aussi [`prompts.html`](prompts.html) et [`outils.html`](outils.html), qui sont autonomes de la même façon.
+Second companion page: what sits behind the form. **ComfyUI** and how to read a graph, the models and the projects they came from, and the catalogue of studio workflows — including the three the manual does not cover (**masked inpainting**, **SAM3**, **LivePortrait**), with the caveat that goes with them. It ends with a protocol for judging a model you have never met — the only part of the page that will not go stale.
 
-> **Manuel compagnon** — [3DVIZ · SketchUp & Rhino vers Twinmotion 2026](https://github.com/urbandronedesign/3DVIZ), même format, même conventions. Les deux se lisent de la même façon : bascule FR/EN, recherche, filtre de niveau, index par symptôme.
+For offline use, download **[`recits_generatifs_manuel-v1.html`](recits_generatifs_manuel-v1.html)** and open it in any browser. One self-contained file, ~650 KB, no dependencies, no build step. It works from a USB key with the network down — take [`prompts.html`](prompts.html) and [`outils.html`](outils.html) along too, they are self-contained the same way.
+
+> **Companion manual** — [3DVIZ · SketchUp & Rhino to Twinmotion 2026](https://github.com/urbandronedesign/3DVIZ), same format, same conventions. Both read the same way: FR/EN toggle, search, level filter, symptom index.
 
 ---
 
-## Ce qu'il contient
+## What is in it
 
-**18 chapitres** suivant l'ordre réel de la production — comprendre, réunir le référentiel, écrire, verrouiller, générer l'image, animer, sonoriser, monter — plus une section de référence.
+**18 chapters** following the real order of production — understand, gather the *référentiel*, write, lock, generate the image, animate, add sound, edit — plus a reference section.
 
-| Partie | Chapitres |
+| Part | Chapters |
 |---|---|
-| **Préambule** | Comment utiliser ce manuel · Le projet & ce que vous rendez · **Parcours par année** |
-| **I — Fondations** | Le pipeline de bout en bout · Le principe hybride · Le laboratoire · **Le dossier de projet** |
-| **II — Le référentiel** | Problématique & brief · **Construire le référentiel** (voie captée / voie construite) |
-| **III — L'écriture** | Du brief au pitch · Piloter le LLM · Découpage & feuille de plans |
-| **IV — La cohérence** | Les chartes de cohérence · Super-prompt & ancrage |
-| **V — L'image** | Générer le storyboard · Contrôle hybride & validation |
-| **VI — Le mouvement** | De l'image au plan animé · Contrôle avancé & finition |
-| **VII — Son & livraison** | Conception sonore · **Montage, étalonnage, livraison** (look IA, dépôts, archivage) · Droit, éthique & crédits |
-| **Référence** | Index Dérive → Correction (46 symptômes) · FAQ Étudiants (38 questions) · Glossaire bilingue (55 termes) |
+| **Preamble** | How to use this manual · The project & what you hand in · **Path by year** |
+| **I — Foundations** | The end-to-end pipeline · The hybrid principle · The lab · **The project folder** |
+| **II — The *référentiel*** | Research question & brief · **Building the *référentiel*** (captured route / constructed route) |
+| **III — Writing** | From brief to pitch · Steering the LLM · Breakdown & shot sheet |
+| **IV — Consistency** | The consistency bibles · Super-prompt & anchoring |
+| **V — The image** | Generating the storyboard · Hybrid control & validation |
+| **VI — Movement** | From still to animated shot · Advanced control & finishing |
+| **VII — Sound & delivery** | Sound design · **Edit, grade, deliver** (the AI look, open calls, archiving) · Law, ethics & credits |
+| **Reference** | Symptom → Fix index (46 symptoms) · Student FAQ (38 questions) · Bilingual glossary (55 terms) |
 
-Soit **24 sections** au total, dont trois de préambule et trois de référence.
+That is **24 sections** in all, three of them preamble and three reference.
 
-Environ **71 800 mots** sur les deux langues.
+Roughly **70,300 words** across the two languages.
 
-Le chapitre 1 s'ouvre sur un schéma pleine page de tout le pipeline — sept étapes, les décisions qui appartiennent à chacune, et le **chemin de retour** montrant qu'un défaut constaté en aval a été commis en amont. Le dossier de projet est dessiné comme le contenant de l'ensemble, parce qu'un projet qui n'est pas portable n'est pas vraiment un projet.
+Chapter 1 opens on a full-page diagram of the whole pipeline — seven stages, the decisions that belong to each, and the **return path** showing that a defect noticed downstream was committed upstream. The project folder is drawn as the container for all of it, because a project that is not portable is not really a project.
 
-## Fonctionnalités
+## Features
 
-- **Bilingue** — bascule FR/EN, mémorisée entre les visites
-- **Recherche côté client** dans les chapitres, la FAQ, l'index des dérives et les blocs de prompt — avec index séparé par langue
-- **Filtre par année A1·2 / A3 / A4·5** — les étiquettes sont cumulatives, et le contenu masqué sort aussi de l'index de recherche
-- **Blocs de prompt avec bouton Copier** — les étudiants copient des prompts en permanence
-- **Index Dérive → Correction** organisé par ce qu'on voit à l'écran, pas par chapitre
-- **Feuille de style d'impression** — s'imprime et s'exporte proprement en PDF, avec des sauts de page raisonnables
-- **Responsive** — lisible sur un téléphone à 1 h du matin la veille d'un jury
-- **Thème clair / sombre**, suit le système par défaut
-- Raccourcis : <kbd>/</kbd> pour la recherche, <kbd>Échap</kbd> pour l'effacer
+- **Bilingual** — FR/EN toggle, remembered between visits
+- **Client-side search** across chapters, FAQ, symptom index and prompt blocks — with a separate index per language
+- **Year filter A1·2 / A3 / A4·5** — the labels are cumulative, and hidden content drops out of the search index too
+- **Prompt blocks with a Copy button** — students copy prompts constantly
+- **Symptom → Fix index** organised by what you see on screen, not by chapter
+- **Print stylesheet** — prints and exports to PDF cleanly, with sensible page breaks
+- **Responsive** — readable on a phone at 1 a.m. the night before a jury
+- **Light / dark theme**, following the system by default
+- Shortcuts: <kbd>/</kbd> for search, <kbd>Esc</kbd> to clear it
 
-## La structure du cours
+## How the course is built
 
-Le manuel repose sur **un seul film**, mené à travers **14 étapes**. Trois rendus, quatre en fin de cycle :
+The manual rests on **a single film**, carried through **14 stages**. Three deliverables, four in the final years:
 
-| | Livrable |
+| | Deliverable |
 |---|---|
-| **A** | **Le dossier de production** — le référentiel (capté ou construit), feuille de plans, chartes de cohérence, journal de projet |
-| **B** | **Le storyboard** — images clés validées, chacune avec son prompt exact et sa graine |
-| **C** | **Le film** — son mixé, générique déclarant les outils |
-| **D** | *(A4·A5 seulement)* **Un actif réutilisable documenté** légué à l'atelier : un graphe ComfyUI, une LoRA avec son jeu d'images, une reconstruction de site, ou une fiche de technique |
+| **A** | **The production folder** — the *référentiel* (captured or constructed), shot sheet, consistency bibles, project journal |
+| **B** | **The storyboard** — approved key images, each with its exact prompt and seed |
+| **C** | **The film** — mixed sound, credits declaring the tools used |
+| **D** | *(A4·A5 only)* **A documented reusable asset** left to the studio: a ComfyUI graph, a LoRA with its image set, a site reconstruction, or a technique sheet |
 
-Parce que le dossier de production est rendu, les chapitres de méthode sont **évalués directement** plutôt que d'être une préparation à autre chose. Quatre axes d'évaluation, annoncés dès le préambule : spécificité, cohérence, intention, méthode.
+Because the production folder is handed in, the method chapters are **assessed directly** rather than being preparation for something else. Four assessment axes, announced from the preamble on: specificity, consistency, intent, method.
 
-### Deux voies vers le même artefact
+### Two routes to the same artefact
 
-Un modèle génératif produit la moyenne de ce qu'il a vu. Pour qu'un film soit le vôtre et non cette moyenne, il faut un **référentiel** : un ensemble d'images et de sons spécifiques, triés et nommés, injectés dans le modèle et dont on tire les chartes de cohérence. Le chapitre 6 en décrit les deux constructions.
+A generative model produces the average of what it has seen. For a film to be yours and not that average, you need a ***référentiel***: a set of specific images and sounds, sorted and named, fed into the model and used to derive the consistency bibles. Chapter 6 describes its two constructions.
 
-| | Voie captée | Voie construite |
+| | Captured route | Constructed route |
 |---|---|---|
-| **Le monde est** | réel, visitable | inventé — anticipation, fable, abstraction |
-| **Le référentiel vient de** | photographies, vidéos et sons pris sur site | images de recherche générées **puis triées**, dessins, maquettes et objets photographiés, textures, références sous licence |
-| **Le risque propre** | rester descriptif | rester flottant : un monde sans règles écrites |
-| **La discipline propre** | aller chercher la bonne matière | trancher — générer est facile, éliminer est le travail |
-| **Produit** | `01_references/` trié, nommé, indexé | *le même* `01_references/` |
+| **The world is** | real, visitable | invented — speculative, fable, abstraction |
+| **The *référentiel* comes from** | photographs, video and sound taken on site | generated research images **then culled**, drawings, models and objects photographed, textures, licensed references |
+| **Its own risk** | staying merely descriptive | staying vague: a world with no written rules |
+| **Its own discipline** | going out to get the right material | deciding — generating is easy, eliminating is the work |
+| **Produces** | a sorted, named, indexed `01_references/` | *the same* `01_references/` |
 
-Les deux se mélangent, et c'est souvent le plus fort : un monde inventé dont les matières viennent de photographies réelles. À partir du chapitre 7, le manuel ne fait plus la différence.
+The two mix, and that is often the strongest option: an invented world whose materials come from real photographs. From chapter 7 on, the manual no longer distinguishes between them.
 
-**Hybride ne veut pas dire documentaire.** Un film de science-fiction dont les décors viennent de maquettes photographiées, dont les bruitages sont enregistrés sur un bureau et dont les mouvements de caméra sortent d'une prévisualisation Blender est *plus* hybride qu'un documentaire produit entièrement au prompt. Ce qui compte n'est pas que le monde soit réel, mais que le matériau qui l'ancre soit celui de l'étudiant.
+**Hybrid does not mean documentary.** A science-fiction film whose sets come from photographed models, whose foley is recorded on a desk and whose camera moves come out of a Blender previz is *more* hybrid than a documentary produced entirely by prompt. What matters is not that the world be real, but that the material anchoring it be the student's own.
 
-### Un pipeline, cinq années
+### One pipeline, five years
 
-Le **pipeline ne change pas** d'un niveau à l'autre — c'est tout l'intérêt d'un seul document : ce qui est appris en première année reste vrai en cinquième, et il n'y a rien à désapprendre. Ce qui change est le format, la profondeur technique et l'exigence d'argumentation. Un première année ne fait pas « un morceau du cours » : il fait *tout le cours, en plus petit*.
+The **pipeline does not change** from one level to the next — that is the whole point of a single document: what is learned in first year stays true in fifth, and there is nothing to unlearn. What changes is the format, the technical depth and how much argument is expected. A first-year student does not do "part of the course": they do *the whole course, smaller*.
 
-| Année | Format | Chartes | Axes hybrides exigés |
+| Year | Format | Bibles | Hybrid axes required |
 |---|---|---|---|
-| **A1 · A2** | 30 s · 10 plans | lieu + style, pas de personnage | 1 référentiel · 4 métier |
-| **A3** *(format de référence)* | 60 s · 20 plans | les trois | 1 · 3 matière · 4 |
-| **A4 · A5** | 60–90 s, 20 plans min. | les trois, versionnées | les quatre, dont 2 contrôle démontré |
+| **A1 · A2** | 30 s · 10 shots | place + style, no character | 1 *référentiel* · 4 craft |
+| **A3** *(reference format)* | 60 s · 20 shots | all three | 1 · 3 material · 4 |
+| **A4 · A5** | 60–90 s, 20 shots min. | all three, versioned | all four, including 2 demonstrated control |
 
-Le corps du manuel est écrit pour le format de référence — 60 secondes, vingt plans. La section **Parcours par année** donne, pour chaque niveau, le format, les livrables et un tableau de lecture chapitre par chapitre. Le filtre de la barre d'outils masque directement ce qui n'est pas encore pour le lecteur : un première année voit 92 % du manuel, un troisième année 97 %.
+The body of the manual is written for the reference format — 60 seconds, twenty shots. The **Path by year** section gives, for each level, the format, the deliverables and a chapter-by-chapter reading table. The toolbar filter simply hides what is not yet for the reader: a first-year sees 92 % of the manual, a third-year 97 %.
 
-### Pourquoi 3 secondes par plan
+### Why three seconds a shot
 
-C'est la durée qu'un modèle vidéo génère nativement et bien ; au-delà, la dérive s'installe. Vingt plans est assez pour qu'une *méthode* de cohérence soit nécessaire (à cinq plans on s'en sort à l'œil) et assez peu pour qu'un échec reste réparable dans le temps du module.
+That is the duration a video model generates natively and well; beyond it, drift sets in. Twenty shots is enough that a *method* for consistency becomes necessary (at five shots you can wing it by eye) and few enough that a failure stays repairable within the time of the module.
 
 ## Figures
 
-**Huit figures sont des schémas dessinés** — SVG en ligne, bilingues, sans aucune dépendance. Elles couvrent ce qu'une capture d'écran explique mal : le chemin de retour du pipeline, les quatre points d'injection du matériau non génératif dans la chaîne, l'anatomie d'un nom de fichier, la couverture de prise de vue pour une reconstruction 3D, les six échelles de plan, l'anatomie du super-prompt, l'effet de la contrainte par première et dernière image, l'architecture des quatre couches sonores.
+**Eight figures are drawn diagrams** — inline SVG, bilingual, with no dependency at all. They cover what a screenshot explains badly: the pipeline's return path, the four injection points for non-generative material in the chain, the anatomy of a filename, the shooting coverage for a 3D reconstruction, the six shot sizes, the anatomy of the super-prompt, the effect of first-and-last-frame constraint, the architecture of the four sound layers.
 
-**Huit sont des captures d'écran** qui ne peuvent pas être dessinées — les graphes ComfyUI de l'atelier, une planche de charte personnage, une timeline de montage, la feuille de plans en production. Voir **[CAPTURE-GUIDE.md](CAPTURE-GUIDE.md)** pour les instructions de prise.
+**Eight are screenshots** that cannot be drawn — the studio's ComfyUI graphs, a character bible board, an edit timeline, the shot sheet in production. See **[CAPTURE-GUIDE.md](CAPTURE-GUIDE.md)** for how to take them.
 
-Tant qu'un fichier n'existe pas, la figure est **masquée pour les lecteurs**, de sorte que le manuel n'a jamais l'air inachevé. Pour voir ce qui manque encore, ajoutez `?figures` à l'URL :
+As long as a file does not exist, the figure is **hidden from readers**, so that the manual never looks unfinished. To see what is still missing, add `?figures` to the URL:
 
 ```
 https://urbandronedesign.github.io/AI_GEN_NARRATIVES/recits_generatifs_manuel-v1.html?figures
 ```
 
-Chaque emplacement vide apparaît alors comme un cadre étiqueté indiquant quoi capturer. Retirez le paramètre et ils disparaissent.
+Each empty slot then appears as a labelled frame saying what to capture. Remove the parameter and they disappear.
 
-## Une note sur l'écriture
+## A note on the writing
 
-Le manuel est écrit **pour les étudiants, pas à leur sujet**. Il s'adresse au lecteur à la deuxième personne et ne contient aucune consigne destinée à un encadrant, aucun conseil de conception d'évaluation, aucun commentaire de notation — les étudiants ont accès à ce document, donc tout ce qui n'a de sens que pour la personne qui enseigne vit à l'extérieur, dans [CAPTURE-GUIDE.md](CAPTURE-GUIDE.md).
+The manual is written **for students, not about them**. It addresses the reader in the second person and contains no instructions aimed at a teacher, no assessment-design advice, no grading commentary — students have access to this document, so anything that only makes sense to the person teaching lives outside it, in [CAPTURE-GUIDE.md](CAPTURE-GUIDE.md).
 
-Deux conventions portent la différence entre le fait et l'opinion :
+Two conventions carry the difference between fact and opinion:
 
-- **Documenté** — vérifié dans la documentation officielle d'un modèle, d'un outil ou d'un texte réglementaire
-- **Pratique d'atelier** — du métier et du jugement, avec quoi un étudiant est invité à discuter
+- **Documenté** *(Documented)* — verified in the official documentation of a model, a tool or a regulatory text
+- **Pratique d'atelier** *(Studio practice)* — craft and judgement, which a student is invited to argue with
 
-## Le dossier de projet, prêt à l'emploi
+## The project folder, ready to use
 
-**[⬇ `templates/project-folder.zip`](templates/project-folder.zip)** — l'arborescence du chapitre 4, complète, avec **onze documents de travail déjà amorcés** : fiche de problématique, cinq règles du monde, index du référentiel, les trois chartes, pitch, script, journal, et la feuille de plans déjà remplie avec les vingt identifiants de plan et leurs blocs (somme des durées : 60 s).
+**[⬇ `templates/project-folder.zip`](templates/project-folder.zip)** — the chapter 4 tree, complete, with **eleven working documents already started**: research-question sheet, five rules of the world, *référentiel* index, the three bibles, pitch, script, journal, and the shot sheet already filled in with the twenty shot identifiers and their blocks (durations summing to 60 s).
 
-Les étudiants dézippent, renomment le dossier, et commencent. Les dossiers vides le sont volontairement — voir [templates/README.md](templates/README.md). La source browsable est [`templates/FILM_2026_project-name/`](templates/FILM_2026_project-name/) ; `python templates/build-zip.py` regénère l'archive après modification d'un gabarit.
+Students unzip, rename the folder, and start. The empty folders are empty on purpose — see [templates/README.md](templates/README.md). The browsable source is [`templates/FILM_2026_project-name/`](templates/FILM_2026_project-name/); `python templates/build-zip.py` regenerates the archive after a template is modified.
 
-**Les noms de dossiers, de fichiers et de colonnes sont en anglais** dans les deux éditions, parce qu'il n'y a qu'un seul système de fichiers et que les étudiants sont à l'aise en anglais. Le manuel français nomme donc les mêmes fichiers réels, sans les traduire.
+**Folder, file and column names are in English** in both editions, because there is only one filesystem and students are comfortable in English. The French manual therefore names the same real files, without translating them.
 
-## Les outils de l'atelier
+## The studio tools
 
-Le pipeline décrit ici ne suppose pas que chaque étudiant installe et administre sa propre chaîne. Il repose sur **deux outils développés à l'École de Design Nantes Atlantique par [b2renger](https://github.com/b2renger)**, sans lesquels ce cours ne serait pas tenable à l'échelle d'une promotion :
+The pipeline described here does not assume every student installs and administers their own chain. It rests on **two tools developed at L'École de Design Nantes Atlantique by [b2renger](https://github.com/b2renger)**, without which this course would not be workable at the scale of a whole year group:
 
-| Outil | Rôle dans le cours | Chapitres |
+| Tool | Role in the course | Chapters |
 |---|---|---|
-| **[ComfyQ](https://github.com/b2renger/ComfyQ)** | Réservation de créneaux et file d'attente devant ComfyUI sur les GPU de l'atelier. Frise de réservation, estimation de durée calibrée par flux, historique partagé, export CSV, réutilisation d'un travail passé avec ses paramètres et ses médias. | 3 · 12 · 14 · 15 |
-| **[LlmOnLan](https://github.com/b2renger/LlmOnLan)** *(MIT)* | Client de conversation adossé aux GPU de l'école, servant Gemma 4. Connexion automatique, aucune configuration. Multimodal (images, voix), recherche web, OCR de documents, et pilotage de Blender via MCP. Les conversations et les documents restent sur la machine de l'étudiant. | 3 · 5 · 6 · 8 · 13 |
+| **[ComfyQ](https://github.com/b2renger/ComfyQ)** | Slot booking and a queue in front of ComfyUI on the studio GPUs. Booking timeline, per-workflow calibrated duration estimates, shared history, CSV export, reuse of a past job with its parameters and media. | 3 · 12 · 14 · 15 |
+| **[LlmOnLan](https://github.com/b2renger/LlmOnLan)** *(MIT)* | Chat client backed by the school's GPUs, serving Gemma 4. Automatic connection, no configuration. Multimodal (images, voice), web search, document OCR, and Blender control via MCP. Conversations and documents stay on the student's machine. | 3 · 5 · 6 · 8 · 13 |
 
-**Le manuel ne décrit que les surfaces étudiantes** : l'interface web de ComfyQ (rien à installer, un navigateur suffit) et le client LlmOnLan (un installeur par système). Les composants d'administration — serveur ComfyQ, ferme LlmOnLan, ComfyQ Discovery — sont utilisés par les enseignants et les mainteneurs, et documentés dans [CAPTURE-GUIDE.md](CAPTURE-GUIDE.md), pas dans un document que les étudiants lisent.
+**The manual documents only the student-facing surfaces**: the ComfyQ web interface (nothing to install, a browser is enough) and the LlmOnLan client (one installer per system). The administration components — ComfyQ server, LlmOnLan farm, ComfyQ Discovery — are used by teachers and maintainers, and documented in [CAPTURE-GUIDE.md](CAPTURE-GUIDE.md), not in a document students read.
 
-Ces deux outils expliquent plusieurs choix du manuel. La discipline de graine du chapitre 12 suit le comportement de ComfyQ (champ randomisé à l'ouverture, verrouillage par saisie manuelle) ; le budget de calcul du chapitre 14 se lit dans son estimation calibrée plutôt qu'au chronomètre ; et l'argument de confidentialité des chapitres 3 et 18 tient parce que LlmOnLan garde les données en local.
+These two tools explain several of the manual's choices. The seed discipline of chapter 12 follows ComfyQ's behaviour (field randomised on open, locked by typing a value manually); the compute budget of chapter 14 is read off its calibrated estimate rather than off a stopwatch; and the privacy argument of chapters 3 and 18 holds because LlmOnLan keeps data local.
 
-## Vérifier la cohérence du manuel
+## Checking the manual for consistency
 
 ```bash
 python tools/audit.py
 ```
 
-Sept passes, sans dépendances : validité HTML, résolution des liens internes, **parité des faits entre les deux éditions** (numéros de section, identifiants, renvois, étiquettes d'année, numéros d'étape et de figure), **parité structurelle** (une édition qui a cinq lignes de tableau là où l'autre en a quatre a perdu du contenu), absence de noms de fichiers ou de colonnes français, cohérence entre le manuel et le gabarit téléchargeable, et symétrie des bandes d'année.
+Seven passes, no dependencies: HTML validity, internal link resolution, **parity of facts between the two editions** (section numbers, identifiers, cross-references, year labels, stage and figure numbers), **structural parity** (an edition with five table rows where the other has four has lost content), absence of French file or column names, agreement between the manual and the downloadable template, and symmetry of the year bands.
 
-À lancer après chaque modification du manuel. Le code de sortie est le nombre de passes en échec, donc il s'utilise tel quel en CI — c'est ce que fait [`.github/workflows/audit.yml`](.github/workflows/audit.yml), qui vérifie aussi que `project-folder.zip` n'est pas périmé par rapport au gabarit.
+Run it after every change to the manual. The exit code is the number of failing passes, so it works as-is in CI — which is what [`.github/workflows/audit.yml`](.github/workflows/audit.yml) does, and it also checks that `project-folder.zip` is not stale with respect to the template.
 
-Ce script existe parce que ce document décrit **une seule réalité en deux langues**, et que la façon dont les deux éditions divergent n'est pas celle qu'on remarque en lisant. À sa première exécution il a trouvé un critère de validation disparu de l'édition anglaise du chapitre 6, l'absence totale d'exemple de CSV dans l'édition anglaise du chapitre 9, et quatre incohérences plus petites. Détails dans [tools/README.md](tools/README.md).
+This script exists because this document describes **one single reality in two languages**, and the way the two editions drift apart is not the way you notice while reading. On its first run it found a validation criterion that had vanished from the English edition of chapter 6, the complete absence of a CSV example in the English edition of chapter 9, and four smaller inconsistencies. Details in [tools/README.md](tools/README.md).
 
-## Ce qui se périme, et ce qui ne se périme pas
+## What goes stale, and what does not
 
-Ce champ change tous les deux mois. Tout ce qui est **nommé** — modèles, versions, chiffres de VRAM — est concentré dans le **chapitre 3**, dans **[prompts.html](prompts.html)** et dans **[outils.html](outils.html)**, pour que le reste du manuel reste juste. La *méthode* est faite pour survivre aux noms.
+This field changes every couple of months. Everything **named** — models, versions, VRAM figures — is concentrated in **chapter 3**, in **[prompts.html](prompts.html)** and in **[outils.html](outils.html)**, so that the rest of the manual stays true. The *method* is built to outlive the names.
 
-État des modèles : **août 2026**. Quand le manuel et votre installation ne sont pas d'accord sur un nom de nœud ou un réglage, croyez le logiciel.
+Model state: **August 2026**. When the manual and your installation disagree on a node name or a setting, believe the software.
 
-## Mise à jour du manuel
+## Updating the manual
 
-> **Avant toute modification, lisez [`CLAUDE.md`](CLAUDE.md).** C'est le document de
-> maintenance : les décisions déjà tranchées et pourquoi, les faits qui doivent rester
-> cohérents d'un fichier à l'autre, la manière d'éditer un fichier de 650 Ko sans le
-> casser en silence, et ce qui reste ouvert. Il est aussi chargé automatiquement par
-> Claude Code au début de chaque session dans ce dépôt.
+> **Before making any change, read [`CLAUDE.md`](CLAUDE.md).** That is the maintenance
+> document: the decisions already settled and why, the facts that must stay consistent
+> from one file to the next, how to edit a 650 KB file without breaking it quietly, and
+> what is still open. It is also loaded automatically by Claude Code at the start of
+> every session in this repository.
 
-C'est **un seul fichier HTML**, éditable directement — pas de compilation, pas de dépendances, pas de `npm install`. Ouvrez `recits_generatifs_manuel-v1.html` dans un éditeur de texte et modifiez-le.
+It is **a single HTML file**, editable directly — no build, no dependencies, no `npm install`. Open `recits_generatifs_manuel-v1.html` in a text editor and change it.
 
-Le mécanisme bilingue est du CSS : chaque bloc de texte est dans un `<div class="fr-only">` ou `<div class="en-only">`, et la bascule ne fait qu'appliquer une classe sur `<body>`. Pour ajouter un paragraphe, ajoutez-le dans les deux.
+The bilingual mechanism is CSS: every block of text sits in a `<div class="fr-only">` or an `<div class="en-only">`, and the toggle only applies a class to `<body>`. To add a paragraph, add it to both.
 
-## Sources documentaires
+## Documentary sources
 
-Le manuel a été enrichi à partir de l'état de l'art d'août 2026 sur les techniques hybrides : cohérence par références multiples, prévisualisation 3D comme guide de mouvement, contrainte par première et dernière image, transfert de mouvement, reconstruction de site en splats gaussiens, et les obligations de transparence entrées en application le 2 août 2026. Les affirmations vérifiables portent la mention **Documenté** dans le texte.
+The manual was developed from the August 2026 state of the art on hybrid techniques: consistency through multiple references, 3D previz as a movement guide, first-and-last-frame constraint, motion transfer, site reconstruction as Gaussian splats, and the transparency obligations that came into force on 2 August 2026. Verifiable claims carry the mention **Documenté** in the text.
 
-Sources principales :
+Main sources:
 
 - [ComfyUI — documentation](https://docs.comfy.org/)
 - [Gemma 4 — Google AI for Developers](https://ai.google.dev/gemma)
-- [Règlement européen sur l'IA, article 50 — obligations de transparence](https://artificialintelligenceact.eu/article/50/)
-- [Commission européenne — application des règles de transparence au 2 août 2026](https://digital-strategy.ec.europa.eu/en/news/commission-starts-enforcing-ai-act-rules-and-new-transparency-requirements-2-august)
-- [LichtFeld Studio — entraînement de splats gaussiens, open source](https://lichtfeld.io/) · [dépôt](https://github.com/MrNeRF/LichtFeld-Studio)
-- [Hugging Face — poids de modèles](https://huggingface.co/models)
+- [EU AI Act, article 50 — transparency obligations](https://artificialintelligenceact.eu/article/50/)
+- [European Commission — enforcement of the transparency rules from 2 August 2026](https://digital-strategy.ec.europa.eu/en/news/commission-starts-enforcing-ai-act-rules-and-new-transparency-requirements-2-august)
+- [LichtFeld Studio — Gaussian splat training, open source](https://lichtfeld.io/) · [repository](https://github.com/MrNeRF/LichtFeld-Studio)
+- [Hugging Face — model weights](https://huggingface.co/models)
 
-## Documents d'origine
+## Source documents
 
-Ce manuel développe deux documents de travail internes, **non versionnés** ici (`.pdf` et `.docx` sont exclus par le `.gitignore`) :
+This manual develops two internal working documents, **not versioned** here (`.pdf` and `.docx` are excluded by `.gitignore`):
 
-- `Methodologie Creation de film AI.pdf` — le schéma initial du pipeline en six phases
-- `STORYBOARDING assisté par IA génératives et LLM.docx` — la méthode initiale en trois phases et les chartes de cohérence
+- `Methodologie Creation de film AI.pdf` — the initial six-phase pipeline diagram
+- `STORYBOARDING assisté par IA génératives et LLM.docx` — the initial three-phase method and the consistency bibles
 
-Les chapitres 8, 10 et 11 en sont l'élaboration directe : la déconstruction en trois phases, les chartes de cohérence et le super-prompt en trois blocs viennent de là. Le manuel les remplace — ils restent en local comme trace de la genèse du cours.
+Chapters 8, 10 and 11 are their direct elaboration: the three-phase deconstruction, the consistency bibles and the three-block super-prompt come from there. The manual replaces them — they stay local as a trace of how the course came about.
 
 ## Licence
 
-Aucune licence n'a encore été choisie. En l'absence de licence, le droit d'auteur s'applique par défaut : le matériel est consultable ici mais n'est pas licencié pour réutilisation.
+No licence has been chosen yet. In the absence of a licence, copyright applies by default: the material can be read here but is not licensed for reuse.

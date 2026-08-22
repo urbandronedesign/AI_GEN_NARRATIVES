@@ -1,66 +1,64 @@
 # Gabarits · Templates
 
-## Le dossier de projet
+**English** · [Français](README.fr.md)
 
-**[⬇ Télécharger `project-folder.zip`](project-folder.zip)**
+## The project folder
 
-L'arborescence du chapitre 4 du manuel, complète et prête à l'emploi, avec les documents de
-travail déjà amorcés. Dézippez, renommez le dossier avec le nom de votre projet, et commencez.
+**[⬇ Download `project-folder.zip`](project-folder.zip)**
 
-> *The chapter 4 project folder, complete and ready to use, with the working documents already
-> started. Unzip, rename the folder after your project, and begin.*
+The chapter 4 tree from the manual, complete and ready to use, with the working documents
+already started. Unzip, rename the folder after your project, and begin.
 
-### Ce qu'il y a dedans
+### What is inside
 
-| Fichier amorcé | Pour quelle étape | Chapitre |
+| Started file | For which stage | Chapter |
 |---|---|---|
-| `journal.md` | dès la mise en place, puis les dépôts et l'archive | 4 · 17 |
-| `00_brief/question_sheet.md` | étape 2 | 5 |
-| `00_brief/five_rules.md` | étape 3, **voie construite** | 6 |
-| `01_references/INDEX.md` | étape 3 | 6 |
-| `01_references/style/SOURCES.md` | dès la première référence externe | 18 |
-| `02_writing/pitch.md` | étape 4 | 7 |
-| `02_writing/script.md` | étape 5 | 8 |
-| `03_breakdown/shot_sheet.csv` | étape 6 — **le document pivot** | 9 |
-| `04_bibles/character_bible.md` | étape 7 | 10 |
-| `04_bibles/place_bible.md` | étape 7 | 10 |
-| `04_bibles/style_bible.md` | étape 7, plus le format technique | 10 |
-| `04_bibles/prompts.md` | étape 8 — les vingt prompts et leurs graines | 10 · 11 |
-| `00_brief/consent_form.md` | **avant** de filmer ou d'entraîner quoi que ce soit | 18 |
-| `00_brief/LICENCES/README.md` | dès le premier modèle installé | 18 |
+| `journal.md` | from setup onwards, then the open calls and the archive | 4 · 17 |
+| `00_brief/question_sheet.md` | stage 2 | 5 |
+| `00_brief/five_rules.md` | stage 3, **constructed route** | 6 |
+| `01_references/INDEX.md` | stage 3 | 6 |
+| `01_references/style/SOURCES.md` | from the first external reference onwards | 18 |
+| `02_writing/pitch.md` | stage 4 | 7 |
+| `02_writing/script.md` | stage 5 | 8 |
+| `03_breakdown/shot_sheet.csv` | stage 6 — **the pivot document** | 9 |
+| `04_bibles/character_bible.md` | stage 7 | 10 |
+| `04_bibles/place_bible.md` | stage 7 | 10 |
+| `04_bibles/style_bible.md` | stage 7, plus the technical format | 10 |
+| `04_bibles/prompts.md` | stage 8 — the twenty prompts and their seeds | 10 · 11 |
+| `00_brief/consent_form.md` | **before** filming or training anything | 18 |
+| `00_brief/LICENCES/README.md` | from the first model installed onwards | 18 |
 
-Les dossiers vides le sont volontairement. Comme le dit le chapitre 4 : *un dossier vide qui
-attend est une consigne ; un dossier créé au moment où on en a besoin devient un débarras.*
+The empty folders are empty on purpose. As chapter 4 puts it: *an empty folder that waits is
+an instruction; a folder created at the moment you need it becomes a junk drawer.*
 
-La feuille de plans arrive **déjà remplie** avec les vingt identifiants de plan, leur bloc et
-une durée de 3 secondes — somme 60 secondes. Il ne reste qu'à écrire.
+The shot sheet arrives **already filled in** with the twenty shot identifiers, their block and
+a duration of 3 seconds — summing to 60 seconds. All that is left is to write.
 
-### Format réduit · années 1 et 2
+### Short format · years 1 and 2
 
-Trente secondes, dix plans : supprimez les lignes `P11` à `P20` de la feuille de plans et
-répartissez les blocs `2·2·2·2·2`. `04_bibles/character_bible.md` ne sert pas — le format
-A1·A2 se fait sans personnage. Voir *Parcours par année* dans le manuel.
+Thirty seconds, ten shots: delete rows `P11` to `P20` from the shot sheet and redistribute the
+blocks as `2·2·2·2·2`. `04_bibles/character_bible.md` is not used — the A1·A2 format is done
+without a character. See *Path by year* in the manual.
 
-### Une note sur les noms
+### A note on names
 
-Les noms de dossiers, de fichiers et de colonnes sont **en anglais**, dans les deux éditions
-du manuel, parce qu'il n'y a **qu'un seul système de fichiers** et que les étudiants sont à
-l'aise en anglais. Ne les traduisez pas : le manuel, la feuille de plans et les captures
-d'écran y font référence tels quels.
+Folder, file and column names are **in English**, in both editions of the manual, because there
+is **only one filesystem** and students are comfortable in English. Do not translate them: the
+manual, the shot sheet and the screenshots refer to them as they are.
 
-Les seuls noms que vous choisissez sont ceux de vos propres fichiers — et là aussi, nommez en
-anglais : `PHOTO_014_north-hall_concrete-floor.jpg` plutôt que `PHOTO_014_halle-nord_sol.jpg`.
-Le tri et la recherche s'en portent mieux, et un jury international lit votre dossier.
+The only names you choose are those of your own files — and there too, name them in English:
+`PHOTO_014_north-hall_concrete-floor.jpg` rather than `PHOTO_014_halle-nord_sol.jpg`. Sorting
+and searching work better for it, and an international jury reads your folder.
 
 ---
 
-## Regénérer l'archive
+## Regenerating the archive
 
-Le dossier `FILM_2026_project-name/` de ce dépôt est la source ; `project-folder.zip` en
-est l'export. Après modification d'un gabarit :
+The `FILM_2026_project-name/` folder in this repository is the source; `project-folder.zip` is
+its export. After modifying a template:
 
 ```bash
 python templates/build-zip.py
 ```
 
-Le script exclut les `.gitkeep` : les dossiers vides sont recréés dans l'archive sans eux.
+The script excludes `.gitkeep` files: the empty folders are recreated in the archive without them.
