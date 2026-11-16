@@ -755,6 +755,11 @@ by <span class="var">[your name]</span>, at <span class="var">[place]</span>, <s
 </main>
 
 <script>
+/* ---------- Language in the URL ----------
+   ?lang=fr|en wins over the saved choice and switching rewrites it, so a copied
+   link opens in the language it was read in. The #anchor is kept. */
+function urlLang(){ var m=/[?&]lang=(fr|en)(?:&|$)/.exec(location.search); return m?m[1]:null; }
+function langUrl(l){ try{ var u=new URL(location.href); if(u.searchParams.get('lang')===l) return; u.searchParams.set('lang',l); history.replaceState(history.state,'',u.href); }catch(e){} }
 function setLang(l){
   document.body.classList.remove('lang-fr','lang-en');
   document.body.classList.add('lang-'+l);
@@ -762,7 +767,7 @@ function setLang(l){
   var f=document.getElementById('filter');
   f.placeholder = l==='fr' ? f.dataset.phFr : f.dataset.phEn;
   document.documentElement.lang = l;
-  try{localStorage.setItem('gn-lang',l)}catch(e){}
+  try{localStorage.setItem('gn-lang',l)}catch(e){} langUrl(l);
   applyFilter();
 }
 function setTheme(t){
@@ -822,7 +827,7 @@ document.addEventListener('keydown', function(e){
 });
 (function(){
   var l='fr', th=null;
-  try{ l=localStorage.getItem('gn-lang')||'fr'; th=localStorage.getItem('gn-theme'); }catch(e){}
+  try{ l=urlLang()||localStorage.getItem('gn-lang')||'fr'; th=localStorage.getItem('gn-theme'); }catch(e){}
   setLang(l);
   if(th){ setTheme(th); }
   else {
